@@ -1,0 +1,18 @@
+# Normaliza finales de linea en el repositorio.
+# Evita que el codigo cambie de LF a CRLF segun el sistema desde donde se clone.
+* text=auto eol=lf
+
+# Archivos que SI deben llevar CRLF en Windows
+*.bat text eol=crlf
+*.cmd text eol=crlf
+*.ps1 text eol=crlf
+
+# Archivos binarios: no aplicar ninguna conversion
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary
+*.webp binary
+*.ico binary
+*.woff binary
+*.woff2 binary

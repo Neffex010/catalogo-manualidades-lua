@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 700" width="600" height="700" role="img" aria-label="Imagen no disponible">
+  <rect width="600" height="700" fill="#F7F5FC"/>
+  <g opacity="0.35" fill="none" stroke="#E3D5F2" stroke-width="6">
+    <path d="M0 175h600M0 350h600M0 525h600"/>
+    <path d="M150 0v700M300 0v700M450 0v700"/>
+  </g>
+  <g transform="translate(300 350)">
+    <path d="M0-90c-38 0-64 28-64 68 0 23 9 42 22 56-14 10-22 26-22 44 0 17 6 31 17 41-7 10-10 22-10 35 0 28 25 51 57 51s57-23 57-51c0-13-3-25-10-35 11-10 17-24 17-41 0-18-8-34-22-44 13-14 22-33 22-56C64-62 38-90 0-90z" fill="#E3D5F2"/>
+    <circle cx="0" cy="-22" r="26" fill="#F7F5FC"/>
+    <path d="M-52 40c33 19 71 19 104 0" stroke="#F7F5FC" stroke-width="19" stroke-linecap="round" fill="none"/>
+  </g>
+  <text x="300" y="620" text-anchor="middle" font-family="Inter, system-ui, sans-serif" font-size="26" fill="#8B8696">Manualidades Lua</text>
+</svg>

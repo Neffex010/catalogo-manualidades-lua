@@ -1,0 +1,146 @@
+[
+  {
+    "id": 1,
+    "name": "Osito Amigurumi Grande",
+    "category": "Amigurumis",
+    "description": "Figura tejida de gran tamaño, ideal para regalo o decoración.",
+    "image_url": "https://images.unsplash.com/photo-1584100936595-c0654b55a2e2?auto=format&fit=crop&w=600&q=80",
+    "available": true,
+    "tags": ["figura grande", "decoración", "regalo"]
+  },
+  {
+    "id": 2,
+    "name": "Angelito para Bautizo",
+    "category": "Eventos",
+    "description": "Recuerdo tejido a mano para eventos especiales y ceremonias.",
+    "image_url": "https://images.unsplash.com/photo-1755589295552-91d71e561d08?auto=format&fit=crop&w=600&q=80",
+    "available": true,
+    "tags": ["bautizo", "recuerdo", "personalizable"]
+  },
+  {
+    "id": 3,
+    "name": "Ramo de Tulipanes",
+    "category": "Flores",
+    "description": "Arreglo floral duradero tejido con hilo de algodón.",
+    "image_url": "https://images.unsplash.com/photo-1526047932273-341f2a7631f9?auto=format&fit=crop&w=600&q=80",
+    "available": true,
+    "tags": ["tulipanes", "duradero", "centro de mesa"]
+  },
+  {
+    "id": 4,
+    "name": "Llavero de Conejito",
+    "category": "Llaveros",
+    "description": "Accesorio miniatura para llaves o mochilas.",
+    "image_url": "https://images.unsplash.com/photo-1753370474663-1b0ad622c5fc?auto=format&fit=crop&w=600&q=80",
+    "available": true,
+    "tags": ["miniatura", "mochila", "regalo"]
+  },
+  {
+    "id": 5,
+    "name": "Gatito Amigurumi Dormilón",
+    "category": "Amigurumis",
+    "description": "Gatito de gran formato que abraza su propia madejita. El compañero ideal de cualquier colección.",
+    "image_url": "https://images.unsplash.com/photo-1686151573986-03b5a79f22a5?auto=format&fit=crop&w=600&q=80",
+    "available": true,
+    "tags": ["figura grande", "hecho a mano", "niños"]
+  },
+  {
+    "id": 6,
+    "name": "Recuerdo de Graduación",
+    "category": "Eventos",
+    "description": "Pieza bordada para immortalizar una fecha especial: incluye el nombre y la fecha que tú nos digas.",
+    "image_url": "https://images.unsplash.com/photo-1770662369337-44ec308aba11?auto=format&fit=crop&w=600&q=80",
+    "available": true,
+    "tags": ["graduación", "bordado", "personalizable"]
+  },
+  {
+    "id": 7,
+    "name": "Ramo de Flores con Tallos Flexibles",
+    "category": "Flores",
+    "description": "Siete flores con tallos de alambre forrado que puedes acomodar a tu gusto. Nunca marchitan.",
+    "image_url": "https://images.unsplash.com/photo-1716400128984-3681f2005d22?auto=format&fit=crop&w=600&q=80",
+    "available": true,
+    "tags": ["ramo", "alambre", "duradero"]
+  },
+  {
+    "id": 8,
+    "name": "Llavero de Gatito",
+    "category": "Llaveros",
+    "description": "Miniatura de peluche suave con ojitos saltones y aro reforzado para tus llaves o tu mochila.",
+    "image_url": "https://images.unsplash.com/photo-1758445445109-086ab1dab099?auto=format&fit=crop&w=600&q=80",
+    "available": true,
+    "tags": ["miniatura", "mochila", "regalo"]
+  },
+  {
+    "id": 9,
+    "name": "Guirnalda de Adornos de Ceremonia",
+    "category": "Eventos",
+    "description": "Adornos colgantes para bautizos, graduaciones o shower. Se pueden personalizar con el nombre del ahijado.",
+    "image_url": "https://images.unsplash.com/photo-1682456138620-6076ac071b51?auto=format&fit=crop&w=600&q=80",
+    "available": true,
+    "tags": ["adornos", "decoración", "personalizable"]
+  },
+  {
+    "id": 10,
+    "name": "Ramo de Girasoles Tejidos",
+    "category": "Flores",
+    "description": "Arreglo alegre de girasoles en tonos cálidos con base de cerámica tejida.",
+    "image_url": "https://images.unsplash.com/photo-1700171518313-5dd219beaaa6?auto=format&fit=crop&w=600&q=80",
+    "available": true,
+    "tags": ["girasoles", "base tejida", "alegría"]
+  },
+  {
+    "id": 11,
+    "name": "Llavero de Corazón con Nombre",
+    "category": "Llaveros",
+    "description": "Corazón bordado a mano con el nombre que elijas. Detalle regalable de bajo costo.",
+    "image_url": "https://images.unsplash.com/photo-1759999362893-cdf9d3278d4d?auto=format&fit=crop&w=600&q=80",
+    "available": true,
+    "tags": ["bordado", "personalizable", "regalo"]
+  },
+  {
+    "id": 12,
+    "name": "Manta de Bautizo Personalizada",
+    "category": "Eventos",
+    "description": "Manta tipo blanket en algodón premium con el nombre del bebé tejido en el borde.",
+    "image_url": "https://images.unsplash.com/photo-1544816155-12df9643f363?auto=format&fit=crop&w=600&q=80",
+    "available": false,
+    "tags": ["bautizo", "algodón", "bordado"]
+  },
+  {
+    "id": 13,
+    "name": "Arreglo Floral Rosa y Blanco",
+    "category": "Flores",
+    "description": "Ramo en tonos pastel perfecto para centros de mesa, mesa de dulces y regalos.",
+    "image_url": "https://images.unsplash.com/photo-1595301490405-0ae747be39f6?auto=format&fit=crop&w=600&q=80",
+    "available": true,
+    "tags": ["pastel", "centros de mesa", "duradero"]
+  },
+  {
+    "id": 14,
+    "name": "Llaveros Variados Mini",
+    "category": "Llaveros",
+    "description": "Surco de piezas miniatura variadas para regalar en lote o llevar a la feria.",
+    "image_url": "https://images.unsplash.com/photo-1778278553445-9cb87c89c60f?auto=format&fit=crop&w=600&q=80",
+    "available": true,
+    "tags": ["miniatura", "surco", "feria"]
+  },
+  {
+    "id": 15,
+    "name": "Conejito Amigurumi con Bufanda",
+    "category": "Amigurumis",
+    "description": "Figura grande de conejo envuelta en una bufanda tejida. Ideal para coleccionistas y decoración.",
+    "image_url": "https://images.unsplash.com/photo-1702142006500-a1ea944a2a67?auto=format&fit=crop&w=600&q=80",
+    "available": true,
+    "tags": ["figura grande", "decoración", "regalo"]
+  },
+  {
+    "id": 16,
+    "name": "Conejito Rosa que Asoma",
+    "category": "Amigurumis",
+    "description": "Pequeño amigurumi de color rosa que asoma las orejas. Perfecto para colgarlo de la buggy.",
+    "image_url": "https://images.unsplash.com/photo-1744371760034-fb60ebd2b198?auto=format&fit=crop&w=600&q=80",
+    "available": true,
+    "tags": ["personalizable", "niños", "hecho a mano"]
+  }
+]
