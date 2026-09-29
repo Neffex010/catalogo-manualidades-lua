@@ -22,6 +22,7 @@
  */
 
 import rawProducts from '../data/products.json'
+import imageManifest from '../data/images.json'
 
 /* ========================================================================== */
 /* Configuracion del modo de acceso a datos                                  */
@@ -41,7 +42,6 @@ const SIMULATED_LATENCY_MS = Number(import.meta.env?.VITE_MOCK_LATENCY ?? 450)
 
 /** Imagen usada si el backend no devuelve `image_url`. */
 const FALLBACK_IMAGE = '/images/product-placeholder.svg'
-
 /** Wrapper de una promesa para simular latencia de red. */
 const delay = (ms = SIMULATED_LATENCY_MS) =>
   new Promise((resolve) => setTimeout(resolve, ms))
@@ -55,6 +55,12 @@ const delay = (ms = SIMULATED_LATENCY_MS) =>
  * Centralizar esto aqui permite que el backend cambie de nombres de campo
  * (p. ej. `imageUrl`, `precio`, `is_active`) sin romper los componentes.
  *
+ * IMAGENES: `src/data/images.json` lo genera `npm run images` y asocia a cada
+ * foto local sus variantes (400/600/800 en AVIF y WebP), un placeholder borroso
+ * y el color promedio. Si `image_url` apunta a un recurso sin entrada en el
+ * manifiesto (p. ej. una URL remota del backend), los campos quedan en `null` y
+ * la tarjeta cae a un <img> simple con la imagen original.
+ *
  * @param {object} raw
  * @returns {object|null}
  */
@@ -64,13 +70,26 @@ function normalizeProduct(raw) {
   const id = raw.id ?? raw.pk ?? null
   if (id == null) return null
 
+  // Acepta ambas grafias para facilitar la migracion snake_case -> camelCase
+  const imageUrl = raw.image_url ?? raw.imageUrl ?? FALLBACK_IMAGE
+  const image = imageManifest[imageUrl] ?? null
+
   return {
     id,
     name: raw.name ?? raw.nombre ?? 'Producto sin nombre',
     category: raw.category ?? raw.categoria ?? 'Sin categoría',
     description: raw.description ?? raw.descripcion ?? '',
-    // Acepta ambas grafias para facilitar la migracion snake_case -> camelCase
-    imageUrl: raw.image_url ?? raw.imageUrl ?? FALLBACK_IMAGE,
+    imageUrl,
+    // `srcset` listos para <picture>; null si no hay variantes generadas.
+    imageSrcSetAvif: image?.avif ?? null,
+    imageSrcSetWebp: image?.webp ?? null,
+    // Placeholder de ~0.2 KB y color de fondo para que la tarjeta nunca
+    // aparezca en blanco mientras la foto viaja por la red.
+    imageLqip: image?.lqip ?? null,
+    imageColor: image?.color ?? null,
+    // Proporcion real de la foto; evita que la tarjeta salte de alto al cargar.
+    imageWidth: image?.width ?? raw.width ?? raw.ancho ?? null,
+    imageHeight: image?.height ?? raw.height ?? raw.alto ?? null,
     available: Boolean(raw.available ?? raw.disponible ?? true),
     tags: Array.isArray(raw.tags) ? raw.tags : [],
   }

@@ -3,45 +3,114 @@
  * -----------------------------------------------------------------------------
  * Tarjeta de producto con imagen responsiva, etiquetas, descripcion y el boton
  * de cotizacion por WhatsApp con mensaje prellenado.
+ *
+ * IMAGEN: se sirve con <picture> y tres resoluciones (400/600/800) en AVIF y
+ * WebP, de modo que cada dispositivo descarga solo la que necesita (~16-43 KB
+ * en vez de los ~78 KB de una unica version). Mientras llega la foto se pinta un
+ * placeholder borroso de 0.2 KB sobre el color promedio de la pieza.
  * -----------------------------------------------------------------------------
  */
 
-import { useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { MessageCircle, Tag, Clock } from 'lucide-react'
 import { getProductWhatsAppUrl } from '../utils/whatsapp'
+import { useRevealOnScroll } from '../hooks/useRevealOnScroll'
 
 /** Imagen de respaldo si la URL del producto falla. */
 const FALLBACK_IMAGE = '/images/product-placeholder.svg'
 
-export default function ProductCard({ product }) {
+/** Color de fondo heredado de la marca si el producto no trae uno propio. */
+const FALLBACK_COLOR = '#FAF8FE'
+
+/**
+ * Ancho con el que se pinta la tarjeta en cada breakpoint. Debe mantenerse en
+ * sync con las columnas del grid de ProductGrid: si cambian, el navegador
+ * elegira una resolucion equivocada (de mas, o peor: de menos).
+ */
+const IMAGE_SIZES = '(min-width: 1280px) 290px, (min-width: 1024px) 33vw, (min-width: 640px) 45vw, 92vw'
+
+export default function ProductCard({ product, index = 0 }) {
   // Estado local para el fallback de imagen
   const [imageSrc, setImageSrc] = useState(product.imageUrl || FALLBACK_IMAGE)
   const [imageFailed, setImageFailed] = useState(false)
+  const [imageLoaded, setImageLoaded] = useState(false)
+
+  const imageRef = useRef(null)
+  const [cardRef, isRevealed] = useRevealOnScroll()
+
+  // Si la foto ya estaba en cache, `onLoad` nunca llega: se comprueba a mano.
+  useEffect(() => {
+    if (imageRef.current?.complete) setImageLoaded(true)
+  }, [])
 
   const whatsappUrl = getProductWhatsAppUrl(product)
   const isAvailable = product.available
 
+  // Cuando la foto no carga se dejan de ofrecer las variantes modernas para no
+  // pedir dos veces el mismo recurso inexistente.
+  const avifSrcSet = !imageFailed ? product.imageSrcSetAvif : null
+  const webpSrcSet = !imageFailed ? product.imageSrcSetWebp : null
+
+  // Escalonado de entrada: las tarjetas de una misma fila entran una tras otra.
+  const revealDelay = `${(index % 4) * 70}ms`
+
   return (
-    <article className="group flex h-full flex-col overflow-hidden rounded-3xl border border-line bg-surface shadow-soft transition-all duration-500 ease-artisan hover:-translate-y-1.5 hover:border-lila-300 hover:shadow-lift">
+    <article
+      ref={cardRef}
+      style={{ animationDelay: revealDelay }}
+      className={[
+        'group flex h-full flex-col overflow-hidden rounded-3xl border border-line bg-surface shadow-soft transition-all duration-500 ease-artisan hover:-translate-y-1.5 hover:border-lila-300 hover:shadow-lift',
+        'reveal',
+        isRevealed ? 'is-visible' : '',
+      ].join(' ')}
+    >
       {/* ---------------------------------------------------------------
        * Imagen con efecto hover suave
        * --------------------------------------------------------------- */}
-      <div className="relative aspect-4/5 w-full overflow-hidden bg-lila-50">
-        <img
-          src={imageSrc}
-          alt={product.name}
-          loading="lazy"
-          decoding="async"
-          width="600"
-          height="750"
-          onError={() => {
-            // Evita bucles infinitos de onError
-            if (imageFailed) return
-            setImageFailed(true)
-            setImageSrc(FALLBACK_IMAGE)
-          }}
-          className="h-full w-full object-cover transition-transform duration-700 ease-artisan group-hover:scale-[1.07]"
-        />
+      <div
+        className="relative aspect-4/5 w-full overflow-hidden"
+        style={{ backgroundColor: product.imageColor || FALLBACK_COLOR }}
+      >
+        {/* Placeholder borroso (~0.2 KB): cubre el hueco mientras carga la foto */}
+        {product.imageLqip && !imageFailed && (
+          <img
+            src={product.imageLqip}
+            alt=""
+            aria-hidden="true"
+            className="absolute inset-0 h-full w-full scale-110 object-cover blur-sm"
+          />
+        )}
+
+        <picture>
+          {avifSrcSet && (
+            <source type="image/avif" srcSet={avifSrcSet} sizes={IMAGE_SIZES} />
+          )}
+          {webpSrcSet && (
+            <source type="image/webp" srcSet={webpSrcSet} sizes={IMAGE_SIZES} />
+          )}
+          <img
+            ref={imageRef}
+            src={imageSrc}
+            alt={product.name}
+            loading="lazy"
+            decoding="async"
+            width={product.imageWidth || 800}
+            height={product.imageHeight || 1000}
+            onLoad={() => setImageLoaded(true)}
+            onError={() => {
+              // Evita bucles infinitos de onError
+              if (imageFailed) return
+              setImageFailed(true)
+              setImageSrc(FALLBACK_IMAGE)
+              // El SVG de respaldo tambien tiene que ser visible.
+              setImageLoaded(true)
+            }}
+            className={[
+              'absolute inset-0 h-full w-full object-cover transition-all duration-500 ease-artisan group-hover:scale-[1.07]',
+              imageLoaded ? 'opacity-100' : 'opacity-0',
+            ].join(' ')}
+          />
+        </picture>
 
         {/* Degradado inferior para legibilidad de las etiquetas */}
         <div

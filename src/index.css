@@ -83,8 +83,16 @@
     display: none;
   }
 
-  /* Anima la entrada de las tarjetas al hacer scroll */
+  /* Anima la entrada de las tarjetas cuando entran en pantalla (ver
+   * useRevealOnScroll). El relleno es `backwards` y NO `both` a proposito: al
+   * terminar la animacion el elemento vuelve a sus estilos normales, de modo que
+   * el `hover:-translate-y-1.5` de la tarjeta sigue funcionando. Con `forwards`
+   * el `transform` final de la animacion anularia el del hover. */
   .reveal {
-    animation: fade-in-up 0.6s cubic-bezier(0.22, 1, 0.36, 1) both;
+    opacity: 0;
+  }
+  .reveal.is-visible {
+    opacity: 1;
+    animation: fade-in-up 0.6s cubic-bezier(0.22, 1, 0.36, 1) backwards;
   }
 }

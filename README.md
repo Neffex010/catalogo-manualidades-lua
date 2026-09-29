@@ -24,6 +24,14 @@ npm run dev      # http://localhost:5173
 | `npm run build`   | Build de producción en `dist/`                     |
 | `npm run preview` | Sirve el build de producción                       |
 | `npm run lint`    | ESLint 9 (configuración flat)                      |
+| `npm run images`  | Genera las variantes responsivas de las fotos      |
+
+> **Imágenes:** al añadir o reemplazar una foto en `public/images/catalogo/`, ejecuta
+> `npm run images`. El script crea las versiones 400/600/800 en AVIF y WebP, el placeholder
+> borroso y el color dominante, y actualiza `src/data/images.json`. Los PNG de
+> `public/images/brand/` son los *masters*: si cambias el arte, reemplaza el PNG y vuelve a
+> lanzarlo. Si te saltas este paso nada se rompe, pero esa foto se servirá como JPEG original
+> a todos los dispositivos en vez de elegir la resolución adecuada.
 
 > **Nota Windows:** si `npm install` avisa sobre *install scripts* de `esbuild`, ejecuta
 > `npm approve-scripts esbuild` una sola vez. Es lo que permite que Vite compile.
@@ -40,7 +48,10 @@ manualidades-lua/
 ├── postcss.config.js
 ├── eslint.config.js
 ├── public/
-│   ├── favicon.svg
+│   ├── favicon-32.png, favicon-192.png, apple-touch-icon.png
+│   ├── og-image.jpg
+│   ├── images/brand/                    # Logotipos (PNG = master, WebP = derivado)
+│   ├── images/catalogo/                 # Fotos + variantes (generadas por npm run images)
 │   └── images/product-placeholder.svg   # Imagen de respaldo si falla una foto
 └── src/
     ├── main.jsx                   # Punto de entrada

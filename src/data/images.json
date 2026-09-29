@@ -1,0 +1,842 @@
+{
+  "/images/catalogo/amigurumis/aveja.jpg": {
+    "color": "#787c81",
+    "lqip": "/images/catalogo/amigurumis/aveja-lqip.webp",
+    "width": 800,
+    "height": 1000,
+    "avif": "/images/catalogo/amigurumis/aveja-400.avif 400w, /images/catalogo/amigurumis/aveja-600.avif 600w, /images/catalogo/amigurumis/aveja-800.avif 800w",
+    "webp": "/images/catalogo/amigurumis/aveja-400.webp 400w, /images/catalogo/amigurumis/aveja-600.webp 600w, /images/catalogo/amigurumis/aveja-800.webp 800w"
+  },
+  "/images/catalogo/amigurumis/ballena-azul.jpg": {
+    "color": "#7e7d81",
+    "lqip": "/images/catalogo/amigurumis/ballena-azul-lqip.webp",
+    "width": 800,
+    "height": 1000,
+    "avif": "/images/catalogo/amigurumis/ballena-azul-400.avif 400w, /images/catalogo/amigurumis/ballena-azul-600.avif 600w, /images/catalogo/amigurumis/ballena-azul-800.avif 800w",
+    "webp": "/images/catalogo/amigurumis/ballena-azul-400.webp 400w, /images/catalogo/amigurumis/ballena-azul-600.webp 600w, /images/catalogo/amigurumis/ballena-azul-800.webp 800w"
+  },
+  "/images/catalogo/amigurumis/ballenita-morada.jpg": {
+    "color": "#a08d8a",
+    "lqip": "/images/catalogo/amigurumis/ballenita-morada-lqip.webp",
+    "width": 800,
+    "height": 1000,
+    "avif": "/images/catalogo/amigurumis/ballenita-morada-400.avif 400w, /images/catalogo/amigurumis/ballenita-morada-600.avif 600w, /images/catalogo/amigurumis/ballenita-morada-800.avif 800w",
+    "webp": "/images/catalogo/amigurumis/ballenita-morada-400.webp 400w, /images/catalogo/amigurumis/ballenita-morada-600.webp 600w, /images/catalogo/amigurumis/ballenita-morada-800.webp 800w"
+  },
+  "/images/catalogo/amigurumis/ballenita-roja.jpg": {
+    "color": "#908382",
+    "lqip": "/images/catalogo/amigurumis/ballenita-roja-lqip.webp",
+    "width": 800,
+    "height": 1000,
+    "avif": "/images/catalogo/amigurumis/ballenita-roja-400.avif 400w, /images/catalogo/amigurumis/ballenita-roja-600.avif 600w, /images/catalogo/amigurumis/ballenita-roja-800.avif 800w",
+    "webp": "/images/catalogo/amigurumis/ballenita-roja-400.webp 400w, /images/catalogo/amigurumis/ballenita-roja-600.webp 600w, /images/catalogo/amigurumis/ballenita-roja-800.webp 800w"
+  },
+  "/images/catalogo/amigurumis/ballenita-rosa.jpg": {
+    "color": "#7e7978",
+    "lqip": "/images/catalogo/amigurumis/ballenita-rosa-lqip.webp",
+    "width": 800,
+    "height": 1000,
+    "avif": "/images/catalogo/amigurumis/ballenita-rosa-400.avif 400w, /images/catalogo/amigurumis/ballenita-rosa-600.avif 600w, /images/catalogo/amigurumis/ballenita-rosa-800.avif 800w",
+    "webp": "/images/catalogo/amigurumis/ballenita-rosa-400.webp 400w, /images/catalogo/amigurumis/ballenita-rosa-600.webp 600w, /images/catalogo/amigurumis/ballenita-rosa-800.webp 800w"
+  },
+  "/images/catalogo/amigurumis/cabrita.jpg": {
+    "color": "#7b7977",
+    "lqip": "/images/catalogo/amigurumis/cabrita-lqip.webp",
+    "width": 800,
+    "height": 1000,
+    "avif": "/images/catalogo/amigurumis/cabrita-400.avif 400w, /images/catalogo/amigurumis/cabrita-600.avif 600w, /images/catalogo/amigurumis/cabrita-800.avif 800w",
+    "webp": "/images/catalogo/amigurumis/cabrita-400.webp 400w, /images/catalogo/amigurumis/cabrita-600.webp 600w, /images/catalogo/amigurumis/cabrita-800.webp 800w"
+  },
+  "/images/catalogo/amigurumis/capibara.jpg": {
+    "color": "#918d90",
+    "lqip": "/images/catalogo/amigurumis/capibara-lqip.webp",
+    "width": 800,
+    "height": 1000,
+    "avif": "/images/catalogo/amigurumis/capibara-400.avif 400w, /images/catalogo/amigurumis/capibara-600.avif 600w, /images/catalogo/amigurumis/capibara-800.avif 800w",
+    "webp": "/images/catalogo/amigurumis/capibara-400.webp 400w, /images/catalogo/amigurumis/capibara-600.webp 600w, /images/catalogo/amigurumis/capibara-800.webp 800w"
+  },
+  "/images/catalogo/amigurumis/cerebro.jpg": {
+    "color": "#6f6a6b",
+    "lqip": "/images/catalogo/amigurumis/cerebro-lqip.webp",
+    "width": 800,
+    "height": 1000,
+    "avif": "/images/catalogo/amigurumis/cerebro-400.avif 400w, /images/catalogo/amigurumis/cerebro-600.avif 600w, /images/catalogo/amigurumis/cerebro-800.avif 800w",
+    "webp": "/images/catalogo/amigurumis/cerebro-400.webp 400w, /images/catalogo/amigurumis/cerebro-600.webp 600w, /images/catalogo/amigurumis/cerebro-800.webp 800w"
+  },
+  "/images/catalogo/amigurumis/conejito.jpg": {
+    "color": "#696869",
+    "lqip": "/images/catalogo/amigurumis/conejito-lqip.webp",
+    "width": 800,
+    "height": 1000,
+    "avif": "/images/catalogo/amigurumis/conejito-400.avif 400w, /images/catalogo/amigurumis/conejito-600.avif 600w, /images/catalogo/amigurumis/conejito-800.avif 800w",
+    "webp": "/images/catalogo/amigurumis/conejito-400.webp 400w, /images/catalogo/amigurumis/conejito-600.webp 600w, /images/catalogo/amigurumis/conejito-800.webp 800w"
+  },
+  "/images/catalogo/amigurumis/coraje.jpg": {
+    "color": "#727677",
+    "lqip": "/images/catalogo/amigurumis/coraje-lqip.webp",
+    "width": 800,
+    "height": 1000,
+    "avif": "/images/catalogo/amigurumis/coraje-400.avif 400w, /images/catalogo/amigurumis/coraje-600.avif 600w, /images/catalogo/amigurumis/coraje-800.avif 800w",
+    "webp": "/images/catalogo/amigurumis/coraje-400.webp 400w, /images/catalogo/amigurumis/coraje-600.webp 600w, /images/catalogo/amigurumis/coraje-800.webp 800w"
+  },
+  "/images/catalogo/amigurumis/escandalosos.jpg": {
+    "color": "#bebbbd",
+    "lqip": "/images/catalogo/amigurumis/escandalosos-lqip.webp",
+    "width": 800,
+    "height": 1000,
+    "avif": "/images/catalogo/amigurumis/escandalosos-400.avif 400w, /images/catalogo/amigurumis/escandalosos-600.avif 600w, /images/catalogo/amigurumis/escandalosos-800.avif 800w",
+    "webp": "/images/catalogo/amigurumis/escandalosos-400.webp 400w, /images/catalogo/amigurumis/escandalosos-600.webp 600w, /images/catalogo/amigurumis/escandalosos-800.webp 800w"
+  },
+  "/images/catalogo/amigurumis/harry-potter.jpg": {
+    "color": "#857f81",
+    "lqip": "/images/catalogo/amigurumis/harry-potter-lqip.webp",
+    "width": 800,
+    "height": 1000,
+    "avif": "/images/catalogo/amigurumis/harry-potter-400.avif 400w, /images/catalogo/amigurumis/harry-potter-600.avif 600w, /images/catalogo/amigurumis/harry-potter-800.avif 800w",
+    "webp": "/images/catalogo/amigurumis/harry-potter-400.webp 400w, /images/catalogo/amigurumis/harry-potter-600.webp 600w, /images/catalogo/amigurumis/harry-potter-800.webp 800w"
+  },
+  "/images/catalogo/amigurumis/hello-kitty.jpg": {
+    "color": "#746668",
+    "lqip": "/images/catalogo/amigurumis/hello-kitty-lqip.webp",
+    "width": 800,
+    "height": 1000,
+    "avif": "/images/catalogo/amigurumis/hello-kitty-400.avif 400w, /images/catalogo/amigurumis/hello-kitty-600.avif 600w, /images/catalogo/amigurumis/hello-kitty-800.avif 800w",
+    "webp": "/images/catalogo/amigurumis/hello-kitty-400.webp 400w, /images/catalogo/amigurumis/hello-kitty-600.webp 600w, /images/catalogo/amigurumis/hello-kitty-800.webp 800w"
+  },
+  "/images/catalogo/amigurumis/honguito-azul.jpg": {
+    "color": "#777b88",
+    "lqip": "/images/catalogo/amigurumis/honguito-azul-lqip.webp",
+    "width": 800,
+    "height": 1000,
+    "avif": "/images/catalogo/amigurumis/honguito-azul-400.avif 400w, /images/catalogo/amigurumis/honguito-azul-600.avif 600w, /images/catalogo/amigurumis/honguito-azul-800.avif 800w",
+    "webp": "/images/catalogo/amigurumis/honguito-azul-400.webp 400w, /images/catalogo/amigurumis/honguito-azul-600.webp 600w, /images/catalogo/amigurumis/honguito-azul-800.webp 800w"
+  },
+  "/images/catalogo/amigurumis/honguito-rojo.jpg": {
+    "color": "#8a777d",
+    "lqip": "/images/catalogo/amigurumis/honguito-rojo-lqip.webp",
+    "width": 800,
+    "height": 1000,
+    "avif": "/images/catalogo/amigurumis/honguito-rojo-400.avif 400w, /images/catalogo/amigurumis/honguito-rojo-600.avif 600w, /images/catalogo/amigurumis/honguito-rojo-800.avif 800w",
+    "webp": "/images/catalogo/amigurumis/honguito-rojo-400.webp 400w, /images/catalogo/amigurumis/honguito-rojo-600.webp 600w, /images/catalogo/amigurumis/honguito-rojo-800.webp 800w"
+  },
+  "/images/catalogo/amigurumis/loro.jpg": {
+    "color": "#7a7477",
+    "lqip": "/images/catalogo/amigurumis/loro-lqip.webp",
+    "width": 800,
+    "height": 1000,
+    "avif": "/images/catalogo/amigurumis/loro-400.avif 400w, /images/catalogo/amigurumis/loro-600.avif 600w, /images/catalogo/amigurumis/loro-800.avif 800w",
+    "webp": "/images/catalogo/amigurumis/loro-400.webp 400w, /images/catalogo/amigurumis/loro-600.webp 600w, /images/catalogo/amigurumis/loro-800.webp 800w"
+  },
+  "/images/catalogo/amigurumis/merlina.jpg": {
+    "color": "#88868a",
+    "lqip": "/images/catalogo/amigurumis/merlina-lqip.webp",
+    "width": 800,
+    "height": 1000,
+    "avif": "/images/catalogo/amigurumis/merlina-400.avif 400w, /images/catalogo/amigurumis/merlina-600.avif 600w, /images/catalogo/amigurumis/merlina-800.avif 800w",
+    "webp": "/images/catalogo/amigurumis/merlina-400.webp 400w, /images/catalogo/amigurumis/merlina-600.webp 600w, /images/catalogo/amigurumis/merlina-800.webp 800w"
+  },
+  "/images/catalogo/amigurumis/osito-cafe.jpg": {
+    "color": "#938d89",
+    "lqip": "/images/catalogo/amigurumis/osito-cafe-lqip.webp",
+    "width": 800,
+    "height": 1000,
+    "avif": "/images/catalogo/amigurumis/osito-cafe-400.avif 400w, /images/catalogo/amigurumis/osito-cafe-600.avif 600w, /images/catalogo/amigurumis/osito-cafe-800.avif 800w",
+    "webp": "/images/catalogo/amigurumis/osito-cafe-400.webp 400w, /images/catalogo/amigurumis/osito-cafe-600.webp 600w, /images/catalogo/amigurumis/osito-cafe-800.webp 800w"
+  },
+  "/images/catalogo/amigurumis/oveja.jpg": {
+    "color": "#6b6966",
+    "lqip": "/images/catalogo/amigurumis/oveja-lqip.webp",
+    "width": 800,
+    "height": 1000,
+    "avif": "/images/catalogo/amigurumis/oveja-400.avif 400w, /images/catalogo/amigurumis/oveja-600.avif 600w, /images/catalogo/amigurumis/oveja-800.avif 800w",
+    "webp": "/images/catalogo/amigurumis/oveja-400.webp 400w, /images/catalogo/amigurumis/oveja-600.webp 600w, /images/catalogo/amigurumis/oveja-800.webp 800w"
+  },
+  "/images/catalogo/amigurumis/panda.jpg": {
+    "color": "#6f6d70",
+    "lqip": "/images/catalogo/amigurumis/panda-lqip.webp",
+    "width": 800,
+    "height": 1000,
+    "avif": "/images/catalogo/amigurumis/panda-400.avif 400w, /images/catalogo/amigurumis/panda-600.avif 600w, /images/catalogo/amigurumis/panda-800.avif 800w",
+    "webp": "/images/catalogo/amigurumis/panda-400.webp 400w, /images/catalogo/amigurumis/panda-600.webp 600w, /images/catalogo/amigurumis/panda-800.webp 800w"
+  },
+  "/images/catalogo/amigurumis/pato.jpg": {
+    "color": "#7c7473",
+    "lqip": "/images/catalogo/amigurumis/pato-lqip.webp",
+    "width": 800,
+    "height": 1000,
+    "avif": "/images/catalogo/amigurumis/pato-400.avif 400w, /images/catalogo/amigurumis/pato-600.avif 600w, /images/catalogo/amigurumis/pato-800.avif 800w",
+    "webp": "/images/catalogo/amigurumis/pato-400.webp 400w, /images/catalogo/amigurumis/pato-600.webp 600w, /images/catalogo/amigurumis/pato-800.webp 800w"
+  },
+  "/images/catalogo/amigurumis/pollito-girasol.jpg": {
+    "color": "#827264",
+    "lqip": "/images/catalogo/amigurumis/pollito-girasol-lqip.webp",
+    "width": 800,
+    "height": 1000,
+    "avif": "/images/catalogo/amigurumis/pollito-girasol-400.avif 400w, /images/catalogo/amigurumis/pollito-girasol-600.avif 600w, /images/catalogo/amigurumis/pollito-girasol-800.avif 800w",
+    "webp": "/images/catalogo/amigurumis/pollito-girasol-400.webp 400w, /images/catalogo/amigurumis/pollito-girasol-600.webp 600w, /images/catalogo/amigurumis/pollito-girasol-800.webp 800w"
+  },
+  "/images/catalogo/amigurumis/pollito.jpg": {
+    "color": "#7c777a",
+    "lqip": "/images/catalogo/amigurumis/pollito-lqip.webp",
+    "width": 800,
+    "height": 1000,
+    "avif": "/images/catalogo/amigurumis/pollito-400.avif 400w, /images/catalogo/amigurumis/pollito-600.avif 600w, /images/catalogo/amigurumis/pollito-800.avif 800w",
+    "webp": "/images/catalogo/amigurumis/pollito-400.webp 400w, /images/catalogo/amigurumis/pollito-600.webp 600w, /images/catalogo/amigurumis/pollito-800.webp 800w"
+  },
+  "/images/catalogo/amigurumis/pulpo.jpg": {
+    "color": "#7c735f",
+    "lqip": "/images/catalogo/amigurumis/pulpo-lqip.webp",
+    "width": 800,
+    "height": 1000,
+    "avif": "/images/catalogo/amigurumis/pulpo-400.avif 400w, /images/catalogo/amigurumis/pulpo-600.avif 600w, /images/catalogo/amigurumis/pulpo-800.avif 800w",
+    "webp": "/images/catalogo/amigurumis/pulpo-400.webp 400w, /images/catalogo/amigurumis/pulpo-600.webp 600w, /images/catalogo/amigurumis/pulpo-800.webp 800w"
+  },
+  "/images/catalogo/amigurumis/rino.jpg": {
+    "color": "#81807e",
+    "lqip": "/images/catalogo/amigurumis/rino-lqip.webp",
+    "width": 800,
+    "height": 1000,
+    "avif": "/images/catalogo/amigurumis/rino-400.avif 400w, /images/catalogo/amigurumis/rino-600.avif 600w, /images/catalogo/amigurumis/rino-800.avif 800w",
+    "webp": "/images/catalogo/amigurumis/rino-400.webp 400w, /images/catalogo/amigurumis/rino-600.webp 600w, /images/catalogo/amigurumis/rino-800.webp 800w"
+  },
+  "/images/catalogo/amigurumis/snnopy.jpg": {
+    "color": "#77727a",
+    "lqip": "/images/catalogo/amigurumis/snnopy-lqip.webp",
+    "width": 800,
+    "height": 1000,
+    "avif": "/images/catalogo/amigurumis/snnopy-400.avif 400w, /images/catalogo/amigurumis/snnopy-600.avif 600w, /images/catalogo/amigurumis/snnopy-800.avif 800w",
+    "webp": "/images/catalogo/amigurumis/snnopy-400.webp 400w, /images/catalogo/amigurumis/snnopy-600.webp 600w, /images/catalogo/amigurumis/snnopy-800.webp 800w"
+  },
+  "/images/catalogo/amigurumis/spider-g.jpg": {
+    "color": "#817374",
+    "lqip": "/images/catalogo/amigurumis/spider-g-lqip.webp",
+    "width": 800,
+    "height": 1000,
+    "avif": "/images/catalogo/amigurumis/spider-g-400.avif 400w, /images/catalogo/amigurumis/spider-g-600.avif 600w, /images/catalogo/amigurumis/spider-g-800.avif 800w",
+    "webp": "/images/catalogo/amigurumis/spider-g-400.webp 400w, /images/catalogo/amigurumis/spider-g-600.webp 600w, /images/catalogo/amigurumis/spider-g-800.webp 800w"
+  },
+  "/images/catalogo/amigurumis/spiderman-telarana.jpg": {
+    "color": "#988c92",
+    "lqip": "/images/catalogo/amigurumis/spiderman-telarana-lqip.webp",
+    "width": 800,
+    "height": 1000,
+    "avif": "/images/catalogo/amigurumis/spiderman-telarana-400.avif 400w, /images/catalogo/amigurumis/spiderman-telarana-600.avif 600w, /images/catalogo/amigurumis/spiderman-telarana-800.avif 800w",
+    "webp": "/images/catalogo/amigurumis/spiderman-telarana-400.webp 400w, /images/catalogo/amigurumis/spiderman-telarana-600.webp 600w, /images/catalogo/amigurumis/spiderman-telarana-800.webp 800w"
+  },
+  "/images/catalogo/amigurumis/spiderman-variacion.jpg": {
+    "color": "#9d8584",
+    "lqip": "/images/catalogo/amigurumis/spiderman-variacion-lqip.webp",
+    "width": 800,
+    "height": 1000,
+    "avif": "/images/catalogo/amigurumis/spiderman-variacion-400.avif 400w, /images/catalogo/amigurumis/spiderman-variacion-600.avif 600w, /images/catalogo/amigurumis/spiderman-variacion-800.avif 800w",
+    "webp": "/images/catalogo/amigurumis/spiderman-variacion-400.webp 400w, /images/catalogo/amigurumis/spiderman-variacion-600.webp 600w, /images/catalogo/amigurumis/spiderman-variacion-800.webp 800w"
+  },
+  "/images/catalogo/amigurumis/spiderman.jpg": {
+    "color": "#7e8778",
+    "lqip": "/images/catalogo/amigurumis/spiderman-lqip.webp",
+    "width": 800,
+    "height": 1000,
+    "avif": "/images/catalogo/amigurumis/spiderman-400.avif 400w, /images/catalogo/amigurumis/spiderman-600.avif 600w, /images/catalogo/amigurumis/spiderman-800.avif 800w",
+    "webp": "/images/catalogo/amigurumis/spiderman-400.webp 400w, /images/catalogo/amigurumis/spiderman-600.webp 600w, /images/catalogo/amigurumis/spiderman-800.webp 800w"
+  },
+  "/images/catalogo/amigurumis/stitch-variacion.jpg": {
+    "color": "#7b8792",
+    "lqip": "/images/catalogo/amigurumis/stitch-variacion-lqip.webp",
+    "width": 800,
+    "height": 1000,
+    "avif": "/images/catalogo/amigurumis/stitch-variacion-400.avif 400w, /images/catalogo/amigurumis/stitch-variacion-600.avif 600w, /images/catalogo/amigurumis/stitch-variacion-800.avif 800w",
+    "webp": "/images/catalogo/amigurumis/stitch-variacion-400.webp 400w, /images/catalogo/amigurumis/stitch-variacion-600.webp 600w, /images/catalogo/amigurumis/stitch-variacion-800.webp 800w"
+  },
+  "/images/catalogo/amigurumis/stitch.jpg": {
+    "color": "#7c838f",
+    "lqip": "/images/catalogo/amigurumis/stitch-lqip.webp",
+    "width": 800,
+    "height": 1000,
+    "avif": "/images/catalogo/amigurumis/stitch-400.avif 400w, /images/catalogo/amigurumis/stitch-600.avif 600w, /images/catalogo/amigurumis/stitch-800.avif 800w",
+    "webp": "/images/catalogo/amigurumis/stitch-400.webp 400w, /images/catalogo/amigurumis/stitch-600.webp 600w, /images/catalogo/amigurumis/stitch-800.webp 800w"
+  },
+  "/images/catalogo/amigurumis/toro.jpg": {
+    "color": "#9a8b87",
+    "lqip": "/images/catalogo/amigurumis/toro-lqip.webp",
+    "width": 800,
+    "height": 1000,
+    "avif": "/images/catalogo/amigurumis/toro-400.avif 400w, /images/catalogo/amigurumis/toro-600.avif 600w, /images/catalogo/amigurumis/toro-800.avif 800w",
+    "webp": "/images/catalogo/amigurumis/toro-400.webp 400w, /images/catalogo/amigurumis/toro-600.webp 600w, /images/catalogo/amigurumis/toro-800.webp 800w"
+  },
+  "/images/catalogo/amigurumis/tortugita-rosa.jpg": {
+    "color": "#82656c",
+    "lqip": "/images/catalogo/amigurumis/tortugita-rosa-lqip.webp",
+    "width": 800,
+    "height": 1000,
+    "avif": "/images/catalogo/amigurumis/tortugita-rosa-400.avif 400w, /images/catalogo/amigurumis/tortugita-rosa-600.avif 600w, /images/catalogo/amigurumis/tortugita-rosa-800.avif 800w",
+    "webp": "/images/catalogo/amigurumis/tortugita-rosa-400.webp 400w, /images/catalogo/amigurumis/tortugita-rosa-600.webp 600w, /images/catalogo/amigurumis/tortugita-rosa-800.webp 800w"
+  },
+  "/images/catalogo/amigurumis/tortuguita-azul.jpg": {
+    "color": "#74757b",
+    "lqip": "/images/catalogo/amigurumis/tortuguita-azul-lqip.webp",
+    "width": 800,
+    "height": 1000,
+    "avif": "/images/catalogo/amigurumis/tortuguita-azul-400.avif 400w, /images/catalogo/amigurumis/tortuguita-azul-600.avif 600w, /images/catalogo/amigurumis/tortuguita-azul-800.avif 800w",
+    "webp": "/images/catalogo/amigurumis/tortuguita-azul-400.webp 400w, /images/catalogo/amigurumis/tortuguita-azul-600.webp 600w, /images/catalogo/amigurumis/tortuguita-azul-800.webp 800w"
+  },
+  "/images/catalogo/amigurumis/tortuguita.jpg": {
+    "color": "#898a8c",
+    "lqip": "/images/catalogo/amigurumis/tortuguita-lqip.webp",
+    "width": 800,
+    "height": 1000,
+    "avif": "/images/catalogo/amigurumis/tortuguita-400.avif 400w, /images/catalogo/amigurumis/tortuguita-600.avif 600w, /images/catalogo/amigurumis/tortuguita-800.avif 800w",
+    "webp": "/images/catalogo/amigurumis/tortuguita-400.webp 400w, /images/catalogo/amigurumis/tortuguita-600.webp 600w, /images/catalogo/amigurumis/tortuguita-800.webp 800w"
+  },
+  "/images/catalogo/amigurumis/trapito.jpg": {
+    "color": "#9fa4a1",
+    "lqip": "/images/catalogo/amigurumis/trapito-lqip.webp",
+    "width": 800,
+    "height": 1000,
+    "avif": "/images/catalogo/amigurumis/trapito-400.avif 400w, /images/catalogo/amigurumis/trapito-600.avif 600w, /images/catalogo/amigurumis/trapito-800.avif 800w",
+    "webp": "/images/catalogo/amigurumis/trapito-400.webp 400w, /images/catalogo/amigurumis/trapito-600.webp 600w, /images/catalogo/amigurumis/trapito-800.webp 800w"
+  },
+  "/images/catalogo/amigurumis/unicornio.jpg": {
+    "color": "#797178",
+    "lqip": "/images/catalogo/amigurumis/unicornio-lqip.webp",
+    "width": 800,
+    "height": 1000,
+    "avif": "/images/catalogo/amigurumis/unicornio-400.avif 400w, /images/catalogo/amigurumis/unicornio-600.avif 600w, /images/catalogo/amigurumis/unicornio-800.avif 800w",
+    "webp": "/images/catalogo/amigurumis/unicornio-400.webp 400w, /images/catalogo/amigurumis/unicornio-600.webp 600w, /images/catalogo/amigurumis/unicornio-800.webp 800w"
+  },
+  "/images/catalogo/amigurumis/vaca-rosa.jpg": {
+    "color": "#6d747c",
+    "lqip": "/images/catalogo/amigurumis/vaca-rosa-lqip.webp",
+    "width": 800,
+    "height": 1000,
+    "avif": "/images/catalogo/amigurumis/vaca-rosa-400.avif 400w, /images/catalogo/amigurumis/vaca-rosa-600.avif 600w, /images/catalogo/amigurumis/vaca-rosa-800.avif 800w",
+    "webp": "/images/catalogo/amigurumis/vaca-rosa-400.webp 400w, /images/catalogo/amigurumis/vaca-rosa-600.webp 600w, /images/catalogo/amigurumis/vaca-rosa-800.webp 800w"
+  },
+  "/images/catalogo/amigurumis/vaquita.jpg": {
+    "color": "#706e73",
+    "lqip": "/images/catalogo/amigurumis/vaquita-lqip.webp",
+    "width": 800,
+    "height": 1000,
+    "avif": "/images/catalogo/amigurumis/vaquita-400.avif 400w, /images/catalogo/amigurumis/vaquita-600.avif 600w, /images/catalogo/amigurumis/vaquita-800.avif 800w",
+    "webp": "/images/catalogo/amigurumis/vaquita-400.webp 400w, /images/catalogo/amigurumis/vaquita-600.webp 600w, /images/catalogo/amigurumis/vaquita-800.webp 800w"
+  },
+  "/images/catalogo/eventos/angle.jpg": {
+    "color": "#827e7b",
+    "lqip": "/images/catalogo/eventos/angle-lqip.webp",
+    "width": 800,
+    "height": 1000,
+    "avif": "/images/catalogo/eventos/angle-400.avif 400w, /images/catalogo/eventos/angle-600.avif 600w, /images/catalogo/eventos/angle-800.avif 800w",
+    "webp": "/images/catalogo/eventos/angle-400.webp 400w, /images/catalogo/eventos/angle-600.webp 600w, /images/catalogo/eventos/angle-800.webp 800w"
+  },
+  "/images/catalogo/eventos/anguelitos.jpg": {
+    "color": "#827d79",
+    "lqip": "/images/catalogo/eventos/anguelitos-lqip.webp",
+    "width": 800,
+    "height": 1000,
+    "avif": "/images/catalogo/eventos/anguelitos-400.avif 400w, /images/catalogo/eventos/anguelitos-600.avif 600w, /images/catalogo/eventos/anguelitos-800.avif 800w",
+    "webp": "/images/catalogo/eventos/anguelitos-400.webp 400w, /images/catalogo/eventos/anguelitos-600.webp 600w, /images/catalogo/eventos/anguelitos-800.webp 800w"
+  },
+  "/images/catalogo/eventos/cruces.jpg": {
+    "color": "#857579",
+    "lqip": "/images/catalogo/eventos/cruces-lqip.webp",
+    "width": 800,
+    "height": 1000,
+    "avif": "/images/catalogo/eventos/cruces-400.avif 400w, /images/catalogo/eventos/cruces-600.avif 600w, /images/catalogo/eventos/cruces-800.avif 800w",
+    "webp": "/images/catalogo/eventos/cruces-400.webp 400w, /images/catalogo/eventos/cruces-600.webp 600w, /images/catalogo/eventos/cruces-800.webp 800w"
+  },
+  "/images/catalogo/eventos/cruz.jpg": {
+    "color": "#917c7b",
+    "lqip": "/images/catalogo/eventos/cruz-lqip.webp",
+    "width": 800,
+    "height": 1000,
+    "avif": "/images/catalogo/eventos/cruz-400.avif 400w, /images/catalogo/eventos/cruz-600.avif 600w, /images/catalogo/eventos/cruz-800.avif 800w",
+    "webp": "/images/catalogo/eventos/cruz-400.webp 400w, /images/catalogo/eventos/cruz-600.webp 600w, /images/catalogo/eventos/cruz-800.webp 800w"
+  },
+  "/images/catalogo/eventos/graduada.jpg": {
+    "color": "#756764",
+    "lqip": "/images/catalogo/eventos/graduada-lqip.webp",
+    "width": 800,
+    "height": 1000,
+    "avif": "/images/catalogo/eventos/graduada-400.avif 400w, /images/catalogo/eventos/graduada-600.avif 600w, /images/catalogo/eventos/graduada-800.avif 800w",
+    "webp": "/images/catalogo/eventos/graduada-400.webp 400w, /images/catalogo/eventos/graduada-600.webp 600w, /images/catalogo/eventos/graduada-800.webp 800w"
+  },
+  "/images/catalogo/eventos/graduados.jpg": {
+    "color": "#7f6f6b",
+    "lqip": "/images/catalogo/eventos/graduados-lqip.webp",
+    "width": 800,
+    "height": 1000,
+    "avif": "/images/catalogo/eventos/graduados-400.avif 400w, /images/catalogo/eventos/graduados-600.avif 600w, /images/catalogo/eventos/graduados-800.avif 800w",
+    "webp": "/images/catalogo/eventos/graduados-400.webp 400w, /images/catalogo/eventos/graduados-600.webp 600w, /images/catalogo/eventos/graduados-800.webp 800w"
+  },
+  "/images/catalogo/eventos/oso-graduado.jpg": {
+    "color": "#3e3b3d",
+    "lqip": "/images/catalogo/eventos/oso-graduado-lqip.webp",
+    "width": 800,
+    "height": 1000,
+    "avif": "/images/catalogo/eventos/oso-graduado-400.avif 400w, /images/catalogo/eventos/oso-graduado-600.avif 600w, /images/catalogo/eventos/oso-graduado-800.avif 800w",
+    "webp": "/images/catalogo/eventos/oso-graduado-400.webp 400w, /images/catalogo/eventos/oso-graduado-600.webp 600w, /images/catalogo/eventos/oso-graduado-800.webp 800w"
+  },
+  "/images/catalogo/eventos/pato-graduado.jpg": {
+    "color": "#6c6263",
+    "lqip": "/images/catalogo/eventos/pato-graduado-lqip.webp",
+    "width": 800,
+    "height": 1000,
+    "avif": "/images/catalogo/eventos/pato-graduado-400.avif 400w, /images/catalogo/eventos/pato-graduado-600.avif 600w, /images/catalogo/eventos/pato-graduado-800.avif 800w",
+    "webp": "/images/catalogo/eventos/pato-graduado-400.webp 400w, /images/catalogo/eventos/pato-graduado-600.webp 600w, /images/catalogo/eventos/pato-graduado-800.webp 800w"
+  },
+  "/images/catalogo/eventos/rosario.jpg": {
+    "color": "#6d6a6b",
+    "lqip": "/images/catalogo/eventos/rosario-lqip.webp",
+    "width": 800,
+    "height": 1000,
+    "avif": "/images/catalogo/eventos/rosario-400.avif 400w, /images/catalogo/eventos/rosario-600.avif 600w, /images/catalogo/eventos/rosario-800.avif 800w",
+    "webp": "/images/catalogo/eventos/rosario-400.webp 400w, /images/catalogo/eventos/rosario-600.webp 600w, /images/catalogo/eventos/rosario-800.webp 800w"
+  },
+  "/images/catalogo/flores/arreglo-de-3-rosas.jpg": {
+    "color": "#958f8d",
+    "lqip": "/images/catalogo/flores/arreglo-de-3-rosas-lqip.webp",
+    "width": 800,
+    "height": 1000,
+    "avif": "/images/catalogo/flores/arreglo-de-3-rosas-400.avif 400w, /images/catalogo/flores/arreglo-de-3-rosas-600.avif 600w, /images/catalogo/flores/arreglo-de-3-rosas-800.avif 800w",
+    "webp": "/images/catalogo/flores/arreglo-de-3-rosas-400.webp 400w, /images/catalogo/flores/arreglo-de-3-rosas-600.webp 600w, /images/catalogo/flores/arreglo-de-3-rosas-800.webp 800w"
+  },
+  "/images/catalogo/flores/flor-individual-blanca.jpg": {
+    "color": "#817e81",
+    "lqip": "/images/catalogo/flores/flor-individual-blanca-lqip.webp",
+    "width": 800,
+    "height": 1000,
+    "avif": "/images/catalogo/flores/flor-individual-blanca-400.avif 400w, /images/catalogo/flores/flor-individual-blanca-600.avif 600w, /images/catalogo/flores/flor-individual-blanca-800.avif 800w",
+    "webp": "/images/catalogo/flores/flor-individual-blanca-400.webp 400w, /images/catalogo/flores/flor-individual-blanca-600.webp 600w, /images/catalogo/flores/flor-individual-blanca-800.webp 800w"
+  },
+  "/images/catalogo/flores/flor-individual.jpg": {
+    "color": "#918f91",
+    "lqip": "/images/catalogo/flores/flor-individual-lqip.webp",
+    "width": 800,
+    "height": 1000,
+    "avif": "/images/catalogo/flores/flor-individual-400.avif 400w, /images/catalogo/flores/flor-individual-600.avif 600w, /images/catalogo/flores/flor-individual-800.avif 800w",
+    "webp": "/images/catalogo/flores/flor-individual-400.webp 400w, /images/catalogo/flores/flor-individual-600.webp 600w, /images/catalogo/flores/flor-individual-800.webp 800w"
+  },
+  "/images/catalogo/flores/girasol-2-flores-variacion.jpg": {
+    "color": "#8a7d7a",
+    "lqip": "/images/catalogo/flores/girasol-2-flores-variacion-lqip.webp",
+    "width": 800,
+    "height": 1000,
+    "avif": "/images/catalogo/flores/girasol-2-flores-variacion-400.avif 400w, /images/catalogo/flores/girasol-2-flores-variacion-600.avif 600w, /images/catalogo/flores/girasol-2-flores-variacion-800.avif 800w",
+    "webp": "/images/catalogo/flores/girasol-2-flores-variacion-400.webp 400w, /images/catalogo/flores/girasol-2-flores-variacion-600.webp 600w, /images/catalogo/flores/girasol-2-flores-variacion-800.webp 800w"
+  },
+  "/images/catalogo/flores/girasol-individual.jpg": {
+    "color": "#808180",
+    "lqip": "/images/catalogo/flores/girasol-individual-lqip.webp",
+    "width": 800,
+    "height": 1000,
+    "avif": "/images/catalogo/flores/girasol-individual-400.avif 400w, /images/catalogo/flores/girasol-individual-600.avif 600w, /images/catalogo/flores/girasol-individual-800.avif 800w",
+    "webp": "/images/catalogo/flores/girasol-individual-400.webp 400w, /images/catalogo/flores/girasol-individual-600.webp 600w, /images/catalogo/flores/girasol-individual-800.webp 800w"
+  },
+  "/images/catalogo/flores/maceta-miniatura-con-flor.jpg": {
+    "color": "#908182",
+    "lqip": "/images/catalogo/flores/maceta-miniatura-con-flor-lqip.webp",
+    "width": 800,
+    "height": 1000,
+    "avif": "/images/catalogo/flores/maceta-miniatura-con-flor-400.avif 400w, /images/catalogo/flores/maceta-miniatura-con-flor-600.avif 600w, /images/catalogo/flores/maceta-miniatura-con-flor-800.avif 800w",
+    "webp": "/images/catalogo/flores/maceta-miniatura-con-flor-400.webp 400w, /images/catalogo/flores/maceta-miniatura-con-flor-600.webp 600w, /images/catalogo/flores/maceta-miniatura-con-flor-800.webp 800w"
+  },
+  "/images/catalogo/flores/ramo-clasico-rojo.jpg": {
+    "color": "#7d464b",
+    "lqip": "/images/catalogo/flores/ramo-clasico-rojo-lqip.webp",
+    "width": 800,
+    "height": 1000,
+    "avif": "/images/catalogo/flores/ramo-clasico-rojo-400.avif 400w, /images/catalogo/flores/ramo-clasico-rojo-600.avif 600w, /images/catalogo/flores/ramo-clasico-rojo-800.avif 800w",
+    "webp": "/images/catalogo/flores/ramo-clasico-rojo-400.webp 400w, /images/catalogo/flores/ramo-clasico-rojo-600.webp 600w, /images/catalogo/flores/ramo-clasico-rojo-800.webp 800w"
+  },
+  "/images/catalogo/flores/ramo-girasol-con-2-flores.jpg": {
+    "color": "#8c8580",
+    "lqip": "/images/catalogo/flores/ramo-girasol-con-2-flores-lqip.webp",
+    "width": 800,
+    "height": 1000,
+    "avif": "/images/catalogo/flores/ramo-girasol-con-2-flores-400.avif 400w, /images/catalogo/flores/ramo-girasol-con-2-flores-600.avif 600w, /images/catalogo/flores/ramo-girasol-con-2-flores-800.avif 800w",
+    "webp": "/images/catalogo/flores/ramo-girasol-con-2-flores-400.webp 400w, /images/catalogo/flores/ramo-girasol-con-2-flores-600.webp 600w, /images/catalogo/flores/ramo-girasol-con-2-flores-800.webp 800w"
+  },
+  "/images/catalogo/flores/ramo-girasoles.jpg": {
+    "color": "#897c65",
+    "lqip": "/images/catalogo/flores/ramo-girasoles-lqip.webp",
+    "width": 800,
+    "height": 1000,
+    "avif": "/images/catalogo/flores/ramo-girasoles-400.avif 400w, /images/catalogo/flores/ramo-girasoles-600.avif 600w, /images/catalogo/flores/ramo-girasoles-800.avif 800w",
+    "webp": "/images/catalogo/flores/ramo-girasoles-400.webp 400w, /images/catalogo/flores/ramo-girasoles-600.webp 600w, /images/catalogo/flores/ramo-girasoles-800.webp 800w"
+  },
+  "/images/catalogo/flores/ramo-mixto-tulipanes.jpg": {
+    "color": "#857e7f",
+    "lqip": "/images/catalogo/flores/ramo-mixto-tulipanes-lqip.webp",
+    "width": 800,
+    "height": 1000,
+    "avif": "/images/catalogo/flores/ramo-mixto-tulipanes-400.avif 400w, /images/catalogo/flores/ramo-mixto-tulipanes-600.avif 600w, /images/catalogo/flores/ramo-mixto-tulipanes-800.avif 800w",
+    "webp": "/images/catalogo/flores/ramo-mixto-tulipanes-400.webp 400w, /images/catalogo/flores/ramo-mixto-tulipanes-600.webp 600w, /images/catalogo/flores/ramo-mixto-tulipanes-800.webp 800w"
+  },
+  "/images/catalogo/flores/ramo-pequeno.jpg": {
+    "color": "#71696e",
+    "lqip": "/images/catalogo/flores/ramo-pequeno-lqip.webp",
+    "width": 800,
+    "height": 1000,
+    "avif": "/images/catalogo/flores/ramo-pequeno-400.avif 400w, /images/catalogo/flores/ramo-pequeno-600.avif 600w, /images/catalogo/flores/ramo-pequeno-800.avif 800w",
+    "webp": "/images/catalogo/flores/ramo-pequeno-400.webp 400w, /images/catalogo/flores/ramo-pequeno-600.webp 600w, /images/catalogo/flores/ramo-pequeno-800.webp 800w"
+  },
+  "/images/catalogo/flores/ramo-romantico-pastel-luces.jpg": {
+    "color": "#58515c",
+    "lqip": "/images/catalogo/flores/ramo-romantico-pastel-luces-lqip.webp",
+    "width": 800,
+    "height": 1000,
+    "avif": "/images/catalogo/flores/ramo-romantico-pastel-luces-400.avif 400w, /images/catalogo/flores/ramo-romantico-pastel-luces-600.avif 600w, /images/catalogo/flores/ramo-romantico-pastel-luces-800.avif 800w",
+    "webp": "/images/catalogo/flores/ramo-romantico-pastel-luces-400.webp 400w, /images/catalogo/flores/ramo-romantico-pastel-luces-600.webp 600w, /images/catalogo/flores/ramo-romantico-pastel-luces-800.webp 800w"
+  },
+  "/images/catalogo/flores/ramo-romantico-pastel.jpg": {
+    "color": "#5a545e",
+    "lqip": "/images/catalogo/flores/ramo-romantico-pastel-lqip.webp",
+    "width": 800,
+    "height": 1000,
+    "avif": "/images/catalogo/flores/ramo-romantico-pastel-400.avif 400w, /images/catalogo/flores/ramo-romantico-pastel-600.avif 600w, /images/catalogo/flores/ramo-romantico-pastel-800.avif 800w",
+    "webp": "/images/catalogo/flores/ramo-romantico-pastel-400.webp 400w, /images/catalogo/flores/ramo-romantico-pastel-600.webp 600w, /images/catalogo/flores/ramo-romantico-pastel-800.webp 800w"
+  },
+  "/images/catalogo/flores/rosa-individual.jpg": {
+    "color": "#8e8788",
+    "lqip": "/images/catalogo/flores/rosa-individual-lqip.webp",
+    "width": 800,
+    "height": 1000,
+    "avif": "/images/catalogo/flores/rosa-individual-400.avif 400w, /images/catalogo/flores/rosa-individual-600.avif 600w, /images/catalogo/flores/rosa-individual-800.avif 800w",
+    "webp": "/images/catalogo/flores/rosa-individual-400.webp 400w, /images/catalogo/flores/rosa-individual-600.webp 600w, /images/catalogo/flores/rosa-individual-800.webp 800w"
+  },
+  "/images/catalogo/flores/tulipan-flor-especial-con-corazon.jpg": {
+    "color": "#827f82",
+    "lqip": "/images/catalogo/flores/tulipan-flor-especial-con-corazon-lqip.webp",
+    "width": 800,
+    "height": 1000,
+    "avif": "/images/catalogo/flores/tulipan-flor-especial-con-corazon-400.avif 400w, /images/catalogo/flores/tulipan-flor-especial-con-corazon-600.avif 600w, /images/catalogo/flores/tulipan-flor-especial-con-corazon-800.avif 800w",
+    "webp": "/images/catalogo/flores/tulipan-flor-especial-con-corazon-400.webp 400w, /images/catalogo/flores/tulipan-flor-especial-con-corazon-600.webp 600w, /images/catalogo/flores/tulipan-flor-especial-con-corazon-800.webp 800w"
+  },
+  "/images/catalogo/llaveros/ajolote.jpg": {
+    "color": "#857f81",
+    "lqip": "/images/catalogo/llaveros/ajolote-lqip.webp",
+    "width": 800,
+    "height": 1000,
+    "avif": "/images/catalogo/llaveros/ajolote-400.avif 400w, /images/catalogo/llaveros/ajolote-600.avif 600w, /images/catalogo/llaveros/ajolote-800.avif 800w",
+    "webp": "/images/catalogo/llaveros/ajolote-400.webp 400w, /images/catalogo/llaveros/ajolote-600.webp 600w, /images/catalogo/llaveros/ajolote-800.webp 800w"
+  },
+  "/images/catalogo/llaveros/aveja.jpg": {
+    "color": "#8d8c87",
+    "lqip": "/images/catalogo/llaveros/aveja-lqip.webp",
+    "width": 800,
+    "height": 1000,
+    "avif": "/images/catalogo/llaveros/aveja-400.avif 400w, /images/catalogo/llaveros/aveja-600.avif 600w, /images/catalogo/llaveros/aveja-800.avif 800w",
+    "webp": "/images/catalogo/llaveros/aveja-400.webp 400w, /images/catalogo/llaveros/aveja-600.webp 600w, /images/catalogo/llaveros/aveja-800.webp 800w"
+  },
+  "/images/catalogo/llaveros/capibara.jpg": {
+    "color": "#65703d",
+    "lqip": "/images/catalogo/llaveros/capibara-lqip.webp",
+    "width": 705,
+    "height": 881,
+    "avif": "/images/catalogo/llaveros/capibara-400.avif 400w, /images/catalogo/llaveros/capibara-600.avif 600w",
+    "webp": "/images/catalogo/llaveros/capibara-400.webp 400w, /images/catalogo/llaveros/capibara-600.webp 600w"
+  },
+  "/images/catalogo/llaveros/chefsito.jpg": {
+    "color": "#878488",
+    "lqip": "/images/catalogo/llaveros/chefsito-lqip.webp",
+    "width": 800,
+    "height": 1000,
+    "avif": "/images/catalogo/llaveros/chefsito-400.avif 400w, /images/catalogo/llaveros/chefsito-600.avif 600w, /images/catalogo/llaveros/chefsito-800.avif 800w",
+    "webp": "/images/catalogo/llaveros/chefsito-400.webp 400w, /images/catalogo/llaveros/chefsito-600.webp 600w, /images/catalogo/llaveros/chefsito-800.webp 800w"
+  },
+  "/images/catalogo/llaveros/cono.jpg": {
+    "color": "#7e7b7d",
+    "lqip": "/images/catalogo/llaveros/cono-lqip.webp",
+    "width": 800,
+    "height": 1000,
+    "avif": "/images/catalogo/llaveros/cono-400.avif 400w, /images/catalogo/llaveros/cono-600.avif 600w, /images/catalogo/llaveros/cono-800.avif 800w",
+    "webp": "/images/catalogo/llaveros/cono-400.webp 400w, /images/catalogo/llaveros/cono-600.webp 600w, /images/catalogo/llaveros/cono-800.webp 800w"
+  },
+  "/images/catalogo/llaveros/coraje-uva.jpg": {
+    "color": "#7f7980",
+    "lqip": "/images/catalogo/llaveros/coraje-uva-lqip.webp",
+    "width": 800,
+    "height": 1000,
+    "avif": "/images/catalogo/llaveros/coraje-uva-400.avif 400w, /images/catalogo/llaveros/coraje-uva-600.avif 600w, /images/catalogo/llaveros/coraje-uva-800.avif 800w",
+    "webp": "/images/catalogo/llaveros/coraje-uva-400.webp 400w, /images/catalogo/llaveros/coraje-uva-600.webp 600w, /images/catalogo/llaveros/coraje-uva-800.webp 800w"
+  },
+  "/images/catalogo/llaveros/coraje.jpg": {
+    "color": "#7c7173",
+    "lqip": "/images/catalogo/llaveros/coraje-lqip.webp",
+    "width": 800,
+    "height": 1000,
+    "avif": "/images/catalogo/llaveros/coraje-400.avif 400w, /images/catalogo/llaveros/coraje-600.avif 600w, /images/catalogo/llaveros/coraje-800.avif 800w",
+    "webp": "/images/catalogo/llaveros/coraje-400.webp 400w, /images/catalogo/llaveros/coraje-600.webp 600w, /images/catalogo/llaveros/coraje-800.webp 800w"
+  },
+  "/images/catalogo/llaveros/cupcake.jpg": {
+    "color": "#868285",
+    "lqip": "/images/catalogo/llaveros/cupcake-lqip.webp",
+    "width": 800,
+    "height": 1000,
+    "avif": "/images/catalogo/llaveros/cupcake-400.avif 400w, /images/catalogo/llaveros/cupcake-600.avif 600w, /images/catalogo/llaveros/cupcake-800.avif 800w",
+    "webp": "/images/catalogo/llaveros/cupcake-400.webp 400w, /images/catalogo/llaveros/cupcake-600.webp 600w, /images/catalogo/llaveros/cupcake-800.webp 800w"
+  },
+  "/images/catalogo/llaveros/donita-blanca.jpg": {
+    "color": "#838285",
+    "lqip": "/images/catalogo/llaveros/donita-blanca-lqip.webp",
+    "width": 800,
+    "height": 1000,
+    "avif": "/images/catalogo/llaveros/donita-blanca-400.avif 400w, /images/catalogo/llaveros/donita-blanca-600.avif 600w, /images/catalogo/llaveros/donita-blanca-800.avif 800w",
+    "webp": "/images/catalogo/llaveros/donita-blanca-400.webp 400w, /images/catalogo/llaveros/donita-blanca-600.webp 600w, /images/catalogo/llaveros/donita-blanca-800.webp 800w"
+  },
+  "/images/catalogo/llaveros/donita-cafe.jpg": {
+    "color": "#8e8b8f",
+    "lqip": "/images/catalogo/llaveros/donita-cafe-lqip.webp",
+    "width": 800,
+    "height": 1000,
+    "avif": "/images/catalogo/llaveros/donita-cafe-400.avif 400w, /images/catalogo/llaveros/donita-cafe-600.avif 600w, /images/catalogo/llaveros/donita-cafe-800.avif 800w",
+    "webp": "/images/catalogo/llaveros/donita-cafe-400.webp 400w, /images/catalogo/llaveros/donita-cafe-600.webp 600w, /images/catalogo/llaveros/donita-cafe-800.webp 800w"
+  },
+  "/images/catalogo/llaveros/donita-rosa.jpg": {
+    "color": "#969096",
+    "lqip": "/images/catalogo/llaveros/donita-rosa-lqip.webp",
+    "width": 800,
+    "height": 1000,
+    "avif": "/images/catalogo/llaveros/donita-rosa-400.avif 400w, /images/catalogo/llaveros/donita-rosa-600.avif 600w, /images/catalogo/llaveros/donita-rosa-800.avif 800w",
+    "webp": "/images/catalogo/llaveros/donita-rosa-400.webp 400w, /images/catalogo/llaveros/donita-rosa-600.webp 600w, /images/catalogo/llaveros/donita-rosa-800.webp 800w"
+  },
+  "/images/catalogo/llaveros/estrella.jpg": {
+    "color": "#86827f",
+    "lqip": "/images/catalogo/llaveros/estrella-lqip.webp",
+    "width": 800,
+    "height": 1000,
+    "avif": "/images/catalogo/llaveros/estrella-400.avif 400w, /images/catalogo/llaveros/estrella-600.avif 600w, /images/catalogo/llaveros/estrella-800.avif 800w",
+    "webp": "/images/catalogo/llaveros/estrella-400.webp 400w, /images/catalogo/llaveros/estrella-600.webp 600w, /images/catalogo/llaveros/estrella-800.webp 800w"
+  },
+  "/images/catalogo/llaveros/fantasmita-azul.jpg": {
+    "color": "#77858c",
+    "lqip": "/images/catalogo/llaveros/fantasmita-azul-lqip.webp",
+    "width": 800,
+    "height": 1000,
+    "avif": "/images/catalogo/llaveros/fantasmita-azul-400.avif 400w, /images/catalogo/llaveros/fantasmita-azul-600.avif 600w, /images/catalogo/llaveros/fantasmita-azul-800.avif 800w",
+    "webp": "/images/catalogo/llaveros/fantasmita-azul-400.webp 400w, /images/catalogo/llaveros/fantasmita-azul-600.webp 600w, /images/catalogo/llaveros/fantasmita-azul-800.webp 800w"
+  },
+  "/images/catalogo/llaveros/fantasmita-rosa.jpg": {
+    "color": "#978991",
+    "lqip": "/images/catalogo/llaveros/fantasmita-rosa-lqip.webp",
+    "width": 800,
+    "height": 1000,
+    "avif": "/images/catalogo/llaveros/fantasmita-rosa-400.avif 400w, /images/catalogo/llaveros/fantasmita-rosa-600.avif 600w, /images/catalogo/llaveros/fantasmita-rosa-800.avif 800w",
+    "webp": "/images/catalogo/llaveros/fantasmita-rosa-400.webp 400w, /images/catalogo/llaveros/fantasmita-rosa-600.webp 600w, /images/catalogo/llaveros/fantasmita-rosa-800.webp 800w"
+  },
+  "/images/catalogo/llaveros/fresa.jpg": {
+    "color": "#ab9b98",
+    "lqip": "/images/catalogo/llaveros/fresa-lqip.webp",
+    "width": 800,
+    "height": 1000,
+    "avif": "/images/catalogo/llaveros/fresa-400.avif 400w, /images/catalogo/llaveros/fresa-600.avif 600w, /images/catalogo/llaveros/fresa-800.avif 800w",
+    "webp": "/images/catalogo/llaveros/fresa-400.webp 400w, /images/catalogo/llaveros/fresa-600.webp 600w, /images/catalogo/llaveros/fresa-800.webp 800w"
+  },
+  "/images/catalogo/llaveros/gary.jpg": {
+    "color": "#857c7a",
+    "lqip": "/images/catalogo/llaveros/gary-lqip.webp",
+    "width": 800,
+    "height": 1000,
+    "avif": "/images/catalogo/llaveros/gary-400.avif 400w, /images/catalogo/llaveros/gary-600.avif 600w, /images/catalogo/llaveros/gary-800.avif 800w",
+    "webp": "/images/catalogo/llaveros/gary-400.webp 400w, /images/catalogo/llaveros/gary-600.webp 600w, /images/catalogo/llaveros/gary-800.webp 800w"
+  },
+  "/images/catalogo/llaveros/gatito-negro.jpg": {
+    "color": "#8e8988",
+    "lqip": "/images/catalogo/llaveros/gatito-negro-lqip.webp",
+    "width": 800,
+    "height": 1000,
+    "avif": "/images/catalogo/llaveros/gatito-negro-400.avif 400w, /images/catalogo/llaveros/gatito-negro-600.avif 600w, /images/catalogo/llaveros/gatito-negro-800.avif 800w",
+    "webp": "/images/catalogo/llaveros/gatito-negro-400.webp 400w, /images/catalogo/llaveros/gatito-negro-600.webp 600w, /images/catalogo/llaveros/gatito-negro-800.webp 800w"
+  },
+  "/images/catalogo/llaveros/hello-kitty.jpg": {
+    "color": "#736d71",
+    "lqip": "/images/catalogo/llaveros/hello-kitty-lqip.webp",
+    "width": 800,
+    "height": 1000,
+    "avif": "/images/catalogo/llaveros/hello-kitty-400.avif 400w, /images/catalogo/llaveros/hello-kitty-600.avif 600w, /images/catalogo/llaveros/hello-kitty-800.avif 800w",
+    "webp": "/images/catalogo/llaveros/hello-kitty-400.webp 400w, /images/catalogo/llaveros/hello-kitty-600.webp 600w, /images/catalogo/llaveros/hello-kitty-800.webp 800w"
+  },
+  "/images/catalogo/llaveros/hombresito.jpg": {
+    "color": "#7f7e80",
+    "lqip": "/images/catalogo/llaveros/hombresito-lqip.webp",
+    "width": 800,
+    "height": 1000,
+    "avif": "/images/catalogo/llaveros/hombresito-400.avif 400w, /images/catalogo/llaveros/hombresito-600.avif 600w, /images/catalogo/llaveros/hombresito-800.avif 800w",
+    "webp": "/images/catalogo/llaveros/hombresito-400.webp 400w, /images/catalogo/llaveros/hombresito-600.webp 600w, /images/catalogo/llaveros/hombresito-800.webp 800w"
+  },
+  "/images/catalogo/llaveros/honguito-azul-f.jpg": {
+    "color": "#7c838d",
+    "lqip": "/images/catalogo/llaveros/honguito-azul-f-lqip.webp",
+    "width": 800,
+    "height": 1000,
+    "avif": "/images/catalogo/llaveros/honguito-azul-f-400.avif 400w, /images/catalogo/llaveros/honguito-azul-f-600.avif 600w, /images/catalogo/llaveros/honguito-azul-f-800.avif 800w",
+    "webp": "/images/catalogo/llaveros/honguito-azul-f-400.webp 400w, /images/catalogo/llaveros/honguito-azul-f-600.webp 600w, /images/catalogo/llaveros/honguito-azul-f-800.webp 800w"
+  },
+  "/images/catalogo/llaveros/honguito-azul.jpg": {
+    "color": "#788084",
+    "lqip": "/images/catalogo/llaveros/honguito-azul-lqip.webp",
+    "width": 800,
+    "height": 1000,
+    "avif": "/images/catalogo/llaveros/honguito-azul-400.avif 400w, /images/catalogo/llaveros/honguito-azul-600.avif 600w, /images/catalogo/llaveros/honguito-azul-800.avif 800w",
+    "webp": "/images/catalogo/llaveros/honguito-azul-400.webp 400w, /images/catalogo/llaveros/honguito-azul-600.webp 600w, /images/catalogo/llaveros/honguito-azul-800.webp 800w"
+  },
+  "/images/catalogo/llaveros/honguito-rojo.jpg": {
+    "color": "#8c7d83",
+    "lqip": "/images/catalogo/llaveros/honguito-rojo-lqip.webp",
+    "width": 800,
+    "height": 1000,
+    "avif": "/images/catalogo/llaveros/honguito-rojo-400.avif 400w, /images/catalogo/llaveros/honguito-rojo-600.avif 600w, /images/catalogo/llaveros/honguito-rojo-800.avif 800w",
+    "webp": "/images/catalogo/llaveros/honguito-rojo-400.webp 400w, /images/catalogo/llaveros/honguito-rojo-600.webp 600w, /images/catalogo/llaveros/honguito-rojo-800.webp 800w"
+  },
+  "/images/catalogo/llaveros/kuromi.jpg": {
+    "color": "#818289",
+    "lqip": "/images/catalogo/llaveros/kuromi-lqip.webp",
+    "width": 800,
+    "height": 1000,
+    "avif": "/images/catalogo/llaveros/kuromi-400.avif 400w, /images/catalogo/llaveros/kuromi-600.avif 600w, /images/catalogo/llaveros/kuromi-800.avif 800w",
+    "webp": "/images/catalogo/llaveros/kuromi-400.webp 400w, /images/catalogo/llaveros/kuromi-600.webp 600w, /images/catalogo/llaveros/kuromi-800.webp 800w"
+  },
+  "/images/catalogo/llaveros/lobito.jpg": {
+    "color": "#77767a",
+    "lqip": "/images/catalogo/llaveros/lobito-lqip.webp",
+    "width": 800,
+    "height": 1000,
+    "avif": "/images/catalogo/llaveros/lobito-400.avif 400w, /images/catalogo/llaveros/lobito-600.avif 600w, /images/catalogo/llaveros/lobito-800.avif 800w",
+    "webp": "/images/catalogo/llaveros/lobito-400.webp 400w, /images/catalogo/llaveros/lobito-600.webp 600w, /images/catalogo/llaveros/lobito-800.webp 800w"
+  },
+  "/images/catalogo/llaveros/marciano.jpg": {
+    "color": "#9fa292",
+    "lqip": "/images/catalogo/llaveros/marciano-lqip.webp",
+    "width": 800,
+    "height": 1000,
+    "avif": "/images/catalogo/llaveros/marciano-400.avif 400w, /images/catalogo/llaveros/marciano-600.avif 600w, /images/catalogo/llaveros/marciano-800.avif 800w",
+    "webp": "/images/catalogo/llaveros/marciano-400.webp 400w, /images/catalogo/llaveros/marciano-600.webp 600w, /images/catalogo/llaveros/marciano-800.webp 800w"
+  },
+  "/images/catalogo/llaveros/mcqueen.jpg": {
+    "color": "#947975",
+    "lqip": "/images/catalogo/llaveros/mcqueen-lqip.webp",
+    "width": 800,
+    "height": 1000,
+    "avif": "/images/catalogo/llaveros/mcqueen-400.avif 400w, /images/catalogo/llaveros/mcqueen-600.avif 600w, /images/catalogo/llaveros/mcqueen-800.avif 800w",
+    "webp": "/images/catalogo/llaveros/mcqueen-400.webp 400w, /images/catalogo/llaveros/mcqueen-600.webp 600w, /images/catalogo/llaveros/mcqueen-800.webp 800w"
+  },
+  "/images/catalogo/llaveros/melody.jpg": {
+    "color": "#8b8490",
+    "lqip": "/images/catalogo/llaveros/melody-lqip.webp",
+    "width": 800,
+    "height": 1000,
+    "avif": "/images/catalogo/llaveros/melody-400.avif 400w, /images/catalogo/llaveros/melody-600.avif 600w, /images/catalogo/llaveros/melody-800.avif 800w",
+    "webp": "/images/catalogo/llaveros/melody-400.webp 400w, /images/catalogo/llaveros/melody-600.webp 600w, /images/catalogo/llaveros/melody-800.webp 800w"
+  },
+  "/images/catalogo/llaveros/mini-yoda.jpg": {
+    "color": "#988b87",
+    "lqip": "/images/catalogo/llaveros/mini-yoda-lqip.webp",
+    "width": 800,
+    "height": 1000,
+    "avif": "/images/catalogo/llaveros/mini-yoda-400.avif 400w, /images/catalogo/llaveros/mini-yoda-600.avif 600w, /images/catalogo/llaveros/mini-yoda-800.avif 800w",
+    "webp": "/images/catalogo/llaveros/mini-yoda-400.webp 400w, /images/catalogo/llaveros/mini-yoda-600.webp 600w, /images/catalogo/llaveros/mini-yoda-800.webp 800w"
+  },
+  "/images/catalogo/llaveros/minion.jpg": {
+    "color": "#8c8586",
+    "lqip": "/images/catalogo/llaveros/minion-lqip.webp",
+    "width": 800,
+    "height": 1000,
+    "avif": "/images/catalogo/llaveros/minion-400.avif 400w, /images/catalogo/llaveros/minion-600.avif 600w, /images/catalogo/llaveros/minion-800.avif 800w",
+    "webp": "/images/catalogo/llaveros/minion-400.webp 400w, /images/catalogo/llaveros/minion-600.webp 600w, /images/catalogo/llaveros/minion-800.webp 800w"
+  },
+  "/images/catalogo/llaveros/oreo.jpg": {
+    "color": "#949295",
+    "lqip": "/images/catalogo/llaveros/oreo-lqip.webp",
+    "width": 800,
+    "height": 1000,
+    "avif": "/images/catalogo/llaveros/oreo-400.avif 400w, /images/catalogo/llaveros/oreo-600.avif 600w, /images/catalogo/llaveros/oreo-800.avif 800w",
+    "webp": "/images/catalogo/llaveros/oreo-400.webp 400w, /images/catalogo/llaveros/oreo-600.webp 600w, /images/catalogo/llaveros/oreo-800.webp 800w"
+  },
+  "/images/catalogo/llaveros/pandita.jpg": {
+    "color": "#78767a",
+    "lqip": "/images/catalogo/llaveros/pandita-lqip.webp",
+    "width": 800,
+    "height": 1000,
+    "avif": "/images/catalogo/llaveros/pandita-400.avif 400w, /images/catalogo/llaveros/pandita-600.avif 600w, /images/catalogo/llaveros/pandita-800.avif 800w",
+    "webp": "/images/catalogo/llaveros/pandita-400.webp 400w, /images/catalogo/llaveros/pandita-600.webp 600w, /images/catalogo/llaveros/pandita-800.webp 800w"
+  },
+  "/images/catalogo/llaveros/pinguinita.jpg": {
+    "color": "#8e898b",
+    "lqip": "/images/catalogo/llaveros/pinguinita-lqip.webp",
+    "width": 800,
+    "height": 1000,
+    "avif": "/images/catalogo/llaveros/pinguinita-400.avif 400w, /images/catalogo/llaveros/pinguinita-600.avif 600w, /images/catalogo/llaveros/pinguinita-800.avif 800w",
+    "webp": "/images/catalogo/llaveros/pinguinita-400.webp 400w, /images/catalogo/llaveros/pinguinita-600.webp 600w, /images/catalogo/llaveros/pinguinita-800.webp 800w"
+  },
+  "/images/catalogo/llaveros/pinguinito.jpg": {
+    "color": "#898789",
+    "lqip": "/images/catalogo/llaveros/pinguinito-lqip.webp",
+    "width": 800,
+    "height": 1000,
+    "avif": "/images/catalogo/llaveros/pinguinito-400.avif 400w, /images/catalogo/llaveros/pinguinito-600.avif 600w, /images/catalogo/llaveros/pinguinito-800.avif 800w",
+    "webp": "/images/catalogo/llaveros/pinguinito-400.webp 400w, /images/catalogo/llaveros/pinguinito-600.webp 600w, /images/catalogo/llaveros/pinguinito-800.webp 800w"
+  },
+  "/images/catalogo/llaveros/piolin.jpg": {
+    "color": "#544f4c",
+    "lqip": "/images/catalogo/llaveros/piolin-lqip.webp",
+    "width": 800,
+    "height": 1000,
+    "avif": "/images/catalogo/llaveros/piolin-400.avif 400w, /images/catalogo/llaveros/piolin-600.avif 600w, /images/catalogo/llaveros/piolin-800.avif 800w",
+    "webp": "/images/catalogo/llaveros/piolin-400.webp 400w, /images/catalogo/llaveros/piolin-600.webp 600w, /images/catalogo/llaveros/piolin-800.webp 800w"
+  },
+  "/images/catalogo/llaveros/piolon.jpg": {
+    "color": "#657759",
+    "lqip": "/images/catalogo/llaveros/piolon-lqip.webp",
+    "width": 800,
+    "height": 1000,
+    "avif": "/images/catalogo/llaveros/piolon-400.avif 400w, /images/catalogo/llaveros/piolon-600.avif 600w, /images/catalogo/llaveros/piolon-800.avif 800w",
+    "webp": "/images/catalogo/llaveros/piolon-400.webp 400w, /images/catalogo/llaveros/piolon-600.webp 600w, /images/catalogo/llaveros/piolon-800.webp 800w"
+  },
+  "/images/catalogo/llaveros/ranita.jpg": {
+    "color": "#738477",
+    "lqip": "/images/catalogo/llaveros/ranita-lqip.webp",
+    "width": 800,
+    "height": 1000,
+    "avif": "/images/catalogo/llaveros/ranita-400.avif 400w, /images/catalogo/llaveros/ranita-600.avif 600w, /images/catalogo/llaveros/ranita-800.avif 800w",
+    "webp": "/images/catalogo/llaveros/ranita-400.webp 400w, /images/catalogo/llaveros/ranita-600.webp 600w, /images/catalogo/llaveros/ranita-800.webp 800w"
+  },
+  "/images/catalogo/llaveros/snoppy-variacion.jpg": {
+    "color": "#7f7d80",
+    "lqip": "/images/catalogo/llaveros/snoppy-variacion-lqip.webp",
+    "width": 800,
+    "height": 1000,
+    "avif": "/images/catalogo/llaveros/snoppy-variacion-400.avif 400w, /images/catalogo/llaveros/snoppy-variacion-600.avif 600w, /images/catalogo/llaveros/snoppy-variacion-800.avif 800w",
+    "webp": "/images/catalogo/llaveros/snoppy-variacion-400.webp 400w, /images/catalogo/llaveros/snoppy-variacion-600.webp 600w, /images/catalogo/llaveros/snoppy-variacion-800.webp 800w"
+  },
+  "/images/catalogo/llaveros/snoppy.jpg": {
+    "color": "#828184",
+    "lqip": "/images/catalogo/llaveros/snoppy-lqip.webp",
+    "width": 800,
+    "height": 1000,
+    "avif": "/images/catalogo/llaveros/snoppy-400.avif 400w, /images/catalogo/llaveros/snoppy-600.avif 600w, /images/catalogo/llaveros/snoppy-800.avif 800w",
+    "webp": "/images/catalogo/llaveros/snoppy-400.webp 400w, /images/catalogo/llaveros/snoppy-600.webp 600w, /images/catalogo/llaveros/snoppy-800.webp 800w"
+  },
+  "/images/catalogo/llaveros/sonic.jpg": {
+    "color": "#777982",
+    "lqip": "/images/catalogo/llaveros/sonic-lqip.webp",
+    "width": 800,
+    "height": 1000,
+    "avif": "/images/catalogo/llaveros/sonic-400.avif 400w, /images/catalogo/llaveros/sonic-600.avif 600w, /images/catalogo/llaveros/sonic-800.avif 800w",
+    "webp": "/images/catalogo/llaveros/sonic-400.webp 400w, /images/catalogo/llaveros/sonic-600.webp 600w, /images/catalogo/llaveros/sonic-800.webp 800w"
+  },
+  "/images/catalogo/llaveros/tortuguita.jpg": {
+    "color": "#9a938d",
+    "lqip": "/images/catalogo/llaveros/tortuguita-lqip.webp",
+    "width": 800,
+    "height": 1000,
+    "avif": "/images/catalogo/llaveros/tortuguita-400.avif 400w, /images/catalogo/llaveros/tortuguita-600.avif 600w, /images/catalogo/llaveros/tortuguita-800.avif 800w",
+    "webp": "/images/catalogo/llaveros/tortuguita-400.webp 400w, /images/catalogo/llaveros/tortuguita-600.webp 600w, /images/catalogo/llaveros/tortuguita-800.webp 800w"
+  },
+  "/images/catalogo/llaveros/vaquita.jpg": {
+    "color": "#88807b",
+    "lqip": "/images/catalogo/llaveros/vaquita-lqip.webp",
+    "width": 800,
+    "height": 1000,
+    "avif": "/images/catalogo/llaveros/vaquita-400.avif 400w, /images/catalogo/llaveros/vaquita-600.avif 600w, /images/catalogo/llaveros/vaquita-800.avif 800w",
+    "webp": "/images/catalogo/llaveros/vaquita-400.webp 400w, /images/catalogo/llaveros/vaquita-600.webp 600w, /images/catalogo/llaveros/vaquita-800.webp 800w"
+  }
+}
