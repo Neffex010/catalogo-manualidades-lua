@@ -62,15 +62,20 @@ export default function SearchBar({ value, onChange, resultCount, totalCount }) 
         )}
       </div>
 
-      {/* Texto de ayuda / contador de resultados */}
+      {/* Contador de resultados: solo ocupa espacio cuando hay busqueda,
+       * el resto del tiempo queda disponible para lectores de pantalla. */}
       <p
         id="catalogo-busqueda-ayuda"
-        className="mt-2 px-1 text-xs text-ink-muted sm:text-sm"
         aria-live="polite"
+        className={
+          hasValue
+            ? 'mt-1.5 px-1 text-[11px] text-ink-muted sm:mt-2 sm:text-sm'
+            : 'sr-only'
+        }
       >
         {hasValue
           ? `${resultCount} ${resultCount === 1 ? 'resultado' : 'resultados'} para "${value.trim()}"`
-          : 'Busca por nombre, categoría o etiqueta (ej. "regalo", "Amigurumis").'}
+          : `Campo de búsqueda. ${totalCount} piezas disponibles para filtrar por nombre, categoría o etiqueta.`}
       </p>
     </div>
   )
