@@ -7,7 +7,7 @@
  * -----------------------------------------------------------------------------
  */
 
-import { Instagram, Facebook, Sparkles } from 'lucide-react'
+import { Instagram, Facebook } from 'lucide-react'
 import { BRAND, SOCIAL_LINKS } from '../config/site'
 
 /** Mapa de iconos por id de red social. */
@@ -26,10 +26,18 @@ export default function Navbar() {
           className="group flex min-w-0 items-center gap-3 rounded-2xl focus:outline-none focus-visible:ring-2 focus-visible:ring-lila-600 focus-visible:ring-offset-2 focus-visible:ring-offset-canvas"
           aria-label={`${BRAND.name} - ir al inicio`}
         >
-          {/* Emblema de madeja */}
-          <span className="grid h-11 w-11 shrink-0 place-items-center rounded-2xl bg-brand text-white shadow-brand transition-transform duration-300 ease-artisan group-hover:scale-105 sm:h-12 sm:w-12">
-            <Sparkles className="h-5 w-5 sm:h-6 sm:w-6" aria-hidden="true" />
-          </span>
+          {/* Logotipo real de la marca */}
+          <img
+            src={BRAND.logo.src}
+            width={BRAND.logo.width}
+            height={BRAND.logo.height}
+            alt={BRAND.logo.alt}
+            className="h-11 w-11 shrink-0 object-contain transition-transform duration-300 ease-artisan group-hover:scale-105 sm:h-12 sm:w-12"
+            onError={(event) => {
+              // Si el WebP no esta disponible, se usa el PNG equivalente.
+              event.currentTarget.src = BRAND.logo.fallback
+            }}
+          />
 
           <span className="min-w-0">
             <span className="block truncate font-display text-base font-semibold leading-tight tracking-[0.18em] text-ink transition-colors group-hover:text-lila-700 sm:text-lg md:tracking-[0.22em]">

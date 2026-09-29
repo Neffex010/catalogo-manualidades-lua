@@ -6,7 +6,7 @@
  * -----------------------------------------------------------------------------
  */
 
-import { Instagram, Facebook, MessageCircle, Heart, Sparkles } from 'lucide-react'
+import { Instagram, Facebook, MessageCircle, Heart } from 'lucide-react'
 import { BRAND, SOCIAL_LINKS, WHATSAPP_NUMBER } from '../config/site'
 import { getGeneralWhatsAppUrl } from '../utils/whatsapp'
 
@@ -61,9 +61,18 @@ export default function Footer() {
         <div className="mt-12 flex flex-col items-center gap-8 text-center sm:mt-14">
           <div>
             <div className="flex items-center justify-center gap-3">
-              <span className="grid h-11 w-11 place-items-center rounded-2xl bg-brand text-white shadow-brand">
-                <Sparkles className="h-5 w-5" aria-hidden="true" />
-              </span>
+              <img
+                src={BRAND.logo.mark}
+                width={BRAND.logo.width}
+                height={BRAND.logo.height}
+                alt={BRAND.logo.alt}
+                loading="lazy"
+                decoding="async"
+                className="h-11 w-11 object-contain"
+                onError={(event) => {
+                  event.currentTarget.src = BRAND.logo.fallback
+                }}
+              />
               <p className="font-display text-lg font-semibold tracking-[0.18em] text-ink">
                 {BRAND.name}
               </p>

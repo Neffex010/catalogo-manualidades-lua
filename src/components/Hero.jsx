@@ -34,14 +34,29 @@ export default function Hero() {
       />
 
       <div className="relative mx-auto max-w-7xl px-4 py-14 text-center sm:px-6 sm:py-20 lg:px-8 lg:py-24">
+        {/* Logotipo de la marca */}
+        <img
+          src={BRAND.logo.mark}
+          width={BRAND.logo.width}
+          height={BRAND.logo.height}
+          alt={BRAND.logo.alt}
+          className="animate-fade-in-up mx-auto h-24 w-24 object-contain sm:h-32 sm:w-32"
+          onError={(event) => {
+            event.currentTarget.src = BRAND.logo.markFallback
+          }}
+        />
+
         {/* Eslogan de la marca */}
-        <p className="animate-fade-in-up text-xs font-semibold uppercase tracking-[0.3em] text-lila-600 sm:text-sm">
+        <p
+          className="animate-fade-in-up mt-6 text-xs font-semibold uppercase tracking-[0.3em] text-lila-600 sm:text-sm"
+          style={{ animationDelay: '80ms' }}
+        >
           Manualidades Lua
         </p>
 
         <h1
           className="animate-fade-in-up mx-auto mt-4 max-w-3xl font-display text-3xl font-semibold leading-[1.15] tracking-tight text-ink sm:text-5xl lg:text-6xl"
-          style={{ animationDelay: '80ms' }}
+          style={{ animationDelay: '160ms' }}
         >
           Creaciones artesanales
           <span className="block text-lila-600">tejidas con amor 🧶</span>
@@ -49,7 +64,7 @@ export default function Hero() {
 
         <p
           className="animate-fade-in-up mx-auto mt-6 max-w-2xl text-base leading-relaxed text-ink-soft sm:text-lg"
-          style={{ animationDelay: '160ms' }}
+          style={{ animationDelay: '240ms' }}
         >
           {BRAND.shortDescription}
         </p>
@@ -57,7 +72,7 @@ export default function Hero() {
         {/* Botones de accion */}
         <div
           className="animate-fade-in-up mt-9 flex flex-col items-center justify-center gap-3 sm:flex-row"
-          style={{ animationDelay: '240ms' }}
+          style={{ animationDelay: '320ms' }}
         >
           <a
             href="#catalogo"
@@ -81,7 +96,7 @@ export default function Hero() {
         {/* Pilares de confianza */}
         <ul
           className="animate-fade-in-up mx-auto mt-10 flex max-w-2xl flex-wrap items-center justify-center gap-x-6 gap-y-3 text-xs font-medium text-ink-muted sm:gap-x-10 sm:text-sm"
-          style={{ animationDelay: '320ms' }}
+          style={{ animationDelay: '400ms' }}
         >
           {HIGHLIGHTS.map(({ icon: Icon, label }) => (
             <li key={label} className="flex items-center gap-2">

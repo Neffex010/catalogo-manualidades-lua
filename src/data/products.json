@@ -1,146 +1,1577 @@
 [
   {
     "id": 1,
-    "name": "Osito Amigurumi Grande",
+    "name": "Abejita",
     "category": "Amigurumis",
-    "description": "Figura tejida de gran tamaño, ideal para regalo o decoración.",
-    "image_url": "https://images.unsplash.com/photo-1584100936595-c0654b55a2e2?auto=format&fit=crop&w=600&q=80",
+    "description": "Abejita de cuerpo redondito con antenitas de hilo y las alas pegadas al lomo.",
+    "image_url": "/images/catalogo/amigurumis/aveja.jpg",
+    "width": 800,
+    "height": 1000,
     "available": true,
-    "tags": ["figura grande", "decoración", "regalo"]
+    "tags": [
+      "abeja",
+      "cute",
+      "pequeño"
+    ]
   },
   {
     "id": 2,
-    "name": "Angelito para Bautizo",
-    "category": "Eventos",
-    "description": "Recuerdo tejido a mano para eventos especiales y ceremonias.",
-    "image_url": "https://images.unsplash.com/photo-1755589295552-91d71e561d08?auto=format&fit=crop&w=600&q=80",
+    "name": "Ballena Azul",
+    "category": "Amigurumis",
+    "description": "Ballena grande en azul marino con la cola flexible y las aletas bordadas a mano.",
+    "image_url": "/images/catalogo/amigurumis/ballena-azul.jpg",
+    "width": 800,
+    "height": 1000,
     "available": true,
-    "tags": ["bautizo", "recuerdo", "personalizable"]
+    "tags": [
+      "ballena",
+      "figura grande",
+      "decoración"
+    ]
   },
   {
     "id": 3,
-    "name": "Ramo de Tulipanes",
-    "category": "Flores",
-    "description": "Arreglo floral duradero tejido con hilo de algodón.",
-    "image_url": "https://images.unsplash.com/photo-1526047932273-341f2a7631f9?auto=format&fit=crop&w=600&q=80",
+    "name": "Ballenita Morada",
+    "category": "Amigurumis",
+    "description": "Ballenita en morado suave, de tamaño medio y muy cómoda para abrazar.",
+    "image_url": "/images/catalogo/amigurumis/ballenita-morada.jpg",
+    "width": 800,
+    "height": 1000,
     "available": true,
-    "tags": ["tulipanes", "duradero", "centro de mesa"]
+    "tags": [
+      "ballenita",
+      "tonos pastel",
+      "abrazo"
+    ]
   },
   {
     "id": 4,
-    "name": "Llavero de Conejito",
-    "category": "Llaveros",
-    "description": "Accesorio miniatura para llaves o mochilas.",
-    "image_url": "https://images.unsplash.com/photo-1753370474663-1b0ad622c5fc?auto=format&fit=crop&w=600&q=80",
+    "name": "Ballenita Roja",
+    "category": "Amigurumis",
+    "description": "Ballenita roja de sonrisa abierta, una de las piezas más pedidas para regalar.",
+    "image_url": "/images/catalogo/amigurumis/ballenita-roja.jpg",
+    "width": 800,
+    "height": 1000,
     "available": true,
-    "tags": ["miniatura", "mochila", "regalo"]
+    "tags": [
+      "ballenita",
+      "regalo",
+      "colorido"
+    ]
   },
   {
     "id": 5,
-    "name": "Gatito Amigurumi Dormilón",
+    "name": "Ballenita Rosa",
     "category": "Amigurumis",
-    "description": "Gatito de gran formato que abraza su propia madejita. El compañero ideal de cualquier colección.",
-    "image_url": "https://images.unsplash.com/photo-1686151573986-03b5a79f22a5?auto=format&fit=crop&w=600&q=80",
+    "description": "Ballenita en rosa pastel con la barriga clara, ideal para el cuarto o un regalo.",
+    "image_url": "/images/catalogo/amigurumis/ballenita-rosa.jpg",
+    "width": 800,
+    "height": 1000,
     "available": true,
-    "tags": ["figura grande", "hecho a mano", "niños"]
+    "tags": [
+      "ballenita",
+      "rosa",
+      "decoración"
+    ]
   },
   {
     "id": 6,
-    "name": "Recuerdo de Graduación",
-    "category": "Eventos",
-    "description": "Pieza bordada para immortalizar una fecha especial: incluye el nombre y la fecha que tú nos digas.",
-    "image_url": "https://images.unsplash.com/photo-1770662369337-44ec308aba11?auto=format&fit=crop&w=600&q=80",
+    "name": "Cabrita",
+    "category": "Amigurumis",
+    "description": "Cabrita con las cuernitas curvadas y un cascabel suave colgando del cuello.",
+    "image_url": "/images/catalogo/amigurumis/cabrita.jpg",
+    "width": 800,
+    "height": 1000,
     "available": true,
-    "tags": ["graduación", "bordado", "personalizable"]
+    "tags": [
+      "cabra",
+      "cascabel",
+      "sonajero"
+    ]
   },
   {
     "id": 7,
-    "name": "Ramo de Flores con Tallos Flexibles",
-    "category": "Flores",
-    "description": "Siete flores con tallos de alambre forrado que puedes acomodar a tu gusto. Nunca marchitan.",
-    "image_url": "https://images.unsplash.com/photo-1716400128984-3681f2005d22?auto=format&fit=crop&w=600&q=80",
+    "name": "Capibara",
+    "category": "Amigurumis",
+    "description": "Capibara en completo reposo, la más tranquila de la colección. Perfecta para escritorio o sala.",
+    "image_url": "/images/catalogo/amigurumis/capibara.jpg",
+    "width": 800,
+    "height": 1000,
     "available": true,
-    "tags": ["ramo", "alambre", "duradero"]
+    "tags": [
+      "capibara",
+      "animalito",
+      "oficina"
+    ]
   },
   {
     "id": 8,
-    "name": "Llavero de Gatito",
-    "category": "Llaveros",
-    "description": "Miniatura de peluche suave con ojitos saltones y aro reforzado para tus llaves o tu mochila.",
-    "image_url": "https://images.unsplash.com/photo-1758445445109-086ab1dab099?auto=format&fit=crop&w=600&q=80",
+    "name": "Cerebro",
+    "category": "Amigurumis",
+    "description": "Cerebro con los pliegues bien marcados y relieve suficiente para que se note el detalle.",
+    "image_url": "/images/catalogo/amigurumis/cerebro.jpg",
+    "width": 800,
+    "height": 1000,
     "available": true,
-    "tags": ["miniatura", "mochila", "regalo"]
+    "tags": [
+      "cerebro",
+      "curioso",
+      "decoración"
+    ]
   },
   {
     "id": 9,
-    "name": "Guirnalda de Adornos de Ceremonia",
-    "category": "Eventos",
-    "description": "Adornos colgantes para bautizos, graduaciones o shower. Se pueden personalizar con el nombre del ahijado.",
-    "image_url": "https://images.unsplash.com/photo-1682456138620-6076ac071b51?auto=format&fit=crop&w=600&q=80",
+    "name": "Conejito",
+    "category": "Amigurumis",
+    "description": "Conejito de orejas largas y pelaje suave, con un detalle bordado en la patita.",
+    "image_url": "/images/catalogo/amigurumis/conejito.jpg",
+    "width": 800,
+    "height": 1000,
     "available": true,
-    "tags": ["adornos", "decoración", "personalizable"]
+    "tags": [
+      "conejo",
+      "orejas largas",
+      "suave"
+    ]
   },
   {
     "id": 10,
-    "name": "Ramo de Girasoles Tejidos",
-    "category": "Flores",
-    "description": "Arreglo alegre de girasoles en tonos cálidos con base de cerámica tejida.",
-    "image_url": "https://images.unsplash.com/photo-1700171518313-5dd219beaaa6?auto=format&fit=crop&w=600&q=80",
+    "name": "Coraje",
+    "category": "Amigurumis",
+    "description": "Coraje con la mirada braveza y el chaleco rojo que lo hace inconfundible.",
+    "image_url": "/images/catalogo/amigurumis/coraje.jpg",
+    "width": 800,
+    "height": 1000,
     "available": true,
-    "tags": ["girasoles", "base tejida", "alegría"]
+    "tags": [
+      "coraje",
+      "superhéroe",
+      "personalizable"
+    ]
   },
   {
     "id": 11,
-    "name": "Llavero de Corazón con Nombre",
-    "category": "Llaveros",
-    "description": "Corazón bordado a mano con el nombre que elijas. Detalle regalable de bajo costo.",
-    "image_url": "https://images.unsplash.com/photo-1759999362893-cdf9d3278d4d?auto=format&fit=crop&w=600&q=80",
+    "name": "Escandaloso",
+    "category": "Amigurumis",
+    "description": "Figura del personaje con el pelo saltarin y la ropa en tonos dulces, hecha punto por punto.",
+    "image_url": "/images/catalogo/amigurumis/escandalosos.jpg",
+    "width": 800,
+    "height": 1000,
     "available": true,
-    "tags": ["bordado", "personalizable", "regalo"]
+    "tags": [
+      "personaje",
+      "figura",
+      "coleccionable"
+    ]
   },
   {
     "id": 12,
-    "name": "Manta de Bautizo Personalizada",
-    "category": "Eventos",
-    "description": "Manta tipo blanket en algodón premium con el nombre del bebé tejido en el borde.",
-    "image_url": "https://images.unsplash.com/photo-1544816155-12df9643f363?auto=format&fit=crop&w=600&q=80",
-    "available": false,
-    "tags": ["bautizo", "algodón", "bordado"]
+    "name": "Harry Potter",
+    "category": "Amigurumis",
+    "description": "Harry Potter con la varita, la bufanda y los lentes redondos que todos conocemos.",
+    "image_url": "/images/catalogo/amigurumis/harry-potter.jpg",
+    "width": 800,
+    "height": 1000,
+    "available": true,
+    "tags": [
+      "harry potter",
+      "varita",
+      "magia"
+    ]
   },
   {
     "id": 13,
-    "name": "Arreglo Floral Rosa y Blanco",
-    "category": "Flores",
-    "description": "Ramo en tonos pastel perfecto para centros de mesa, mesa de dulces y regalos.",
-    "image_url": "https://images.unsplash.com/photo-1595301490405-0ae747be39f6?auto=format&fit=crop&w=600&q=80",
+    "name": "Hello Kitty",
+    "category": "Amigurumis",
+    "description": "Hello Kitty con el moño rojo y el gatito al lado, perfilada con mucho detalle.",
+    "image_url": "/images/catalogo/amigurumis/hello-kitty.jpg",
+    "width": 800,
+    "height": 1000,
     "available": true,
-    "tags": ["pastel", "centros de mesa", "duradero"]
+    "tags": [
+      "hello kitty",
+      "sanrio",
+      "detalle"
+    ]
   },
   {
     "id": 14,
-    "name": "Llaveros Variados Mini",
-    "category": "Llaveros",
-    "description": "Surco de piezas miniatura variadas para regalar en lote o llevar a la feria.",
-    "image_url": "https://images.unsplash.com/photo-1778278553445-9cb87c89c60f?auto=format&fit=crop&w=600&q=80",
+    "name": "Honguito Azul",
+    "category": "Amigurumis",
+    "description": "Honguito azul de cuerpo compacto, con las orejas redondas unidas al gorro.",
+    "image_url": "/images/catalogo/amigurumis/honguito-azul.jpg",
+    "width": 800,
+    "height": 1000,
     "available": true,
-    "tags": ["miniatura", "surco", "feria"]
+    "tags": [
+      "honguito",
+      "azul",
+      "figura mediana"
+    ]
   },
   {
     "id": 15,
-    "name": "Conejito Amigurumi con Bufanda",
+    "name": "Honguito Rojo",
     "category": "Amigurumis",
-    "description": "Figura grande de conejo envuelta en una bufanda tejida. Ideal para coleccionistas y decoración.",
-    "image_url": "https://images.unsplash.com/photo-1702142006500-a1ea944a2a67?auto=format&fit=crop&w=600&q=80",
+    "description": "Honguito rojo en versión contraste, con las orejas que se notan mucho desde lejos.",
+    "image_url": "/images/catalogo/amigurumis/honguito-rojo.jpg",
+    "width": 800,
+    "height": 1000,
     "available": true,
-    "tags": ["figura grande", "decoración", "regalo"]
+    "tags": [
+      "honguito",
+      "rojo",
+      "regalo"
+    ]
   },
   {
     "id": 16,
-    "name": "Conejito Rosa que Asoma",
+    "name": "Loro",
     "category": "Amigurumis",
-    "description": "Pequeño amigurumi de color rosa que asoma las orejas. Perfecto para colgarlo de la buggy.",
-    "image_url": "https://images.unsplash.com/photo-1744371760034-fb60ebd2b198?auto=format&fit=crop&w=600&q=80",
+    "description": "Loro de plumas en degradado, con el pico y la garra bien definidos.",
+    "image_url": "/images/catalogo/amigurumis/loro.jpg",
+    "width": 800,
+    "height": 1000,
     "available": true,
-    "tags": ["personalizable", "niños", "hecho a mano"]
+    "tags": [
+      "loro",
+      "ave",
+      "colorido"
+    ]
+  },
+  {
+    "id": 17,
+    "name": "Merlina",
+    "category": "Amigurumis",
+    "description": "Merlina de la bruja más famosa, con la escoba y el sombrero de ala ancha.",
+    "image_url": "/images/catalogo/amigurumis/merlina.jpg",
+    "width": 800,
+    "height": 1000,
+    "available": true,
+    "tags": [
+      "bruja",
+      "merlina",
+      "halloween"
+    ]
+  },
+  {
+    "id": 18,
+    "name": "Osito Café",
+    "category": "Amigurumis",
+    "description": "Osito color café con lazo al cuello y la barriga clara, suave y perfecto para abrazar.",
+    "image_url": "/images/catalogo/amigurumis/osito-cafe.jpg",
+    "width": 800,
+    "height": 1000,
+    "available": true,
+    "tags": [
+      "oso",
+      "café",
+      "abrazo"
+    ]
+  },
+  {
+    "id": 19,
+    "name": "Oveja",
+    "category": "Amigurumis",
+    "description": "Oveja con el vellón algodonoso y la carita blanca asomando, muy suave al tacto.",
+    "image_url": "/images/catalogo/amigurumis/oveja.jpg",
+    "width": 800,
+    "height": 1000,
+    "available": true,
+    "tags": [
+      "oveja",
+      "algodón",
+      "suave"
+    ]
+  },
+  {
+    "id": 20,
+    "name": "Panda",
+    "category": "Amigurumis",
+    "description": "Panda con los círculos negros bien marcados y las manos redondas de osito.",
+    "image_url": "/images/catalogo/amigurumis/panda.jpg",
+    "width": 800,
+    "height": 1000,
+    "available": true,
+    "tags": [
+      "panda",
+      "animalito",
+      "bebés"
+    ]
+  },
+  {
+    "id": 21,
+    "name": "Pato",
+    "category": "Amigurumis",
+    "description": "Pato amarillo con el pico naranja y las alitas que se mueven con el dedo.",
+    "image_url": "/images/catalogo/amigurumis/pato.jpg",
+    "width": 800,
+    "height": 1000,
+    "available": true,
+    "tags": [
+      "pato",
+      "bebés",
+      "juguete"
+    ]
+  },
+  {
+    "id": 22,
+    "name": "Pollito Girasol",
+    "category": "Amigurumis",
+    "description": "Pollito con una girasol al lado y los colores en tonos cálidos.",
+    "image_url": "/images/catalogo/amigurumis/pollito-girasol.jpg",
+    "width": 800,
+    "height": 1000,
+    "available": true,
+    "tags": [
+      "pollito",
+      "girasol",
+      "cálidos"
+    ]
+  },
+  {
+    "id": 23,
+    "name": "Pollito",
+    "category": "Amigurumis",
+    "description": "Pollito amarillo simplestito, de los más pedidos. Se teje rápido y queda muy tierno.",
+    "image_url": "/images/catalogo/amigurumis/pollito.jpg",
+    "width": 800,
+    "height": 1000,
+    "available": true,
+    "tags": [
+      "pollito",
+      "bebés",
+      "pequeño"
+    ]
+  },
+  {
+    "id": 24,
+    "name": "Pulpo",
+    "category": "Amigurumis",
+    "description": "Pulpo con los ocho tentáculos curlados y los puntitos de la cabeza bien marcados.",
+    "image_url": "/images/catalogo/amigurumis/pulpo.jpg",
+    "width": 800,
+    "height": 1000,
+    "available": true,
+    "tags": [
+      "pulpo",
+      "mar",
+      "curioso"
+    ]
+  },
+  {
+    "id": 25,
+    "name": "Rino",
+    "category": "Amigurumis",
+    "description": "Rinoceronte con el cuerno firme y la piel rugosa imitada a punto.",
+    "image_url": "/images/catalogo/amigurumis/rino.jpg",
+    "width": 800,
+    "height": 1000,
+    "available": true,
+    "tags": [
+      "rinoceronte",
+      "animalito",
+      "figura grande"
+    ]
+  },
+  {
+    "id": 26,
+    "name": "Snoppy",
+    "category": "Amigurumis",
+    "description": "Snoppy con la oreja caída y la sonrisa que lo hace inconfundible.",
+    "image_url": "/images/catalogo/amigurumis/snnopy.jpg",
+    "width": 800,
+    "height": 1000,
+    "available": true,
+    "tags": [
+      "snoppy",
+      "perro",
+      "detalle"
+    ]
+  },
+  {
+    "id": 27,
+    "name": "Spiderman Versión G",
+    "category": "Amigurumis",
+    "description": "Spiderman en una versión alternativa de colores, con el emblema bordado en el pecho.",
+    "image_url": "/images/catalogo/amigurumis/spider-g.jpg",
+    "width": 800,
+    "height": 1000,
+    "available": true,
+    "tags": [
+      "spiderman",
+      "color alternativo",
+      "superhéroe"
+    ]
+  },
+  {
+    "id": 28,
+    "name": "Spiderman Telaraña",
+    "category": "Amigurumis",
+    "description": "Spiderman colgado de su telaraña tejida, en la pose de las rpc.",
+    "image_url": "/images/catalogo/amigurumis/spiderman-telarana.jpg",
+    "width": 800,
+    "height": 1000,
+    "available": true,
+    "tags": [
+      "spiderman",
+      "telaraña",
+      "pose"
+    ]
+  },
+  {
+    "id": 29,
+    "name": "Spiderman Variación",
+    "category": "Amigurumis",
+    "description": "Spiderman en una variación de color manteniendo el diseño clásico.",
+    "image_url": "/images/catalogo/amigurumis/spiderman-variacion.jpg",
+    "width": 800,
+    "height": 1000,
+    "available": false,
+    "tags": [
+      "spiderman",
+      "variación",
+      "superhéroe"
+    ]
+  },
+  {
+    "id": 30,
+    "name": "Spiderman",
+    "category": "Amigurumis",
+    "description": "Spiderman con la máscara roja y azul, el emblema del pecho y las costuras marcadas.",
+    "image_url": "/images/catalogo/amigurumis/spiderman.jpg",
+    "width": 800,
+    "height": 1000,
+    "available": true,
+    "tags": [
+      "spiderman",
+      "superhéroe",
+      "coleccionable"
+    ]
+  },
+  {
+    "id": 31,
+    "name": "Stitch",
+    "category": "Amigurumis",
+    "description": "Stitch de la familia más famosa de Disney, con las orejas grandes y los ojos de botón.",
+    "image_url": "/images/catalogo/amigurumis/stitch.jpg",
+    "width": 800,
+    "height": 1000,
+    "available": true,
+    "tags": [
+      "stitch",
+      "disney",
+      "ojos de botón"
+    ]
+  },
+  {
+    "id": 32,
+    "name": "Stitch Variación",
+    "category": "Amigurumis",
+    "description": "Stitch en una variación de color con el mismo pelaje y sus orejas características.",
+    "image_url": "/images/catalogo/amigurumis/stitch-variacion.jpg",
+    "width": 800,
+    "height": 1000,
+    "available": false,
+    "tags": [
+      "stitch",
+      "variación",
+      "disney"
+    ]
+  },
+  {
+    "id": 33,
+    "name": "Toro",
+    "category": "Amigurumis",
+    "description": "Toro con los cuernos curvos y la figura firme, pensado para dejar a la vista.",
+    "image_url": "/images/catalogo/amigurumis/toro.jpg",
+    "width": 800,
+    "height": 1000,
+    "available": true,
+    "tags": [
+      "toro",
+      "figura grande",
+      "decoración"
+    ]
+  },
+  {
+    "id": 34,
+    "name": "Tortugita Rosa",
+    "category": "Amigurumis",
+    "description": "Tortugita rosa con el caparazón de dos tonos y las patitas asomando.",
+    "image_url": "/images/catalogo/amigurumis/tortugita-rosa.jpg",
+    "width": 800,
+    "height": 1000,
+    "available": true,
+    "tags": [
+      "tortuga",
+      "rosa",
+      "bebés"
+    ]
+  },
+  {
+    "id": 35,
+    "name": "Tortuguita Azul",
+    "category": "Amigurumis",
+    "description": "Tortuguita azul con el caparazón claro y una sonrisa muy marcada en la carita.",
+    "image_url": "/images/catalogo/amigurumis/tortuguita-azul.jpg",
+    "width": 800,
+    "height": 1000,
+    "available": true,
+    "tags": [
+      "tortuga",
+      "azul",
+      "sonrisa"
+    ]
+  },
+  {
+    "id": 36,
+    "name": "Tortuguita",
+    "category": "Amigurumis",
+    "description": "Tortuguita de color natural con el caparazón texturizado, muy resistente y duradera.",
+    "image_url": "/images/catalogo/amigurumis/tortuguita.jpg",
+    "width": 800,
+    "height": 1000,
+    "available": true,
+    "tags": [
+      "tortuga",
+      "texturizada",
+      "duradera"
+    ]
+  },
+  {
+    "id": 37,
+    "name": "Trapito",
+    "category": "Amigurumis",
+    "description": "Trapito, el típico trapo de cocina con los cuadros de colores. Divertido y útil.",
+    "image_url": "/images/catalogo/amigurumis/trapito.jpg",
+    "width": 800,
+    "height": 1000,
+    "available": true,
+    "tags": [
+      "trapito",
+      "hogar",
+      "cocina"
+    ]
+  },
+  {
+    "id": 38,
+    "name": "Unicornio",
+    "category": "Amigurumis",
+    "description": "Unicornio con el cuerno dorado, la crin en degradado y las alas brillosas.",
+    "image_url": "/images/catalogo/amigurumis/unicornio.jpg",
+    "width": 800,
+    "height": 1000,
+    "available": true,
+    "tags": [
+      "unicornio",
+      "fantasía",
+      "crin de colores"
+    ]
+  },
+  {
+    "id": 39,
+    "name": "Vaca Rosa",
+    "category": "Amigurumis",
+    "description": "Vaca rosada con las manchas claras y las cornitas doradas, muy original para regalo.",
+    "image_url": "/images/catalogo/amigurumis/vaca-rosa.jpg",
+    "width": 800,
+    "height": 1000,
+    "available": true,
+    "tags": [
+      "vaca",
+      "rosa",
+      "original"
+    ]
+  },
+  {
+    "id": 40,
+    "name": "Vaquita",
+    "category": "Amigurumis",
+    "description": "Vaquita de leche con sus manchas negras, súper tierna y lista para regalar.",
+    "image_url": "/images/catalogo/amigurumis/vaquita.jpg",
+    "width": 800,
+    "height": 1000,
+    "available": true,
+    "tags": [
+      "vaquita",
+      "animalito",
+      "regalo"
+    ]
+  },
+  {
+    "id": 41,
+    "name": "Angelito para Bautizo",
+    "category": "Eventos",
+    "description": "Angelito con las alas bordadas y el manto blanco, perfecto para colgarlo o usarlo de recordatorio.",
+    "image_url": "/images/catalogo/eventos/angle.jpg",
+    "width": 800,
+    "height": 1000,
+    "available": true,
+    "tags": [
+      "bautizo",
+      "angelito",
+      "colgante"
+    ]
+  },
+  {
+    "id": 42,
+    "name": "Angelitos",
+    "category": "Eventos",
+    "description": "Pareja de angelitos pequeños con las alas abiertas, ideales para reparto o mesa de dulces.",
+    "image_url": "/images/catalogo/eventos/anguelitos.jpg",
+    "width": 800,
+    "height": 1000,
+    "available": true,
+    "tags": [
+      "bautizo",
+      "pareja",
+      "mesa de dulces"
+    ]
+  },
+  {
+    "id": 43,
+    "name": "Cruces Bordadas",
+    "category": "Eventos",
+    "description": "Juego de cruces bordadas con el nombre y la fecha del evento, listas para colgar.",
+    "image_url": "/images/catalogo/eventos/cruces.jpg",
+    "width": 800,
+    "height": 1000,
+    "available": true,
+    "tags": [
+      "cruces",
+      "bordado",
+      "personalizable"
+    ]
+  },
+  {
+    "id": 44,
+    "name": "Cruz para Bautizo",
+    "category": "Eventos",
+    "description": "Cruz bordada a mano con hilo dorado, un clásico de los recuerdos de bautizo.",
+    "image_url": "/images/catalogo/eventos/cruz.jpg",
+    "width": 800,
+    "height": 1000,
+    "available": true,
+    "tags": [
+      "cruz",
+      "bautizo",
+      "bordado"
+    ]
+  },
+  {
+    "id": 45,
+    "name": "Graduada",
+    "category": "Eventos",
+    "description": "Graduada con birrete, toga bordada y el nombre de la graduating personalizado.",
+    "image_url": "/images/catalogo/eventos/graduada.jpg",
+    "width": 800,
+    "height": 1000,
+    "available": true,
+    "tags": [
+      "graduación",
+      "birrete",
+      "bordado"
+    ]
+  },
+  {
+    "id": 46,
+    "name": "Graduados",
+    "category": "Eventos",
+    "description": "Pareja de graduados con togas y birretes, para regalarles a los dos.",
+    "image_url": "/images/catalogo/eventos/graduados.jpg",
+    "width": 800,
+    "height": 1000,
+    "available": true,
+    "tags": [
+      "graduación",
+      "pareja",
+      "toga"
+    ]
+  },
+  {
+    "id": 47,
+    "name": "Oso Graduado",
+    "category": "Eventos",
+    "description": "Oso con birrete y toga, la opción más tierna para una primera graduación.",
+    "image_url": "/images/catalogo/eventos/oso-graduado.jpg",
+    "width": 800,
+    "height": 1000,
+    "available": true,
+    "tags": [
+      "graduación",
+      "oso",
+      "tierna"
+    ]
+  },
+  {
+    "id": 48,
+    "name": "Pato Graduado",
+    "category": "Eventos",
+    "description": "Pato con birrete y toga, un recordatorio divertido que siempre se nota.",
+    "image_url": "/images/catalogo/eventos/pato-graduado.jpg",
+    "width": 800,
+    "height": 1000,
+    "available": true,
+    "tags": [
+      "graduación",
+      "pato",
+      "divertido"
+    ]
+  },
+  {
+    "id": 49,
+    "name": "Rosario",
+    "category": "Eventos",
+    "description": "Rosario con las cuentas bien alineadas y la cruz final terminados a mano.",
+    "image_url": "/images/catalogo/eventos/rosario.jpg",
+    "width": 800,
+    "height": 1000,
+    "available": true,
+    "tags": [
+      "rosario",
+      "religioso",
+      "artesanal"
+    ]
+  },
+  {
+    "id": 50,
+    "name": "Arreglo de 3 Rosas",
+    "category": "Flores",
+    "description": "Arreglo de tres rosas en tonos rosa y blanco con la base de alambre forrado.",
+    "image_url": "/images/catalogo/flores/arreglo-de-3-rosas.jpg",
+    "width": 800,
+    "height": 1000,
+    "available": true,
+    "tags": [
+      "ramo",
+      "rosas",
+      "centro de mesa"
+    ]
+  },
+  {
+    "id": 51,
+    "name": "Flor Individual",
+    "category": "Flores",
+    "description": "Flor suelta con tallo forrado, ideal para completar un ramo o un vaso.",
+    "image_url": "/images/catalogo/flores/flor-individual.jpg",
+    "width": 800,
+    "height": 1000,
+    "available": true,
+    "tags": [
+      "flor",
+      "individual",
+      "para vaso"
+    ]
+  },
+  {
+    "id": 52,
+    "name": "Flor Individual Blanca",
+    "category": "Flores",
+    "description": "Flor individual en blanco roto con el tallo verde forrado, muy elegante.",
+    "image_url": "/images/catalogo/flores/flor-individual-blanca.jpg",
+    "width": 800,
+    "height": 1000,
+    "available": true,
+    "tags": [
+      "flor",
+      "blanca",
+      "elegante"
+    ]
+  },
+  {
+    "id": 53,
+    "name": "Girasol con 2 Flores",
+    "category": "Flores",
+    "description": "Dos girasoles en una base, con los pétalos en dos amarillos diferentes.",
+    "image_url": "/images/catalogo/flores/girasol-2-flores-variacion.jpg",
+    "width": 800,
+    "height": 1000,
+    "available": false,
+    "tags": [
+      "girasol",
+      "variación",
+      "decoración"
+    ]
+  },
+  {
+    "id": 54,
+    "name": "Girasol Individual",
+    "category": "Flores",
+    "description": "Girasol individual con el centro marrón texturizado y los pétalos amarillos.",
+    "image_url": "/images/catalogo/flores/girasol-individual.jpg",
+    "width": 800,
+    "height": 1000,
+    "available": true,
+    "tags": [
+      "girasol",
+      "individual",
+      "verano"
+    ]
+  },
+  {
+    "id": 55,
+    "name": "Maceta Miniatura con Flor",
+    "category": "Flores",
+    "description": "Maceta diminuta con su flor incluida. Perfecta para escritorio o regalo pequeño.",
+    "image_url": "/images/catalogo/flores/maceta-miniatura-con-flor.jpg",
+    "width": 800,
+    "height": 1000,
+    "available": true,
+    "tags": [
+      "maceta",
+      "miniatura",
+      "escritorio"
+    ]
+  },
+  {
+    "id": 56,
+    "name": "Ramo Clásico Rojo",
+    "category": "Flores",
+    "description": "Ramo clásico de rosas rojas con hoja y envoltura de papel, el regalo de siempre.",
+    "image_url": "/images/catalogo/flores/ramo-clasico-rojo.jpg",
+    "width": 800,
+    "height": 1000,
+    "available": true,
+    "tags": [
+      "ramo",
+      "rojo",
+      "clásico"
+    ]
+  },
+  {
+    "id": 57,
+    "name": "Ramo de Girasoles",
+    "category": "Flores",
+    "description": "Dos girasoles con tallos de alambre forrado en verde, que no marchitan nunca.",
+    "image_url": "/images/catalogo/flores/ramo-girasol-con-2-flores.jpg",
+    "width": 800,
+    "height": 1000,
+    "available": true,
+    "tags": [
+      "girasol",
+      "ramo",
+      "alambre"
+    ]
+  },
+  {
+    "id": 58,
+    "name": "Ramo de Girasoles",
+    "category": "Flores",
+    "description": "Ramo de girasoles con varios tallos, alegre y luminoso para centros de mesa.",
+    "image_url": "/images/catalogo/flores/ramo-girasoles.jpg",
+    "width": 800,
+    "height": 1000,
+    "available": true,
+    "tags": [
+      "girasol",
+      "ramo",
+      "alegre"
+    ]
+  },
+  {
+    "id": 59,
+    "name": "Ramo Mixto de Tulipanes",
+    "category": "Flores",
+    "description": "Ramo de tulipanes en tonos rosa, blanco y amarillo, con la base forrada.",
+    "image_url": "/images/catalogo/flores/ramo-mixto-tulipanes.jpg",
+    "width": 800,
+    "height": 1000,
+    "available": true,
+    "tags": [
+      "tulipanes",
+      "ramo",
+      "colores"
+    ]
+  },
+  {
+    "id": 60,
+    "name": "Ramo Romántico con Luces",
+    "category": "Flores",
+    "description": "Ramo romántico en tonos pastel con lucecillas led entre las flores. Un regalo que sorprende.",
+    "image_url": "/images/catalogo/flores/ramo-romantico-pastel-luces.jpg",
+    "width": 800,
+    "height": 1000,
+    "available": true,
+    "tags": [
+      "ramo",
+      "luces",
+      "romántico"
+    ]
+  },
+  {
+    "id": 61,
+    "name": "Ramo Romántico Pastel",
+    "category": "Flores",
+    "description": "Ramo en tonos pastel con varias flores y tallos entrelazados entre sí.",
+    "image_url": "/images/catalogo/flores/ramo-romantico-pastel.jpg",
+    "width": 800,
+    "height": 1000,
+    "available": true,
+    "tags": [
+      "ramo",
+      "pastel",
+      "romántico"
+    ]
+  },
+  {
+    "id": 62,
+    "name": "Ramito Pequeño",
+    "category": "Flores",
+    "description": "Ramito del tamaño de la palma de la mano, perfecto para llevar o regalar.",
+    "image_url": "/images/catalogo/flores/ramo-pequeno.jpg",
+    "width": 800,
+    "height": 1000,
+    "available": true,
+    "tags": [
+      "ramito",
+      "pequeño",
+      "regalo"
+    ]
+  },
+  {
+    "id": 63,
+    "name": "Rosa Individual",
+    "category": "Flores",
+    "description": "Rosa individual con el tallo forrado en verde y la flor en rosa intenso.",
+    "image_url": "/images/catalogo/flores/rosa-individual.jpg",
+    "width": 800,
+    "height": 1000,
+    "available": true,
+    "tags": [
+      "rosa",
+      "individual",
+      "para vaso"
+    ]
+  },
+  {
+    "id": 64,
+    "name": "Tulipán con Corazón",
+    "category": "Flores",
+    "description": "Tulipán con un corazón al centro, muy solicitada para San Valentín o aniversarios.",
+    "image_url": "/images/catalogo/flores/tulipan-flor-especial-con-corazon.jpg",
+    "width": 800,
+    "height": 1000,
+    "available": true,
+    "tags": [
+      "tulipán",
+      "corazón",
+      "san valentín"
+    ]
+  },
+  {
+    "id": 65,
+    "name": "Ajolote",
+    "category": "Llaveros",
+    "description": "Ajolote rosa con las branquias externas y la sonrisa que siempre aparece.",
+    "image_url": "/images/catalogo/llaveros/ajolote.jpg",
+    "width": 800,
+    "height": 1000,
+    "available": true,
+    "tags": [
+      "ajolote",
+      "rosa",
+      "miniatura"
+    ]
+  },
+  {
+    "id": 66,
+    "name": "Abejita",
+    "category": "Llaveros",
+    "description": "Abejita a rayas amarillas y negras con el aro reforzado para tus llaves.",
+    "image_url": "/images/catalogo/llaveros/aveja.jpg",
+    "width": 800,
+    "height": 1000,
+    "available": true,
+    "tags": [
+      "abeja",
+      "rayas",
+      "mochila"
+    ]
+  },
+  {
+    "id": 67,
+    "name": "Capibara",
+    "category": "Llaveros",
+    "description": "Capibara serene con su piececita de hojas detrás. Muy tranquilo en la mochila.",
+    "image_url": "/images/catalogo/llaveros/capibara.jpg",
+    "width": 705,
+    "height": 881,
+    "available": true,
+    "tags": [
+      "capibara",
+      "animalito",
+      "mochila"
+    ]
+  },
+  {
+    "id": 68,
+    "name": "Chefsito",
+    "category": "Llaveros",
+    "description": "Chefsito con el gorro alto, la cara sonriente y el delantal abotonado.",
+    "image_url": "/images/catalogo/llaveros/chefsito.jpg",
+    "width": 800,
+    "height": 1000,
+    "available": true,
+    "tags": [
+      "chefsito",
+      "cocina",
+      "miniatura"
+    ]
+  },
+  {
+    "id": 69,
+    "name": "Conito de Helado",
+    "category": "Llaveros",
+    "description": "Conito de helado con la bola en tonos crema y fresa, muy bonito para regalar.",
+    "image_url": "/images/catalogo/llaveros/cono.jpg",
+    "width": 800,
+    "height": 1000,
+    "available": true,
+    "tags": [
+      "helado",
+      "cono",
+      "verano"
+    ]
+  },
+  {
+    "id": 70,
+    "name": "Coraje con Uva",
+    "category": "Llaveros",
+    "description": "Coraje con una uva al lado, una combinación que siempre roba las miradas.",
+    "image_url": "/images/catalogo/llaveros/coraje-uva.jpg",
+    "width": 800,
+    "height": 1000,
+    "available": true,
+    "tags": [
+      "coraje",
+      "uva",
+      "original"
+    ]
+  },
+  {
+    "id": 71,
+    "name": "Coraje",
+    "category": "Llaveros",
+    "description": "Coraje con el chaleco rojo y la mirada braveza, el clásico de los llaveros.",
+    "image_url": "/images/catalogo/llaveros/coraje.jpg",
+    "width": 800,
+    "height": 1000,
+    "available": true,
+    "tags": [
+      "coraje",
+      "superhéroe",
+      "clásico"
+    ]
+  },
+  {
+    "id": 72,
+    "name": "Cupcake",
+    "category": "Llaveros",
+    "description": "Cupcake con la base forrada y el glaseado de colores con chispas.",
+    "image_url": "/images/catalogo/llaveros/cupcake.jpg",
+    "width": 800,
+    "height": 1000,
+    "available": true,
+    "tags": [
+      "cupcake",
+      "postre",
+      "colorido"
+    ]
+  },
+  {
+    "id": 73,
+    "name": "Donita Blanca",
+    "category": "Llaveros",
+    "description": "Donita con el glaseado blanco y las chispas de colores encima.",
+    "image_url": "/images/catalogo/llaveros/donita-blanca.jpg",
+    "width": 800,
+    "height": 1000,
+    "available": true,
+    "tags": [
+      "donita",
+      "blanca",
+      "chispas"
+    ]
+  },
+  {
+    "id": 74,
+    "name": "Donita Café",
+    "category": "Llaveros",
+    "description": "Donita color café con el glaseado brillante y las chispas encima.",
+    "image_url": "/images/catalogo/llaveros/donita-cafe.jpg",
+    "width": 800,
+    "height": 1000,
+    "available": true,
+    "tags": [
+      "donita",
+      "café",
+      "chispas"
+    ]
+  },
+  {
+    "id": 75,
+    "name": "Donita Rosa",
+    "category": "Llaveros",
+    "description": "Donita con glaseado rosa y chispas, muy dulce y muy regalable.",
+    "image_url": "/images/catalogo/llaveros/donita-rosa.jpg",
+    "width": 800,
+    "height": 1000,
+    "available": true,
+    "tags": [
+      "donita",
+      "rosa",
+      "regalo"
+    ]
+  },
+  {
+    "id": 76,
+    "name": "Estrella",
+    "category": "Llaveros",
+    "description": "Estrella amarilla con el borde marcado, la más sencilla y la que más se vende.",
+    "image_url": "/images/catalogo/llaveros/estrella.jpg",
+    "width": 800,
+    "height": 1000,
+    "available": true,
+    "tags": [
+      "estrella",
+      "clásico",
+      "sencillo"
+    ]
+  },
+  {
+    "id": 77,
+    "name": "Fantasmita Azul",
+    "category": "Llaveros",
+    "description": "Fantasmita azul con la carita simpática y la colita que asoma por debajo.",
+    "image_url": "/images/catalogo/llaveros/fantasmita-azul.jpg",
+    "width": 800,
+    "height": 1000,
+    "available": true,
+    "tags": [
+      "fantasmita",
+      "halloween",
+      "azul"
+    ]
+  },
+  {
+    "id": 78,
+    "name": "Fantasmita Rosa",
+    "category": "Llaveros",
+    "description": "Fantasmita rosa con el cuerpo ondeando y dos ojitos redondos. Muy dulce.",
+    "image_url": "/images/catalogo/llaveros/fantasmita-rosa.jpg",
+    "width": 800,
+    "height": 1000,
+    "available": true,
+    "tags": [
+      "fantasmita",
+      "halloween",
+      "rosa"
+    ]
+  },
+  {
+    "id": 79,
+    "name": "Fresa",
+    "category": "Llaveros",
+    "description": "Fresa con las hojitas verdes del tallo y el puntito rojo en la punta.",
+    "image_url": "/images/catalogo/llaveros/fresa.jpg",
+    "width": 800,
+    "height": 1000,
+    "available": true,
+    "tags": [
+      "fresa",
+      "fruta",
+      "colorido"
+    ]
+  },
+  {
+    "id": 80,
+    "name": "Gary",
+    "category": "Llaveros",
+    "description": "Gary con la carita naranja y la sonrisa característica de la tortuga.",
+    "image_url": "/images/catalogo/llaveros/gary.jpg",
+    "width": 800,
+    "height": 1000,
+    "available": true,
+    "tags": [
+      "gary",
+      "tortuga",
+      "caricatura"
+    ]
+  },
+  {
+    "id": 81,
+    "name": "Gatito Negro",
+    "category": "Llaveros",
+    "description": "Gatito negro con los ojitos blancos y la colita larga, muy misterioso.",
+    "image_url": "/images/catalogo/llaveros/gatito-negro.jpg",
+    "width": 800,
+    "height": 1000,
+    "available": true,
+    "tags": [
+      "gatito",
+      "negro",
+      "misterioso"
+    ]
+  },
+  {
+    "id": 82,
+    "name": "Hello Kitty",
+    "category": "Llaveros",
+    "description": "Hello Kitty a tamaño mini con el moño, el delantal y el lazo rojo.",
+    "image_url": "/images/catalogo/llaveros/hello-kitty.jpg",
+    "width": 800,
+    "height": 1000,
+    "available": true,
+    "tags": [
+      "hello kitty",
+      "sanrio",
+      "miniatura"
+    ]
+  },
+  {
+    "id": 83,
+    "name": "Hombresito",
+    "category": "Llaveros",
+    "description": "Hombresito con el pelo y la ceja marcada, la versión más varonil del catálogo.",
+    "image_url": "/images/catalogo/llaveros/hombresito.jpg",
+    "width": 800,
+    "height": 1000,
+    "available": true,
+    "tags": [
+      "hombresito",
+      "cara",
+      "miniatura"
+    ]
+  },
+  {
+    "id": 84,
+    "name": "Honguito Azul F",
+    "category": "Llaveros",
+    "description": "Honguito azul con la variante clara del cuerpo, edición limitada de la temporada.",
+    "image_url": "/images/catalogo/llaveros/honguito-azul-f.jpg",
+    "width": 800,
+    "height": 1000,
+    "available": true,
+    "tags": [
+      "honguito",
+      "azul",
+      "edición limitada"
+    ]
+  },
+  {
+    "id": 85,
+    "name": "Honguito Azul",
+    "category": "Llaveros",
+    "description": "Honguito azul de cuerpo compacto con el aro reforzado para las llaves.",
+    "image_url": "/images/catalogo/llaveros/honguito-azul.jpg",
+    "width": 800,
+    "height": 1000,
+    "available": true,
+    "tags": [
+      "honguito",
+      "azul",
+      "reforzado"
+    ]
+  },
+  {
+    "id": 86,
+    "name": "Honguito Rojo",
+    "category": "Llaveros",
+    "description": "Honguito rojo con las orejas redondas y la carita sonriente.",
+    "image_url": "/images/catalogo/llaveros/honguito-rojo.jpg",
+    "width": 800,
+    "height": 1000,
+    "available": true,
+    "tags": [
+      "honguito",
+      "rojo",
+      "sonriente"
+    ]
+  },
+  {
+    "id": 87,
+    "name": "Kuromi",
+    "category": "Llaveros",
+    "description": "Kuromi con el capuchón negro, la cruce en la capucha y su carita de siempre.",
+    "image_url": "/images/catalogo/llaveros/kuromi.jpg",
+    "width": 800,
+    "height": 1000,
+    "available": true,
+    "tags": [
+      "kuromi",
+      "sanrio",
+      "capucha"
+    ]
+  },
+  {
+    "id": 88,
+    "name": "Lobito",
+    "category": "Llaveros",
+    "description": "Lobito gris con la cola mullida y la carita de loba perdida.",
+    "image_url": "/images/catalogo/llaveros/lobito.jpg",
+    "width": 800,
+    "height": 1000,
+    "available": true,
+    "tags": [
+      "lobito",
+      "gris",
+      "suave"
+    ]
+  },
+  {
+    "id": 89,
+    "name": "Marciano",
+    "category": "Llaveros",
+    "description": "Marciano verde con los antenitas y los ojos muy grandes, todo un clásico.",
+    "image_url": "/images/catalogo/llaveros/marciano.jpg",
+    "width": 800,
+    "height": 1000,
+    "available": true,
+    "tags": [
+      "marciano",
+      "verde",
+      "clásico"
+    ]
+  },
+  {
+    "id": 90,
+    "name": "McQueen",
+    "category": "Llaveros",
+    "description": "McQueen rojo con el número y las rayas de carrera bordados en el costadillo.",
+    "image_url": "/images/catalogo/llaveros/mcqueen.jpg",
+    "width": 800,
+    "height": 1000,
+    "available": true,
+    "tags": [
+      "mcqueen",
+      "carreras",
+      "coche"
+    ]
+  },
+  {
+    "id": 91,
+    "name": "Melody",
+    "category": "Llaveros",
+    "description": "Melody con el lazo azul y la carita de coneja, la más delicada de la colección.",
+    "image_url": "/images/catalogo/llaveros/melody.jpg",
+    "width": 800,
+    "height": 1000,
+    "available": true,
+    "tags": [
+      "melody",
+      "sanrio",
+      "delicada"
+    ]
+  },
+  {
+    "id": 92,
+    "name": "Miniyoda",
+    "category": "Llaveros",
+    "description": "Miniyoda con la piel verde, el sabroso brown de la túnica y las orejas grandes.",
+    "image_url": "/images/catalogo/llaveros/mini-yoda.jpg",
+    "width": 800,
+    "height": 1000,
+    "available": true,
+    "tags": [
+      "yoda",
+      "star wars",
+      "miniatura"
+    ]
+  },
+  {
+    "id": 93,
+    "name": "Minion",
+    "category": "Llaveros",
+    "description": "Minion con el ojo grande, los goggles y el pantalón amarillo de siempre.",
+    "image_url": "/images/catalogo/llaveros/minion.jpg",
+    "width": 800,
+    "height": 1000,
+    "available": true,
+    "tags": [
+      "minion",
+      "desayuno",
+      "divertido"
+    ]
+  },
+  {
+    "id": 94,
+    "name": "Oreo",
+    "category": "Llaveros",
+    "description": "Oreo con las dos galletas y el relleno blanco en medio. Se reconoce a la primera.",
+    "image_url": "/images/catalogo/llaveros/oreo.jpg",
+    "width": 800,
+    "height": 1000,
+    "available": true,
+    "tags": [
+      "oreo",
+      "galleta",
+      "blandito"
+    ]
+  },
+  {
+    "id": 95,
+    "name": "Pandita",
+    "category": "Llaveros",
+    "description": "Pandita con el tortazo rojo y las manitas de fuera, una de las más queridas.",
+    "image_url": "/images/catalogo/llaveros/pandita.jpg",
+    "width": 800,
+    "height": 1000,
+    "available": true,
+    "tags": [
+      "pandita",
+      "rojo",
+      "tierno"
+    ]
+  },
+  {
+    "id": 96,
+    "name": "Pinguinita",
+    "category": "Llaveros",
+    "description": "Pinguinita con el pechera blanca y el pico naranja, muy suave al tacto.",
+    "image_url": "/images/catalogo/llaveros/pinguinita.jpg",
+    "width": 800,
+    "height": 1000,
+    "available": true,
+    "tags": [
+      "pinguinita",
+      "polar",
+      "suave"
+    ]
+  },
+  {
+    "id": 97,
+    "name": "Pinguinito",
+    "category": "Llaveros",
+    "description": "Pinguinito con el gorro de lana tejido, la versión winter del personaje.",
+    "image_url": "/images/catalogo/llaveros/pinguinito.jpg",
+    "width": 800,
+    "height": 1000,
+    "available": true,
+    "tags": [
+      "pinguinito",
+      "gorro",
+      "invierno"
+    ]
+  },
+  {
+    "id": 98,
+    "name": "Piolín",
+    "category": "Llaveros",
+    "description": "Piolín con el gorro de adulto grande y la bufuda que se le ve de lado.",
+    "image_url": "/images/catalogo/llaveros/piolin.jpg",
+    "width": 800,
+    "height": 1000,
+    "available": true,
+    "tags": [
+      "piolín",
+      "búho",
+      "protegido"
+    ]
+  },
+  {
+    "id": 99,
+    "name": "Piolón",
+    "category": "Llaveros",
+    "description": "Piolón con el gorro, la camisa azul y las grandes gafas que lo combinan.",
+    "image_url": "/images/catalogo/llaveros/piolon.jpg",
+    "width": 800,
+    "height": 1000,
+    "available": true,
+    "tags": [
+      "piolón",
+      "búho",
+      "gafas"
+    ]
+  },
+  {
+    "id": 100,
+    "name": "Ranita",
+    "category": "Llaveros",
+    "description": "Ranita verde con la barriga clara y saltando de RNG los dos pies al viento.",
+    "image_url": "/images/catalogo/llaveros/ranita.jpg",
+    "width": 800,
+    "height": 1000,
+    "available": true,
+    "tags": [
+      "ranita",
+      "verde",
+      "saludable"
+    ]
+  },
+  {
+    "id": 101,
+    "name": "Snoppy Variación",
+    "category": "Llaveros",
+    "description": "Snoppy en una variación de color manteniendo la oreja caída y la sonrisa.",
+    "image_url": "/images/catalogo/llaveros/snoppy-variacion.jpg",
+    "width": 800,
+    "height": 1000,
+    "available": false,
+    "tags": [
+      "snoppy",
+      "variación",
+      "perro"
+    ]
+  },
+  {
+    "id": 102,
+    "name": "Snoppy",
+    "category": "Llaveros",
+    "description": "Snoppy con la oreja caída, la nariz grande y la sonrisa de loba.",
+    "image_url": "/images/catalogo/llaveros/snoppy.jpg",
+    "width": 800,
+    "height": 1000,
+    "available": true,
+    "tags": [
+      "snoppy",
+      "perro",
+      "clásico"
+    ]
+  },
+  {
+    "id": 103,
+    "name": "Sonic",
+    "category": "Llaveros",
+    "description": "Sonic azul con los spines hacia atrás y las ojos verdes tan zooming.",
+    "image_url": "/images/catalogo/llaveros/sonic.jpg",
+    "width": 800,
+    "height": 1000,
+    "available": true,
+    "tags": [
+      "sonic",
+      "juego",
+      "azul"
+    ]
+  },
+  {
+    "id": 104,
+    "name": "Tortuguita",
+    "category": "Llaveros",
+    "description": "Tortuguita verde con el caparazón texturizado y las patitas asomando.",
+    "image_url": "/images/catalogo/llaveros/tortuguita.jpg",
+    "width": 800,
+    "height": 1000,
+    "available": true,
+    "tags": [
+      "tortuga",
+      "verde",
+      "pequeño"
+    ]
+  },
+  {
+    "id": 105,
+    "name": "Vaquita",
+    "category": "Llaveros",
+    "description": "Vaquita de leche con las manchas negras y el hocico sonriente.",
+    "image_url": "/images/catalogo/llaveros/vaquita.jpg",
+    "width": 800,
+    "height": 1000,
+    "available": true,
+    "tags": [
+      "vaquita",
+      "manchas",
+      "mamífero"
+    ]
   }
 ]

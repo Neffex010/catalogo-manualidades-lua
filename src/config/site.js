@@ -22,6 +22,26 @@ export const BRAND = {
   tagline: 'Creaciones artesanales tejidas con amor 🧶',
   shortDescription:
     'Amigurumis, recuerdos para eventos, ramos de flores y llaveros miniatura, tejidos a mano una pieza por una, con materiales nobles y mucho cariño.',
+
+  /**
+   * Logotipo de la marca. Los PNG de `public/images/brand/` son los MASTERS y
+   * los WebP son los derivados que genera `npm run images` (nunca se editan a
+   * mano: si cambias el arte, reemplaza el PNG y vuelve a lanzar el script).
+   *
+   * - `logo`     -> cabecera y pie (se pinta a 48px como maximo).
+   * - `mark`     -> recorte compacto para el hero (se pinta a 128px).
+   * - `fallback` -> solo se descarga si el WebP no estuviera disponible.
+   * Cambia SOLO estas rutas si en algun momento sustituyes los archivos.
+   */
+  logo: {
+    src: '/images/brand/logo.webp',
+    fallback: '/images/brand/logo.png',
+    mark: '/images/brand/logo-mark.webp',
+    markFallback: '/images/brand/logo-mark.png',
+    width: 317,
+    height: 320,
+    alt: 'Logotipo de Manualidades Lua',
+  },
 }
 
 /**
