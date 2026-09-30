@@ -1,7 +1,9 @@
 /**
  * SearchBar.jsx
  * -----------------------------------------------------------------------------
- * Campo de busqueda por nombre, descripcion, categoria o etiqueta.
+ * Campo de busqueda por nombre, descripcion o categoria.
+ * Las etiquetas tambien se buscan por debajo (ver `matchesSearch`), pero no se
+ * anuncian al usuario porque ya no se muestran en ninguna parte de la interfaz.
  * Es controlado por el componente padre (ProductGrid).
  * -----------------------------------------------------------------------------
  */
@@ -38,7 +40,7 @@ export default function SearchBar({ value, onChange, resultCount, totalCount }) 
           autoComplete="off"
           value={value}
           onChange={(event) => onChange(event.target.value)}
-          placeholder="Buscar por nombre, categoría o etiqueta..."
+          placeholder="Buscar por nombre o categoría..."
           aria-describedby="catalogo-busqueda-ayuda"
           className="w-full rounded-full border border-line bg-surface py-3.5 pl-11 pr-24 text-sm text-ink shadow-soft outline-none transition-all duration-300 ease-artisan placeholder:text-ink-muted hover:border-lila-400 focus:border-lila-600 focus:ring-4 focus:ring-lila-200/70 sm:py-4 sm:text-base [&::-webkit-search-cancel-button]:hidden"
         />
@@ -75,7 +77,7 @@ export default function SearchBar({ value, onChange, resultCount, totalCount }) 
       >
         {hasValue
           ? `${resultCount} ${resultCount === 1 ? 'resultado' : 'resultados'} para "${value.trim()}"`
-          : `Campo de búsqueda. ${totalCount} piezas disponibles para filtrar por nombre, categoría o etiqueta.`}
+          : `Campo de búsqueda. ${totalCount} piezas disponibles para filtrar por nombre o categoría.`}
       </p>
     </div>
   )
