@@ -38,6 +38,41 @@ npm run dev      # http://localhost:5173
 
 ---
 
+## 🚀 Despliegue en Netlify
+
+El proyecto trae `netlify.toml`, así que **no hay que configurar nada a mano en el panel**:
+
+1. Entra en [app.netlify.com](https://app.netlify.com) → **Add new site** → **Import an existing project**.
+2. Elige el repositorio `catalogo-manualidades-lua`. Netlify detecta `netlify.toml` y rellena
+   solo el comando de build (`npm run build`) y la carpeta a publicar (`dist`).
+3. Pulsa **Deploy site**. En unos minutos queda published en una URL
+   `https://<nombre>.netlify.app`.
+
+Cada `push` a `main` vuelve a publicar el sitio automáticamente.
+
+### Antes de publicar: dos cosas
+
+| Qué | Dónde | Por qué importa |
+| --- | --- | --- |
+| `VITE_SITE_URL` | Site configuration → Environment variables | Rellena el `canonical` y el `og:image`. Si no, apuntarán al placeholder `https://manualidadeslua.com` y al compartir el enlace en WhatsApp o Facebook se verá la imagen de otro sitio. |
+| `WHATSAPP_NUMBER` | `src/config/site.js` | Sigue siendo el placeholder `5210000000000`: **todos** los botones de cotización abrirán un número inexistente. |
+
+La URL se puede poner en `.env` en local o en el panel de Netlify; tiene prioridad lo que esté
+definido en el panel durante el build.
+
+### Conectar un dominio propio (después)
+
+Site configuration → **Domain management** → **Add custom domain**. Netlify emite los
+certificados TLS automáticamente y también añade el `www` y el dominio naked. **No hace falta
+tocar el código**: no hay `base` de Vite porque el sitio se sirve en la raíz del dominio.
+
+Si en algún momento migraras a GitHub Pages (donde sí se sirve en una subcarpeta
+`github.io/catalogo-manualidades-lua/`), ahí sí habría que añadir `base` en `vite.config.js` y
+prefijar con `import.meta.env.BASE_URL` las rutas de las fotos, que vienen de `products.json` y
+`images.json` como cadenas en runtime y Vite no las reescribe.
+
+---
+
 ## 📁 Estructura del proyecto
 
 ```

@@ -1,0 +1,54 @@
+# =============================================================================
+# netlify.toml
+# -----------------------------------------------------------------------------
+# Configuracion de despliegue para Netlify. Con este archivo el sitio se
+# publica solo en cada push a `main`, sin tocar el panel a mano.
+# Docs: https://docs.netlify.com/configure-builds/file-based-configuration/
+# ============================================================================
+
+[build]
+  command = "npm run build"
+  publish = "dist"
+
+# Node 22 LTS: es el que soporta Netlify en su imagen de build actual.
+[build.environment]
+  NODE_VERSION = "22"
+
+# -----------------------------------------------------------------------------
+# Cabeceras y cache
+# -----------------------------------------------------------------------------
+# Los archivos con hash en el nombre (assets/) se cachean para siempre: si
+# cambia su contenido, cambia su nombre, asi que nunca se sirve una version
+# vieja. El HTML lleva el JSON-LD del catalogo, asi que nunca se cachea y un
+# despliegue nuevo se ve de inmediato.
+[[headers]]
+  for = "/assets/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  for = "/index.html"
+  [headers.values]
+    Cache-Control = "public, max-age=0, must-revalidate"
+
+# Las fotos son inmutables (el nombre incluye el ancho y el formato), asi que
+# se pueden cachear un ano. Los LQIP son diminutos y se piden antes que la foto.
+[[headers]]
+  for = "/images/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+# -----------------------------------------------------------------------------
+# Seguridad basica
+# -----------------------------------------------------------------------------
+# No hace falta ninguna regla de rewrite: esto es una SPA de una sola pagina
+# en la que todo vive en "/" y los enlaces internos son anclas (#catalogo,
+# #contacto). Un "*" apuntando a index.html solo serviria para convertir los 404
+# en un HTML de exito.
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Content-Type-Options = "nosniff"
+    X-Frame-Options = "SAMEORIGIN"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+    Permissions-Policy = "geolocation=(), microphone=(), camera=()"
