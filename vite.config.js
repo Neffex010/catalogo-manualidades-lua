@@ -13,9 +13,11 @@ import { BRAND, SOCIAL_LINKS } from './src/config/site.js'
  */
 const DEFAULT_SITE_URL = 'https://manualidadeslua.com'
 
-/** Normaliza una URL de sitio: sin barra final, con protocolo. */
+/** Normaliza una URL de sitio: sin barra final, con protocolo.
+ *  Se elimina TODO espacio en blanco: en una URL nunca es valido y suele colarse
+ *  al copiar y pegar (p. ej. "https:// midominio.app"), rompiendo canonical y og:url. */
 function normalizeSiteUrl(value) {
-  const raw = String(value || '').trim()
+  const raw = String(value || '').replace(/\s+/g, '')
   const withProtocol = /^https?:\/\//i.test(raw) ? raw : `https://${raw}`
   return withProtocol.replace(/\/+$/, '')
 }
