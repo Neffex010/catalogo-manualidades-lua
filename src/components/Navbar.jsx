@@ -3,18 +3,17 @@
  * -----------------------------------------------------------------------------
  * Cabecera fija (sticky) con la identidad de la marca, el acceso rapido a las
  * secciones de la landing y los enlaces a redes. Muestra el nombre "MANUALIDADES
- * LUA", el eslogan y los perfiles de Instagram y Facebook. En moviles se
- * compacta (sin navegacion) para no robar espacio al catalogo.
+ * LUA", el eslogan y el perfil de Instagram. En moviles se compacta (sin
+ * navegacion) para no robar espacio al catalogo.
  * -----------------------------------------------------------------------------
  */
 
-import { Instagram, Facebook } from 'lucide-react'
+import { Instagram } from 'lucide-react'
 import { BRAND, SECTIONS, SOCIAL_LINKS } from '../config/site'
 
 /** Mapa de iconos por id de red social. */
 const SOCIAL_ICONS = {
   instagram: Instagram,
-  facebook: Facebook,
 }
 
 export default function Navbar() {

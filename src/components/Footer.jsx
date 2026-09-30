@@ -6,13 +6,12 @@
  * -----------------------------------------------------------------------------
  */
 
-import { Instagram, Facebook, MessageCircle, Heart } from 'lucide-react'
+import { Instagram, MessageCircle, Heart } from 'lucide-react'
 import { BRAND, SOCIAL_LINKS, WHATSAPP_NUMBER } from '../config/site'
 import { getGeneralWhatsAppUrl } from '../utils/whatsapp'
 
 const SOCIAL_ICONS = {
   instagram: Instagram,
-  facebook: Facebook,
 }
 
 export default function Footer() {

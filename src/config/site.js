@@ -82,7 +82,11 @@ export const ALL_CATEGORY_LABEL = 'Todos'
 /** Valor interno de la categoria "todos" (nunca colisiona con un nombre real). */
 export const ALL_CATEGORY = 'all'
 
-/** Redes sociales mostradas en la cabecera */
+/**
+ * Redes sociales mostradas en la cabecera y el pie.
+ * Se recorren con un mapa, asi que anadir una red es agregar una entrada aqui y
+ * su icono en SOCIAL_ICONS de cada componente que la use.
+ */
 export const SOCIAL_LINKS = [
   {
     id: 'instagram',
@@ -90,13 +94,6 @@ export const SOCIAL_LINKS = [
     handle: '@manualidades_lua_',
     href: 'https://www.instagram.com/manualidades_lua_',
     icon: 'instagram',
-  },
-  {
-    id: 'facebook',
-    label: 'Facebook',
-    handle: 'Manualidades lua',
-    href: 'https://www.facebook.com/ManualidadesLua',
-    icon: 'facebook',
   },
 ]
 

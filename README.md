@@ -54,7 +54,7 @@ Cada `push` a `main` vuelve a publicar el sitio automáticamente.
 
 | Qué | Dónde | Por qué importa |
 | --- | --- | --- |
-| `VITE_SITE_URL` | Site configuration → Environment variables | Rellena el `canonical` y el `og:image`. Si no, apuntarán al placeholder `https://manualidadeslua.com` y al compartir el enlace en WhatsApp o Facebook se verá la imagen de otro sitio. |
+| `VITE_SITE_URL` | Site configuration → Environment variables | Rellena el `canonical` y el `og:image`. Si no, apuntarán al placeholder `https://manualidadeslua.com` y al compartir el enlace en WhatsApp se verá la imagen de otro sitio. |
 
 > `WHATSAPP_NUMBER` ya tiene un número real de prueba (`527717761908`, lada de Puebla). Sustitúyelo
 > por el de la tienda antes de publicar: todos los botones de cotización abren ese número.
@@ -116,7 +116,7 @@ manualidades-lua/
     │   └── catalog.js             # Búsqueda, filtros y categorías (funciones puras)
     │
     └── components/
-        ├── Navbar.jsx              # Marca + secciones + Instagram/Facebook (sticky)
+        ├── Navbar.jsx              # Marca + secciones + Instagram (sticky)
         ├── Hero.jsx               # Portada
          ├── SearchBar.jsx          # Búsqueda por nombre, descripción y etiquetas
         ├── CategoryFilter.jsx     # Filtro de categorías dinámico
@@ -168,7 +168,8 @@ manualidades-lua/
 ## 🔎 SEO
 
 - **Canonical y Open Graph** con URL **absoluta**, inyectada en `index.html` por un plugin de
-  `vite.config.js` a partir de `VITE_SITE_URL`. Facebook y WhatsApp no resuelven rutas relativas.
+  `vite.config.js` a partir de `VITE_SITE_URL`. Las redes sociales y los mensageros no resuelven
+  rutas relativas.
 - **Datos estructurados JSON-LD** (`Organization`, `WebSite` e `ItemList` con los 105 productos)
   generados en el build desde `src/data/products.json`, para que los buscadores tengan el
   catálogo sin ejecutar JavaScript.
@@ -205,7 +206,8 @@ export const WHATSAPP_NUMBER = '527717761908' // 👈 número de prueba, lada de
 ```
 
 Para una lada distinta solo cambian los 10 últimos dígitos. También actualiza las URLs de
-`SOCIAL_LINKS` (`instagram.com/manualidades_lua_` y el Facebook correspondiente). Todo el resto de
+`SOCIAL_LINKS` (por ahora solo `instagram.com/manualidades_lua_`; para añadir otra red basta con
+agregar una entrada a ese array y su icono en `Navbar.jsx` y `Footer.jsx`). Todo el resto de
 la app leerá esos valores.
 
 ---
