@@ -50,12 +50,14 @@ El proyecto trae `netlify.toml`, así que **no hay que configurar nada a mano en
 
 Cada `push` a `main` vuelve a publicar el sitio automáticamente.
 
-### Antes de publicar: dos cosas
+### Antes de publicar: una cosa
 
 | Qué | Dónde | Por qué importa |
 | --- | --- | --- |
 | `VITE_SITE_URL` | Site configuration → Environment variables | Rellena el `canonical` y el `og:image`. Si no, apuntarán al placeholder `https://manualidadeslua.com` y al compartir el enlace en WhatsApp o Facebook se verá la imagen de otro sitio. |
-| `WHATSAPP_NUMBER` | `src/config/site.js` | Sigue siendo el placeholder `5210000000000`: **todos** los botones de cotización abrirán un número inexistente. |
+
+> `WHATSAPP_NUMBER` ya tiene un número real de prueba (`527717761908`, lada de Puebla). Sustitúyelo
+> por el de la tienda antes de publicar: todos los botones de cotización abren ese número.
 
 La URL se puede poner en `.env` en local o en el panel de Netlify; tiene prioridad lo que esté
 definido en el panel durante el build.
@@ -180,9 +182,9 @@ Cada tarjeta abre `https://wa.me/<numero>?text=<mensaje codificado>` con:
 ```
 ¡Hola! 👋 Vi el catálogo de *Manualidades Lua* y me interesa este producto:
 
-🧶 *Osito Amigurumi Grande*
+🧶 *Abejita*
 📂 Categoría: Amigurumis
-🏷️ Etiquetas: figura grande, decoración, regalo
+🏷️ Etiquetas: abeja, cute, pequeño
 
 Quisiera saber el *precio* y si es posible *personalizarlo* (colores, detalles, tamaño).
 También me gustaría confirmar disponibilidad y tiempo de entrega. ¡Gracias! 💜
@@ -190,14 +192,16 @@ También me gustaría confirmar disponibilidad y tiempo de entrega. ¡Gracias! �
 
 ### ⚠️ Configura tu número
 
-Abre `src/config/site.js` y reemplaza el placeholder:
+Abre `src/config/site.js` y sustituye los 10 dígitos finales por los de la tienda, dejando el `52`
+inicial (clave de México, que exige el formato `wa.me`):
 
 ```js
-export const WHATSAPP_NUMBER = '5210000000000' // 👈 pon aquí tu número real
+export const WHATSAPP_NUMBER = '527717761908' // 👈 número de prueba, lada de Puebla
 ```
 
-También actualiza las URLs de `SOCIAL_LINKS` (`instagram.com/manualidades_lua_` y el Facebook
-correspondiente). Todo el resto de la app leerá esos valores.
+Para una lada distinta solo cambian los 10 últimos dígitos. También actualiza las URLs de
+`SOCIAL_LINKS` (`instagram.com/manualidades_lua_` y el Facebook correspondiente). Todo el resto de
+la app leerá esos valores.
 
 ---
 

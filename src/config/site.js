@@ -11,10 +11,11 @@
  * Numero de WhatsApp con clave de pais, SOLO DIGITOS y sin signos.
  * Formato internacional: 52 (Mexico) + 10 digitos.
  *
- * >>> CAMBIA AQUI el numero real de la tienda <<<
- * Ejemplo: '5215512345678'
+ * >>> NUMERO DE PRUEBA, CAMBIAR POR EL REAL ANTES DE PUBLICAR <<<
+ * El 771 es la lada de Puebla. Si el numero de la tienda es otro, se
+ * sustituyen los 10 digitos y se conserva el 52 inicial.
  */
-export const WHATSAPP_NUMBER = '5210000000000'
+export const WHATSAPP_NUMBER = '527717761908'
 
 /** Identidad de la marca */
 export const BRAND = {
