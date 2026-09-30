@@ -29,11 +29,14 @@
     overflow-x: hidden;
   }
 
-  /* Titulos con la tipografia display (artesanal) */
+  /* Titulos con la tipografia display (artesanal).
+     `font-semibold` es el peso con el que se sirve Fraunces (ver index.html):
+     ponerlo aqui evita que un h1-h3 sin clase de peso caiga en un 700 que el
+     navegador tendria que sintetizar. */
   h1,
   h2,
   h3 {
-    @apply font-display;
+    @apply font-display font-semibold;
     text-wrap: balance;
   }
 
@@ -57,16 +60,6 @@
       transition-duration: 0.01ms !important;
       scroll-behavior: auto !important;
     }
-  }
-}
-
-/* -----------------------------------------------------------------------------
- * Componentes utilitarios
- * -------------------------------------------------------------------------- */
-@layer components {
-  /* Contenedor con el ancho maximo y el respiro lateral de la marca */
-  .container-lua {
-    @apply mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8;
   }
 }
 

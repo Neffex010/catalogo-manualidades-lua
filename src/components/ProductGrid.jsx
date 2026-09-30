@@ -19,8 +19,11 @@ import EmptyState from './EmptyState'
 import { ALL_CATEGORY } from '../config/site'
 import { filterProducts, getCategories } from '../utils/catalog'
 
-/** Cuantas tarjetas se muestran mientras cargan los datos. */
-const SKELETON_COUNT = 6
+/**
+ * Cuantas tarjetas se muestran mientras cargan los datos. Son multiplos de 4
+ * para que el grid de escritorio se vea siempre con filas completas.
+ */
+const SKELETON_COUNT = 8
 
 /** Cuantas tarjetas se pintan por tanda (se amplian con "Cargar mas"). */
 const PAGE_SIZE = 12
@@ -94,7 +97,7 @@ export default function ProductGrid({ products = [], loading = false, error = nu
             <button
               type="button"
               onClick={onRetry}
-              className="mt-6 inline-flex items-center gap-2 rounded-full bg-brand px-6 py-3 text-sm font-semibold text-white shadow-brand transition-all duration-300 hover:-translate-y-0.5 hover:bg-lila-700"
+              className="mt-6 inline-flex items-center gap-2 rounded-full bg-brand px-6 py-3 text-sm font-semibold text-white shadow-brand transition-all duration-300 hover:-translate-y-0.5 hover:bg-lila-800"
             >
               <Loader2 className="h-4 w-4" aria-hidden="true" />
               Reintentar
@@ -115,7 +118,7 @@ export default function ProductGrid({ products = [], loading = false, error = nu
        * Encabezado de la seccion
        * ---------------------------------------------------------------- */}
       <div className="text-center">
-        <p className="text-xs font-semibold uppercase tracking-[0.3em] text-lila-600">
+        <p className="text-xs font-semibold uppercase tracking-[0.3em] text-lila-800">
           Nuestro catálogo
         </p>
         <h2 className="mt-3 font-display text-2xl font-semibold tracking-tight text-ink sm:text-4xl">
@@ -215,7 +218,7 @@ export default function ProductGrid({ products = [], loading = false, error = nu
             <button
               type="button"
               onClick={loadMore}
-              className="group inline-flex items-center gap-2 rounded-full border border-lila-300 bg-surface px-7 py-3.5 text-sm font-semibold text-lila-700 shadow-soft transition-all duration-300 ease-artisan hover:-translate-y-0.5 hover:border-brand hover:bg-brand hover:text-white hover:shadow-brand focus:outline-none focus-visible:ring-2 focus-visible:ring-lila-600 focus-visible:ring-offset-2 focus-visible:ring-offset-canvas active:translate-y-0"
+              className="group inline-flex items-center gap-2 rounded-full border border-lila-300 bg-surface px-7 py-3.5 text-sm font-semibold text-lila-800 shadow-soft transition-all duration-300 ease-artisan hover:-translate-y-0.5 hover:border-brand hover:bg-brand hover:text-white hover:shadow-brand focus:outline-none focus-visible:ring-2 focus-visible:ring-lila-600 focus-visible:ring-offset-2 focus-visible:ring-offset-canvas active:translate-y-0"
             >
               <Plus
                 className="h-4 w-4 transition-transform duration-300 group-hover:rotate-90"

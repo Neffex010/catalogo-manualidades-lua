@@ -1,14 +1,15 @@
 /**
  * Navbar.jsx
  * -----------------------------------------------------------------------------
- * Cabecera fija (sticky) con la identidad de la marca y los enlaces a redes.
- * Muestra el nombre "MANUALIDADES LUA", el eslogan y los perfiles de Instagram
- * y Facebook. En moviles se compacta para no robar espacio al catalogo.
+ * Cabecera fija (sticky) con la identidad de la marca, el acceso rapido a las
+ * secciones de la landing y los enlaces a redes. Muestra el nombre "MANUALIDADES
+ * LUA", el eslogan y los perfiles de Instagram y Facebook. En moviles se
+ * compacta (sin navegacion) para no robar espacio al catalogo.
  * -----------------------------------------------------------------------------
  */
 
 import { Instagram, Facebook } from 'lucide-react'
-import { BRAND, SOCIAL_LINKS } from '../config/site'
+import { BRAND, SECTIONS, SOCIAL_LINKS } from '../config/site'
 
 /** Mapa de iconos por id de red social. */
 const SOCIAL_ICONS = {
@@ -23,7 +24,7 @@ export default function Navbar() {
         {/* Identidad de la marca */}
         <a
           href="#inicio"
-          className="group flex min-w-0 items-center gap-3 rounded-2xl focus:outline-none focus-visible:ring-2 focus-visible:ring-lila-600 focus-visible:ring-offset-2 focus-visible:ring-offset-canvas"
+          className="group flex min-w-0 shrink-0 items-center gap-3 rounded-2xl focus:outline-none focus-visible:ring-2 focus-visible:ring-lila-600 focus-visible:ring-offset-2 focus-visible:ring-offset-canvas"
           aria-label={`${BRAND.name} - ir al inicio`}
         >
           {/* Logotipo real de la marca */}
@@ -40,7 +41,7 @@ export default function Navbar() {
           />
 
           <span className="min-w-0">
-            <span className="block truncate font-display text-base font-semibold leading-tight tracking-[0.18em] text-ink transition-colors group-hover:text-lila-700 sm:text-lg md:tracking-[0.22em]">
+            <span className="block truncate font-display text-base font-semibold leading-tight tracking-[0.18em] text-ink transition-colors group-hover:text-lila-800 sm:text-lg md:tracking-[0.22em]">
               {BRAND.name}
             </span>
             <span className="hidden truncate text-[11px] font-medium tracking-wide text-ink-muted sm:block sm:text-xs">
@@ -48,6 +49,23 @@ export default function Navbar() {
             </span>
           </span>
         </a>
+
+        {/* Navegacion de secciones: solo desde tablet, en movil no cabe sin
+         * tapar el catalogo. El href usa los mismos ids que las secciones. */}
+        <nav
+          aria-label="Secciones"
+          className="hidden flex-1 items-center justify-center gap-1 md:flex"
+        >
+          {SECTIONS.map(({ id, label }) => (
+            <a
+              key={id}
+              href={`#${id}`}
+              className="rounded-full px-3.5 py-2 text-sm font-medium text-ink-soft transition-colors duration-300 ease-artisan hover:bg-lila-50 hover:text-lila-800 focus:outline-none focus-visible:ring-2 focus-visible:ring-lila-600 focus-visible:ring-offset-2 focus-visible:ring-offset-canvas lg:px-4 lg:text-[15px]"
+            >
+              {label}
+            </a>
+          ))}
+        </nav>
 
         {/* Redes sociales */}
         <nav aria-label="Redes sociales" className="flex shrink-0 items-center gap-1.5 sm:gap-2">
@@ -61,7 +79,7 @@ export default function Navbar() {
                 rel="noopener noreferrer"
                 title={`${label}: ${handle}`}
                 aria-label={`${label} de Manualidades Lua (${handle})`}
-                className="group flex items-center gap-2 rounded-full border border-line bg-surface px-2.5 py-2 text-ink-soft shadow-soft transition-all duration-300 ease-artisan hover:-translate-y-0.5 hover:border-lila-400 hover:bg-lila-50 hover:text-lila-700 hover:shadow-card focus:outline-none focus-visible:ring-2 focus-visible:ring-lila-600 focus-visible:ring-offset-2 focus-visible:ring-offset-canvas sm:px-3.5"
+                className="group flex items-center gap-2 rounded-full border border-line bg-surface px-2.5 py-2 text-ink-soft shadow-soft transition-all duration-300 ease-artisan hover:-translate-y-0.5 hover:border-lila-400 hover:bg-lila-50 hover:text-lila-800 hover:shadow-card focus:outline-none focus-visible:ring-2 focus-visible:ring-lila-600 focus-visible:ring-offset-2 focus-visible:ring-offset-canvas sm:px-3.5"
               >
                 <Icon className="h-[18px] w-[18px] shrink-0" aria-hidden="true" />
                 <span className="hidden text-xs font-medium lg:inline">{handle}</span>

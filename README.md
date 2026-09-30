@@ -42,11 +42,13 @@ npm run dev      # http://localhost:5173
 
 ```
 manualidades-lua/
-├── index.html                     # Meta tags, Open Graph y tipografías
-├── vite.config.js
+├── index.html                     # Meta tags, Open Graph, canonical y tipografías
+├── vite.config.js                 # Inyecta la URL pública y el JSON-LD en index.html
 ├── tailwind.config.js             # Paleta y sistema de diseño de la marca
 ├── postcss.config.js
 ├── eslint.config.js
+├── scripts/
+│   └── generate-images.mjs        # Genera las variantes responsivas (npm run images)
 ├── public/
 │   ├── favicon-32.png, favicon-192.png, apple-touch-icon.png
 │   ├── og-image.jpg
@@ -59,30 +61,33 @@ manualidades-lua/
     ├── index.css                  # Tailwind + estilos base
     │
     ├── config/
-    │   └── site.js                # ⚙️  BRAND, CATEGORIES, WhatsApp y redes (edita aquí)
+    │   └── site.js                # ⚙️  BRAND, CATEGORIES, SECTIONS, WhatsApp y redes
     │
     ├── data/
-    │   └── products.json          # 📦 Catálogo mock (16 productos, 4 categorías)
+    │   ├── products.json          # 📦 Catálogo mock (105 productos, 4 categorías)
+    │   └── images.json            # 🤖 Generado: srcset, LQIP y color de cada foto
     │
     ├── services/
     │   └── productService.js      # 🔌 CAPA DE DATOS (JSON ⇄ API REST)
     │
     ├── hooks/
-    │   └── useProducts.js         # Estado de carga / error / refetch
+    │   ├── useProducts.js         # Estado de carga / error / refetch
+    │   └── useRevealOnScroll.js   # Anima las tarjetas al entrar en pantalla
     │
     ├── utils/
     │   ├── whatsapp.js            # Construye URLs wa.me con mensaje prellenado
     │   └── catalog.js             # Búsqueda, filtros y categorías (funciones puras)
     │
     └── components/
-        ├── Navbar.jsx              # Marca + eslogan + Instagram/Facebook (sticky)
+        ├── Navbar.jsx              # Marca + secciones + Instagram/Facebook (sticky)
         ├── Hero.jsx               # Portada
         ├── SearchBar.jsx          # Búsqueda por nombre/etiqueta
         ├── CategoryFilter.jsx     # Filtro de categorías dinámico
-        ├── ProductGrid.jsx        # ⭐ Estado de búsqueda + filtrado + grid
+        ├── ProductGrid.jsx        # ⭐ Estado de búsqueda + filtrado + paginación
         ├── ProductCard.jsx        # Tarjeta + botón de WhatsApp
         ├── ProductCardSkeleton.jsx# Esqueletos de carga
         ├── EmptyState.jsx         # Sin resultados / error
+        ├── BackToTop.jsx          # Botón de volver arriba
         └── Footer.jsx             # CTA de contacto
 ```
 
@@ -90,18 +95,46 @@ manualidades-lua/
 
 ## 🎨 Identidad visual
 
-| Token               | Uso                       | Valor     |
-| ------------------- | ------------------------- | --------- |
-| `canvas`            | Fondo general             | `#F7F5FC` |
-| `surface`           | Tarjetas y contenedores   | `#FFFFFF` |
-| `line`              | Bordes y acentos          | `#E3D5F2` |
-| `ink`               | Texto principal           | `#2C2A29` |
-| `brand` / `lila-600`| Botones y acentos         | `#9B7EDE` |
-| `display`           | Títulos (Fraunces)        | serif     |
-| `sans`              | Texto (Inter)             | system-ui |
+| Token                | Uso                                    | Valor     | Contraste medido           |
+| -------------------- | -------------------------------------- | --------- | -------------------------- |
+| `canvas`             | Fondo general                          | `#F7F5FC` | —                          |
+| `surface`            | Tarjetas y contenedores                | `#FFFFFF` | —                          |
+| `line`               | Bordes y divisores                     | `#E3D5F2` | decorativo                 |
+| `ink`                | Texto principal                        | `#2C2A29` | 13.21:1 sobre canvas        |
+| `ink-soft`           | Texto secundario                       | `#57534E` | 7.06:1 sobre canvas         |
+| `ink-muted`          | Texto terciario y placeholders         | `#6B6577` | 5.17:1 sobre canvas         |
+| `brand` (= `lila-700`)| Botones y acentos                      | `#8363C9` | **4.57:1** con texto blanco |
+| `lila-600`           | Acentos, iconos y degradados           | `#9B7EDE` | 3.02:1, solo texto grande   |
+| `lila-800`           | Antetítulos, etiquetas y hovers        | `#6B4FA8` | 5.87:1 sobre canvas         |
+| `success`            | Etiqueta "Disponible" (sobre `-soft`)  | `#237A4B` | 4.75:1                     |
+| `danger`             | Etiqueta "Agotado" (sobre `-soft`)     | `#B23A46` | 5.15:1                     |
+| `whatsapp`           | Hover de los botones de cotización     | `#107C41` | 5.27:1 con texto blanco     |
 
-> Los colores viven **solo** en `tailwind.config.js`. Para un rebrand, cambia esos 5 valores y
-> toda la aplicación se actualiza.
+> **Contraste:** todo lo que lleva texto encima está elegido para cumplir WCAG AA (≥ 4.5:1).
+> `brand` solía ser `#9B7EDE` y daba solo **3.26:1** contra blanco, lo que dejaba ilegibles
+> todos los botones; por eso el morado "de marca" ahora es el tono 700 de la escala. Si subes
+> cualquier token relleno, comprueba la relación de contraste antes de usarlo.
+
+> **Tipografías:** Fraunces (títulos) e Inter (texto), servidas por Google Fonts. A Fraunces se
+> le deja el eje óptico (`opsz`) libre pero se le fija el peso en **600**, el único que usa el
+> sitio: pedir el rango 400-700 entero costaba 77 kB de woff2 y esto 42 kB (latin + latin-ext).
+> Si añades títulos en otro peso, sube el peso en el `<link>` de `index.html`; `index.css`
+> aplica `font-semibold` a `h1`-`h3` para que ningún título quede en un peso que el
+> navegador tendría que sintetizar.
+
+> Los colores viven **solo** en `tailwind.config.js`. Para un rebrand, cambia esos valores y
+> toda la aplicación se actualiza. La URL pública (canonical, Open Graph y JSON-LD) vive en
+> `VITE_SITE_URL`; ver `.env.example`.
+
+---
+
+## 🔎 SEO
+
+- **Canonical y Open Graph** con URL **absoluta**, inyectada en `index.html` por un plugin de
+  `vite.config.js` a partir de `VITE_SITE_URL`. Facebook y WhatsApp no resuelven rutas relativas.
+- **Datos estructurados JSON-LD** (`Organization`, `WebSite` e `ItemList` con los 105 productos)
+  generados en el build desde `src/data/products.json`, para que los buscadores tengan el
+  catálogo sin ejecutar JavaScript.
 
 ---
 
@@ -198,17 +231,31 @@ CREATE TABLE products (
 - **Imagen de respaldo**: si la foto falla, la tarjeta muestra el placeholder de marca
   (`onError` en `ProductCard.jsx`); nunca se ve el ícono de imagen rota.
 - **Estados incluidos**: carga (skeletons), error con reintento, sin resultados y producto agotado.
-- **Accesibilidad**: HTML semántico, `aria-label` / `aria-selected` / `aria-live`, foco visible
-  y respeto a `prefers-reduced-motion`.
-- **Responsive**: 1 columna en móvil, 2 en tablet, 3 en escritorio; filtros en carrusel con
-  `scroll-snap` en pantallas pequeñas.
+- **Paginación por tandas**: 12 tarjetas por vez con "Cargar más" y un contador
+  "Mostrando X de Y". Filtrar o buscar reinicia la lista al principio.
+- **Accesibilidad**: HTML semántico, `aria-label` / `aria-pressed` / `aria-live`, foco visible,
+  paleta con contraste AA y respeto a `prefers-reduced-motion`. El filtro de categorías usa
+  `aria-pressed` (son botones de filtro) y no el patrón `tablist`, que exigiría un `tabpanel`
+  y navegación con flechas que aquí no existen.
+- **Responsive**: 1 columna en móvil, 2 en tablet, 3 en escritorio y 4 en pantallas anchas;
+  filtros en carrusel con `scroll-snap` en pantallas pequeñas, con degradado que avisa de que
+  hay más categorías fuera de pantalla.
 
 ---
 
 ## 🧪 Verificación realizada
 
 - `npm run lint` → sin errores ni advertencias.
-- `npm run build` → `✓ built` (JS 181 kB / 57 kB gzip · CSS 27 kB / 5.7 kB gzip).
-- Lógica verificada con esbuild + node: 16 productos repartidos 4/4/4/4 en las 4 categorías,
-  orden del filtro correcto, filtrado por categoría sin fugas, categoría vacía visible con `0`,
-  búsqueda sin acentos, agotados al final y las 16 URLs `wa.me` con el nombre del producto.
+- `npm run build` → `✓ built` (JS 260.92 kB / 67.47 kB gzip · CSS 29.50 kB / 6.01 kB gzip ·
+  HTML 42.70 kB / 7.85 kB gzip, casi todo el JSON-LD).
+- **Contraste:** las 21 combinaciones texto/fondo que usa la interfaz se comprobaron contra
+  WCAG AA. Antes fallaban cinco —botones morados (3.26:1), texto terciario (3.27:1) y las
+  etiquetas "Disponible"/"Agotado" (2.43 y 3.08)—; ahora la más justa es el botón morado con
+  4.57:1.
+- **Tipografías:** peso real de los woff2 medido contra Google Fonts (latin + latin-ext):
+  Fraunces pasó de 77.2 kB a 42.3 kB al fijarle el peso en 600. Quitar el eje `ital` no ahorra
+  bytes reales (el navegador nunca descargaba la cursiva), pero sí 3.7 kB del CSS.
+- **Render:** 16 comprobaciones sobre el HTML generado con los 105 productos reales (navegación
+  de secciones, `aria-pressed` sin restos de `tablist`, srcset AVIF y WebP, ambos estados de
+  disponibilidad, paginación, `alt` en todas las imágenes y ausencia de marcadores sin
+  sustituir).

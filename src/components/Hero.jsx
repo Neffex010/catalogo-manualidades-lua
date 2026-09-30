@@ -48,7 +48,7 @@ export default function Hero() {
 
         {/* Eslogan de la marca */}
         <p
-          className="animate-fade-in-up mt-6 text-xs font-semibold uppercase tracking-[0.3em] text-lila-600 sm:text-sm"
+          className="animate-fade-in-up mt-6 text-xs font-semibold uppercase tracking-[0.3em] text-lila-800 sm:text-sm"
           style={{ animationDelay: '80ms' }}
         >
           Manualidades Lua
@@ -59,7 +59,7 @@ export default function Hero() {
           style={{ animationDelay: '160ms' }}
         >
           Creaciones artesanales
-          <span className="block text-lila-600">tejidas con amor 🧶</span>
+          <span className="block text-lila-700">tejidas con amor 🧶</span>
         </h1>
 
         <p
@@ -76,7 +76,7 @@ export default function Hero() {
         >
           <a
             href="#catalogo"
-            className="inline-flex w-full items-center justify-center gap-2 rounded-full bg-brand px-7 py-3.5 text-sm font-semibold text-white shadow-brand transition-all duration-300 ease-artisan hover:-translate-y-0.5 hover:bg-lila-700 hover:shadow-lift focus:outline-none focus-visible:ring-2 focus-visible:ring-lila-600 focus-visible:ring-offset-2 focus-visible:ring-offset-canvas sm:w-auto"
+            className="inline-flex w-full items-center justify-center gap-2 rounded-full bg-brand px-7 py-3.5 text-sm font-semibold text-white shadow-brand transition-all duration-300 ease-artisan hover:-translate-y-0.5 hover:bg-lila-800 hover:shadow-lift focus:outline-none focus-visible:ring-2 focus-visible:ring-lila-600 focus-visible:ring-offset-2 focus-visible:ring-offset-canvas sm:w-auto"
           >
             <Sparkles className="h-4 w-4" aria-hidden="true" />
             Ver catálogo
@@ -86,7 +86,7 @@ export default function Hero() {
             href={getGeneralWhatsAppUrl()}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex w-full items-center justify-center gap-2 rounded-full border border-line bg-surface px-7 py-3.5 text-sm font-semibold text-ink shadow-soft transition-all duration-300 ease-artisan hover:-translate-y-0.5 hover:border-lila-400 hover:bg-lila-50 hover:text-lila-700 focus:outline-none focus-visible:ring-2 focus-visible:ring-lila-600 focus-visible:ring-offset-2 focus-visible:ring-offset-canvas sm:w-auto"
+            className="inline-flex w-full items-center justify-center gap-2 rounded-full border border-line bg-surface px-7 py-3.5 text-sm font-semibold text-ink shadow-soft transition-all duration-300 ease-artisan hover:-translate-y-0.5 hover:border-lila-400 hover:bg-lila-50 hover:text-lila-800 focus:outline-none focus-visible:ring-2 focus-visible:ring-lila-600 focus-visible:ring-offset-2 focus-visible:ring-offset-canvas sm:w-auto"
           >
             <MessageCircle className="h-4 w-4" aria-hidden="true" />
             Cotizar por WhatsApp
@@ -100,7 +100,7 @@ export default function Hero() {
         >
           {HIGHLIGHTS.map(({ icon: Icon, label }) => (
             <li key={label} className="flex items-center gap-2">
-              <Icon className="h-4 w-4 text-lila-500" aria-hidden="true" />
+              <Icon className="h-4 w-4 text-lila-600" aria-hidden="true" />
               {label}
             </li>
           ))}

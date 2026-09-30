@@ -37,4 +37,11 @@ export default [
       'no-unused-vars': ['error', { argsIgnorePattern: '^_', varsIgnorePattern: '^_' }],
     },
   },
+  {
+    // Estos archivos se ejecutan en Node (build y scripts), no en el navegador.
+    files: ['vite.config.js', 'scripts/**/*.mjs'],
+    languageOptions: {
+      globals: globals.node,
+    },
+  },
 ]

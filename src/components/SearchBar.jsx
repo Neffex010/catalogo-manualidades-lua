@@ -27,7 +27,7 @@ export default function SearchBar({ value, onChange, resultCount, totalCount }) 
       <div className="relative">
         {/* Icono de lupa */}
         <Search
-          className="pointer-events-none absolute left-4 top-1/2 h-[18px] w-[18px] -translate-y-1/2 text-lila-500"
+          className="pointer-events-none absolute left-4 top-1/2 h-[18px] w-[18px] -translate-y-1/2 text-lila-600"
           aria-hidden="true"
         />
 
@@ -49,7 +49,7 @@ export default function SearchBar({ value, onChange, resultCount, totalCount }) 
             type="button"
             onClick={() => onChange('')}
             aria-label="Limpiar busqueda"
-            className="absolute right-3 top-1/2 grid h-8 w-8 -translate-y-1/2 place-items-center rounded-full bg-lila-100 text-lila-700 transition-all duration-200 hover:bg-lila-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-lila-600"
+            className="absolute right-3 top-1/2 grid h-8 w-8 -translate-y-1/2 place-items-center rounded-full bg-lila-100 text-lila-800 transition-all duration-200 hover:bg-lila-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-lila-600"
           >
             <X className="h-4 w-4" aria-hidden="true" />
           </button>

@@ -119,7 +119,7 @@ export default function ProductCard({ product, index = 0 }) {
         />
 
         {/* Etiqueta de categoria */}
-        <span className="absolute left-3 top-3 inline-flex items-center rounded-full bg-surface/95 px-3 py-1.5 text-[11px] font-bold uppercase tracking-wide text-lila-700 shadow-soft backdrop-blur-sm sm:left-4 sm:top-4 sm:text-xs">
+        <span className="absolute left-3 top-3 inline-flex items-center rounded-full bg-surface/95 px-3 py-1.5 text-[11px] font-bold uppercase tracking-wide text-lila-800 shadow-soft backdrop-blur-sm sm:left-4 sm:top-4 sm:text-xs">
           {product.category}
         </span>
 
@@ -145,7 +145,7 @@ export default function ProductCard({ product, index = 0 }) {
        * Contenido
        * --------------------------------------------------------------- */}
       <div className="flex flex-1 flex-col p-4 sm:p-5">
-        <h3 className="font-display text-lg font-semibold leading-snug text-ink transition-colors duration-300 group-hover:text-lila-700 sm:text-xl">
+        <h3 className="font-display text-lg font-semibold leading-snug text-ink transition-colors duration-300 group-hover:text-lila-800 sm:text-xl">
           {product.name}
         </h3>
 
@@ -159,7 +159,7 @@ export default function ProductCard({ product, index = 0 }) {
             {product.tags.map((tag) => (
               <li
                 key={tag}
-                className="inline-flex items-center gap-1 rounded-full bg-lila-50 px-2.5 py-1 text-[11px] font-medium text-lila-700 ring-1 ring-inset ring-line"
+                className="inline-flex items-center gap-1 rounded-full bg-lila-50 px-2.5 py-1 text-[11px] font-medium text-lila-800 ring-1 ring-inset ring-line"
               >
                 <Tag className="h-3 w-3" aria-hidden="true" />
                 {tag}
@@ -182,10 +182,10 @@ export default function ProductCard({ product, index = 0 }) {
           rel="noopener noreferrer"
           aria-label={`Preguntar y cotizar por WhatsApp el producto ${product.name}`}
           title={`Cotizar "${product.name}" por WhatsApp`}
-          className="mt-5 inline-flex w-full items-center justify-center gap-2 rounded-full bg-brand px-4 py-3.5 text-center text-[13px] font-bold leading-tight text-white shadow-brand transition-all duration-300 ease-artisan hover:-translate-y-0.5 hover:bg-[#25D366] hover:shadow-lift focus:outline-none focus-visible:ring-2 focus-visible:ring-lila-600 focus-visible:ring-offset-2 focus-visible:ring-offset-surface active:translate-y-0 sm:text-sm"
+          className="mt-5 inline-flex w-full items-center justify-center gap-2 rounded-full bg-brand px-4 py-3.5 text-center text-[13px] font-bold leading-tight text-white shadow-brand transition-all duration-300 ease-artisan hover:-translate-y-0.5 hover:bg-whatsapp hover:shadow-whatsapp focus:outline-none focus-visible:ring-2 focus-visible:ring-lila-600 focus-visible:ring-offset-2 focus-visible:ring-offset-surface active:translate-y-0 sm:text-sm"
         >
           <MessageCircle className="h-[18px] w-[18px] shrink-0" aria-hidden="true" />
-          💬 Preguntar y cotizar por WhatsApp
+          Preguntar y cotizar por WhatsApp
         </a>
 
         {/* Aviso para productos agotados */}

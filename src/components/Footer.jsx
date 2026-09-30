@@ -25,7 +25,7 @@ export default function Footer() {
     >
       <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6 sm:py-16 lg:px-8">
         {/* Llamada a la accion */}
-        <div className="relative overflow-hidden rounded-3xl bg-lila-600 px-6 py-10 text-center shadow-lift sm:px-10 sm:py-14">
+        <div className="relative overflow-hidden rounded-3xl bg-brand px-6 py-10 text-center shadow-lift sm:px-10 sm:py-14">
           {/* Textura decorativa */}
           <div
             aria-hidden="true"
@@ -40,7 +40,7 @@ export default function Footer() {
             <h2 className="font-display text-2xl font-semibold leading-snug text-white sm:text-3xl">
               ¿Tienes una idea en mente? 🧶
             </h2>
-            <p className="mx-auto mt-3 max-w-xl text-sm leading-relaxed text-white/85 sm:text-base">
+            <p className="mx-auto mt-3 max-w-xl text-sm leading-relaxed text-white sm:text-base">
               Trabajamos bajo pedido: colores, tamaños, nombres bordados y piezas únicas. Cuéntanos qué
               te gustaría y te cotizamos sin compromiso.
             </p>
@@ -49,7 +49,7 @@ export default function Footer() {
               href={getGeneralWhatsAppUrl()}
               target="_blank"
               rel="noopener noreferrer"
-              className="mt-7 inline-flex items-center justify-center gap-2 rounded-full bg-white px-7 py-3.5 text-sm font-bold text-lila-700 shadow-card transition-all duration-300 ease-artisan hover:-translate-y-0.5 hover:bg-lila-50 focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-lila-600 sm:text-base"
+              className="mt-7 inline-flex items-center justify-center gap-2 rounded-full bg-white px-7 py-3.5 text-sm font-bold text-lila-800 shadow-card transition-all duration-300 ease-artisan hover:-translate-y-0.5 hover:bg-lila-50 focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-brand sm:text-base"
             >
               <MessageCircle className="h-[18px] w-[18px]" aria-hidden="true" />
               Cotizar por WhatsApp
@@ -70,7 +70,9 @@ export default function Footer() {
                 decoding="async"
                 className="h-11 w-11 object-contain"
                 onError={(event) => {
-                  event.currentTarget.src = BRAND.logo.fallback
+                  // Es la version `mark` (recorte compacto), asi que su
+                  // respaldo es `markFallback` y no el logo completo.
+                  event.currentTarget.src = BRAND.logo.markFallback
                 }}
               />
               <p className="font-display text-lg font-semibold tracking-[0.18em] text-ink">
@@ -90,7 +92,7 @@ export default function Footer() {
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label={`${label} de Manualidades Lua (${handle})`}
-                  className="inline-flex items-center gap-2 rounded-full border border-line bg-canvas px-4 py-2.5 text-xs font-semibold text-ink-soft transition-all duration-300 ease-artisan hover:-translate-y-0.5 hover:border-lila-400 hover:bg-lila-50 hover:text-lila-700 focus:outline-none focus-visible:ring-2 focus-visible:ring-lila-600 focus-visible:ring-offset-2 sm:text-sm"
+                  className="inline-flex items-center gap-2 rounded-full border border-line bg-canvas px-4 py-2.5 text-xs font-semibold text-ink-soft transition-all duration-300 ease-artisan hover:-translate-y-0.5 hover:border-lila-400 hover:bg-lila-50 hover:text-lila-800 focus:outline-none focus-visible:ring-2 focus-visible:ring-lila-600 focus-visible:ring-offset-2 sm:text-sm"
                 >
                   <Icon className="h-4 w-4" aria-hidden="true" />
                   {handle}

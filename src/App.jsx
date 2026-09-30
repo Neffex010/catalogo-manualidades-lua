@@ -10,6 +10,7 @@ import Navbar from './components/Navbar'
 import Hero from './components/Hero'
 import ProductGrid from './components/ProductGrid'
 import Footer from './components/Footer'
+import BackToTop from './components/BackToTop'
 import { useProducts } from './hooks/useProducts'
 
 export default function App() {
@@ -30,6 +31,8 @@ export default function App() {
       </main>
 
       <Footer />
+
+      <BackToTop />
     </div>
   )
 }

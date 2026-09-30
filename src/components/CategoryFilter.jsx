@@ -27,13 +27,19 @@ export default function CategoryFilter({ categories, activeCategory, onChange })
   ]
 
   return (
-    <div className="w-full">
+    <div className="relative w-full">
       <h2 className="sr-only">Filtrar por categoría</h2>
 
+      {/* ----------------------------------------------------------------
+       * Carrusel horizontal en movil, fila completa en escritorio. Son
+       * botones de filtro (no pestanas), asi que se anuncia el estado con
+       * `aria-pressed` en vez del patron tablist/tab, que ademas exigiria
+       * navegacion con flechas y un tabpanel que aqui no existe.
+       * ---------------------------------------------------------------- */}
       <div
-        role="tablist"
+        role="group"
         aria-label="Categorías del catálogo"
-        className="-mx-4 flex snap-x snap-mandatory gap-2 overflow-x-auto px-4 pb-2 [scrollbar-width:none] sm:mx-0 sm:flex-wrap sm:overflow-visible sm:px-0 [&::-webkit-scrollbar]:hidden"
+        className="no-scrollbar -mx-4 flex snap-x snap-mandatory gap-2 overflow-x-auto px-4 pb-2 sm:mx-0 sm:flex-wrap sm:overflow-visible sm:px-0"
       >
         {options.map((option) => {
           const isActive = activeCategory === option.name
@@ -43,15 +49,14 @@ export default function CategoryFilter({ categories, activeCategory, onChange })
             <button
               key={option.name}
               type="button"
-              role="tab"
-              aria-selected={isActive}
+              aria-pressed={isActive}
               onClick={() => onChange(option.name)}
               title={isEmpty ? `${option.label}: sin piezas por ahora` : option.label}
               className={[
                 'inline-flex shrink-0 snap-start items-center gap-2 whitespace-nowrap rounded-full border px-4 py-2 text-xs font-semibold transition-all duration-300 ease-artisan focus:outline-none focus-visible:ring-2 focus-visible:ring-lila-600 focus-visible:ring-offset-2 focus-visible:ring-offset-canvas sm:text-sm',
                 isActive
-                  ? 'border-brand bg-brand text-white shadow-brand'
-                  : 'border-line bg-surface text-ink-soft shadow-soft hover:-translate-y-0.5 hover:border-lila-400 hover:bg-lila-50 hover:text-lila-700',
+                  ? 'border-brand bg-brand text-white shadow-brand hover:bg-lila-800'
+                  : 'border-line bg-surface text-ink-soft shadow-soft hover:-translate-y-0.5 hover:border-lila-400 hover:bg-lila-50 hover:text-lila-800',
                 // Sin piezas: se atenua para no parecer un enlace roto.
                 isEmpty && !isActive ? 'opacity-55' : '',
               ].join(' ')}
@@ -60,7 +65,7 @@ export default function CategoryFilter({ categories, activeCategory, onChange })
               <span
                 className={[
                   'rounded-full px-1.5 py-0.5 text-[10px] font-bold tabular-nums transition-colors',
-                  isActive ? 'bg-white/25 text-white' : 'bg-lila-100 text-lila-700',
+                  isActive ? 'bg-white text-brand' : 'bg-lila-100 text-lila-800',
                 ].join(' ')}
               >
                 {option.count}
@@ -69,6 +74,13 @@ export default function CategoryFilter({ categories, activeCategory, onChange })
           )
         })}
       </div>
+
+      {/* Degradado que aparece solo en movil: avisa de que hay mas categorias
+       * fuera de pantalla sin quitarle el scroll al usuario. */}
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-y-0 right-0 w-10 bg-gradient-to-l from-canvas to-transparent sm:hidden"
+      />
     </div>
   )
 }
