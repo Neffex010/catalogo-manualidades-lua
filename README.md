@@ -180,15 +180,21 @@ manualidades-lua/
 Cada tarjeta abre `https://wa.me/<numero>?text=<mensaje codificado>` con:
 
 ```
-¡Hola! 👋 Vi el catálogo de *Manualidades Lua* y me interesa este producto:
+¡Hola! Vi el catálogo de *Manualidades Lua* y me interesa este producto:
 
-🧶 *Abejita*
-📂 Categoría: Amigurumis
-🏷️ Etiquetas: abeja, cute, pequeño
+*ABEJITA*
+Categoría: Amigurumis
+Etiquetas: abeja, cute, pequeño
 
 Quisiera saber el *precio* y si es posible *personalizarlo* (colores, detalles, tamaño).
-También me gustaría confirmar disponibilidad y tiempo de entrega. ¡Gracias! 💜
+También me gustaría confirmar disponibilidad y tiempo de entrega. ¡Gracias!
 ```
+
+Los mensajes van **sin emoji a propósito**: el texto viaja dentro de una URL y hay clientes de
+WhatsApp que solo aceptan el Plano Básico Multilingüe, así que un emoji de 4 bytes se les
+convierte en un cuadrito con interrogante justo en el primer mensaje que ve el comprador. Los
+acentos y la `ñ` (2 bytes) no tienen ese problema. Los asteriscos sí se conservan porque son
+negrita nativa de WhatsApp en cualquier versión.
 
 ### ⚠️ Configura tu número
 
