@@ -118,7 +118,7 @@ manualidades-lua/
     └── components/
         ├── Navbar.jsx              # Marca + secciones + Instagram/Facebook (sticky)
         ├── Hero.jsx               # Portada
-        ├── SearchBar.jsx          # Búsqueda por nombre/etiqueta
+         ├── SearchBar.jsx          # Búsqueda por nombre, descripción y etiquetas
         ├── CategoryFilter.jsx     # Filtro de categorías dinámico
         ├── ProductGrid.jsx        # ⭐ Estado de búsqueda + filtrado + paginación
         ├── ProductCard.jsx        # Tarjeta + botón de WhatsApp
@@ -184,7 +184,6 @@ Cada tarjeta abre `https://wa.me/<numero>?text=<mensaje codificado>` con:
 
 *ABEJITA*
 Categoría: Amigurumis
-Etiquetas: abeja, cute, pequeño
 
 Quisiera saber el *precio* y si es posible *personalizarlo* (colores, detalles, tamaño).
 También me gustaría confirmar disponibilidad y tiempo de entrega. ¡Gracias!

@@ -49,19 +49,21 @@ export const GENERAL_MESSAGE = [
  * Mensaje prellenado de un producto concreto.
  * Incluye el nombre exacto del producto para que la consulta sea clara.
  *
+ * Las etiquetas NO se incluyen: en el mensaje solo sobraban. Los datos siguen
+ * en products.json porque la busqueda (`matchesSearch`) y el JSON-LD los usan
+ * como palabras clave, aunque ya no se muestren.
+ *
  * @param {object} product
  * @returns {string}
  */
 export function buildProductMessage(product) {
   if (!product) return GENERAL_MESSAGE
 
-  const tags = product.tags?.length ? `\nEtiquetas: ${product.tags.join(', ')}` : ''
-
   return [
     '¡Hola! Vi el catálogo de *Manualidades Lua* y me interesa este producto:',
     '',
     `*${product.name.toUpperCase()}*`,
-    `Categoría: ${product.category}${tags}`,
+    `Categoría: ${product.category}`,
     '',
     'Quisiera saber el *precio* y si es posible *personalizarlo* (colores, detalles, tamaño).',
     'También me gustaría confirmar disponibilidad y tiempo de entrega. ¡Gracias!',

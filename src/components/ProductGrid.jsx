@@ -186,7 +186,7 @@ export default function ProductGrid({ products = [], loading = false, error = nu
             }
             description={
               searchTerm
-                ? 'Prueba con otra palabra, revisa las etiquetas o escríbenos: seguro podemos tejer algo parecido a tu medida.'
+                ? 'Prueba con otra palabra o escríbenos: seguro podemos tejer algo parecido a tu medida.'
                 : 'Esta categoría está temporal sin piezas disponibles. Te avisamos por redes cuando lleguen nuevas creaciones.'
             }
             searchTerm={searchTerm}

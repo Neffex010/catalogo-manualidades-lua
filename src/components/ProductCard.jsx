@@ -12,7 +12,7 @@
  */
 
 import { useEffect, useRef, useState } from 'react'
-import { MessageCircle, Tag, Clock } from 'lucide-react'
+import { MessageCircle, Clock } from 'lucide-react'
 import { getProductWhatsAppUrl } from '../utils/whatsapp'
 import { useRevealOnScroll } from '../hooks/useRevealOnScroll'
 
@@ -153,20 +153,10 @@ export default function ProductCard({ product, index = 0 }) {
           {product.description}
         </p>
 
-        {/* Etiquetas del producto */}
-        {product.tags?.length > 0 && (
-          <ul className="mt-4 flex flex-wrap gap-1.5">
-            {product.tags.map((tag) => (
-              <li
-                key={tag}
-                className="inline-flex items-center gap-1 rounded-full bg-lila-50 px-2.5 py-1 text-[11px] font-medium text-lila-800 ring-1 ring-inset ring-line"
-              >
-                <Tag className="h-3 w-3" aria-hidden="true" />
-                {tag}
-              </li>
-            ))}
-          </ul>
-        )}
+        {/* Las etiquetas ya no se muestran: ocupaban espacio y sus palabras
+            (bebe, sonajero, minuscule...) no aportaban nada que la ficha no
+            dijera. Los datos siguen en products.json porque los usa la busqueda
+            por texto y las keywords del JSON-LD. */}
 
         {/* Espaciador flexible: alinea los botones entre tarjetas */}
         <div className="flex-1" />
