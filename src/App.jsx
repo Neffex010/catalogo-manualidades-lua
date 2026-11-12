@@ -8,7 +8,8 @@
 
 import Navbar from './components/Navbar'
 import Hero from './components/Hero'
-import ProductGrid from './components/ProductGrid'
+import Catalog from './components/Catalog'
+import StoreInfo from './components/StoreInfo'
 import Footer from './components/Footer'
 import BackToTop from './components/BackToTop'
 import { useProducts } from './hooks/useProducts'
@@ -26,8 +27,10 @@ export default function App() {
         <Hero />
 
         <div className="py-12 sm:py-16 lg:py-20">
-          <ProductGrid products={products} loading={loading} error={error} onRetry={refetch} />
+          <Catalog products={products} loading={loading} error={error} onRetry={refetch} />
         </div>
+
+        <StoreInfo />
       </main>
 
       <Footer />

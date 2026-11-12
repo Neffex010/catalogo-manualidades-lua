@@ -36,3 +36,6 @@ Thumbs.db
 # Cache
 .eslintcache
 .vite
+
+# Artefactos de verificación local (capturas, snapshots y logs de Playwright)
+.playwright-mcp

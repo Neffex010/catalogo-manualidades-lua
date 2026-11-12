@@ -1,55 +1,105 @@
 /**
  * ProductCard.jsx
  * -----------------------------------------------------------------------------
- * Tarjeta de producto con imagen responsiva, etiquetas, descripcion y el boton
- * de cotizacion por WhatsApp con mensaje prellenado.
+ * Tarjeta de producto.
  *
- * IMAGEN: se sirve con <picture> y tres resoluciones (400/600/800) en AVIF y
- * WebP, de modo que cada dispositivo descarga solo la que necesita (~16-43 KB
- * en vez de los ~78 KB de una unica version). Mientras llega la foto se pinta un
- * placeholder borroso de 0.2 KB sobre el color promedio de la pieza.
+ * - Piezas artesanales: imagen, marca, titulo, descripcion, precio y WhatsApp.
+ * - Estambres e hilos: ademas muestran el selector de color. Al elegir una
+ *   variante se actualizan la foto de vista previa, el codigo/nombre de color y
+ *   el mensaje precargado de WhatsApp.
+ *
+ * IMAGEN: si la foto tiene variantes generadas por `npm run images`, se sirve
+ * con <picture> en AVIF/WebP y un LQIP borroso. Si la variante apunta a una
+ * imagen sin manifiesto (por ejemplo las fotos de Drive), se usa un <img>
+ * simple con `loading="lazy"` y el fallback de la marca si falla.
  * -----------------------------------------------------------------------------
  */
 
-import { useEffect, useRef, useState } from 'react'
-import { MessageCircle, Clock } from 'lucide-react'
-import { getProductWhatsAppUrl } from '../utils/whatsapp'
+import { useEffect, useMemo, useRef, useState } from 'react'
+import { Clock, Eye, MessageCircle, PackageCheck } from 'lucide-react'
+import ColorSwatchPicker from './ColorSwatchPicker'
 import { useRevealOnScroll } from '../hooks/useRevealOnScroll'
-
-/** Imagen de respaldo si la URL del producto falla. */
-const FALLBACK_IMAGE = '/images/product-placeholder.svg'
+import { getProductWhatsAppUrl } from '../utils/whatsapp'
+import { formatPrice } from '../utils/format'
+import {
+  CATEGORY_LABELS,
+  FALLBACK_IMAGE,
+  PRICED_CATEGORIES,
+  VARIANT_CATEGORIES,
+} from '../config/site'
 
 /** Color de fondo heredado de la marca si el producto no trae uno propio. */
-const FALLBACK_COLOR = '#FAF8FE'
+const FALLBACK_COLOR = '#FBF7F1'
 
 /**
  * Ancho con el que se pinta la tarjeta en cada breakpoint. Debe mantenerse en
- * sync con las columnas del grid de ProductGrid: si cambian, el navegador
- * elegira una resolucion equivocada (de mas, o peor: de menos).
+ * sync con las columnas del grid de Materials: 1 en movil, 2 en tablet y 4 en
+ * pantallas anchas.
  */
-const IMAGE_SIZES = '(min-width: 1280px) 290px, (min-width: 1024px) 33vw, (min-width: 640px) 45vw, 92vw'
+const IMAGE_SIZES = '(min-width: 1280px) 300px, (min-width: 640px) 45vw, 92vw'
 
-export default function ProductCard({ product, index = 0 }) {
-  // Estado local para el fallback de imagen
-  const [imageSrc, setImageSrc] = useState(product.imageUrl || FALLBACK_IMAGE)
-  const [imageFailed, setImageFailed] = useState(false)
+/** Primera variante con stock; si todas estan agotadas, la primera. */
+function getInitialVariantId(variants) {
+  const available = variants.find((variant) => variant.stock > 0)
+  return (available ?? variants[0])?.id ?? null
+}
+
+export default function ProductCard({ product, index = 0, onOpenDetail }) {
+  const variants = useMemo(
+    () => (Array.isArray(product.variants) ? product.variants : []),
+    [product.variants]
+  )
+  const supportsVariants = variants.length > 0 && VARIANT_CATEGORIES.has(product.category)
+
+  const [activeVariantId, setActiveVariantId] = useState(() => getInitialVariantId(variants))
+
+  // Defensa ante un cambio de producto sin remontar la tarjeta.
+  useEffect(() => {
+    setActiveVariantId((current) =>
+      variants.some((variant) => variant.id === current) ? current : getInitialVariantId(variants)
+    )
+  }, [variants])
+
+  const activeVariant =
+    supportsVariants
+      ? variants.find((variant) => variant.id === activeVariantId) ?? variants[0] ?? null
+      : null
+
+  // La variante activa manda para imagen, stock y mensaje de WhatsApp.
+  const displayImage = activeVariant ?? product
+  const imageUrl = displayImage.imageUrl || FALLBACK_IMAGE
+  const imageAlt = activeVariant
+    ? `${product.name} en color ${activeVariant.colorName}`
+    : product.name
+
+  const [failedUrl, setFailedUrl] = useState(null)
   const [imageLoaded, setImageLoaded] = useState(false)
-
   const imageRef = useRef(null)
   const [cardRef, isRevealed] = useRevealOnScroll()
 
-  // Si la foto ya estaba en cache, `onLoad` nunca llega: se comprueba a mano.
+  const imageFailed = failedUrl === imageUrl
+  const imageSrc = imageFailed ? FALLBACK_IMAGE : imageUrl
+
+  // Al cambiar de variante se resetea el estado de carga. Si la nueva imagen ya
+  // estaba en cache, `onLoad` no llega: se comprueba a mano.
   useEffect(() => {
-    if (imageRef.current?.complete) setImageLoaded(true)
-  }, [])
+    setImageLoaded(false)
+    const node = imageRef.current
+    if (node?.complete && node.naturalWidth > 0) setImageLoaded(true)
+  }, [imageSrc])
 
-  const whatsappUrl = getProductWhatsAppUrl(product)
-  const isAvailable = product.available
+  const isAvailable = activeVariant ? activeVariant.stock > 0 : Boolean(product.available)
+  const whatsappUrl = getProductWhatsAppUrl(product, activeVariant)
+  const categoryLabel = CATEGORY_LABELS[product.category] ?? product.category
 
-  // Cuando la foto no carga se dejan de ofrecer las variantes modernas para no
+  // Solo los hilos publican precio. Manualidades y estambres se cotizan segun
+  // tamano, color y personalizacion; mostrar una cifra fija seria enganoso.
+  const showsPrice = PRICED_CATEGORIES.includes(product.category)
+
+  // Cuando la foto falla se dejan de ofrecer las variantes modernas para no
   // pedir dos veces el mismo recurso inexistente.
-  const avifSrcSet = !imageFailed ? product.imageSrcSetAvif : null
-  const webpSrcSet = !imageFailed ? product.imageSrcSetWebp : null
+  const avifSrcSet = !imageFailed ? displayImage.imageSrcSetAvif : null
+  const webpSrcSet = !imageFailed ? displayImage.imageSrcSetWebp : null
 
   // Escalonado de entrada: las tarjetas de una misma fila entran una tras otra.
   const revealDelay = `${(index % 4) * 70}ms`
@@ -59,24 +109,36 @@ export default function ProductCard({ product, index = 0 }) {
       ref={cardRef}
       style={{ animationDelay: revealDelay }}
       className={[
-        'group flex h-full flex-col overflow-hidden rounded-3xl border border-line bg-surface shadow-soft transition-all duration-500 ease-artisan hover:-translate-y-1.5 hover:border-lila-300 hover:shadow-lift',
+        'group flex h-full flex-col overflow-hidden rounded-3xl border border-line bg-surface shadow-soft transition-all duration-240 ease-artisan hover:-translate-y-1.5 hover:border-lila-300 hover:shadow-lift',
         'reveal',
         isRevealed ? 'is-visible' : '',
       ].join(' ')}
     >
       {/* ---------------------------------------------------------------
-       * Imagen con efecto hover suave
+       * Imagen con efecto hover suave y clic para vista rapida
        * --------------------------------------------------------------- */}
       <div
-        className="relative aspect-4/5 w-full overflow-hidden"
-        style={{ backgroundColor: product.imageColor || FALLBACK_COLOR }}
+        onClick={() => onOpenDetail?.(product)}
+        role="button"
+        tabIndex={0}
+        onKeyDown={(event) => {
+          if (event.key === 'Enter' || event.key === ' ') {
+            event.preventDefault()
+            onOpenDetail?.(product)
+          }
+        }}
+        aria-label={`Ver detalles de ${product.name}`}
+        className="relative aspect-4/5 w-full cursor-pointer overflow-hidden"
+        style={{ backgroundColor: displayImage.imageColor || FALLBACK_COLOR }}
       >
         {/* Placeholder borroso (~0.2 KB): cubre el hueco mientras carga la foto */}
-        {product.imageLqip && !imageFailed && (
+        {displayImage.imageLqip && !imageFailed && (
           <img
-            src={product.imageLqip}
+            src={displayImage.imageLqip}
             alt=""
             aria-hidden="true"
+            loading="lazy"
+            decoding="async"
             className="absolute inset-0 h-full w-full scale-110 object-cover blur-sm"
           />
         )}
@@ -91,22 +153,19 @@ export default function ProductCard({ product, index = 0 }) {
           <img
             ref={imageRef}
             src={imageSrc}
-            alt={product.name}
+            alt={imageAlt}
             loading="lazy"
             decoding="async"
-            width={product.imageWidth || 800}
-            height={product.imageHeight || 1000}
+            width={displayImage.imageWidth || 800}
+            height={displayImage.imageHeight || 1000}
             onLoad={() => setImageLoaded(true)}
             onError={() => {
               // Evita bucles infinitos de onError
               if (imageFailed) return
-              setImageFailed(true)
-              setImageSrc(FALLBACK_IMAGE)
-              // El SVG de respaldo tambien tiene que ser visible.
-              setImageLoaded(true)
+              setFailedUrl(imageUrl)
             }}
             className={[
-              'absolute inset-0 h-full w-full object-cover transition-all duration-500 ease-artisan group-hover:scale-[1.07]',
+              'absolute inset-0 h-full w-full object-cover transition-all duration-400 ease-artisan group-hover:scale-[1.07]',
               imageLoaded ? 'opacity-100' : 'opacity-0',
             ].join(' ')}
           />
@@ -118,10 +177,24 @@ export default function ProductCard({ product, index = 0 }) {
           className="pointer-events-none absolute inset-0 bg-gradient-to-t from-ink/45 via-transparent to-transparent opacity-70"
         />
 
-        {/* Etiqueta de categoria */}
-        <span className="absolute left-3 top-3 inline-flex items-center rounded-full bg-surface/95 px-3 py-1.5 text-[11px] font-bold uppercase tracking-wide text-lila-800 shadow-soft backdrop-blur-sm sm:left-4 sm:top-4 sm:text-xs">
-          {product.category}
-        </span>
+        {/* Pildora flotante "Ver detalle" al pasar el cursor */}
+        <div
+          aria-hidden="true"
+          className="pointer-events-none absolute inset-0 flex items-center justify-center opacity-0 transition-opacity duration-240 group-hover:opacity-100"
+        >
+          <span className="inline-flex items-center gap-1.5 rounded-full bg-surface/95 px-3.5 py-1.5 text-xs font-semibold text-ink shadow-soft backdrop-blur-md">
+            <Eye className="h-3.5 w-3.5 text-lila-800" />
+            Ver detalle
+          </span>
+        </div>
+
+        {/* Marca: solo si el producto la tiene. La categoria ya se muestra
+         * como chip bajo la foto, asi que repetirla aqui era ruido. */}
+        {product.brand && (
+          <span className="absolute left-3 top-3 inline-flex max-w-[70%] items-center truncate rounded-full bg-surface/95 px-3 py-1.5 text-[11px] font-bold uppercase tracking-wide text-lila-800 shadow-soft backdrop-blur-sm sm:left-4 sm:top-4 sm:text-xs">
+            {product.brand}
+          </span>
+        )}
 
         {/* Estado de disponibilidad */}
         <span
@@ -145,7 +218,27 @@ export default function ProductCard({ product, index = 0 }) {
        * Contenido
        * --------------------------------------------------------------- */}
       <div className="flex flex-1 flex-col p-4 sm:p-5">
-        <h3 className="font-display text-lg font-semibold leading-snug text-ink transition-colors duration-300 group-hover:text-lila-800 sm:text-xl">
+        {/* Categoria / subcategoria y numero de colores */}
+        <div className="flex flex-wrap items-center gap-1.5">
+          <span className="rounded-full bg-sand-100 px-2.5 py-1 text-[10px] font-bold uppercase tracking-wide text-lila-800">
+            {categoryLabel}
+          </span>
+          {product.subcategory && (
+            <span className="rounded-full bg-canvas px-2.5 py-1 text-[10px] font-semibold text-ink-muted">
+              {product.subcategory}
+            </span>
+          )}
+          {supportsVariants && (
+            <span className="rounded-full bg-canvas px-2.5 py-1 text-[10px] font-semibold text-ink-muted">
+              {variants.length} colores
+            </span>
+          )}
+        </div>
+
+        <h3
+          onClick={() => onOpenDetail?.(product)}
+          className="mt-2.5 cursor-pointer font-display text-lg font-semibold leading-snug text-ink transition-colors duration-240 group-hover:text-lila-800 sm:text-xl"
+        >
           {product.name}
         </h3>
 
@@ -153,29 +246,91 @@ export default function ProductCard({ product, index = 0 }) {
           {product.description}
         </p>
 
-        {/* Las etiquetas ya no se muestran: ocupaban espacio y sus palabras
-            (bebe, sonajero, minuscule...) no aportaban nada que la ficha no
-            dijera. Los datos siguen en products.json porque los usa la busqueda
-            por texto y las keywords del JSON-LD. */}
+        {/* -----------------------------------------------------------
+         * Variantes de color (solo estambres e hilos)
+         * ----------------------------------------------------------- */}
+        {supportsVariants && (
+          <div className="mt-4 rounded-2xl border border-line bg-sand-50 p-3">
+            <div className="flex items-center justify-between gap-2">
+              <p className="text-[11px] font-bold uppercase tracking-wide text-ink-muted">
+                Color
+              </p>
+              <p className="text-right text-xs font-semibold text-ink-soft" aria-live="polite">
+                {activeVariant
+                  ? `${activeVariant.colorCode} · ${activeVariant.colorName}`
+                  : 'Elige un color'}
+              </p>
+            </div>
+
+            <div className="mt-2.5">
+              <ColorSwatchPicker
+                variants={variants}
+                activeVariantId={activeVariantId}
+                onChange={setActiveVariantId}
+              />
+            </div>
+
+            <p
+              className={[
+                'mt-2.5 flex items-center gap-1.5 text-[11px] font-medium',
+                isAvailable ? 'text-success' : 'text-danger',
+              ].join(' ')}
+            >
+              {isAvailable ? (
+                <>
+                  <PackageCheck className="h-3.5 w-3.5" aria-hidden="true" />
+                  {activeVariant.stock} disponibles en este color
+                </>
+              ) : (
+                <>
+                  <Clock className="h-3.5 w-3.5" aria-hidden="true" />
+                  Color agotado por el momento
+                </>
+              )}
+            </p>
+          </div>
+        )}
+
+        {/* Precio: solo hilos. La explicacion de las piezas a cotizar vive una
+         * sola vez en el encabezado del catalogo, no en cada tarjeta. */}
+        <div className="mt-4">
+          <p className="text-[10px] font-bold uppercase tracking-wide text-ink-muted">
+            Precio
+          </p>
+          {showsPrice ? (
+            <p className="font-display text-xl font-semibold leading-tight text-ink">
+              {formatPrice(product.price)}
+              <span className="ml-1 align-middle text-[11px] font-medium text-ink-muted">
+                MXN
+              </span>
+            </p>
+          ) : (
+            <p className="font-display text-lg font-semibold leading-tight text-ink">
+              A cotizar
+            </p>
+          )}
+        </div>
 
         {/* Espaciador flexible: alinea los botones entre tarjetas */}
         <div className="flex-1" />
 
         {/* -----------------------------------------------------------
          * FLUJO DE WHATSAPP
-         * Abre wa.me con el mensaje prellenado que incluye el nombre
-         * exacto del producto para pedir precio y personalizacion.
+         * El mensaje incluye el producto y, si hay variante activa, su
+         * codigo y nombre de color.
          * ----------------------------------------------------------- */}
         <a
           href={whatsappUrl}
           target="_blank"
           rel="noopener noreferrer"
-          aria-label={`Preguntar y cotizar por WhatsApp el producto ${product.name}`}
-          title={`Cotizar "${product.name}" por WhatsApp`}
-          className="mt-5 inline-flex w-full items-center justify-center gap-2 rounded-full bg-brand px-4 py-3.5 text-center text-[13px] font-bold leading-tight text-white shadow-brand transition-all duration-300 ease-artisan hover:-translate-y-0.5 hover:bg-whatsapp hover:shadow-whatsapp focus:outline-none focus-visible:ring-2 focus-visible:ring-lila-600 focus-visible:ring-offset-2 focus-visible:ring-offset-surface active:translate-y-0 sm:text-sm"
+          aria-label={`Pedir por WhatsApp ${product.name}${
+            activeVariant ? ` en color ${activeVariant.colorName}` : ''
+          }`}
+          title={`Pedir "${product.name}" por WhatsApp`}
+          className="mt-5 inline-flex w-full items-center justify-center gap-2 rounded-full bg-brand px-4 py-3.5 text-center text-[13px] font-bold leading-tight text-white shadow-brand transition-all duration-240 ease-artisan hover:-translate-y-0.5 hover:bg-whatsapp hover:shadow-whatsapp focus:outline-none focus-visible:ring-2 focus-visible:ring-lila-600 focus-visible:ring-offset-2 focus-visible:ring-offset-surface active:translate-y-0 sm:text-sm"
         >
           <MessageCircle className="h-[18px] w-[18px] shrink-0" aria-hidden="true" />
-          Preguntar y cotizar por WhatsApp
+          Pedir por WhatsApp
         </a>
 
         {/* Aviso para productos agotados */}

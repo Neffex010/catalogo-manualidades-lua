@@ -4,7 +4,7 @@
  * CAPA DE DATOS DESACOPLADA de la interfaz.
  *
  * Este modulo es la UNICA pieza que la UI conoce para obtener productos. Hoy
- * resuelve los datos desde un JSON local simulando una llamada asincrona
+ * resuelve los datos desde el catalogo local simulando una llamada asincrona
  * (latencia + errores), pero su contrato esta pensado para una API REST:
  *
  *   getProducts()                 -> GET    {API_BASE_URL}/products
@@ -21,8 +21,9 @@
  * -----------------------------------------------------------------------------
  */
 
-import rawProducts from '../data/products.json'
+import PRODUCTS from '../data/products'
 import imageManifest from '../data/images.json'
+import { FALLBACK_IMAGE } from '../config/site'
 
 /* ========================================================================== */
 /* Configuracion del modo de acceso a datos                                  */
@@ -40,8 +41,6 @@ const API_BASE_URL = import.meta.env?.VITE_API_BASE_URL?.replace(/\/$/, '') || n
  */
 const SIMULATED_LATENCY_MS = Number(import.meta.env?.VITE_MOCK_LATENCY ?? 450)
 
-/** Imagen usada si el backend no devuelve `image_url`. */
-const FALLBACK_IMAGE = '/images/product-placeholder.svg'
 /** Wrapper de una promesa para simular latencia de red. */
 const delay = (ms = SIMULATED_LATENCY_MS) =>
   new Promise((resolve) => setTimeout(resolve, ms))
@@ -51,15 +50,60 @@ const delay = (ms = SIMULATED_LATENCY_MS) =>
 /* ========================================================================== */
 
 /**
- * Convierte un registro crudo (JSON de la API) en el modelo que usa la UI.
+ * Normaliza una variante de color.
+ *
+ * Las variantes pueden venir con los nombres del esquema nuevo (`colorCode`,
+ * `imageUrl`) o con snake_case desde una API (`color_code`, `image_url`). La
+ * UI recibe siempre el mismo modelo, con la imagen ya resuelta contra el
+ * manifiesto cuando existe.
+ *
+ * @param {object} product Producto padre (para el fallback de imagen)
+ * @param {object} variant
+ * @param {number} index
+ * @returns {object|null}
+ */
+function normalizeVariant(product, variant, index) {
+  if (!variant || typeof variant !== 'object') return null
+
+  const imageUrl = variant.imageUrl ?? variant.image_url ?? product.imageUrl ?? FALLBACK_IMAGE
+  const image = imageManifest[imageUrl] ?? null
+  const rawCode = variant.colorCode ?? variant.color_code ?? ''
+  const colorCode = String(rawCode).trim()
+  const rawStock = Number(variant.stock)
+  const stock = Number.isFinite(rawStock) ? Math.max(0, rawStock) : 0
+
+  return {
+    id: String(variant.id ?? `${product.id}-${index}`),
+    colorCode: colorCode ? colorCode.padStart(2, '0') : '—',
+    colorName: variant.colorName ?? variant.color_name ?? 'Sin nombre',
+    hexColor: variant.hexColor ?? variant.hex_color ?? null,
+    imageUrl,
+    stock,
+    // Linea comercial que se deduce del nombre del archivo (KOMFY, KOTTON MILK).
+    line: variant.line ?? '',
+    imageSrcSetAvif: image?.avif ?? null,
+    imageSrcSetWebp: image?.webp ?? null,
+    imageLqip: image?.lqip ?? null,
+    imageColor: image?.color ?? null,
+    imageWidth: image?.width ?? product.width ?? null,
+    imageHeight: image?.height ?? product.height ?? null,
+  }
+}
+
+/**
+ * Convierte un registro crudo (JSON local o API) en el modelo que usa la UI.
  * Centralizar esto aqui permite que el backend cambie de nombres de campo
  * (p. ej. `imageUrl`, `precio`, `is_active`) sin romper los componentes.
  *
  * IMAGENES: `src/data/images.json` lo genera `npm run images` y asocia a cada
  * foto local sus variantes (400/600/800 en AVIF y WebP), un placeholder borroso
- * y el color promedio. Si `image_url` apunta a un recurso sin entrada en el
+ * y el color promedio. Si `imageUrl` apunta a un recurso sin entrada en el
  * manifiesto (p. ej. una URL remota del backend), los campos quedan en `null` y
  * la tarjeta cae a un <img> simple con la imagen original.
+ *
+ * VARIANTES: si el producto tiene colores, `available` se calcula a partir del
+ * stock real de las variantes. Asi un producto con todos los colores agotados
+ * se ordena al final igual que una pieza artesanal agotada.
  *
  * @param {object} raw
  * @returns {object|null}
@@ -70,27 +114,42 @@ function normalizeProduct(raw) {
   const id = raw.id ?? raw.pk ?? null
   if (id == null) return null
 
-  // Acepta ambas grafias para facilitar la migracion snake_case -> camelCase
-  const imageUrl = raw.image_url ?? raw.imageUrl ?? FALLBACK_IMAGE
+  const variants = Array.isArray(raw.variants)
+    ? raw.variants.map((variant, index) => normalizeVariant(raw, variant, index)).filter(Boolean)
+    : []
+
+  const rawImage = raw.imageUrl ?? raw.image_url ?? null
+  const firstAvailableVariant = variants.find((variant) => variant.stock > 0) ?? variants[0] ?? null
+  const imageUrl = rawImage ?? firstAvailableVariant?.imageUrl ?? FALLBACK_IMAGE
   const image = imageManifest[imageUrl] ?? null
+  const totalStock = variants.reduce((total, variant) => total + variant.stock, 0)
+  const available =
+    variants.length > 0
+      ? variants.some((variant) => variant.stock > 0)
+      : Boolean(raw.available ?? raw.disponible ?? true)
 
   return {
-    id,
+    id: String(id),
     name: raw.name ?? raw.nombre ?? 'Producto sin nombre',
-    category: raw.category ?? raw.categoria ?? 'Sin categoría',
+    brand: raw.brand ?? raw.marca ?? '',
+    category: raw.category ?? raw.categoria ?? 'manualidades',
+    subcategory: raw.subcategory ?? raw.subcategoria ?? '',
+    price: Number(raw.price ?? raw.precio ?? 0),
     description: raw.description ?? raw.descripcion ?? '',
     imageUrl,
     // `srcset` listos para <picture>; null si no hay variantes generadas.
-    imageSrcSetAvif: image?.avif ?? null,
-    imageSrcSetWebp: image?.webp ?? null,
+    imageSrcSetAvif: image?.avif ?? firstAvailableVariant?.imageSrcSetAvif ?? null,
+    imageSrcSetWebp: image?.webp ?? firstAvailableVariant?.imageSrcSetWebp ?? null,
     // Placeholder de ~0.2 KB y color de fondo para que la tarjeta nunca
     // aparezca en blanco mientras la foto viaja por la red.
-    imageLqip: image?.lqip ?? null,
-    imageColor: image?.color ?? null,
+    imageLqip: image?.lqip ?? firstAvailableVariant?.imageLqip ?? null,
+    imageColor: image?.color ?? firstAvailableVariant?.imageColor ?? null,
     // Proporcion real de la foto; evita que la tarjeta salte de alto al cargar.
-    imageWidth: image?.width ?? raw.width ?? raw.ancho ?? null,
-    imageHeight: image?.height ?? raw.height ?? raw.alto ?? null,
-    available: Boolean(raw.available ?? raw.disponible ?? true),
+    imageWidth: image?.width ?? raw.width ?? raw.ancho ?? firstAvailableVariant?.imageWidth ?? null,
+    imageHeight: image?.height ?? raw.height ?? raw.alto ?? firstAvailableVariant?.imageHeight ?? null,
+    available,
+    totalStock,
+    variants,
     tags: Array.isArray(raw.tags) ? raw.tags : [],
   }
 }
@@ -106,12 +165,12 @@ function normalizeProduct(raw) {
 const mockRepository = {
   async findAll() {
     await delay()
-    return rawProducts.map(normalizeProduct).filter(Boolean)
+    return PRODUCTS.map(normalizeProduct).filter(Boolean)
   },
 
   async findById(id) {
     await delay()
-    const found = rawProducts.find((product) => String(product.id) === String(id))
+    const found = PRODUCTS.find((product) => String(product.id) === String(id))
     return normalizeProduct(found)
   },
 }

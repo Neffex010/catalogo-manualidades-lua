@@ -47,27 +47,40 @@ export const GENERAL_MESSAGE = [
 
 /**
  * Mensaje prellenado de un producto concreto.
- * Incluye el nombre exacto del producto para que la consulta sea clara.
+ * Incluye el nombre exacto del producto y, cuando hay una variante activa, su
+ * codigo y nombre de color para que la tienda sepa de inmediato que pedir.
  *
  * Las etiquetas NO se incluyen: en el mensaje solo sobraban. Los datos siguen
- * en products.json porque la busqueda (`matchesSearch`) y el JSON-LD los usan
+ * en el catalogo porque la busqueda (`matchesSearch`) y el JSON-LD los usan
  * como palabras clave, aunque ya no se muestren.
  *
  * @param {object} product
+ * @param {object|null} [variant] Variante de color activa
  * @returns {string}
  */
-export function buildProductMessage(product) {
+export function buildProductMessage(product, variant = null) {
   if (!product) return GENERAL_MESSAGE
 
-  return [
-    '¡Hola! Vi el catálogo de *Manualidades Lua* y me interesa este producto:',
-    '',
-    `*${product.name.toUpperCase()}*`,
-    `Categoría: ${product.category}`,
-    '',
-    'Quisiera saber el *precio* y si es posible *personalizarlo* (colores, detalles, tamaño).',
-    'También me gustaría confirmar disponibilidad y tiempo de entrega. ¡Gracias!',
-  ].join('\n')
+  const color = variant
+    ? ` (Color: ${variant.colorCode} - ${variant.colorName})`
+    : ''
+
+  return `Hola, me interesa pedir: ${product.name}${color}`
+}
+
+/**
+ * Mensaje para un diseno del portafolio. No es una compra de inventario: se
+ * pregunta por una pieza hecha a pedido tomando la foto como referencia.
+ *
+ * @param {object} design
+ * @returns {string}
+ */
+export function buildDesignMessage(design) {
+  if (!design) return GENERAL_MESSAGE
+
+  const type = design.subcategory ? ` (${design.subcategory})` : ''
+
+  return `Hola, me interesa encargar un diseño como: ${design.name}${type}. ¿Me podrían cotizar?`
 }
 
 /**
@@ -80,12 +93,22 @@ export function buildWhatsAppUrl({ text = GENERAL_MESSAGE, phone } = {}) {
 }
 
 /**
- * Enlace de cotizacion de un producto.
+ * Enlace de cotizacion de un producto (con su variante de color si aplica).
  * @param {object} product
+ * @param {object|null} [variant]
  * @returns {string}
  */
-export function getProductWhatsAppUrl(product) {
-  return buildWhatsAppUrl({ text: buildProductMessage(product) })
+export function getProductWhatsAppUrl(product, variant = null) {
+  return buildWhatsAppUrl({ text: buildProductMessage(product, variant) })
+}
+
+/**
+ * Enlace para encargar un diseno del portafolio.
+ * @param {object} design
+ * @returns {string}
+ */
+export function getDesignWhatsAppUrl(design) {
+  return buildWhatsAppUrl({ text: buildDesignMessage(design) })
 }
 
 /**

@@ -18,9 +18,16 @@
 
   html {
     scroll-behavior: smooth;
-    /* Compensa el header fijo al navegar con anclas (#catalogo) */
-    scroll-padding-top: 5rem;
+    /* Compensa el header fijo al navegar con anclas (#disenos, #materiales).
+       En movil la navbar ocupa dos filas, por eso el margen es mayor. */
+    scroll-padding-top: 7.5rem;
     -webkit-text-size-adjust: 100%;
+  }
+
+  @media (min-width: 768px) {
+    html {
+      scroll-padding-top: 5.5rem;
+    }
   }
 
   body {
@@ -87,5 +94,20 @@
   .reveal.is-visible {
     opacity: 1;
     animation: fade-in-up 0.6s cubic-bezier(0.22, 1, 0.36, 1) backwards;
+  }
+
+  /* Textura de lino: dos tramas cruzadas casi invisibles. Se usa en el hero
+   * para que el fondo se sienta como papel/tela y no como un degradado plano. */
+  .texture-linen {
+    background-image:
+      repeating-linear-gradient(0deg, rgba(44, 42, 41, 0.022) 0 1px, transparent 1px 4px),
+      repeating-linear-gradient(90deg, rgba(44, 42, 41, 0.016) 0 1px, transparent 1px 4px);
+  }
+
+  /* Grano sutil tipo fotografia analogica. Es un SVG inline: cero peticiones. */
+  .texture-grain {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)' opacity='0.5'/%3E%3C/svg%3E");
+    background-size: 140px 140px;
+    opacity: 0.035;
   }
 }

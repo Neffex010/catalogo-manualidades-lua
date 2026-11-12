@@ -13,12 +13,18 @@ export default {
        * botones. Si subes el tono, revisa la relacion de contraste.
        * ---------------------------------------------------------------- */
       colors: {
-        // Fondo general de la aplicacion
-        canvas: '#F7F5FC',
-        // Tarjetas y contenedores
-        surface: '#FFFFFF',
-        // Acentos, bordes y divisores
-        line: '#E3D5F2',
+        // Fondo general: papel calido, no lila frio. El lila queda como acento.
+        canvas: '#FAF7F2',
+        // Tarjetas y contenedores: blanco calido
+        surface: '#FFFDF9',
+        // Acentos, bordes y divisores: beige calido
+        line: '#E8DED1',
+        // Neutros calidos para cajas, esqueletos y estados suaves
+        sand: {
+          50: '#FBF7F1',
+          100: '#F4EDE2',
+          200: '#E9DFD1',
+        },
         // Texto principal
         ink: {
           DEFAULT: '#2C2A29', // Gris oscuro / negro suave
@@ -106,6 +112,13 @@ export default {
 
       transitionTimingFunction: {
         artisan: 'cubic-bezier(0.22, 1, 0.36, 1)',
+      },
+
+      /* Duraciones cortas y consistentes para micro-interacciones. */
+      transitionDuration: {
+        160: '160ms',
+        240: '240ms',
+        400: '400ms',
       },
     },
   },

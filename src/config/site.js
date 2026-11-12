@@ -11,18 +11,78 @@
  * Numero de WhatsApp con clave de pais, SOLO DIGITOS y sin signos.
  * Formato internacional: 52 (Mexico) + 10 digitos.
  *
- * >>> NUMERO DE PRUEBA, CAMBIAR POR EL REAL ANTES DE PUBLICAR <<<
- * El 771 es la lada de Puebla. Si el numero de la tienda es otro, se
- * sustituyen los 10 digitos y se conserva el 52 inicial.
+ * Numero de la tienda: 771 141 5822 (lada de Pachuca, Hidalgo).
  */
-export const WHATSAPP_NUMBER = '527717761908'
+export const WHATSAPP_NUMBER = '527711415822'
+
+/**
+ * Datos de la tienda fisica y atencion.
+ *
+ * `mapsUrl` usa la busqueda de Google Maps en lugar de coordenadas fijas: si la
+ * direccion cambia, basta con editar `addressQuery` y el enlace se regenera.
+ */
+const addressQuery = 'San Antonio el Desmonte, calle 24 de febrero No. 33, Pachuca, Hidalgo, México'
+
+export const CONTACT = {
+  address: {
+    street: 'San Antonio el Desmonte, calle 24 de febrero No. 33',
+    reference: 'Dentro de "Ferre-eléctrica Chofo"',
+    city: 'Pachuca, Hidalgo, México',
+    mapsUrl: `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(addressQuery)}`,
+  },
+  hours: '1:00 pm a 9:00 pm',
+  phone: {
+    display: '771-141-5822',
+    href: 'tel:+527711415822',
+  },
+  whatsappDisplay: '+52 771 141 5822',
+}
+
+/**
+ * Marcas y tipos de hilo/estambre que se ofrecen en tienda.
+ * Se muestran como etiquetas en la seccion "Visitanos".
+ */
+export const MATERIAL_BRANDS = [
+  'Sinfonía',
+  'La Abuelita',
+  'Alize Velluto',
+  'Karina Komfy Mini',
+  'Candy',
+  'Karina Kairo',
+  'Karina Kotton Milk',
+  'Cristal',
+  'Hilo Vela',
+  'Hilo para coser',
+]
+
+/** Otros productos disponibles ademas de hilos y estambres. */
+export const STORE_EXTRAS = [
+  'Accesorios para tejido',
+  'Bastidores y aros de bordado',
+  'Ganchillos',
+]
+
+/** Servicios que ofrece la tienda. */
+export const STORE_SERVICES = ['Tejido 100% a mano', 'Levantamiento de pedidos']
+
+/**
+ * Categorias que muestran precio en la tarjeta. El resto del catalogo se
+ * cotiza por WhatsApp porque depende de tamanos, colores y personalizacion.
+ */
+export const PRICED_CATEGORIES = ['hilos']
+
+/** Categorias cuyos productos manejan variantes de color (selector de muestras). */
+export const VARIANT_CATEGORIES = new Set(['estambres', 'hilos'])
+
+/** Imagen de respaldo usada en toda la aplicacion cuando un producto no tiene foto. */
+export const FALLBACK_IMAGE = '/images/product-placeholder.svg'
 
 /** Identidad de la marca */
 export const BRAND = {
   name: 'MANUALIDADES LUA',
   tagline: 'Creaciones artesanales tejidas con amor 🧶',
   shortDescription:
-    'Amigurumis, recuerdos para eventos, ramos de flores y llaveros miniatura, tejidos a mano una pieza por una, con materiales nobles y mucho cariño.',
+    'Amigurumis, recuerdos para eventos, ramos de flores, llaveros miniatura, estambres e hilos para tus propios proyectos. Piezas tejidas a mano una por una, con materiales nobles y mucho cariño.',
 
   /**
    * Logotipo de la marca. Los PNG de `public/images/brand/` son los MASTERS y
@@ -46,34 +106,45 @@ export const BRAND = {
 }
 
 /**
- * Las 4 categorias oficiales del catalogo, en el orden en que deben mostrarse.
+ * Las 3 categorias oficiales del catalogo, en el orden en que deben mostrarse.
  * Este listado es la fuente de verdad de la navegacion: el filtro SIEMPRE
- * muestra las 4 (aunque alguna llegue vacia desde la base de datos) y, si el
+ * muestra las 3 (aunque alguna llegue vacia desde la base de datos) y, si el
  * backend agrega una categoria nueva, esta se anade al final automaticamente.
  *
  * @type {ReadonlyArray<{ name: string, label: string, description: string }>}
  */
 export const CATEGORIES = [
   {
-    name: 'Amigurumis',
-    label: 'Amigurumis',
-    description: 'Figuras grandes y muñecos principales',
+    name: 'manualidades',
+    label: 'Manualidades',
+    description: 'Amigurumis, eventos, flores y llaveros tejidos a mano',
   },
   {
-    name: 'Eventos',
-    label: 'Eventos',
-    description: 'Recuerdos para bautizos, graduaciones y más',
+    name: 'estambres',
+    label: 'Estambres',
+    description: 'Ovillos suaves para tejer y crear',
   },
   {
-    name: 'Flores',
-    label: 'Flores',
-    description: 'Ramos y arreglos florales tejidos',
+    name: 'hilos',
+    label: 'Hilos',
+    description: 'Hilos finos para bordado, crochet y costura',
   },
-  {
-    name: 'Llaveros',
-    label: 'Llaveros',
-    description: 'Piezas miniatura y variadas',
-  },
+]
+
+/** Mapa de nombres de categoria a sus etiquetas legibles. */
+export const CATEGORY_LABELS = Object.fromEntries(
+  CATEGORIES.map((category) => [category.name, category.label])
+)
+
+/**
+ * Subcategorias de las piezas artesanales. Se conservan para mostrarlas como
+ * etiqueta en cada tarjeta aunque la categoria principal sea `manualidades`.
+ */
+export const SUBCATEGORIES = [
+  { name: 'Amigurumis', label: 'Amigurumis' },
+  { name: 'Eventos', label: 'Eventos' },
+  { name: 'Flores', label: 'Flores' },
+  { name: 'Llaveros', label: 'Llaveros' },
 ]
 
 /** Etiqueta de la opcion que muestra el catalogo completo sin filtros. */
@@ -83,7 +154,7 @@ export const ALL_CATEGORY_LABEL = 'Todos'
 export const ALL_CATEGORY = 'all'
 
 /**
- * Redes sociales mostradas en la cabecera y el pie.
+ * Redes sociales mostradas en la cabecera y en la seccion de tienda.
  * Se recorren con un mapa, asi que anadir una red es agregar una entrada aqui y
  * su icono en SOCIAL_ICONS de cada componente que la use.
  */
@@ -95,11 +166,21 @@ export const SOCIAL_LINKS = [
     href: 'https://www.instagram.com/manualidades_lua_',
     icon: 'instagram',
   },
+  {
+    id: 'facebook',
+    label: 'Facebook',
+    // El enlace corto de la tienda (facebook.com/share/1EZSg9avSf) redirige
+    // aqui; se guarda la URL canonica del perfil, que no caduca.
+    handle: 'Manualidades lua',
+    href: 'https://www.facebook.com/ManualidadesLua1',
+    icon: 'facebook',
+  },
 ]
 
-/** Secciones de la landing */
+/** Secciones de la landing: portafolio, materiales y tienda fisica. */
 export const SECTIONS = [
   { id: 'inicio', label: 'Inicio' },
-  { id: 'catalogo', label: 'Catálogo' },
-  { id: 'contacto', label: 'Contacto' },
+  { id: 'disenos', label: 'Diseños' },
+  { id: 'materiales', label: 'Materiales' },
+  { id: 'tienda', label: 'Tienda' },
 ]

@@ -1,30 +1,28 @@
 /**
  * Footer.jsx
  * -----------------------------------------------------------------------------
- * Pie de pagina: identidad de marca, redes sociales y llamada a la accion
- * para cotizaciones por WhatsApp.
+ * Cierre de la pagina: llamada final a WhatsApp, identidad de marca, accesos
+ * rapidos y aviso legal.
+ *
+ * Los datos completos de la tienda (direccion, horario, telefono y redes) viven
+ * en `StoreInfo`, justo arriba. Repetirlos aqui alargaba la pagina sin aportar
+ * informacion nueva.
  * -----------------------------------------------------------------------------
  */
 
-import { Instagram, MessageCircle, Heart } from 'lucide-react'
-import { BRAND, SOCIAL_LINKS, WHATSAPP_NUMBER } from '../config/site'
+import { Heart, MessageCircle } from 'lucide-react'
+import { BRAND, SECTIONS } from '../config/site'
 import { getGeneralWhatsAppUrl } from '../utils/whatsapp'
-
-const SOCIAL_ICONS = {
-  instagram: Instagram,
-}
 
 export default function Footer() {
   const year = new Date().getFullYear()
+  const quickLinks = SECTIONS.filter(({ id }) => id !== 'inicio')
 
   return (
-    <footer
-      id="contacto"
-      className="mt-20 scroll-mt-24 border-t border-line bg-surface sm:mt-28"
-    >
+    <footer className="mt-16 border-t border-line bg-surface sm:mt-20">
       <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6 sm:py-16 lg:px-8">
-        {/* Llamada a la accion */}
-        <div className="relative overflow-hidden rounded-3xl bg-brand px-6 py-10 text-center shadow-lift sm:px-10 sm:py-14">
+        {/* Llamada final a la accion */}
+        <div className="relative overflow-hidden rounded-4xl bg-brand px-6 py-10 text-center shadow-lift sm:px-10 sm:py-14">
           {/* Textura decorativa */}
           <div
             aria-hidden="true"
@@ -39,74 +37,70 @@ export default function Footer() {
             <h2 className="font-display text-2xl font-semibold leading-snug text-white sm:text-3xl">
               ¿Tienes una idea en mente? 🧶
             </h2>
-            <p className="mx-auto mt-3 max-w-xl text-sm leading-relaxed text-white sm:text-base">
-              Trabajamos bajo pedido: colores, tamaños, nombres bordados y piezas únicas. Cuéntanos qué
-              te gustaría y te cotizamos sin compromiso.
+            <p className="mx-auto mt-3 max-w-md text-sm leading-relaxed text-white sm:text-base">
+              Cuéntanos qué quieres crear y te cotizamos sin compromiso.
             </p>
 
             <a
               href={getGeneralWhatsAppUrl()}
               target="_blank"
               rel="noopener noreferrer"
-              className="mt-7 inline-flex items-center justify-center gap-2 rounded-full bg-white px-7 py-3.5 text-sm font-bold text-lila-800 shadow-card transition-all duration-300 ease-artisan hover:-translate-y-0.5 hover:bg-lila-50 focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-brand sm:text-base"
+              className="mt-7 inline-flex items-center justify-center gap-2 rounded-full bg-white px-7 py-3.5 text-sm font-bold text-lila-800 shadow-card transition-all duration-240 ease-artisan hover:-translate-y-0.5 hover:bg-sand-50 focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-brand sm:text-base"
             >
               <MessageCircle className="h-[18px] w-[18px]" aria-hidden="true" />
-              Cotizar por WhatsApp
+              Escríbenos por WhatsApp
             </a>
           </div>
         </div>
 
-        {/* Marca y redes */}
-        <div className="mt-12 flex flex-col items-center gap-8 text-center sm:mt-14">
-          <div>
-            <div className="flex items-center justify-center gap-3">
-              <img
-                src={BRAND.logo.mark}
-                width={BRAND.logo.width}
-                height={BRAND.logo.height}
-                alt={BRAND.logo.alt}
-                loading="lazy"
-                decoding="async"
-                className="h-11 w-11 object-contain"
-                onError={(event) => {
-                  // Es la version `mark` (recorte compacto), asi que su
-                  // respaldo es `markFallback` y no el logo completo.
-                  event.currentTarget.src = BRAND.logo.markFallback
-                }}
-              />
+        {/* Identidad y accesos rapidos */}
+        <div className="mt-10 flex flex-col items-center gap-6 text-center sm:mt-12 sm:flex-row sm:justify-between sm:text-left">
+          <div className="flex items-center gap-3">
+            <img
+              src={BRAND.logo.mark}
+              width={BRAND.logo.width}
+              height={BRAND.logo.height}
+              alt={BRAND.logo.alt}
+              loading="lazy"
+              decoding="async"
+              className="h-11 w-11 object-contain"
+              onError={(event) => {
+                // Es la version `mark` (recorte compacto), asi que su
+                // respaldo es `markFallback` y no el logo completo.
+                event.currentTarget.src = BRAND.logo.markFallback
+              }}
+            />
+            <div>
               <p className="font-display text-lg font-semibold tracking-[0.18em] text-ink">
                 {BRAND.name}
               </p>
+              <p className="mt-0.5 text-xs text-ink-soft">{BRAND.tagline}</p>
             </div>
-            <p className="mt-3 text-sm text-ink-soft">{BRAND.tagline}</p>
           </div>
 
-          <nav aria-label="Redes sociales" className="flex flex-wrap items-center justify-center gap-3">
-            {SOCIAL_LINKS.map(({ id, label, handle, href }) => {
-              const Icon = SOCIAL_ICONS[id]
-              return (
-                <a
-                  key={id}
-                  href={href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label={`${label} de Manualidades Lua (${handle})`}
-                  className="inline-flex items-center gap-2 rounded-full border border-line bg-canvas px-4 py-2.5 text-xs font-semibold text-ink-soft transition-all duration-300 ease-artisan hover:-translate-y-0.5 hover:border-lila-400 hover:bg-lila-50 hover:text-lila-800 focus:outline-none focus-visible:ring-2 focus-visible:ring-lila-600 focus-visible:ring-offset-2 sm:text-sm"
-                >
-                  <Icon className="h-4 w-4" aria-hidden="true" />
-                  {handle}
-                </a>
-              )
-            })}
+          <nav aria-label="Enlaces del pie" className="flex flex-wrap items-center justify-center gap-1.5">
+            {quickLinks.map(({ id, label }) => (
+              <a
+                key={id}
+                href={`#${id}`}
+                className="rounded-full px-3.5 py-2 text-sm font-medium text-ink-soft transition-colors duration-160 ease-artisan hover:bg-sand-50 hover:text-lila-800 focus:outline-none focus-visible:ring-2 focus-visible:ring-lila-600 focus-visible:ring-offset-2 focus-visible:ring-offset-surface"
+              >
+                {label}
+              </a>
+            ))}
+            <a
+              href={getGeneralWhatsAppUrl()}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="rounded-full px-3.5 py-2 text-sm font-medium text-ink-soft transition-colors duration-160 ease-artisan hover:bg-sand-50 hover:text-lila-800 focus:outline-none focus-visible:ring-2 focus-visible:ring-lila-600 focus-visible:ring-offset-2 focus-visible:ring-offset-surface"
+            >
+              WhatsApp
+            </a>
           </nav>
-
-          <p className="text-xs text-ink-muted">
-            WhatsApp: <span className="font-semibold text-ink-soft">+{WHATSAPP_NUMBER}</span>
-          </p>
         </div>
 
         {/* Linea de copyright */}
-        <div className="mt-10 flex flex-col items-center gap-2 border-t border-line pt-6 text-center sm:flex-row sm:justify-between sm:text-left">
+        <div className="mt-8 flex flex-col items-center gap-2 border-t border-line pt-6 text-center sm:flex-row sm:justify-between sm:text-left">
           <p className="text-xs text-ink-muted">
             © {year} {BRAND.name}. Todos los derechos reservados.
           </p>

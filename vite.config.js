@@ -1,7 +1,7 @@
-import { readFileSync } from 'node:fs'
 import { defineConfig, loadEnv } from 'vite'
 import react from '@vitejs/plugin-react'
-import { BRAND, SOCIAL_LINKS } from './src/config/site.js'
+import { BRAND, PRICED_CATEGORIES, SOCIAL_LINKS } from './src/config/site.js'
+import { PRODUCTS } from './src/data/products.js'
 
 // https://vite.dev/config/
 
@@ -23,19 +23,83 @@ function normalizeSiteUrl(value) {
 }
 
 /**
- * Genera el JSON-LD del catalogo (Organization + WebSite + ItemList) a partir de
- * `src/data/products.json`, de modo que los buscadores tengan los datos de las
- * piezas sin tener que ejecutar JavaScript.
+ * Genera el JSON-LD del catalogo (Organization + WebSite + dos ItemList) a
+ * partir de `src/data/products.js`, de modo que los buscadores tengan los datos
+ * sin tener que ejecutar JavaScript.
  *
- * Solo se incluyen nombre, imagen, categoria y etiquetas: meter las 105
- * descripciones inflaria el HTML del build sin aportar nada a un buscador.
+ * Los dos bloques se publican por separado porque tienen una intencion
+ * distinta:
+ *
+ *   - `#disenos`: piezas tejidas a pedido. Se describen como `VisualArtwork`
+ *     (portafolio), sin oferta ni disponibilidad: no son inventario.
+ *   - `#materiales`: hilos y estambres. Se publican como `Product`; solo los
+ *     hilos de `PRICED_CATEGORIES` llevan `offers` con precio y stock. Los
+ *     estambres se cotizan y una cifra inventada seria peor que omitirla.
  *
  * @param {string} siteUrl URL publica sin barra final
  * @returns {string} etiqueta <script> con el JSON-LD
  */
 function buildCatalogJsonLd(siteUrl) {
-  const productsPath = new URL('./src/data/products.json', import.meta.url)
-  const products = JSON.parse(readFileSync(productsPath, 'utf-8'))
+  const designs = PRODUCTS.filter((product) => product.category === 'manualidades')
+  const materials = PRODUCTS.filter((product) => product.category !== 'manualidades')
+
+  /** Imagen de la primera variante con stock; si no hay, la del producto. */
+  const getImageUrl = (product) => {
+    const primaryVariant =
+      product.variants?.find((variant) => variant.stock > 0) ?? product.variants?.[0]
+    return `${siteUrl}${primaryVariant?.imageUrl ?? product.imageUrl}`
+  }
+
+  const designItems = designs.map((product, index) => ({
+    '@type': 'ListItem',
+    position: index + 1,
+    item: {
+      '@type': 'VisualArtwork',
+      '@id': `${siteUrl}/#diseno-${product.id}`,
+      name: product.name,
+      description: product.description,
+      image: getImageUrl(product),
+      url: `${siteUrl}/#disenos`,
+      artform: 'Crochet',
+      artMedium: 'Hilo y estambre',
+      creator: { '@id': `${siteUrl}/#organization` },
+      ...(product.subcategory ? { genre: product.subcategory } : {}),
+      ...(product.tags?.length ? { keywords: product.tags.join(', ') } : {}),
+    },
+  }))
+
+  const materialItems = materials.map((product, index) => {
+    const available = Boolean(product.available)
+
+    return {
+      '@type': 'ListItem',
+      position: index + 1,
+      item: {
+        '@type': 'Product',
+        '@id': `${siteUrl}/#material-${product.id}`,
+        name: product.name,
+        description: product.description,
+        category: 'Hilos y estambres',
+        image: getImageUrl(product),
+        url: `${siteUrl}/#materiales`,
+        ...(product.brand ? { brand: { '@type': 'Brand', name: product.brand } } : {}),
+        ...(product.tags?.length ? { keywords: product.tags.join(', ') } : {}),
+        ...(PRICED_CATEGORIES.includes(product.category)
+          ? {
+              offers: {
+                '@type': 'Offer',
+                price: product.price,
+                priceCurrency: 'MXN',
+                availability: available
+                  ? 'https://schema.org/InStock'
+                  : 'https://schema.org/OutOfStock',
+                url: `${siteUrl}/#materiales`,
+              },
+            }
+          : {}),
+      },
+    }
+  })
 
   const graph = [
     {
@@ -63,22 +127,17 @@ function buildCatalogJsonLd(siteUrl) {
     },
     {
       '@type': 'ItemList',
-      '@id': `${siteUrl}/#catalogo`,
-      name: `Catálogo de ${BRAND.name}`,
-      numberOfItems: products.length,
-      itemListElement: products.map((product, index) => ({
-        '@type': 'ListItem',
-        position: index + 1,
-        item: {
-          '@type': 'Product',
-          name: product.name,
-          description: product.description,
-          category: product.category,
-          image: `${siteUrl}${product.image_url}`,
-          url: `${siteUrl}/#catalogo`,
-          ...(product.tags?.length ? { keywords: product.tags.join(', ') } : {}),
-        },
-      })),
+      '@id': `${siteUrl}/#disenos`,
+      name: `Diseños tejidos a pedido de ${BRAND.name}`,
+      numberOfItems: designItems.length,
+      itemListElement: designItems,
+    },
+    {
+      '@type': 'ItemList',
+      '@id': `${siteUrl}/#materiales`,
+      name: `Hilos y estambres de ${BRAND.name}`,
+      numberOfItems: materialItems.length,
+      itemListElement: materialItems,
     },
   ]
 
