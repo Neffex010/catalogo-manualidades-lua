@@ -66,12 +66,12 @@ export const STORE_EXTRAS = [
 export const STORE_SERVICES = ['Tejido 100% a mano', 'Levantamiento de pedidos']
 
 /**
- * Categorias que muestran precio en la tarjeta. El resto del catalogo se
- * cotiza por WhatsApp porque depende de tamanos, colores y personalizacion.
+ * Categorias cuyos productos manejan variantes de color (selector de muestras).
+ *
+ * El precio NO se decide por categoria: cada producto publica `price` solo si
+ * la tienda ya definio una cifra. Si falta, la UI muestra "Se cotiza por
+ * WhatsApp".
  */
-export const PRICED_CATEGORIES = ['hilos']
-
-/** Categorias cuyos productos manejan variantes de color (selector de muestras). */
 export const VARIANT_CATEGORIES = new Set(['estambres', 'hilos'])
 
 /** Imagen de respaldo usada en toda la aplicacion cuando un producto no tiene foto. */

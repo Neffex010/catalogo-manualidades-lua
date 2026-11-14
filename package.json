@@ -10,7 +10,8 @@
     "preview": "vite preview",
     "lint": "eslint .",
     "images": "node scripts/generate-images.mjs",
-    "variants": "node scripts/sync-variant-images.mjs"
+    "variants": "node scripts/sync-variant-images.mjs",
+    "colors": "node scripts/build-color-catalog.mjs"
   },
   "dependencies": {
     "lucide-react": "^0.469.0",

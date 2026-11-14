@@ -4,6 +4,10 @@
  * Filtro secundario del portafolio (Amigurumis, Flores, Llaveros, Eventos).
  * Segmenta los disenos tejidos a pedido para que el portafolio se recorra por
  * tipo de pieza, sin buscador ni controles extra.
+ *
+ * Visual: pestanas editoriales sobre un filo. La activa se marca con un
+ * subrayado de tinta en lugar de una pildora rellena, y los conteos van en
+ * monoespaciada para leerse como indice.
  * -----------------------------------------------------------------------------
  */
 
@@ -28,9 +32,9 @@ export default function SubcategoryFilter({
       <div
         role="group"
         aria-label="Tipos de diseño"
-        className="no-scrollbar -mx-4 flex snap-x snap-mandatory items-center gap-1.5 overflow-x-auto px-4 pb-1 sm:mx-0 sm:flex-wrap sm:overflow-visible sm:px-0"
+        className="no-scrollbar -mx-4 flex snap-x snap-mandatory items-stretch gap-0 overflow-x-auto border-b-2 border-ink/10 px-4 sm:mx-0 sm:flex-wrap sm:overflow-visible sm:px-0"
       >
-        <span className="hidden text-[10px] font-bold uppercase tracking-wide text-ink-muted sm:inline-block sm:mr-1">
+        <span className="meta-label mr-4 hidden shrink-0 self-center sm:inline-block">
           Tipo:
         </span>
         {options.map((option) => {
@@ -43,17 +47,17 @@ export default function SubcategoryFilter({
               aria-pressed={isActive}
               onClick={() => onChange(option.name)}
               className={[
-                'inline-flex shrink-0 snap-start items-center gap-1.5 rounded-full px-3 py-1.5 text-xs font-semibold transition-all duration-200 ease-artisan focus:outline-none focus-visible:ring-2 focus-visible:ring-lila-600 focus-visible:ring-offset-2',
+                '-mb-[2px] inline-flex shrink-0 snap-start items-center gap-1.5 border-b-[3px] px-3 py-3 text-[14px] font-semibold transition-colors duration-160 ease-artisan focus:outline-none focus-visible:ring-2 focus-visible:ring-lila-600 focus-visible:ring-offset-2 sm:px-4 sm:text-[15px]',
                 isActive
-                  ? 'bg-lila-800 text-white shadow-soft'
-                  : 'bg-sand-100 text-ink-soft hover:bg-sand-200 hover:text-ink',
+                  ? 'border-clay text-ink'
+                  : 'border-transparent text-ink-muted hover:border-line hover:text-ink',
               ].join(' ')}
             >
               {option.label}
               <span
                 className={[
-                  'rounded-full px-1.5 py-0.2 text-[10px] font-bold tabular-nums',
-                  isActive ? 'bg-white/20 text-white' : 'bg-surface text-ink-muted',
+                  'font-mono text-[11px] font-bold tabular-nums sm:text-[12px]',
+                  isActive ? 'text-clay-deep' : 'text-ink-muted/70',
                 ].join(' ')}
               >
                 {option.count}

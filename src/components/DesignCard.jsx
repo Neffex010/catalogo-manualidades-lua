@@ -7,6 +7,10 @@
  * disponibilidad. La foto presenta la calidad del trabajo y el unico objetivo
  * de la tarjeta es abrir el detalle o iniciar una conversacion de WhatsApp.
  *
+ * Visual: sin caja alrededor. La foto manda y el pie se apoya en un filo con
+ * una accion discreta, para que 105 tarjetas se lean como un lookbook y no como
+ * una pared de botones.
+ *
  * La imagen se sirve con el mismo manifiesto que ProductCard (AVIF/WebP, LQIP y
  * color dominante) para que el portafolio cargue igual de rapido sin duplicar
  * el pipeline de imagenes.
@@ -14,7 +18,7 @@
  */
 
 import { useEffect, useRef, useState } from 'react'
-import { Eye, MessageCircle } from 'lucide-react'
+import { ArrowRight, Eye, MessageCircle } from 'lucide-react'
 import { useRevealOnScroll } from '../hooks/useRevealOnScroll'
 import { getDesignWhatsAppUrl } from '../utils/whatsapp'
 import { FALLBACK_IMAGE } from '../config/site'
@@ -60,7 +64,7 @@ export default function DesignCard({ design, index = 0, onOpenDetail }) {
       ref={cardRef}
       style={{ animationDelay: revealDelay }}
       className={[
-        'group flex h-full flex-col overflow-hidden rounded-3xl border border-line bg-surface shadow-soft transition-all duration-240 ease-artisan hover:-translate-y-1.5 hover:border-lila-300 hover:shadow-lift',
+        'group flex h-full flex-col',
         'reveal',
         isRevealed ? 'is-visible' : '',
       ].join(' ')}
@@ -79,7 +83,7 @@ export default function DesignCard({ design, index = 0, onOpenDetail }) {
           }
         }}
         aria-label={`Ver detalles de ${design.name}`}
-        className="relative aspect-4/5 w-full cursor-pointer overflow-hidden"
+        className="photo-frame relative aspect-4/5 w-full cursor-pointer overflow-hidden rounded-[1.25rem] border border-line/80"
         style={{ backgroundColor: design.imageColor || FALLBACK_COLOR }}
       >
         {design.imageLqip && !imageFailed && (
@@ -131,33 +135,33 @@ export default function DesignCard({ design, index = 0, onOpenDetail }) {
           aria-hidden="true"
           className="pointer-events-none absolute inset-0 flex items-center justify-center opacity-0 transition-opacity duration-240 group-hover:opacity-100"
         >
-          <span className="inline-flex items-center gap-1.5 rounded-full bg-surface/95 px-3.5 py-1.5 text-xs font-semibold text-ink shadow-soft backdrop-blur-md">
-            <Eye className="h-3.5 w-3.5 text-lila-800" />
+          <span className="inline-flex items-center gap-1.5 rounded-full bg-surface/95 px-3.5 py-1.5 text-[13px] font-semibold text-ink shadow-soft backdrop-blur-md">
+            <Eye className="h-4 w-4 text-lila-800" />
             Ver detalle
           </span>
         </div>
       </div>
 
       {/* ---------------------------------------------------------------
-       * Contenido
+       * Pie editorial: tipo, nombre y accion
        * --------------------------------------------------------------- */}
-      <div className="flex flex-1 flex-col p-3 sm:p-5">
-        <p className="text-[10px] font-bold uppercase tracking-wide text-lila-800 sm:text-[11px]">
+      <div className="flex flex-1 flex-col pt-3 sm:pt-3.5">
+        <p className="text-[12px] font-bold uppercase tracking-[0.12em] text-clay-deep sm:text-[13px]">
           {design.subcategory ?? 'Hecho a mano'}
         </p>
 
         <h3
           onClick={openDetail}
-          className="mt-1 cursor-pointer font-display text-sm font-semibold leading-snug text-ink transition-colors duration-240 group-hover:text-lila-800 sm:text-lg"
+          className="mt-1.5 cursor-pointer font-display text-[1.15rem] font-semibold leading-[1.15] text-ink transition-colors duration-240 group-hover:text-lila-800 sm:text-[1.3rem]"
         >
           {design.name}
         </h3>
 
-        <p className="mt-1.5 hidden line-clamp-2 text-sm leading-relaxed text-ink-soft sm:block">
+        <p className="mt-2 hidden line-clamp-2 text-[15px] leading-relaxed text-ink-soft sm:block">
           {design.description}
         </p>
 
-        {/* Alinea el boton al pie de todas las tarjetas */}
+        {/* Alinea la accion al pie de todas las tarjetas */}
         <div className="flex-1" />
 
         <a
@@ -166,10 +170,16 @@ export default function DesignCard({ design, index = 0, onOpenDetail }) {
           rel="noopener noreferrer"
           aria-label={`Quiero un diseño como ${design.name}`}
           title={`Pedir un diseño como "${design.name}" por WhatsApp`}
-          className="mt-3 inline-flex w-full items-center justify-center gap-1.5 rounded-full bg-brand px-3 py-2.5 text-center text-[11px] font-bold leading-tight text-white shadow-brand transition-all duration-240 ease-artisan hover:-translate-y-0.5 hover:bg-whatsapp hover:shadow-whatsapp focus:outline-none focus-visible:ring-2 focus-visible:ring-lila-600 focus-visible:ring-offset-2 focus-visible:ring-offset-surface active:translate-y-0 sm:mt-4 sm:gap-2 sm:px-4 sm:py-3 sm:text-sm"
+          className="group/link mt-3 inline-flex w-full items-center justify-between gap-2 border-t-2 border-ink/10 py-3.5 text-[13px] font-semibold text-lila-800 transition-colors duration-240 ease-artisan hover:text-ink focus:outline-none focus-visible:ring-2 focus-visible:ring-lila-600 focus-visible:ring-offset-2 focus-visible:ring-offset-canvas sm:text-[14px]"
         >
-          <MessageCircle className="h-4 w-4 shrink-0" aria-hidden="true" />
-          Quiero uno así
+          <span className="inline-flex items-center gap-1.5">
+            <MessageCircle className="h-4 w-4 shrink-0" aria-hidden="true" />
+            Quiero uno así
+          </span>
+          <ArrowRight
+            className="h-4 w-4 shrink-0 transition-transform duration-240 ease-artisan group-hover/link:translate-x-1"
+            aria-hidden="true"
+          />
         </a>
       </div>
     </article>

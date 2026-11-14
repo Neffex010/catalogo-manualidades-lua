@@ -15,12 +15,18 @@ const MXN_FORMATTER = new Intl.NumberFormat('es-MX', {
 
 /**
  * Formatea un precio en pesos mexicanos.
- * @param {number} value
- * @returns {string} Ej. "$1,250" o "$69"
+ *
+ * Devuelve `null` cuando no hay precio real (la tienda aun no lo define). Asi
+ * ningun componente puede terminar mostrando "$0" por accidente.
+ *
+ * @param {number|string|null|undefined} value
+ * @returns {string|null} Ej. "$1,250" o "$69"
  */
 export function formatPrice(value) {
+  if (value === null || value === undefined || value === '') return null
+
   const price = Number(value)
-  return Number.isFinite(price) ? MXN_FORMATTER.format(price) : MXN_FORMATTER.format(0)
+  return Number.isFinite(price) ? MXN_FORMATTER.format(price) : null
 }
 
 /**

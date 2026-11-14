@@ -19,10 +19,15 @@ export default function Footer() {
   const quickLinks = SECTIONS.filter(({ id }) => id !== 'inicio')
 
   return (
-    <footer className="mt-16 border-t border-line bg-surface sm:mt-20">
+    <footer className="mt-4 border-t border-line bg-surface sm:mt-8">
       <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6 sm:py-16 lg:px-8">
         {/* Llamada final a la accion */}
-        <div className="relative overflow-hidden rounded-4xl bg-brand px-6 py-10 text-center shadow-lift sm:px-10 sm:py-14">
+        <div className="relative overflow-hidden rounded-[1.5rem] border-2 border-ink bg-brand px-6 py-12 text-center shadow-pop sm:px-10 sm:py-16">
+          {/* Puntada interior: guiño a la costura sin sumar peso visual */}
+          <div
+            aria-hidden="true"
+            className="pointer-events-none absolute inset-3 rounded-[1rem] border-2 border-dashed border-white/25 sm:inset-4"
+          />
           {/* Textura decorativa */}
           <div
             aria-hidden="true"
@@ -34,10 +39,10 @@ export default function Footer() {
           />
 
           <div className="relative">
-            <h2 className="font-display text-2xl font-semibold leading-snug text-white sm:text-3xl">
+            <h2 className="font-display text-[2.1rem] font-semibold leading-[1.02] text-white sm:text-[2.8rem]">
               ¿Tienes una idea en mente? 🧶
             </h2>
-            <p className="mx-auto mt-3 max-w-md text-sm leading-relaxed text-white sm:text-base">
+            <p className="mx-auto mt-3 max-w-md text-[16px] leading-relaxed text-white sm:text-[17px]">
               Cuéntanos qué quieres crear y te cotizamos sin compromiso.
             </p>
 
@@ -45,7 +50,7 @@ export default function Footer() {
               href={getGeneralWhatsAppUrl()}
               target="_blank"
               rel="noopener noreferrer"
-              className="mt-7 inline-flex items-center justify-center gap-2 rounded-full bg-white px-7 py-3.5 text-sm font-bold text-lila-800 shadow-card transition-all duration-240 ease-artisan hover:-translate-y-0.5 hover:bg-sand-50 focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-brand sm:text-base"
+              className="mt-7 inline-flex items-center justify-center gap-2 rounded-xl border-2 border-ink bg-white px-7 py-4 text-[15px] font-bold text-lila-800 shadow-pop transition-all duration-240 ease-artisan hover:translate-x-[2px] hover:translate-y-[2px] hover:bg-sand-50 hover:shadow-none focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-brand sm:text-base"
             >
               <MessageCircle className="h-[18px] w-[18px]" aria-hidden="true" />
               Escríbenos por WhatsApp
@@ -74,16 +79,16 @@ export default function Footer() {
               <p className="font-display text-lg font-semibold tracking-[0.18em] text-ink">
                 {BRAND.name}
               </p>
-              <p className="mt-0.5 text-xs text-ink-soft">{BRAND.tagline}</p>
+              <p className="mt-0.5 text-[13px] text-ink-soft">{BRAND.tagline}</p>
             </div>
           </div>
 
-          <nav aria-label="Enlaces del pie" className="flex flex-wrap items-center justify-center gap-1.5">
+          <nav aria-label="Enlaces del pie" className="flex flex-wrap items-center justify-center gap-x-4 gap-y-2">
             {quickLinks.map(({ id, label }) => (
               <a
                 key={id}
                 href={`#${id}`}
-                className="rounded-full px-3.5 py-2 text-sm font-medium text-ink-soft transition-colors duration-160 ease-artisan hover:bg-sand-50 hover:text-lila-800 focus:outline-none focus-visible:ring-2 focus-visible:ring-lila-600 focus-visible:ring-offset-2 focus-visible:ring-offset-surface"
+                className="link-rule py-1 text-[12px] font-semibold text-ink-soft transition-colors duration-160 ease-artisan hover:text-ink focus:outline-none focus-visible:ring-2 focus-visible:ring-lila-600 focus-visible:ring-offset-2 focus-visible:ring-offset-surface sm:text-[13px]"
               >
                 {label}
               </a>
@@ -92,7 +97,7 @@ export default function Footer() {
               href={getGeneralWhatsAppUrl()}
               target="_blank"
               rel="noopener noreferrer"
-              className="rounded-full px-3.5 py-2 text-sm font-medium text-ink-soft transition-colors duration-160 ease-artisan hover:bg-sand-50 hover:text-lila-800 focus:outline-none focus-visible:ring-2 focus-visible:ring-lila-600 focus-visible:ring-offset-2 focus-visible:ring-offset-surface"
+              className="link-rule py-1 text-[12px] font-semibold text-ink-soft transition-colors duration-160 ease-artisan hover:text-ink focus:outline-none focus-visible:ring-2 focus-visible:ring-lila-600 focus-visible:ring-offset-2 focus-visible:ring-offset-surface sm:text-[13px]"
             >
               WhatsApp
             </a>
@@ -101,10 +106,10 @@ export default function Footer() {
 
         {/* Linea de copyright */}
         <div className="mt-8 flex flex-col items-center gap-2 border-t border-line pt-6 text-center sm:flex-row sm:justify-between sm:text-left">
-          <p className="text-xs text-ink-muted">
+          <p className="text-[13px] text-ink-muted">
             © {year} {BRAND.name}. Todos los derechos reservados.
           </p>
-          <p className="flex items-center gap-1.5 text-xs text-ink-muted">
+          <p className="flex items-center gap-1.5 text-[13px] text-ink-muted">
             Hecho con <Heart className="h-3.5 w-3.5 text-brand" aria-hidden="true" /> y mucho hilo
           </p>
         </div>

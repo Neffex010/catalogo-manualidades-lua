@@ -7,7 +7,7 @@
  * -----------------------------------------------------------------------------
  */
 
-import { ALL_CATEGORY, CATEGORIES, PRICED_CATEGORIES, SUBCATEGORIES } from '../config/site.js'
+import { ALL_CATEGORY, CATEGORIES, SUBCATEGORIES } from '../config/site.js'
 import { ALL_COLOR_FAMILY, COLOR_FAMILIES, getColorFamily } from './color.js'
 import { normalizeToken } from './format.js'
 
@@ -146,7 +146,7 @@ export function getSubcategories(products = []) {
 
 /**
  * Ordenes disponibles en la barra del catalogo. `relevance` conserva el orden
- * curado (disponibles primero) que ya aplica `sortProducts`.
+ * curado (las piezas agotadas al final) que ya aplica `sortProducts`.
  */
 export const SORT_OPTIONS = [
   { value: 'relevance', label: 'Relevancia' },
@@ -158,13 +158,12 @@ export const SORT_OPTIONS = [
 /**
  * Precio comparable dentro de los ordenes por precio.
  *
- * Devuelve `null` cuando la pieza no publica precio (categoria a cotizar o dato
- * ausente). Se usa `null` en lugar de un centinela numerico porque `Infinity`
- * invierte el resultado al ordenar de mayor a menor: una pieza a cotizar
- * terminaria primero. El comparador decide el destino de los `null`.
+ * Devuelve `null` cuando la pieza no publica precio. Se usa `null` en lugar de
+ * un centinela numerico porque `Infinity` invierte el resultado al ordenar de
+ * mayor a menor: una pieza a cotizar terminaria primero. El comparador decide
+ * el destino de los `null`.
  */
 function comparablePrice(product) {
-  if (!PRICED_CATEGORIES.includes(product?.category)) return null
   return Number.isFinite(product?.price) ? product.price : null
 }
 
@@ -191,10 +190,10 @@ function comparePrices(a, b, direction) {
 /**
  * Ordena el resultado ya filtrado.
  *
- * La disponibilidad sigue mandando en todos los ordenes (una pieza agotada no
- * deberia colarse entre las primeras solo por ser barata); dentro de cada grupo
- * se aplica el criterio elegido. `Array.prototype.sort` es estable, asi que el
- * orden curado se conserva cuando hay empates.
+ * Solo las piezas marcadas como agotadas van al final; un producto sin dato de
+ * disponibilidad conserva su lugar. Dentro de cada grupo se aplica el criterio
+ * elegido. `Array.prototype.sort` es estable, asi que el orden curado se
+ * conserva cuando hay empates.
  *
  * @param {Array<object>} products
  * @param {'relevance'|'price-asc'|'price-desc'|'name'} sort
@@ -203,21 +202,25 @@ function comparePrices(a, b, direction) {
 export function sortCatalog(products = [], sort = 'relevance') {
   const byAvailability = sortProducts(products)
 
+  // Solo lo marcado como agotado pierde prioridad; lo desconocido no.
+  const byAvailabilityThen = (a, b) =>
+    (a?.available === false ? 1 : 0) - (b?.available === false ? 1 : 0)
+
   switch (sort) {
     case 'price-asc':
       return byAvailability.sort((a, b) => {
-        if (a.available !== b.available) return a.available ? -1 : 1
-        return comparePrices(a, b, 'asc')
+        const rank = byAvailabilityThen(a, b)
+        return rank !== 0 ? rank : comparePrices(a, b, 'asc')
       })
     case 'price-desc':
       return byAvailability.sort((a, b) => {
-        if (a.available !== b.available) return a.available ? -1 : 1
-        return comparePrices(a, b, 'desc')
+        const rank = byAvailabilityThen(a, b)
+        return rank !== 0 ? rank : comparePrices(a, b, 'desc')
       })
     case 'name':
       return byAvailability.sort((a, b) => {
-        if (a.available !== b.available) return a.available ? -1 : 1
-        return String(a.name ?? '').localeCompare(String(b.name ?? ''), 'es')
+        const rank = byAvailabilityThen(a, b)
+        return rank !== 0 ? rank : String(a.name ?? '').localeCompare(String(b.name ?? ''), 'es')
       })
     default:
       return byAvailability
@@ -249,30 +252,15 @@ export function getColorFamilies(products = []) {
 }
 
 /**
- * Ordena el catalogo: primero las piezas disponibles y al final las agotadas,
- * respetando el orden curado del origen de datos (catalogo local o API) dentro
- * de cada grupo. Array.prototype.sort es estable, por lo que no hay que
- * comparar nombres.
+ * Ordena el catalogo: solo las piezas marcadas como agotadas se van al final;
+ * el resto conserva el orden curado del origen de datos (catalogo local o API).
+ * Un producto sin dato de disponibilidad no se penaliza, porque "no lo se" no
+ * es "agotado".
  *
  * @param {Array<object>} products
  * @returns {Array<object>}
  */
 export function sortProducts(products = []) {
-  return [...products].sort((a, b) => {
-    if (a.available !== b.available) return a.available ? -1 : 1
-    return 0
-  })
-}
-
-/**
- * Resumen para el encabezado del catalogo.
- * @param {Array<object>} products
- * @returns {{ total: number, disponibles: number, categorias: number }}
- */
-export function getCatalogStats(products = []) {
-  return {
-    total: products.length,
-    disponibles: products.filter((product) => product.available).length,
-    categorias: getCategories(products).length,
-  }
+  const rank = (product) => (product?.available === false ? 1 : 0)
+  return [...products].sort((a, b) => rank(a) - rank(b))
 }

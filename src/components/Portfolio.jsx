@@ -56,13 +56,14 @@ export default function Portfolio({ designs = [], loading = false, onOpenDetail 
     <section id="disenos" aria-labelledby="disenos-titulo">
       <SectionHeading
         id="disenos-titulo"
+        index="01"
         eyebrow="Portafolio"
         title="Diseños tejidos a pedido"
         description="Estas fotos son muestras reales de nuestro trabajo. Elige el diseño que te guste y lo tejemos especialmente para ti: no manejamos inventario de piezas terminadas."
       />
 
       {/* Segmento por tipo de pieza. Los conteos salen del catalogo real. */}
-      <div className="mt-6 sm:mt-8">
+      <div className="mt-7 sm:mt-9">
         <SubcategoryFilter
           subcategories={subcategories}
           activeSubcategory={activeSubcategory}
@@ -70,10 +71,10 @@ export default function Portfolio({ designs = [], loading = false, onOpenDetail 
         />
       </div>
 
-      <div className="mt-5 grid grid-cols-2 gap-3 sm:mt-7 sm:gap-5 lg:grid-cols-3 xl:grid-cols-4 xl:gap-6">
+      <div className="mt-7 grid grid-cols-2 gap-x-3 gap-y-8 sm:mt-9 sm:gap-x-5 sm:gap-y-10 lg:grid-cols-3 xl:grid-cols-4 xl:gap-x-6">
         {loading ? (
           Array.from({ length: INITIAL_COUNT }, (_, index) => (
-            <ProductCardSkeleton key={`design-skeleton-${index}`} />
+            <ProductCardSkeleton key={`design-skeleton-${index}`} variant="design" />
           ))
         ) : shownDesigns.length > 0 ? (
           shownDesigns.map((design, index) => (
@@ -85,7 +86,7 @@ export default function Portfolio({ designs = [], loading = false, onOpenDetail 
             />
           ))
         ) : (
-          <div className="col-span-full rounded-3xl border border-line bg-surface px-6 py-12 text-center">
+          <div className="col-span-full rounded-2xl border border-line bg-surface px-6 py-12 text-center">
             <Sparkles className="mx-auto h-8 w-8 text-lila-700" aria-hidden="true" />
             <p className="mt-3 font-display text-lg font-semibold text-ink">
               Estamos preparando nuevos diseños
@@ -100,7 +101,7 @@ export default function Portfolio({ designs = [], loading = false, onOpenDetail 
       {/* Paginacion por tandas: el portafolio no obliga a recorrer todo. */}
       {!loading && shownDesigns.length > 0 && (
         <div className="mt-8 flex flex-col items-center gap-3 sm:mt-10">
-          <p role="status" aria-live="polite" className="text-xs text-ink-muted sm:text-sm">
+          <p role="status" aria-live="polite" className="text-[13px] text-ink-muted sm:text-[14px]">
             Mostrando{' '}
             <span className="font-semibold tabular-nums text-ink-soft">
               {shownDesigns.length}
@@ -116,7 +117,7 @@ export default function Portfolio({ designs = [], loading = false, onOpenDetail 
             <button
               type="button"
               onClick={() => setVisibleCount((count) => count + PAGE_SIZE)}
-              className="group inline-flex items-center gap-2 rounded-full border border-lila-300 bg-surface px-7 py-3.5 text-sm font-semibold text-lila-800 shadow-soft transition-all duration-240 ease-artisan hover:-translate-y-0.5 hover:border-brand hover:bg-brand hover:text-white hover:shadow-brand focus:outline-none focus-visible:ring-2 focus-visible:ring-lila-600 focus-visible:ring-offset-2 focus-visible:ring-offset-canvas active:translate-y-0"
+              className="group inline-flex items-center gap-2 rounded-full border-2 border-lila-300 bg-surface px-7 py-3.5 text-[15px] font-semibold text-lila-800 shadow-soft transition-all duration-240 ease-artisan hover:-translate-y-0.5 hover:border-brand hover:bg-brand hover:text-white hover:shadow-brand focus:outline-none focus-visible:ring-2 focus-visible:ring-lila-600 focus-visible:ring-offset-2 focus-visible:ring-offset-canvas active:translate-y-0"
             >
               <Plus
                 className="h-4 w-4 transition-transform duration-240 group-hover:rotate-90"
@@ -129,12 +130,12 @@ export default function Portfolio({ designs = [], loading = false, onOpenDetail 
       )}
 
       {/* Cierre del portafolio: refuerza el trabajo personalizado. */}
-      <div className="mt-8 flex flex-col items-start gap-4 rounded-3xl border border-lila-200 bg-lila-50/70 p-5 sm:mt-10 sm:flex-row sm:items-center sm:justify-between sm:p-7">
+      <div className="mt-10 flex flex-col items-start gap-5 border-l-[3px] border-clay bg-clay-soft/45 px-5 py-6 sm:mt-12 sm:flex-row sm:items-center sm:justify-between sm:px-8 sm:py-7">
         <div>
-          <p className="font-display text-lg font-semibold text-ink sm:text-xl">
+          <p className="font-display text-[1.35rem] font-semibold text-ink sm:text-[1.5rem]">
             ¿Tienes otra idea en mente?
           </p>
-          <p className="mt-1 text-sm leading-relaxed text-ink-soft">
+          <p className="mt-1 text-[15px] leading-relaxed text-ink-soft">
             También tejemos diseños personalizados: cuéntanos qué imaginas y lo hacemos realidad.
           </p>
         </div>
@@ -142,7 +143,7 @@ export default function Portfolio({ designs = [], loading = false, onOpenDetail 
           href={getGeneralWhatsAppUrl()}
           target="_blank"
           rel="noopener noreferrer"
-          className="inline-flex shrink-0 items-center justify-center gap-2 rounded-full bg-brand px-6 py-3.5 text-sm font-semibold text-white shadow-brand transition-all duration-240 ease-artisan hover:-translate-y-0.5 hover:bg-lila-800 hover:shadow-lift focus:outline-none focus-visible:ring-2 focus-visible:ring-lila-600 focus-visible:ring-offset-2 focus-visible:ring-offset-lila-50"
+          className="inline-flex shrink-0 items-center justify-center gap-2 rounded-xl border-2 border-ink bg-brand px-6 py-3.5 text-[15px] font-bold text-white shadow-pop transition-all duration-240 ease-artisan hover:translate-x-[2px] hover:translate-y-[2px] hover:bg-lila-800 hover:shadow-none focus:outline-none focus-visible:ring-2 focus-visible:ring-lila-600 focus-visible:ring-offset-2 focus-visible:ring-offset-clay-soft"
         >
           Platícame tu idea
           <ArrowRight className="h-4 w-4" aria-hidden="true" />

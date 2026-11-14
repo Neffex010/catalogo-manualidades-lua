@@ -28,6 +28,7 @@ import {
   STORE_EXTRAS,
   STORE_SERVICES,
 } from '../config/site'
+import colorCatalog from '../data/colorCatalog.json'
 import { getGeneralWhatsAppUrl } from '../utils/whatsapp'
 import SocialIcon from './SocialIcon'
 
@@ -37,16 +38,16 @@ function ContactLink({ icon: Icon, label, value, href, external = false }) {
     <a
       href={href}
       {...(external ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
-      className="group flex items-center gap-3 rounded-2xl border border-line/70 bg-surface px-3.5 py-3 transition-all duration-160 ease-artisan hover:-translate-y-0.5 hover:border-lila-300 hover:shadow-soft focus:outline-none focus-visible:ring-2 focus-visible:ring-lila-600 focus-visible:ring-offset-2 focus-visible:ring-offset-sand-50"
+      className="group flex items-center gap-3 rounded-xl border border-line/70 bg-sand-50/70 px-3.5 py-3 transition-all duration-160 ease-artisan hover:-translate-y-0.5 hover:border-lila-300 hover:bg-sand-50 hover:shadow-soft focus:outline-none focus-visible:ring-2 focus-visible:ring-lila-600 focus-visible:ring-offset-2 focus-visible:ring-offset-surface"
     >
-      <span className="grid h-9 w-9 shrink-0 place-items-center rounded-full bg-lila-100 text-lila-800">
+      <span className="grid h-10 w-10 shrink-0 place-items-center rounded-full bg-lila-100 text-lila-800">
         <Icon className="h-4 w-4" aria-hidden="true" />
       </span>
       <span className="min-w-0 flex-1">
-        <span className="block text-[10px] font-bold uppercase tracking-wide text-ink-muted">
+        <span className="block text-[12px] font-bold uppercase tracking-[0.1em] text-ink-muted">
           {label}
         </span>
-        <span className="block truncate text-sm font-semibold text-ink group-hover:text-lila-800">
+        <span className="block truncate text-[15px] font-semibold text-ink group-hover:text-lila-800">
           {value}
         </span>
       </span>
@@ -61,7 +62,7 @@ function ContactLink({ icon: Icon, label, value, href, external = false }) {
 /** Etiqueta compacta para marcas, extras y servicios. */
 function Tag({ children }) {
   return (
-    <span className="rounded-full border border-line bg-surface px-3 py-1.5 text-xs font-semibold text-ink-soft">
+    <span className="rounded-full border border-line bg-sand-50 px-3 py-1.5 text-[13px] font-semibold text-ink-soft">
       {children}
     </span>
   )
@@ -72,48 +73,44 @@ export default function StoreInfo() {
     <section
       id="tienda"
       aria-labelledby="tienda-titulo"
-      className="mx-auto w-full max-w-7xl scroll-mt-24 px-4 sm:px-6 lg:px-8"
+      className="mx-auto w-full max-w-7xl scroll-mt-24 px-4 py-16 sm:px-6 sm:py-20 lg:px-8 lg:py-24"
     >
-      <div className="relative overflow-hidden rounded-4xl border border-line bg-surface p-6 shadow-soft sm:p-8 lg:p-10">
-        <div aria-hidden="true" className="texture-linen pointer-events-none absolute inset-0" />
+      <div className="relative border-t-2 border-ink/15 pt-8 sm:pt-10">
+        <div aria-hidden="true" className="texture-linen pointer-events-none absolute inset-0 opacity-70" />
 
         <div className="relative">
           {/* Encabezado */}
           <div className="max-w-2xl">
-            <p className="text-xs font-semibold uppercase tracking-[0.3em] text-lila-800">
-              Visítanos
-            </p>
+            <p className="eyebrow">Visítanos</p>
             <h2
               id="tienda-titulo"
-              className="mt-3 font-display text-2xl font-semibold tracking-tight text-ink sm:text-3xl"
+              className="mt-3 font-display text-[2.5rem] font-semibold leading-[0.98] tracking-[-0.03em] text-ink sm:text-[3.4rem] lg:text-[3.8rem]"
             >
               Ven a conocer la tienda
             </h2>
-            <p className="mt-2 text-sm leading-relaxed text-ink-soft sm:text-base">
+            <p className="mt-4 max-w-xl text-[15px] leading-[1.65] text-ink-soft sm:text-[17px]">
               Compara tonos, toca las texturas y elige el material para tu próximo proyecto.
             </p>
           </div>
 
-          <div className="mt-6 grid gap-3 lg:grid-cols-5">
+          <div className="mt-7 grid gap-3 lg:grid-cols-5 sm:mt-9">
             {/* Direccion y horario */}
-            <div className="flex flex-col justify-between rounded-3xl border border-line bg-sand-50 p-5 lg:col-span-3">
+            <div className="flex flex-col justify-between rounded-[1.35rem] border-2 border-ink/10 bg-surface p-5 shadow-pop-sand sm:p-6 lg:col-span-3">
               <div>
                 <div className="flex items-center gap-2">
-                  <span className="grid h-9 w-9 place-items-center rounded-full bg-lila-100 text-lila-800">
+                  <span className="grid h-10 w-10 place-items-center rounded-full bg-lila-100 text-lila-800">
                     <MapPin className="h-4 w-4" aria-hidden="true" />
                   </span>
-                  <p className="text-[10px] font-bold uppercase tracking-wide text-ink-muted">
-                    Dirección
-                  </p>
+                  <p className="meta-label">Dirección</p>
                 </div>
 
-                <p className="mt-3 font-display text-lg font-semibold leading-snug text-ink sm:text-xl">
+                <p className="mt-3 font-display text-[1.45rem] font-semibold leading-snug text-ink sm:text-[1.6rem]">
                   {CONTACT.address.street}
                 </p>
-                <p className="mt-1 text-sm text-ink-soft">{CONTACT.address.reference}</p>
-                <p className="text-sm text-ink-soft">{CONTACT.address.city}</p>
+                <p className="mt-1 text-[15px] text-ink-soft">{CONTACT.address.reference}</p>
+                <p className="text-[15px] text-ink-soft">{CONTACT.address.city}</p>
 
-                <p className="mt-4 flex items-center gap-2 text-sm font-medium text-ink-soft">
+                <p className="mt-4 flex items-center gap-2 text-[15px] font-medium text-ink-soft">
                   <Clock className="h-4 w-4 shrink-0 text-lila-700" aria-hidden="true" />
                   Horario: {CONTACT.hours}
                 </p>
@@ -123,7 +120,7 @@ export default function StoreInfo() {
                 href={CONTACT.address.mapsUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="mt-5 inline-flex w-fit items-center gap-2 rounded-full bg-brand px-5 py-2.5 text-sm font-semibold text-white shadow-brand transition-all duration-240 ease-artisan hover:-translate-y-0.5 hover:bg-lila-800 hover:shadow-lift focus:outline-none focus-visible:ring-2 focus-visible:ring-lila-600 focus-visible:ring-offset-2 focus-visible:ring-offset-sand-50"
+                className="mt-5 inline-flex w-fit items-center gap-2 rounded-xl border-2 border-ink bg-brand px-5 py-3 text-[14px] font-bold text-white shadow-pop transition-all duration-240 ease-artisan hover:translate-x-[2px] hover:translate-y-[2px] hover:bg-lila-800 hover:shadow-none focus:outline-none focus-visible:ring-2 focus-visible:ring-lila-600 focus-visible:ring-offset-2 focus-visible:ring-offset-surface"
               >
                 <Navigation className="h-4 w-4" aria-hidden="true" />
                 Cómo llegar
@@ -131,10 +128,8 @@ export default function StoreInfo() {
             </div>
 
             {/* Contacto directo */}
-            <div className="rounded-3xl border border-line bg-sand-50 p-5 lg:col-span-2">
-              <p className="text-[10px] font-bold uppercase tracking-wide text-ink-muted">
-                Contacto y atención
-              </p>
+            <div className="rounded-[1.35rem] border border-line/80 bg-surface p-5 sm:p-6 lg:col-span-2">
+              <p className="meta-label">Contacto y atención</p>
 
               <div className="mt-3 flex flex-col gap-2">
                 <ContactLink
@@ -165,14 +160,12 @@ export default function StoreInfo() {
             </div>
 
             {/* Marcas, extras y servicios */}
-            <div className="rounded-3xl border border-line bg-sand-50 p-5 lg:col-span-5">
+            <div className="rounded-[1.35rem] border border-line/80 bg-surface p-5 sm:p-6 lg:col-span-5">
               <div className="flex flex-wrap items-center gap-2">
-                <span className="grid h-9 w-9 place-items-center rounded-full bg-lila-100 text-lila-800">
+                <span className="grid h-10 w-10 place-items-center rounded-full bg-lila-100 text-lila-800">
                   <Scissors className="h-4 w-4" aria-hidden="true" />
                 </span>
-                <p className="text-[10px] font-bold uppercase tracking-wide text-ink-muted">
-                  Marcas de hilo y estambre
-                </p>
+                <p className="meta-label">Marcas de hilo y estambre</p>
               </div>
 
               <div className="mt-3 flex flex-wrap gap-2">
@@ -181,9 +174,14 @@ export default function StoreInfo() {
                 ))}
               </div>
 
-              <div className="mt-5 grid gap-5 border-t border-line pt-4 sm:grid-cols-2">
+              <p className="mt-2 text-[13px] leading-relaxed text-ink-muted">
+                {colorCatalog.brands.length} de ellas tienen carta de color con todos sus
+                tonos en Materiales.
+              </p>
+
+              <div className="mt-5 grid gap-5 border-t border-ink/10 pt-4 sm:grid-cols-2">
                 <div>
-                  <p className="flex items-center gap-2 text-[10px] font-bold uppercase tracking-wide text-ink-muted">
+                  <p className="meta-label flex items-center gap-2">
                     <ShoppingBag className="h-4 w-4 text-lila-700" aria-hidden="true" />
                     También encontrarás
                   </p>
@@ -195,7 +193,7 @@ export default function StoreInfo() {
                 </div>
 
                 <div>
-                  <p className="flex items-center gap-2 text-[10px] font-bold uppercase tracking-wide text-ink-muted">
+                  <p className="meta-label flex items-center gap-2">
                     <Sparkles className="h-4 w-4 text-lila-700" aria-hidden="true" />
                     Servicios
                   </p>
@@ -203,7 +201,7 @@ export default function StoreInfo() {
                     {STORE_SERVICES.map((service) => (
                       <li
                         key={service}
-                        className="flex items-center gap-2 text-sm font-medium text-ink-soft"
+                        className="flex items-center gap-2 text-[15px] font-medium text-ink-soft"
                       >
                         <span
                           aria-hidden="true"

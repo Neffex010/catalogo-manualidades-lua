@@ -69,8 +69,14 @@ function normalizeVariant(product, variant, index) {
   const image = imageManifest[imageUrl] ?? null
   const rawCode = variant.colorCode ?? variant.color_code ?? ''
   const colorCode = String(rawCode).trim()
+  // El stock es opcional: sin dato queda en `null` y la UI invita a confirmar.
   const rawStock = Number(variant.stock)
-  const stock = Number.isFinite(rawStock) ? Math.max(0, rawStock) : 0
+  const hasStockData =
+    variant.stock !== null &&
+    variant.stock !== undefined &&
+    variant.stock !== '' &&
+    Number.isFinite(rawStock)
+  const stock = hasStockData ? Math.max(0, rawStock) : null
 
   return {
     id: String(variant.id ?? `${product.id}-${index}`),
@@ -101,9 +107,10 @@ function normalizeVariant(product, variant, index) {
  * manifiesto (p. ej. una URL remota del backend), los campos quedan en `null` y
  * la tarjeta cae a un <img> simple con la imagen original.
  *
- * VARIANTES: si el producto tiene colores, `available` se calcula a partir del
- * stock real de las variantes. Asi un producto con todos los colores agotados
- * se ordena al final igual que una pieza artesanal agotada.
+ * VARIANTES: la disponibilidad se calcula solo cuando hay stock real en alguna
+ * variante. Si la tienda no lleva inventario, queda en `null` (sin dato) y la
+ * interfaz no muestra "Disponible" ni "Agotado": invita a confirmar por
+ * WhatsApp.
  *
  * @param {object} raw
  * @returns {object|null}
@@ -122,11 +129,21 @@ function normalizeProduct(raw) {
   const firstAvailableVariant = variants.find((variant) => variant.stock > 0) ?? variants[0] ?? null
   const imageUrl = rawImage ?? firstAvailableVariant?.imageUrl ?? FALLBACK_IMAGE
   const image = imageManifest[imageUrl] ?? null
-  const totalStock = variants.reduce((total, variant) => total + variant.stock, 0)
+  const knownStocks = variants.filter(
+    (variant) => typeof variant.stock === 'number' && Number.isFinite(variant.stock)
+  )
   const available =
-    variants.length > 0
-      ? variants.some((variant) => variant.stock > 0)
-      : Boolean(raw.available ?? raw.disponible ?? true)
+    knownStocks.length > 0
+      ? knownStocks.some((variant) => variant.stock > 0)
+      : typeof raw.available === 'boolean'
+        ? raw.available
+        : null
+
+  // El precio es opcional: `null` significa "se cotiza", nunca "$0".
+  const rawPrice = raw.price ?? raw.precio
+  const numericPrice =
+    rawPrice === null || rawPrice === undefined || rawPrice === '' ? null : Number(rawPrice)
+  const price = Number.isFinite(numericPrice) ? numericPrice : null
 
   return {
     id: String(id),
@@ -134,7 +151,7 @@ function normalizeProduct(raw) {
     brand: raw.brand ?? raw.marca ?? '',
     category: raw.category ?? raw.categoria ?? 'manualidades',
     subcategory: raw.subcategory ?? raw.subcategoria ?? '',
-    price: Number(raw.price ?? raw.precio ?? 0),
+    price,
     description: raw.description ?? raw.descripcion ?? '',
     imageUrl,
     // `srcset` listos para <picture>; null si no hay variantes generadas.
@@ -148,7 +165,6 @@ function normalizeProduct(raw) {
     imageWidth: image?.width ?? raw.width ?? raw.ancho ?? firstAvailableVariant?.imageWidth ?? null,
     imageHeight: image?.height ?? raw.height ?? raw.alto ?? firstAvailableVariant?.imageHeight ?? null,
     available,
-    totalStock,
     variants,
     tags: Array.isArray(raw.tags) ? raw.tags : [],
   }

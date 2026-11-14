@@ -9,8 +9,10 @@
  *     Vienen de `manualidades.js` y no manejan variantes de color.
  *
  *   - ESTAMBRES / HILOS: productos con variantes. Cada color es una variante
- *     independiente con su propio codigo, nombre, muestra de color, imagen y
- *     stock. Las imagenes se nombran con el formato de Google Drive:
+ *     independiente con su propio codigo, nombre, muestra de color e imagen.
+ *     El stock es OPCIONAL: si la tienda no lleva inventario, la variante queda
+ *     sin `stock` y la UI invita a confirmar existencias por WhatsApp.
+ *     Las imagenes se nombran con el formato de Google Drive:
  *
  *       01_BLANCO_KOMFY.webp
  *       06_CIELO_KOTTON_MILK.webp
@@ -109,18 +111,18 @@ function slugify(value) {
  * Tambien acepta rutas completas; solo se conserva el nombre del archivo.
  *
  * @param {string} filename Nombre del archivo (con o sin ruta)
- * @param {{ basePath?: string, stock?: number }} [options]
+ * @param {{ basePath?: string, stock?: number|null }} [options]
  * @returns {{
  *   id: string,
  *   colorCode: string,
  *   colorName: string,
  *   hexColor: string,
  *   imageUrl: string,
- *   stock: number,
+ *   stock: number|null,
  *   line: string
  * } | null}
  */
-export function parseDriveFilename(filename, { basePath = VARIANTS_BASE_PATH, stock = 0 } = {}) {
+export function parseDriveFilename(filename, { basePath = VARIANTS_BASE_PATH, stock = null } = {}) {
   const raw = String(filename ?? '').trim()
   if (!raw) return null
 
@@ -164,6 +166,8 @@ export function parseDriveFilename(filename, { basePath = VARIANTS_BASE_PATH, st
   const line = toTitleCase(lineTokens.join(' '))
   const normalizedColor = normalizeToken(rawColorName)
   const normalizedStock = Number(stock)
+  const hasStockData =
+    stock !== null && stock !== undefined && stock !== '' && Number.isFinite(normalizedStock)
 
   return {
     id: [colorCode || 'sin-codigo', slugify(rawColorName), line ? slugify(line) : '']
@@ -175,7 +179,7 @@ export function parseDriveFilename(filename, { basePath = VARIANTS_BASE_PATH, st
     imageUrl: raw.startsWith('/')
       ? raw
       : `${String(basePath).replace(/\/+$/, '')}/${baseName}`,
-    stock: Number.isFinite(normalizedStock) ? Math.max(0, normalizedStock) : 0,
+    stock: hasStockData ? Math.max(0, normalizedStock) : null,
     line,
   }
 }
@@ -188,20 +192,21 @@ export function parseDriveFilename(filename, { basePath = VARIANTS_BASE_PATH, st
  * Kotton Milk" son variantes distintas aunque el archivo se llame igual.
  *
  * @param {string[]} filenames
- * @param {{ basePath?: string, stock?: number, stockByColor?: Record<string, number>, idPrefix?: string }} [options]
+ * @param {{ basePath?: string, stockByColor?: Record<string, number>|null, idPrefix?: string }} [options]
  * @returns {Array<ReturnType<typeof parseDriveFilename>>}
  */
 function buildVariants(
   filenames,
-  { basePath = VARIANTS_BASE_PATH, stock = 12, stockByColor = {}, idPrefix = '' } = {}
+  { basePath = VARIANTS_BASE_PATH, stockByColor = null, idPrefix = '' } = {}
 ) {
   return filenames
     .map((filename) => {
       const code = filename.match(/^(\d+)/)?.[1]?.padStart(2, '0')
+      // Solo se asigna stock si la tienda lo informo para ese codigo.
       const variantStock =
-        code && Object.prototype.hasOwnProperty.call(stockByColor, code)
+        stockByColor && code && Object.prototype.hasOwnProperty.call(stockByColor, code)
           ? stockByColor[code]
-          : stock
+          : null
 
       const variant = parseDriveFilename(filename, { basePath, stock: variantStock })
       if (!variant) return null
@@ -278,16 +283,11 @@ const KOTTON_MILK_THREAD_FILENAMES = [
 const KOMFY_VARIANTS = buildVariants(KOMFY_YARN_FILENAMES, {
   basePath: `${VARIANTS_BASE_PATH}/estambres`,
   idPrefix: 'estambre-komfy',
-  stock: 18,
-  // El lila esta agotado y el arena queda por reponer.
-  stockByColor: { '05': 0, '07': 3 },
 })
 
 const KOTTON_MILK_YARN_VARIANTS = buildVariants(KOTTON_MILK_YARN_FILENAMES, {
   basePath: `${VARIANTS_BASE_PATH}/estambres`,
   idPrefix: 'estambre-kotton-milk',
-  stock: 14,
-  stockByColor: { '02': 0, '08': 4 },
 })
 
 /* ========================================================================== */
@@ -297,15 +297,11 @@ const KOTTON_MILK_YARN_VARIANTS = buildVariants(KOTTON_MILK_YARN_FILENAMES, {
 const KOTTON_MILK_THREAD_VARIANTS = buildVariants(KOTTON_MILK_THREAD_FILENAMES, {
   basePath: `${VARIANTS_BASE_PATH}/hilos`,
   idPrefix: 'hilo-kotton-milk',
-  stock: 22,
-  stockByColor: { '03': 0 },
 })
 
 const KOMFY_THREAD_VARIANTS = buildVariants(KOMFY_THREAD_FILENAMES, {
   basePath: `${VARIANTS_BASE_PATH}/hilos`,
   idPrefix: 'hilo-komfy',
-  stock: 25,
-  stockByColor: { '06': 0 },
 })
 
 /* ========================================================================== */
@@ -318,11 +314,9 @@ const VARIANT_PRODUCTS = [
     name: 'Estambre Komfy',
     brand: 'Komfy',
     category: 'estambres',
-    price: 69,
     description:
       'Estambre acrílico de tacto suave y hebra uniforme, ideal para amigurumis, cobijas y prendas de uso diario. Cada ovillo rinde para proyectos medianos y conserva el color después de varios lavados.',
     imageUrl: KOMFY_VARIANTS[0].imageUrl,
-    available: KOMFY_VARIANTS.some((variant) => variant.stock > 0),
     tags: ['estambre', 'acrílico', 'komfy', 'ovillo', 'tejido'],
     variants: KOMFY_VARIANTS,
   },
@@ -331,11 +325,9 @@ const VARIANT_PRODUCTS = [
     name: 'Estambre Kotton Milk',
     brand: 'Kotton Milk',
     category: 'estambres',
-    price: 79,
     description:
       'Mezcla de algodón y acrílico con acabado mate y muy suave al roce. Es la elección favorita para piezas de bebé, accesorios y amigurumis que necesitan caída y frescura.',
     imageUrl: KOTTON_MILK_YARN_VARIANTS[0].imageUrl,
-    available: KOTTON_MILK_YARN_VARIANTS.some((variant) => variant.stock > 0),
     tags: ['estambre', 'algodón', 'kotton milk', 'bebé', 'suave'],
     variants: KOTTON_MILK_YARN_VARIANTS,
   },
@@ -344,11 +336,9 @@ const VARIANT_PRODUCTS = [
     name: 'Hilo Kotton Milk',
     brand: 'Kotton Milk',
     category: 'hilos',
-    price: 49,
     description:
       'Hilo de algodón mercerizado de brillo discreto y gran resistencia. Perfecto para bordado, crochet fino, llaveros y detalles que necesitan una puntada limpia y definida.',
     imageUrl: KOTTON_MILK_THREAD_VARIANTS[0].imageUrl,
-    available: KOTTON_MILK_THREAD_VARIANTS.some((variant) => variant.stock > 0),
     tags: ['hilo', 'algodón', 'mercerizado', 'kotton milk', 'bordado', 'crochet fino'],
     variants: KOTTON_MILK_THREAD_VARIANTS,
   },
@@ -357,11 +347,9 @@ const VARIANT_PRODUCTS = [
     name: 'Hilo Komfy',
     brand: 'Komfy',
     category: 'hilos',
-    price: 39,
     description:
       'Hilo de poliéster de alta tenacidad, pensado para costuras resistentes y trabajos que estarán en movimiento. No se deshilacha con facilidad y mantiene el color por más tiempo.',
     imageUrl: KOMFY_THREAD_VARIANTS[0].imageUrl,
-    available: KOMFY_THREAD_VARIANTS.some((variant) => variant.stock > 0),
     tags: ['hilo', 'poliéster', 'komfy', 'resistente', 'costura'],
     variants: KOMFY_THREAD_VARIANTS,
   },

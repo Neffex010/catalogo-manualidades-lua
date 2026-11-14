@@ -3,9 +3,10 @@
  * -----------------------------------------------------------------------------
  * Catalogo de piezas artesanales (amigurumis, eventos, flores y llaveros).
  *
- * Estas piezas son unicas y no manejan variantes de color: por eso
- * variants siempre es un array vacio. Los valores por defecto
- * (category: 'manualidades', width: 800, height: 1000, available: true)
+ * Estas piezas son unicas y no manejan variantes de color ni precio fijo:
+ * por eso `variants` siempre es un array vacio y cada pieza se cotiza por
+ * WhatsApp segun tamano, color y detalles. Los valores por defecto
+ * (category: 'manualidades', width: 800, height: 1000)
  * se asignan centralizadamente mediante definePiece para evitar codigo redundante.
  * -----------------------------------------------------------------------------
  */
@@ -15,7 +16,6 @@ function definePiece(data) {
     category: 'manualidades',
     width: 800,
     height: 1000,
-    available: true,
     variants: [],
     ...data,
   }
@@ -26,7 +26,6 @@ export const MANUALIDADES = [
     "id": "1",
     "name": "Abejita",
     "subcategory": "Amigurumis",
-    "price": 420,
     "description": "Amigurumi de abeja.",
     "imageUrl": "/images/catalogo/amigurumis/aveja.jpg",
     "tags": [
@@ -39,7 +38,6 @@ export const MANUALIDADES = [
     "id": "2",
     "name": "Ballenita Azul",
     "subcategory": "Amigurumis",
-    "price": 515,
     "description": "Amigurumi de ballena en azul.",
     "imageUrl": "/images/catalogo/amigurumis/ballena-azul.jpg",
     "tags": [
@@ -52,7 +50,6 @@ export const MANUALIDADES = [
     "id": "3",
     "name": "Ballenita Morada",
     "subcategory": "Amigurumis",
-    "price": 490,
     "description": "Amigurumi de ballena en morado.",
     "imageUrl": "/images/catalogo/amigurumis/ballenita-morada.jpg",
     "tags": [
@@ -65,7 +62,6 @@ export const MANUALIDADES = [
     "id": "4",
     "name": "Ballenita Roja",
     "subcategory": "Amigurumis",
-    "price": 525,
     "description": "Amigurumi de ballena en rojo.",
     "imageUrl": "/images/catalogo/amigurumis/ballenita-roja.jpg",
     "tags": [
@@ -78,7 +74,6 @@ export const MANUALIDADES = [
     "id": "5",
     "name": "Ballenita Rosa",
     "subcategory": "Amigurumis",
-    "price": 560,
     "description": "Amigurumi de ballena en rosa.",
     "imageUrl": "/images/catalogo/amigurumis/ballenita-rosa.jpg",
     "tags": [
@@ -91,7 +86,6 @@ export const MANUALIDADES = [
     "id": "6",
     "name": "Cabrita",
     "subcategory": "Amigurumis",
-    "price": 420,
     "description": "Amigurumi de cabra.",
     "imageUrl": "/images/catalogo/amigurumis/cabrita.jpg",
     "tags": [
@@ -104,7 +98,6 @@ export const MANUALIDADES = [
     "id": "7",
     "name": "Capibara",
     "subcategory": "Amigurumis",
-    "price": 455,
     "description": "Amigurumi de capibara.",
     "imageUrl": "/images/catalogo/amigurumis/capibara.jpg",
     "tags": [
@@ -117,7 +110,6 @@ export const MANUALIDADES = [
     "id": "8",
     "name": "Cerebro",
     "subcategory": "Amigurumis",
-    "price": 490,
     "description": "Amigurumi de cerebro.",
     "imageUrl": "/images/catalogo/amigurumis/cerebro.jpg",
     "tags": [
@@ -130,7 +122,6 @@ export const MANUALIDADES = [
     "id": "9",
     "name": "Conejito",
     "subcategory": "Amigurumis",
-    "price": 525,
     "description": "Amigurumi de conejo.",
     "imageUrl": "/images/catalogo/amigurumis/conejito.jpg",
     "tags": [
@@ -143,7 +134,6 @@ export const MANUALIDADES = [
     "id": "10",
     "name": "Coraje",
     "subcategory": "Amigurumis",
-    "price": 560,
     "description": "Amigurumi de Coraje.",
     "imageUrl": "/images/catalogo/amigurumis/coraje.jpg",
     "tags": [
@@ -156,7 +146,6 @@ export const MANUALIDADES = [
     "id": "11",
     "name": "Escandaloso",
     "subcategory": "Amigurumis",
-    "price": 420,
     "description": "Amigurumi de Escandaloso.",
     "imageUrl": "/images/catalogo/amigurumis/escandalosos.jpg",
     "tags": [
@@ -169,7 +158,6 @@ export const MANUALIDADES = [
     "id": "12",
     "name": "Harry Potter",
     "subcategory": "Amigurumis",
-    "price": 455,
     "description": "Amigurumi de Harry Potter.",
     "imageUrl": "/images/catalogo/amigurumis/harry-potter.jpg",
     "tags": [
@@ -182,7 +170,6 @@ export const MANUALIDADES = [
     "id": "13",
     "name": "Hello Kitty",
     "subcategory": "Amigurumis",
-    "price": 490,
     "description": "Amigurumi de Hello Kitty.",
     "imageUrl": "/images/catalogo/amigurumis/hello-kitty.jpg",
     "tags": [
@@ -195,7 +182,6 @@ export const MANUALIDADES = [
     "id": "14",
     "name": "Honguito Azul",
     "subcategory": "Amigurumis",
-    "price": 525,
     "description": "Amigurumi de Honguito en azul.",
     "imageUrl": "/images/catalogo/amigurumis/honguito-azul.jpg",
     "tags": [
@@ -208,7 +194,6 @@ export const MANUALIDADES = [
     "id": "15",
     "name": "Honguito Rojo",
     "subcategory": "Amigurumis",
-    "price": 560,
     "description": "Amigurumi de Honguito en rojo.",
     "imageUrl": "/images/catalogo/amigurumis/honguito-rojo.jpg",
     "tags": [
@@ -221,7 +206,6 @@ export const MANUALIDADES = [
     "id": "16",
     "name": "Loro",
     "subcategory": "Amigurumis",
-    "price": 420,
     "description": "Amigurumi de loro.",
     "imageUrl": "/images/catalogo/amigurumis/loro.jpg",
     "tags": [
@@ -234,7 +218,6 @@ export const MANUALIDADES = [
     "id": "17",
     "name": "Merlina",
     "subcategory": "Amigurumis",
-    "price": 455,
     "description": "Amigurumi de Merlina la bruja.",
     "imageUrl": "/images/catalogo/amigurumis/merlina.jpg",
     "tags": [
@@ -247,7 +230,6 @@ export const MANUALIDADES = [
     "id": "18",
     "name": "Osito Café",
     "subcategory": "Amigurumis",
-    "price": 490,
     "description": "Amigurumi de oso color café.",
     "imageUrl": "/images/catalogo/amigurumis/osito-cafe.jpg",
     "tags": [
@@ -260,7 +242,6 @@ export const MANUALIDADES = [
     "id": "19",
     "name": "Oveja",
     "subcategory": "Amigurumis",
-    "price": 525,
     "description": "Amigurumi de oveja.",
     "imageUrl": "/images/catalogo/amigurumis/oveja.jpg",
     "tags": [
@@ -273,7 +254,6 @@ export const MANUALIDADES = [
     "id": "20",
     "name": "Panda",
     "subcategory": "Amigurumis",
-    "price": 560,
     "description": "Amigurumi de panda.",
     "imageUrl": "/images/catalogo/amigurumis/panda.jpg",
     "tags": [
@@ -286,7 +266,6 @@ export const MANUALIDADES = [
     "id": "21",
     "name": "Pato",
     "subcategory": "Amigurumis",
-    "price": 420,
     "description": "Amigurumi de pato.",
     "imageUrl": "/images/catalogo/amigurumis/pato.jpg",
     "tags": [
@@ -299,7 +278,6 @@ export const MANUALIDADES = [
     "id": "22",
     "name": "Pollito Girasol",
     "subcategory": "Amigurumis",
-    "price": 455,
     "description": "Amigurumi de pollito con girasol.",
     "imageUrl": "/images/catalogo/amigurumis/pollito-girasol.jpg",
     "tags": [
@@ -312,7 +290,6 @@ export const MANUALIDADES = [
     "id": "23",
     "name": "Pollito",
     "subcategory": "Amigurumis",
-    "price": 490,
     "description": "Amigurumi de pollito.",
     "imageUrl": "/images/catalogo/amigurumis/pollito.jpg",
     "tags": [
@@ -325,7 +302,6 @@ export const MANUALIDADES = [
     "id": "24",
     "name": "Pulpo",
     "subcategory": "Amigurumis",
-    "price": 525,
     "description": "Amigurumi de pulpo.",
     "imageUrl": "/images/catalogo/amigurumis/pulpo.jpg",
     "tags": [
@@ -338,7 +314,6 @@ export const MANUALIDADES = [
     "id": "25",
     "name": "Rino",
     "subcategory": "Amigurumis",
-    "price": 620,
     "description": "Amigurumi de rinoceronte.",
     "imageUrl": "/images/catalogo/amigurumis/rino.jpg",
     "tags": [
@@ -351,7 +326,6 @@ export const MANUALIDADES = [
     "id": "26",
     "name": "Snoppy",
     "subcategory": "Amigurumis",
-    "price": 420,
     "description": "Amigurumi de Snoppy.",
     "imageUrl": "/images/catalogo/amigurumis/snnopy.jpg",
     "tags": [
@@ -364,7 +338,6 @@ export const MANUALIDADES = [
     "id": "27",
     "name": "Spiderman Versión G",
     "subcategory": "Amigurumis",
-    "price": 455,
     "description": "Amigurumi de Spiderman en color alternativo.",
     "imageUrl": "/images/catalogo/amigurumis/spider-g.jpg",
     "tags": [
@@ -377,7 +350,6 @@ export const MANUALIDADES = [
     "id": "28",
     "name": "Spiderman Telaraña",
     "subcategory": "Amigurumis",
-    "price": 490,
     "description": "Amigurumi de Spiderman con telaraña.",
     "imageUrl": "/images/catalogo/amigurumis/spiderman-telarana.jpg",
     "tags": [
@@ -390,10 +362,8 @@ export const MANUALIDADES = [
     "id": "29",
     "name": "Spiderman Variación",
     "subcategory": "Amigurumis",
-    "price": 525,
     "description": "Amigurumi de Spiderman en variación de color.",
     "imageUrl": "/images/catalogo/amigurumis/spiderman-variacion.jpg",
-    "available": false,
     "tags": [
       "spiderman",
       "variación",
@@ -404,7 +374,6 @@ export const MANUALIDADES = [
     "id": "30",
     "name": "Spiderman",
     "subcategory": "Amigurumis",
-    "price": 560,
     "description": "Amigurumi de Spiderman.",
     "imageUrl": "/images/catalogo/amigurumis/spiderman.jpg",
     "tags": [
@@ -417,7 +386,6 @@ export const MANUALIDADES = [
     "id": "31",
     "name": "Stitch",
     "subcategory": "Amigurumis",
-    "price": 420,
     "description": "Amigurumi de Stitch.",
     "imageUrl": "/images/catalogo/amigurumis/stitch.jpg",
     "tags": [
@@ -430,10 +398,8 @@ export const MANUALIDADES = [
     "id": "32",
     "name": "Stitch Variación",
     "subcategory": "Amigurumis",
-    "price": 455,
     "description": "Amigurumi de Stitch en variación de color.",
     "imageUrl": "/images/catalogo/amigurumis/stitch-variacion.jpg",
-    "available": false,
     "tags": [
       "stitch",
       "variación",
@@ -444,7 +410,6 @@ export const MANUALIDADES = [
     "id": "33",
     "name": "Toro",
     "subcategory": "Amigurumis",
-    "price": 550,
     "description": "Amigurumi de toro.",
     "imageUrl": "/images/catalogo/amigurumis/toro.jpg",
     "tags": [
@@ -457,7 +422,6 @@ export const MANUALIDADES = [
     "id": "34",
     "name": "Tortugita Rosa",
     "subcategory": "Amigurumis",
-    "price": 525,
     "description": "Amigurumi de tortuga en rosa.",
     "imageUrl": "/images/catalogo/amigurumis/tortugita-rosa.jpg",
     "tags": [
@@ -470,7 +434,6 @@ export const MANUALIDADES = [
     "id": "35",
     "name": "Tortuguita Azul",
     "subcategory": "Amigurumis",
-    "price": 560,
     "description": "Amigurumi de tortuga en azul.",
     "imageUrl": "/images/catalogo/amigurumis/tortuguita-azul.jpg",
     "tags": [
@@ -483,7 +446,6 @@ export const MANUALIDADES = [
     "id": "36",
     "name": "Tortuguita",
     "subcategory": "Amigurumis",
-    "price": 420,
     "description": "Amigurumi de tortuga.",
     "imageUrl": "/images/catalogo/amigurumis/tortuguita.jpg",
     "tags": [
@@ -496,7 +458,6 @@ export const MANUALIDADES = [
     "id": "37",
     "name": "Trapito",
     "subcategory": "Amigurumis",
-    "price": 455,
     "description": "Amigurumi de trapito de cocina.",
     "imageUrl": "/images/catalogo/amigurumis/trapito.jpg",
     "tags": [
@@ -509,7 +470,6 @@ export const MANUALIDADES = [
     "id": "38",
     "name": "Unicornio",
     "subcategory": "Amigurumis",
-    "price": 490,
     "description": "Amigurumi de unicornio.",
     "imageUrl": "/images/catalogo/amigurumis/unicornio.jpg",
     "tags": [
@@ -522,7 +482,6 @@ export const MANUALIDADES = [
     "id": "39",
     "name": "Vaca Rosa",
     "subcategory": "Amigurumis",
-    "price": 525,
     "description": "Amigurumi de vaca en rosa.",
     "imageUrl": "/images/catalogo/amigurumis/vaca-rosa.jpg",
     "tags": [
@@ -535,7 +494,6 @@ export const MANUALIDADES = [
     "id": "40",
     "name": "Vaquita",
     "subcategory": "Amigurumis",
-    "price": 560,
     "description": "Amigurumi de vaquita.",
     "imageUrl": "/images/catalogo/amigurumis/vaquita.jpg",
     "tags": [
@@ -548,7 +506,6 @@ export const MANUALIDADES = [
     "id": "41",
     "name": "Angelito para Bautizo",
     "subcategory": "Eventos",
-    "price": 260,
     "description": "Angelito bordado para bautizo.",
     "imageUrl": "/images/catalogo/eventos/angle.jpg",
     "tags": [
@@ -561,7 +518,6 @@ export const MANUALIDADES = [
     "id": "42",
     "name": "Angelitos",
     "subcategory": "Eventos",
-    "price": 290,
     "description": "Pareja de angelitos.",
     "imageUrl": "/images/catalogo/eventos/anguelitos.jpg",
     "tags": [
@@ -574,7 +530,6 @@ export const MANUALIDADES = [
     "id": "43",
     "name": "Cruces Bordadas",
     "subcategory": "Eventos",
-    "price": 320,
     "description": "Cruces bordadas a medida.",
     "imageUrl": "/images/catalogo/eventos/cruces.jpg",
     "tags": [
@@ -587,7 +542,6 @@ export const MANUALIDADES = [
     "id": "44",
     "name": "Cruz para Bautizo",
     "subcategory": "Eventos",
-    "price": 350,
     "description": "Cruz bordada para bautizo.",
     "imageUrl": "/images/catalogo/eventos/cruz.jpg",
     "tags": [
@@ -600,7 +554,6 @@ export const MANUALIDADES = [
     "id": "45",
     "name": "Graduada",
     "subcategory": "Eventos",
-    "price": 380,
     "description": "Graduada con birrete y toga bordada.",
     "imageUrl": "/images/catalogo/eventos/graduada.jpg",
     "tags": [
@@ -613,7 +566,6 @@ export const MANUALIDADES = [
     "id": "46",
     "name": "Graduados",
     "subcategory": "Eventos",
-    "price": 260,
     "description": "Pareja de graduados con birrete y toga.",
     "imageUrl": "/images/catalogo/eventos/graduados.jpg",
     "tags": [
@@ -626,7 +578,6 @@ export const MANUALIDADES = [
     "id": "47",
     "name": "Oso Graduado",
     "subcategory": "Eventos",
-    "price": 290,
     "description": "Oso con birrete y toga.",
     "imageUrl": "/images/catalogo/eventos/oso-graduado.jpg",
     "tags": [
@@ -639,7 +590,6 @@ export const MANUALIDADES = [
     "id": "48",
     "name": "Pato Graduado",
     "subcategory": "Eventos",
-    "price": 320,
     "description": "Pato con birrete y toga.",
     "imageUrl": "/images/catalogo/eventos/pato-graduado.jpg",
     "tags": [
@@ -652,7 +602,6 @@ export const MANUALIDADES = [
     "id": "49",
     "name": "Rosario",
     "subcategory": "Eventos",
-    "price": 350,
     "description": "Rosario tejido a mano.",
     "imageUrl": "/images/catalogo/eventos/rosario.jpg",
     "tags": [
@@ -665,7 +614,6 @@ export const MANUALIDADES = [
     "id": "50",
     "name": "Arreglo de 3 Rosas",
     "subcategory": "Flores",
-    "price": 370,
     "description": "Arreglo de tres rosas.",
     "imageUrl": "/images/catalogo/flores/arreglo-de-3-rosas.jpg",
     "tags": [
@@ -678,7 +626,6 @@ export const MANUALIDADES = [
     "id": "51",
     "name": "Flor Individual",
     "subcategory": "Flores",
-    "price": 190,
     "description": "Flor suelta con tallo forrado.",
     "imageUrl": "/images/catalogo/flores/flor-individual.jpg",
     "tags": [
@@ -691,7 +638,6 @@ export const MANUALIDADES = [
     "id": "52",
     "name": "Flor Individual Blanca",
     "subcategory": "Flores",
-    "price": 215,
     "description": "Flor individual en blanco.",
     "imageUrl": "/images/catalogo/flores/flor-individual-blanca.jpg",
     "tags": [
@@ -704,10 +650,8 @@ export const MANUALIDADES = [
     "id": "53",
     "name": "Girasol con 2 Flores",
     "subcategory": "Flores",
-    "price": 240,
     "description": "Dos girasoles en una base.",
     "imageUrl": "/images/catalogo/flores/girasol-2-flores-variacion.jpg",
-    "available": false,
     "tags": [
       "girasol",
       "variación",
@@ -718,7 +662,6 @@ export const MANUALIDADES = [
     "id": "54",
     "name": "Girasol Individual",
     "subcategory": "Flores",
-    "price": 265,
     "description": "Girasol individual con tallo forrado.",
     "imageUrl": "/images/catalogo/flores/girasol-individual.jpg",
     "tags": [
@@ -731,7 +674,6 @@ export const MANUALIDADES = [
     "id": "55",
     "name": "Maceta Miniatura con Flor",
     "subcategory": "Flores",
-    "price": 290,
     "description": "Maceta miniatura con su flor.",
     "imageUrl": "/images/catalogo/flores/maceta-miniatura-con-flor.jpg",
     "tags": [
@@ -744,7 +686,6 @@ export const MANUALIDADES = [
     "id": "56",
     "name": "Ramo Clásico Rojo",
     "subcategory": "Flores",
-    "price": 270,
     "description": "Ramo clásico de rosas rojas.",
     "imageUrl": "/images/catalogo/flores/ramo-clasico-rojo.jpg",
     "tags": [
@@ -757,7 +698,6 @@ export const MANUALIDADES = [
     "id": "57",
     "name": "Ramo de 2 Girasoles",
     "subcategory": "Flores",
-    "price": 295,
     "description": "Ramo de dos girasoles con tallos de alambre.",
     "imageUrl": "/images/catalogo/flores/ramo-girasol-con-2-flores.jpg",
     "tags": [
@@ -770,7 +710,6 @@ export const MANUALIDADES = [
     "id": "58",
     "name": "Ramo de Girasoles",
     "subcategory": "Flores",
-    "price": 320,
     "description": "Ramo de girasoles con tallos de alambre.",
     "imageUrl": "/images/catalogo/flores/ramo-girasoles.jpg",
     "tags": [
@@ -783,7 +722,6 @@ export const MANUALIDADES = [
     "id": "59",
     "name": "Ramo Mixto de Tulipanes",
     "subcategory": "Flores",
-    "price": 345,
     "description": "Ramo de tulipanes en varios tonos.",
     "imageUrl": "/images/catalogo/flores/ramo-mixto-tulipanes.jpg",
     "tags": [
@@ -796,7 +734,6 @@ export const MANUALIDADES = [
     "id": "60",
     "name": "Ramo Romántico con Luces",
     "subcategory": "Flores",
-    "price": 370,
     "description": "Ramo con luces led.",
     "imageUrl": "/images/catalogo/flores/ramo-romantico-pastel-luces.jpg",
     "tags": [
@@ -809,7 +746,6 @@ export const MANUALIDADES = [
     "id": "61",
     "name": "Ramo Romántico Pastel",
     "subcategory": "Flores",
-    "price": 270,
     "description": "Ramo en tonos pastel.",
     "imageUrl": "/images/catalogo/flores/ramo-romantico-pastel.jpg",
     "tags": [
@@ -822,7 +758,6 @@ export const MANUALIDADES = [
     "id": "62",
     "name": "Ramito Pequeño",
     "subcategory": "Flores",
-    "price": 215,
     "description": "Ramito pequeño, del tamaño de la mano.",
     "imageUrl": "/images/catalogo/flores/ramo-pequeno.jpg",
     "tags": [
@@ -835,7 +770,6 @@ export const MANUALIDADES = [
     "id": "63",
     "name": "Rosa Individual",
     "subcategory": "Flores",
-    "price": 240,
     "description": "Rosa individual con tallo forrado.",
     "imageUrl": "/images/catalogo/flores/rosa-individual.jpg",
     "tags": [
@@ -848,7 +782,6 @@ export const MANUALIDADES = [
     "id": "64",
     "name": "Tulipán con Corazón",
     "subcategory": "Flores",
-    "price": 265,
     "description": "Tulipán con un corazón al centro.",
     "imageUrl": "/images/catalogo/flores/tulipan-flor-especial-con-corazon.jpg",
     "tags": [
@@ -861,7 +794,6 @@ export const MANUALIDADES = [
     "id": "65",
     "name": "Ajolote",
     "subcategory": "Llaveros",
-    "price": 200,
     "description": "Llavero de ajolote.",
     "imageUrl": "/images/catalogo/llaveros/ajolote.jpg",
     "tags": [
@@ -874,7 +806,6 @@ export const MANUALIDADES = [
     "id": "66",
     "name": "Abejita",
     "subcategory": "Llaveros",
-    "price": 120,
     "description": "Llavero de abeja.",
     "imageUrl": "/images/catalogo/llaveros/aveja.jpg",
     "tags": [
@@ -887,7 +818,6 @@ export const MANUALIDADES = [
     "id": "67",
     "name": "Capibara",
     "subcategory": "Llaveros",
-    "price": 140,
     "description": "Llavero de capibara.",
     "imageUrl": "/images/catalogo/llaveros/capibara.jpg",
     "width": 705,
@@ -902,7 +832,6 @@ export const MANUALIDADES = [
     "id": "68",
     "name": "Chefsito",
     "subcategory": "Llaveros",
-    "price": 160,
     "description": "Llavero de chef.",
     "imageUrl": "/images/catalogo/llaveros/chefsito.jpg",
     "tags": [
@@ -915,7 +844,6 @@ export const MANUALIDADES = [
     "id": "69",
     "name": "Conito de Helado",
     "subcategory": "Llaveros",
-    "price": 180,
     "description": "Llavero de cono de helado.",
     "imageUrl": "/images/catalogo/llaveros/cono.jpg",
     "tags": [
@@ -928,7 +856,6 @@ export const MANUALIDADES = [
     "id": "70",
     "name": "Coraje con Uva",
     "subcategory": "Llaveros",
-    "price": 200,
     "description": "Llavero de Coraje con una uva.",
     "imageUrl": "/images/catalogo/llaveros/coraje-uva.jpg",
     "tags": [
@@ -941,7 +868,6 @@ export const MANUALIDADES = [
     "id": "71",
     "name": "Coraje",
     "subcategory": "Llaveros",
-    "price": 120,
     "description": "Llavero de Coraje.",
     "imageUrl": "/images/catalogo/llaveros/coraje.jpg",
     "tags": [
@@ -954,7 +880,6 @@ export const MANUALIDADES = [
     "id": "72",
     "name": "Cupcake",
     "subcategory": "Llaveros",
-    "price": 140,
     "description": "Llavero de cupcake.",
     "imageUrl": "/images/catalogo/llaveros/cupcake.jpg",
     "tags": [
@@ -967,7 +892,6 @@ export const MANUALIDADES = [
     "id": "73",
     "name": "Donita Blanca",
     "subcategory": "Llaveros",
-    "price": 160,
     "description": "Llavero de donita blanca.",
     "imageUrl": "/images/catalogo/llaveros/donita-blanca.jpg",
     "tags": [
@@ -980,7 +904,6 @@ export const MANUALIDADES = [
     "id": "74",
     "name": "Donita Café",
     "subcategory": "Llaveros",
-    "price": 180,
     "description": "Llavero de donita color café.",
     "imageUrl": "/images/catalogo/llaveros/donita-cafe.jpg",
     "tags": [
@@ -993,7 +916,6 @@ export const MANUALIDADES = [
     "id": "75",
     "name": "Donita Rosa",
     "subcategory": "Llaveros",
-    "price": 200,
     "description": "Llavero de donita rosa.",
     "imageUrl": "/images/catalogo/llaveros/donita-rosa.jpg",
     "tags": [
@@ -1006,7 +928,6 @@ export const MANUALIDADES = [
     "id": "76",
     "name": "Estrella",
     "subcategory": "Llaveros",
-    "price": 120,
     "description": "Llavero de estrella.",
     "imageUrl": "/images/catalogo/llaveros/estrella.jpg",
     "tags": [
@@ -1019,7 +940,6 @@ export const MANUALIDADES = [
     "id": "77",
     "name": "Fantasmita Azul",
     "subcategory": "Llaveros",
-    "price": 140,
     "description": "Llavero de fantasmita azul.",
     "imageUrl": "/images/catalogo/llaveros/fantasmita-azul.jpg",
     "tags": [
@@ -1032,7 +952,6 @@ export const MANUALIDADES = [
     "id": "78",
     "name": "Fantasmita Rosa",
     "subcategory": "Llaveros",
-    "price": 160,
     "description": "Llavero de fantasmita rosa.",
     "imageUrl": "/images/catalogo/llaveros/fantasmita-rosa.jpg",
     "tags": [
@@ -1045,7 +964,6 @@ export const MANUALIDADES = [
     "id": "79",
     "name": "Fresa",
     "subcategory": "Llaveros",
-    "price": 180,
     "description": "Llavero de fresa.",
     "imageUrl": "/images/catalogo/llaveros/fresa.jpg",
     "tags": [
@@ -1058,7 +976,6 @@ export const MANUALIDADES = [
     "id": "80",
     "name": "Gary",
     "subcategory": "Llaveros",
-    "price": 200,
     "description": "Llavero de Gary.",
     "imageUrl": "/images/catalogo/llaveros/gary.jpg",
     "tags": [
@@ -1071,7 +988,6 @@ export const MANUALIDADES = [
     "id": "81",
     "name": "Gatito Negro",
     "subcategory": "Llaveros",
-    "price": 120,
     "description": "Llavero de gatito negro.",
     "imageUrl": "/images/catalogo/llaveros/gatito-negro.jpg",
     "tags": [
@@ -1084,7 +1000,6 @@ export const MANUALIDADES = [
     "id": "82",
     "name": "Hello Kitty",
     "subcategory": "Llaveros",
-    "price": 140,
     "description": "Llavero de Hello Kitty.",
     "imageUrl": "/images/catalogo/llaveros/hello-kitty.jpg",
     "tags": [
@@ -1097,7 +1012,6 @@ export const MANUALIDADES = [
     "id": "83",
     "name": "Hombresito",
     "subcategory": "Llaveros",
-    "price": 160,
     "description": "Llavero de hombre.",
     "imageUrl": "/images/catalogo/llaveros/hombresito.jpg",
     "tags": [
@@ -1110,7 +1024,6 @@ export const MANUALIDADES = [
     "id": "84",
     "name": "Honguito Azul F",
     "subcategory": "Llaveros",
-    "price": 180,
     "description": "Llavero de Honguito azul, edición limitada.",
     "imageUrl": "/images/catalogo/llaveros/honguito-azul-f.jpg",
     "tags": [
@@ -1123,7 +1036,6 @@ export const MANUALIDADES = [
     "id": "85",
     "name": "Honguito Azul",
     "subcategory": "Llaveros",
-    "price": 200,
     "description": "Llavero de Honguito azul.",
     "imageUrl": "/images/catalogo/llaveros/honguito-azul.jpg",
     "tags": [
@@ -1136,7 +1048,6 @@ export const MANUALIDADES = [
     "id": "86",
     "name": "Honguito Rojo",
     "subcategory": "Llaveros",
-    "price": 120,
     "description": "Llavero de Honguito rojo.",
     "imageUrl": "/images/catalogo/llaveros/honguito-rojo.jpg",
     "tags": [
@@ -1149,7 +1060,6 @@ export const MANUALIDADES = [
     "id": "87",
     "name": "Kuromi",
     "subcategory": "Llaveros",
-    "price": 140,
     "description": "Llavero de Kuromi.",
     "imageUrl": "/images/catalogo/llaveros/kuromi.jpg",
     "tags": [
@@ -1162,7 +1072,6 @@ export const MANUALIDADES = [
     "id": "88",
     "name": "Lobito",
     "subcategory": "Llaveros",
-    "price": 160,
     "description": "Llavero de lobito.",
     "imageUrl": "/images/catalogo/llaveros/lobito.jpg",
     "tags": [
@@ -1175,7 +1084,6 @@ export const MANUALIDADES = [
     "id": "89",
     "name": "Marciano",
     "subcategory": "Llaveros",
-    "price": 180,
     "description": "Llavero de marciano.",
     "imageUrl": "/images/catalogo/llaveros/marciano.jpg",
     "tags": [
@@ -1188,7 +1096,6 @@ export const MANUALIDADES = [
     "id": "90",
     "name": "McQueen",
     "subcategory": "Llaveros",
-    "price": 200,
     "description": "Llavero de McQueen.",
     "imageUrl": "/images/catalogo/llaveros/mcqueen.jpg",
     "tags": [
@@ -1201,7 +1108,6 @@ export const MANUALIDADES = [
     "id": "91",
     "name": "Melody",
     "subcategory": "Llaveros",
-    "price": 120,
     "description": "Llavero de Melody.",
     "imageUrl": "/images/catalogo/llaveros/melody.jpg",
     "tags": [
@@ -1214,7 +1120,6 @@ export const MANUALIDADES = [
     "id": "92",
     "name": "Miniyoda",
     "subcategory": "Llaveros",
-    "price": 140,
     "description": "Llavero de Yoda.",
     "imageUrl": "/images/catalogo/llaveros/mini-yoda.jpg",
     "tags": [
@@ -1227,7 +1132,6 @@ export const MANUALIDADES = [
     "id": "93",
     "name": "Minion",
     "subcategory": "Llaveros",
-    "price": 160,
     "description": "Llavero de Minion.",
     "imageUrl": "/images/catalogo/llaveros/minion.jpg",
     "tags": [
@@ -1240,7 +1144,6 @@ export const MANUALIDADES = [
     "id": "94",
     "name": "Oreo",
     "subcategory": "Llaveros",
-    "price": 180,
     "description": "Llavero de galleta Oreo.",
     "imageUrl": "/images/catalogo/llaveros/oreo.jpg",
     "tags": [
@@ -1253,7 +1156,6 @@ export const MANUALIDADES = [
     "id": "95",
     "name": "Pandita",
     "subcategory": "Llaveros",
-    "price": 200,
     "description": "Llavero de panda.",
     "imageUrl": "/images/catalogo/llaveros/pandita.jpg",
     "tags": [
@@ -1266,7 +1168,6 @@ export const MANUALIDADES = [
     "id": "96",
     "name": "Pinguinita",
     "subcategory": "Llaveros",
-    "price": 120,
     "description": "Llavero de pingüinita.",
     "imageUrl": "/images/catalogo/llaveros/pinguinita.jpg",
     "tags": [
@@ -1279,7 +1180,6 @@ export const MANUALIDADES = [
     "id": "97",
     "name": "Pinguinito",
     "subcategory": "Llaveros",
-    "price": 140,
     "description": "Llavero de pingüino.",
     "imageUrl": "/images/catalogo/llaveros/pinguinito.jpg",
     "tags": [
@@ -1292,7 +1192,6 @@ export const MANUALIDADES = [
     "id": "98",
     "name": "Piolín",
     "subcategory": "Llaveros",
-    "price": 160,
     "description": "Llavero de búho.",
     "imageUrl": "/images/catalogo/llaveros/piolin.jpg",
     "tags": [
@@ -1305,7 +1204,6 @@ export const MANUALIDADES = [
     "id": "99",
     "name": "Piolón",
     "subcategory": "Llaveros",
-    "price": 180,
     "description": "Llavero de búho con gafas.",
     "imageUrl": "/images/catalogo/llaveros/piolon.jpg",
     "tags": [
@@ -1318,7 +1216,6 @@ export const MANUALIDADES = [
     "id": "100",
     "name": "Ranita",
     "subcategory": "Llaveros",
-    "price": 200,
     "description": "Llavero de ranita.",
     "imageUrl": "/images/catalogo/llaveros/ranita.jpg",
     "tags": [
@@ -1331,10 +1228,8 @@ export const MANUALIDADES = [
     "id": "101",
     "name": "Snoppy Variación",
     "subcategory": "Llaveros",
-    "price": 120,
     "description": "Llavero de Snoppy en variación de color.",
     "imageUrl": "/images/catalogo/llaveros/snoppy-variacion.jpg",
-    "available": false,
     "tags": [
       "snoppy",
       "variación",
@@ -1345,7 +1240,6 @@ export const MANUALIDADES = [
     "id": "102",
     "name": "Snoppy",
     "subcategory": "Llaveros",
-    "price": 140,
     "description": "Llavero de Snoppy.",
     "imageUrl": "/images/catalogo/llaveros/snoppy.jpg",
     "tags": [
@@ -1358,7 +1252,6 @@ export const MANUALIDADES = [
     "id": "103",
     "name": "Sonic",
     "subcategory": "Llaveros",
-    "price": 160,
     "description": "Llavero de Sonic.",
     "imageUrl": "/images/catalogo/llaveros/sonic.jpg",
     "tags": [
@@ -1371,7 +1264,6 @@ export const MANUALIDADES = [
     "id": "104",
     "name": "Tortuguita",
     "subcategory": "Llaveros",
-    "price": 180,
     "description": "Llavero de tortuga.",
     "imageUrl": "/images/catalogo/llaveros/tortuguita.jpg",
     "tags": [
@@ -1384,7 +1276,6 @@ export const MANUALIDADES = [
     "id": "105",
     "name": "Vaquita",
     "subcategory": "Llaveros",
-    "price": 200,
     "description": "Llavero de vaquita.",
     "imageUrl": "/images/catalogo/llaveros/vaquita.jpg",
     "tags": [

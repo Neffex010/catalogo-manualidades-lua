@@ -46,6 +46,13 @@ export default {
         },
         // Color de marca principal (el que se usa CON texto blanco encima)
         brand: '#8363C9',
+        // Acento terracota: solo detalles (filo del antetitulo, indice,
+        // etiquetas y puntadas). No se usa como fondo de botones.
+        clay: {
+          DEFAULT: '#B4614A',
+          soft: '#F7E9E2',
+          deep: '#8F4733',
+        },
         // Verde de "disponible" y rojo suave de "agotado".
         // Los DEFAULT son los tonos legibles sobre sus fondos `soft`.
         success: {
@@ -77,6 +84,9 @@ export default {
         lift: '0 8px 16px -6px rgba(44, 42, 41, 0.10), 0 24px 48px -16px rgba(131, 99, 201, 0.32)',
         brand: '0 8px 20px -6px rgba(131, 99, 201, 0.5)',
         whatsapp: '0 8px 20px -6px rgba(16, 124, 65, 0.45)',
+        // Sombras duras del brutalismo tenue: accion y piezas destacadas.
+        pop: '3px 3px 0 0 #2C2A29',
+        'pop-sand': '6px 6px 0 0 #E9DFD1',
       },
 
       /* Radios generosos para el aspecto suave de la marca */

@@ -21,15 +21,30 @@ import ColorSwatchPicker from './ColorSwatchPicker'
 import { useRevealOnScroll } from '../hooks/useRevealOnScroll'
 import { getProductWhatsAppUrl } from '../utils/whatsapp'
 import { formatPrice } from '../utils/format'
-import {
-  CATEGORY_LABELS,
-  FALLBACK_IMAGE,
-  PRICED_CATEGORIES,
-  VARIANT_CATEGORIES,
-} from '../config/site'
+import { AVAILABILITY, getInitialVariantId, getProductStatus, getVariantStatus } from '../utils/availability'
+import { CATEGORY_LABELS, FALLBACK_IMAGE, VARIANT_CATEGORIES } from '../config/site'
 
 /** Color de fondo heredado de la marca si el producto no trae uno propio. */
 const FALLBACK_COLOR = '#FBF7F1'
+
+/** Etiqueta y color del badge segun lo que se sepa de la disponibilidad. */
+const STATUS_STYLES = {
+  [AVAILABILITY.AVAILABLE]: {
+    label: 'Disponible',
+    badge: 'bg-success-soft/95 text-success',
+    dot: 'bg-success',
+  },
+  [AVAILABILITY.SOLD_OUT]: {
+    label: 'Agotado',
+    badge: 'bg-danger-soft/95 text-danger',
+    dot: 'bg-danger',
+  },
+  [AVAILABILITY.UNKNOWN]: {
+    label: 'Sobre pedido',
+    badge: 'bg-sand-100/95 text-ink-soft',
+    dot: 'bg-ink-muted',
+  },
+}
 
 /**
  * Ancho con el que se pinta la tarjeta en cada breakpoint. Debe mantenerse en
@@ -37,12 +52,6 @@ const FALLBACK_COLOR = '#FBF7F1'
  * pantallas anchas.
  */
 const IMAGE_SIZES = '(min-width: 1280px) 300px, (min-width: 640px) 45vw, 92vw'
-
-/** Primera variante con stock; si todas estan agotadas, la primera. */
-function getInitialVariantId(variants) {
-  const available = variants.find((variant) => variant.stock > 0)
-  return (available ?? variants[0])?.id ?? null
-}
 
 export default function ProductCard({ product, index = 0, onOpenDetail }) {
   const variants = useMemo(
@@ -65,7 +74,7 @@ export default function ProductCard({ product, index = 0, onOpenDetail }) {
       ? variants.find((variant) => variant.id === activeVariantId) ?? variants[0] ?? null
       : null
 
-  // La variante activa manda para imagen, stock y mensaje de WhatsApp.
+  // La variante activa manda para imagen, disponibilidad y mensaje de WhatsApp.
   const displayImage = activeVariant ?? product
   const imageUrl = displayImage.imageUrl || FALLBACK_IMAGE
   const imageAlt = activeVariant
@@ -88,13 +97,15 @@ export default function ProductCard({ product, index = 0, onOpenDetail }) {
     if (node?.complete && node.naturalWidth > 0) setImageLoaded(true)
   }, [imageSrc])
 
-  const isAvailable = activeVariant ? activeVariant.stock > 0 : Boolean(product.available)
+  // Disponibilidad: el producto manda en el badge; el color, en la ficha.
+  const productStatus = getProductStatus(product)
+  const productStatusStyle = STATUS_STYLES[productStatus]
+  const variantStatus = getVariantStatus(activeVariant)
   const whatsappUrl = getProductWhatsAppUrl(product, activeVariant)
   const categoryLabel = CATEGORY_LABELS[product.category] ?? product.category
 
-  // Solo los hilos publican precio. Manualidades y estambres se cotizan segun
-  // tamano, color y personalizacion; mostrar una cifra fija seria enganoso.
-  const showsPrice = PRICED_CATEGORIES.includes(product.category)
+  // El precio solo se publica si la tienda ya dio una cifra real.
+  const priceLabel = formatPrice(product.price)
 
   // Cuando la foto falla se dejan de ofrecer las variantes modernas para no
   // pedir dos veces el mismo recurso inexistente.
@@ -109,7 +120,7 @@ export default function ProductCard({ product, index = 0, onOpenDetail }) {
       ref={cardRef}
       style={{ animationDelay: revealDelay }}
       className={[
-        'group flex h-full flex-col overflow-hidden rounded-3xl border border-line bg-surface shadow-soft transition-all duration-240 ease-artisan hover:-translate-y-1.5 hover:border-lila-300 hover:shadow-lift',
+        'group flex h-full flex-col overflow-hidden rounded-2xl border border-line bg-surface transition-all duration-240 ease-artisan hover:-translate-y-1 hover:border-lila-300 hover:shadow-card',
         'reveal',
         isRevealed ? 'is-visible' : '',
       ].join(' ')}
@@ -128,7 +139,7 @@ export default function ProductCard({ product, index = 0, onOpenDetail }) {
           }
         }}
         aria-label={`Ver detalles de ${product.name}`}
-        className="relative aspect-4/5 w-full cursor-pointer overflow-hidden"
+        className="photo-frame relative aspect-4/5 w-full cursor-pointer overflow-hidden"
         style={{ backgroundColor: displayImage.imageColor || FALLBACK_COLOR }}
       >
         {/* Placeholder borroso (~0.2 KB): cubre el hueco mientras carga la foto */}
@@ -182,8 +193,8 @@ export default function ProductCard({ product, index = 0, onOpenDetail }) {
           aria-hidden="true"
           className="pointer-events-none absolute inset-0 flex items-center justify-center opacity-0 transition-opacity duration-240 group-hover:opacity-100"
         >
-          <span className="inline-flex items-center gap-1.5 rounded-full bg-surface/95 px-3.5 py-1.5 text-xs font-semibold text-ink shadow-soft backdrop-blur-md">
-            <Eye className="h-3.5 w-3.5 text-lila-800" />
+          <span className="inline-flex items-center gap-1.5 rounded-full bg-surface/95 px-3.5 py-1.5 text-[13px] font-semibold text-ink shadow-soft backdrop-blur-md">
+            <Eye className="h-4 w-4 text-lila-800" />
             Ver detalle
           </span>
         </div>
@@ -191,124 +202,144 @@ export default function ProductCard({ product, index = 0, onOpenDetail }) {
         {/* Marca: solo si el producto la tiene. La categoria ya se muestra
          * como chip bajo la foto, asi que repetirla aqui era ruido. */}
         {product.brand && (
-          <span className="absolute left-3 top-3 inline-flex max-w-[70%] items-center truncate rounded-full bg-surface/95 px-3 py-1.5 text-[11px] font-bold uppercase tracking-wide text-lila-800 shadow-soft backdrop-blur-sm sm:left-4 sm:top-4 sm:text-xs">
+          <span className="absolute left-3 top-3 inline-flex max-w-[70%] items-center truncate rounded-full bg-surface/95 px-3 py-1.5 text-[12px] font-bold uppercase tracking-wide text-lila-800 shadow-soft backdrop-blur-sm sm:left-4 sm:top-4 sm:text-[13px]">
             {product.brand}
           </span>
         )}
 
-        {/* Estado de disponibilidad */}
+        {/* Estado de disponibilidad: solo se afirma cuando hay dato real. */}
         <span
           className={[
-            'absolute right-3 top-3 inline-flex items-center gap-1.5 rounded-full px-2.5 py-1.5 text-[11px] font-bold shadow-soft backdrop-blur-sm sm:right-4 sm:top-4 sm:text-xs',
-            isAvailable ? 'bg-success-soft/95 text-success' : 'bg-danger-soft/95 text-danger',
+            'absolute right-3 top-3 inline-flex items-center gap-1.5 rounded-full px-2.5 py-1.5 text-[12px] font-bold shadow-soft backdrop-blur-sm sm:right-4 sm:top-4 sm:text-[13px]',
+            productStatusStyle.badge,
           ].join(' ')}
         >
           <span
             aria-hidden="true"
-            className={[
-              'h-1.5 w-1.5 rounded-full',
-              isAvailable ? 'bg-success' : 'bg-danger',
-            ].join(' ')}
+            className={['h-1.5 w-1.5 rounded-full', productStatusStyle.dot].join(' ')}
           />
-          {isAvailable ? 'Disponible' : 'Agotado'}
+          {productStatusStyle.label}
         </span>
       </div>
+
+      {/* Franja del color activo: conecta la foto con la variante elegida sin
+       * agregar texto ni otra caja. */}
+      {supportsVariants && (
+        <div
+          aria-hidden="true"
+          className="h-1.5 w-full border-b border-black/5"
+          style={{ backgroundColor: activeVariant?.hexColor || FALLBACK_COLOR }}
+        />
+      )}
 
       {/* ---------------------------------------------------------------
        * Contenido
        * --------------------------------------------------------------- */}
       <div className="flex flex-1 flex-col p-4 sm:p-5">
-        {/* Categoria / subcategoria y numero de colores */}
-        <div className="flex flex-wrap items-center gap-1.5">
-          <span className="rounded-full bg-sand-100 px-2.5 py-1 text-[10px] font-bold uppercase tracking-wide text-lila-800">
-            {categoryLabel}
-          </span>
+        {/* Categoria / subcategoria y numero de colores. Sin pildoras: el
+         * dato se lee como linea de ficha, no como etiqueta de color. */}
+        <div className="flex flex-wrap items-center gap-x-2 gap-y-1 text-[12px] font-semibold tracking-normal sm:text-[13px]">
+          <span className="text-clay-deep">{categoryLabel}</span>
           {product.subcategory && (
-            <span className="rounded-full bg-canvas px-2.5 py-1 text-[10px] font-semibold text-ink-muted">
-              {product.subcategory}
-            </span>
+            <>
+              <span aria-hidden="true" className="text-line">
+                /
+              </span>
+              <span className="font-medium text-ink-muted">
+                {product.subcategory}
+              </span>
+            </>
           )}
           {supportsVariants && (
-            <span className="rounded-full bg-canvas px-2.5 py-1 text-[10px] font-semibold text-ink-muted">
-              {variants.length} colores
-            </span>
+            <>
+              <span aria-hidden="true" className="text-line">
+                /
+              </span>
+              <span className="font-mono text-[12px] font-semibold text-ink-muted sm:text-[13px]">
+                {variants.length} colores
+              </span>
+            </>
           )}
         </div>
 
         <h3
           onClick={() => onOpenDetail?.(product)}
-          className="mt-2.5 cursor-pointer font-display text-lg font-semibold leading-snug text-ink transition-colors duration-240 group-hover:text-lila-800 sm:text-xl"
+          className="mt-2.5 cursor-pointer font-display text-[1.35rem] font-semibold leading-[1.12] text-ink transition-colors duration-240 group-hover:text-lila-800 sm:text-[1.5rem]"
         >
           {product.name}
         </h3>
 
-        <p className="mt-2 line-clamp-3 text-sm leading-relaxed text-ink-soft">
+        <p className="mt-2 line-clamp-3 text-[15px] leading-relaxed text-ink-soft sm:text-[16px]">
           {product.description}
         </p>
 
-        {/* -----------------------------------------------------------
-         * Variantes de color (solo estambres e hilos)
-         * ----------------------------------------------------------- */}
-        {supportsVariants && (
-          <div className="mt-4 rounded-2xl border border-line bg-sand-50 p-3">
-            <div className="flex items-center justify-between gap-2">
-              <p className="text-[11px] font-bold uppercase tracking-wide text-ink-muted">
-                Color
-              </p>
-              <p className="text-right text-xs font-semibold text-ink-soft" aria-live="polite">
-                {activeVariant
-                  ? `${activeVariant.colorCode} · ${activeVariant.colorName}`
-                  : 'Elige un color'}
-              </p>
-            </div>
+        {/* Un solo separador agrupa la ficha de compra: color, disponibilidad
+         * y precio. */}
+        <div className="mt-4 border-t-2 border-ink/10 pt-3.5">
+          {/* -----------------------------------------------------------
+           * Variantes de color (solo estambres e hilos)
+           * ----------------------------------------------------------- */}
+          {supportsVariants && (
+            <div>
+              <div className="flex items-baseline justify-between gap-2">
+                <p className="meta-label">Color</p>
+                <p className="meta-value text-right" aria-live="polite">
+                  {activeVariant
+                    ? `${activeVariant.colorCode} · ${activeVariant.colorName}`
+                    : 'Elige un color'}
+                </p>
+              </div>
 
-            <div className="mt-2.5">
-              <ColorSwatchPicker
-                variants={variants}
-                activeVariantId={activeVariantId}
-                onChange={setActiveVariantId}
-              />
-            </div>
+              <div className="mt-2.5">
+                <ColorSwatchPicker
+                  variants={variants}
+                  activeVariantId={activeVariantId}
+                  onChange={setActiveVariantId}
+                />
+              </div>
 
-            <p
-              className={[
-                'mt-2.5 flex items-center gap-1.5 text-[11px] font-medium',
-                isAvailable ? 'text-success' : 'text-danger',
-              ].join(' ')}
-            >
-              {isAvailable ? (
-                <>
-                  <PackageCheck className="h-3.5 w-3.5" aria-hidden="true" />
-                  {activeVariant.stock} disponibles en este color
-                </>
-              ) : (
-                <>
-                  <Clock className="h-3.5 w-3.5" aria-hidden="true" />
-                  Color agotado por el momento
-                </>
+              {variantStatus === AVAILABILITY.AVAILABLE && (
+                <p className="mt-2.5 flex items-center gap-1.5 text-[12.5px] font-medium text-success">
+                  <PackageCheck className="h-4 w-4" aria-hidden="true" />
+                  <span>
+                    <span className="font-mono tabular-nums">{activeVariant.stock}</span>{' '}
+                    disponibles en este color
+                  </span>
+                </p>
               )}
-            </p>
-          </div>
-        )}
 
-        {/* Precio: solo hilos. La explicacion de las piezas a cotizar vive una
-         * sola vez en el encabezado del catalogo, no en cada tarjeta. */}
-        <div className="mt-4">
-          <p className="text-[10px] font-bold uppercase tracking-wide text-ink-muted">
-            Precio
-          </p>
-          {showsPrice ? (
-            <p className="font-display text-xl font-semibold leading-tight text-ink">
-              {formatPrice(product.price)}
-              <span className="ml-1 align-middle text-[11px] font-medium text-ink-muted">
-                MXN
-              </span>
-            </p>
-          ) : (
-            <p className="font-display text-lg font-semibold leading-tight text-ink">
-              A cotizar
-            </p>
+              {variantStatus === AVAILABILITY.SOLD_OUT && (
+                <p className="mt-2.5 flex items-center gap-1.5 text-[12.5px] font-medium text-danger">
+                  <Clock className="h-4 w-4" aria-hidden="true" />
+                  Color agotado por el momento
+                </p>
+              )}
+
+              {variantStatus === AVAILABILITY.UNKNOWN && (
+                <p className="mt-2.5 flex items-center gap-1.5 text-[12.5px] font-medium text-ink-muted">
+                  <MessageCircle className="h-4 w-4" aria-hidden="true" />
+                  Confirma existencias por WhatsApp
+                </p>
+              )}
+            </div>
           )}
+
+          {/* Precio: solo si la tienda ya publico una cifra. */}
+          <div className={supportsVariants ? 'mt-4' : ''}>
+            <p className="meta-label">Precio</p>
+            {priceLabel ? (
+              <p className="mt-0.5 font-display text-[2rem] font-semibold leading-tight text-ink">
+                <span className="tabular-nums">{priceLabel}</span>
+                <span className="ml-1 align-middle text-[12px] font-medium text-ink-muted">
+                  MXN
+                </span>
+              </p>
+            ) : (
+              <p className="mt-0.5 font-display text-[1.4rem] font-semibold leading-tight text-ink">
+                Se cotiza por WhatsApp
+              </p>
+            )}
+          </div>
         </div>
 
         {/* Espaciador flexible: alinea los botones entre tarjetas */}
@@ -323,23 +354,15 @@ export default function ProductCard({ product, index = 0, onOpenDetail }) {
           href={whatsappUrl}
           target="_blank"
           rel="noopener noreferrer"
-          aria-label={`Pedir por WhatsApp ${product.name}${
+          aria-label={`Consultar por WhatsApp ${product.name}${
             activeVariant ? ` en color ${activeVariant.colorName}` : ''
           }`}
-          title={`Pedir "${product.name}" por WhatsApp`}
-          className="mt-5 inline-flex w-full items-center justify-center gap-2 rounded-full bg-brand px-4 py-3.5 text-center text-[13px] font-bold leading-tight text-white shadow-brand transition-all duration-240 ease-artisan hover:-translate-y-0.5 hover:bg-whatsapp hover:shadow-whatsapp focus:outline-none focus-visible:ring-2 focus-visible:ring-lila-600 focus-visible:ring-offset-2 focus-visible:ring-offset-surface active:translate-y-0 sm:text-sm"
+          title={`Consultar "${product.name}" por WhatsApp`}
+          className="mt-5 inline-flex w-full items-center justify-center gap-2 rounded-xl border-2 border-ink bg-brand px-4 py-3.5 text-center text-[14px] font-bold leading-tight text-white shadow-pop transition-all duration-240 ease-artisan hover:translate-x-[2px] hover:translate-y-[2px] hover:bg-whatsapp hover:shadow-none focus:outline-none focus-visible:ring-2 focus-visible:ring-lila-600 focus-visible:ring-offset-2 focus-visible:ring-offset-surface active:translate-y-0 sm:text-[15px]"
         >
           <MessageCircle className="h-[18px] w-[18px] shrink-0" aria-hidden="true" />
-          Pedir por WhatsApp
+          Consultar por WhatsApp
         </a>
-
-        {/* Aviso para productos agotados */}
-        {!isAvailable && (
-          <p className="mt-2.5 flex items-center justify-center gap-1.5 text-center text-[11px] font-medium text-ink-muted">
-            <Clock className="h-3.5 w-3.5" aria-hidden="true" />
-            Escríbenos para saber cuándo habrá nuevamente
-          </p>
-        )}
       </div>
     </article>
   )

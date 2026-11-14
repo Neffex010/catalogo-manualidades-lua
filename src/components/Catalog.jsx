@@ -4,7 +4,12 @@
  * Orquestador del catalogo en DOS bloques con intenciones distintas:
  *
  *   1. #disenos   -> portafolio de piezas tejidas a pedido (sin precio ni stock)
- *   2. #materiales -> hilos y estambres disponibles (variantes, stock y precio)
+ *   2. #materiales -> hilos y estambres (variantes de color; precio y
+ *      disponibilidad solo si la tienda ya los cargo)
+ *
+ * Los dos bloques comparten el ancho de lectura, pero no el fondo: el
+ * portafolio respira sobre el papel y los materiales viven en una banda
+ * tintada de lado a lado. Es solo composicion; los datos no cambian.
  *
  * Reparte los datos ya normalizados una sola vez, mantiene el modal de detalle
  * compartido y resuelve los estados de carga/error. Los componentes de cada
@@ -35,9 +40,9 @@ export default function Catalog({ products = [], loading = false, error = null, 
     return (
       <section
         id="catalogo"
-        className="mx-auto w-full max-w-7xl scroll-mt-24 px-4 sm:px-6 lg:px-8"
+        className="mx-auto w-full max-w-7xl scroll-mt-24 px-4 py-12 sm:px-6 sm:py-16 lg:px-8 lg:py-20"
       >
-        <div className="flex flex-col items-center justify-center rounded-3xl border border-danger/30 bg-danger-soft/40 px-6 py-16 text-center">
+        <div className="flex flex-col items-center justify-center rounded-2xl border border-danger/30 bg-danger-soft/40 px-6 py-16 text-center">
           <AlertTriangle className="h-10 w-10 text-danger" aria-hidden="true" />
           <h2 className="mt-4 font-display text-xl font-semibold text-ink">
             No pudimos cargar el catálogo
@@ -59,22 +64,25 @@ export default function Catalog({ products = [], loading = false, error = null, 
   }
 
   return (
-    <div
-      id="catalogo"
-      className="mx-auto w-full max-w-7xl scroll-mt-24 px-4 sm:px-6 lg:px-8"
-    >
-      <div className="space-y-16 sm:space-y-20 lg:space-y-24">
+    <div id="catalogo" className="scroll-mt-24">
+      {/* Portafolio: fondo de papel */}
+      <div className="mx-auto w-full max-w-7xl px-4 pb-4 pt-12 sm:px-6 sm:pb-6 sm:pt-16 lg:px-8 lg:pb-8 lg:pt-20">
         <Portfolio
           designs={designs}
           loading={loading}
           onOpenDetail={setSelectedProductForDetail}
         />
+      </div>
 
-        <Materials
-          materials={materials}
-          loading={loading}
-          onOpenDetail={setSelectedProductForDetail}
-        />
+      {/* Materiales: banda tintada a todo el ancho para separar la compra */}
+      <div className="border-y border-line bg-sand-50/60">
+        <div className="mx-auto w-full max-w-7xl px-4 py-14 sm:px-6 sm:py-16 lg:px-8 lg:py-20">
+          <Materials
+            materials={materials}
+            loading={loading}
+            onOpenDetail={setSelectedProductForDetail}
+          />
+        </div>
       </div>
 
       {/* Modal compartido: adapta su copy segun sea diseno o material. */}

@@ -1,0 +1,927 @@
+{
+  "brands": [
+    {
+      "id": "komfy-mini",
+      "name": "Komfy Mini",
+      "type": "Estambre",
+      "colors": [
+        {
+          "code": "01",
+          "name": "Blanco",
+          "hex": "#f1ede9",
+          "image": "/images/catalogo/carta-colores/komfy-mini/01-blanco.webp"
+        },
+        {
+          "code": "06",
+          "name": "Cielo",
+          "hex": "#e9e9e9",
+          "image": "/images/catalogo/carta-colores/komfy-mini/06-cielo.webp"
+        },
+        {
+          "code": "14",
+          "name": "Rosa BB",
+          "hex": "#f4e4e5",
+          "image": "/images/catalogo/carta-colores/komfy-mini/14-rosa-bb.webp"
+        },
+        {
+          "code": "20",
+          "name": "Lila",
+          "hex": "#eedfe4",
+          "image": "/images/catalogo/carta-colores/komfy-mini/20-lila.webp"
+        },
+        {
+          "code": "25",
+          "name": "Marfil",
+          "hex": "#f3eee7",
+          "image": "/images/catalogo/carta-colores/komfy-mini/25-marfil.webp"
+        },
+        {
+          "code": "26",
+          "name": "Hueso",
+          "hex": "#f7ecdd",
+          "image": "/images/catalogo/carta-colores/komfy-mini/26-hueso.webp"
+        },
+        {
+          "code": "29",
+          "name": "Arena",
+          "hex": "#ede5de",
+          "image": "/images/catalogo/carta-colores/komfy-mini/29-arena.webp"
+        },
+        {
+          "code": "37",
+          "name": "Ayuntamiento",
+          "hex": "#f4ebc1",
+          "image": "/images/catalogo/carta-colores/komfy-mini/37-ayuntamiento.webp"
+        },
+        {
+          "code": "39",
+          "name": "Mango",
+          "hex": "#f9ebb4",
+          "image": "/images/catalogo/carta-colores/komfy-mini/39-mango.webp"
+        },
+        {
+          "code": "54",
+          "name": "Camello",
+          "hex": "#dfd2c0",
+          "image": "/images/catalogo/carta-colores/komfy-mini/54-camello.webp"
+        },
+        {
+          "code": "058",
+          "name": "Turquesa",
+          "hex": "#d3e3e4",
+          "image": "/images/catalogo/carta-colores/komfy-mini/058-turquesa.webp"
+        },
+        {
+          "code": "61",
+          "name": "Nórdico",
+          "hex": "#dfe8de",
+          "image": "/images/catalogo/carta-colores/komfy-mini/61-nordico.webp"
+        },
+        {
+          "code": "68",
+          "name": "Bandera",
+          "hex": "#b9d0c1",
+          "image": "/images/catalogo/carta-colores/komfy-mini/68-bandera.webp"
+        },
+        {
+          "code": "73",
+          "name": "Sandía",
+          "hex": "#f2d5da",
+          "image": "/images/catalogo/carta-colores/komfy-mini/73-sandia.webp"
+        },
+        {
+          "code": "78",
+          "name": "Rojo Escolar",
+          "hex": "#e8afb0",
+          "image": "/images/catalogo/carta-colores/komfy-mini/78-rojo-escolar.webp"
+        },
+        {
+          "code": "93",
+          "name": "Tabaco",
+          "hex": "#c9bab4",
+          "image": "/images/catalogo/carta-colores/komfy-mini/93-tabaco.webp"
+        },
+        {
+          "code": "104",
+          "name": "Gris Rata",
+          "hex": "#dedad7",
+          "image": "/images/catalogo/carta-colores/komfy-mini/104-gris-rata.webp"
+        },
+        {
+          "code": "121",
+          "name": "Pepsi",
+          "hex": "#b1c6d3",
+          "image": "/images/catalogo/carta-colores/komfy-mini/121-pepsi.webp"
+        },
+        {
+          "code": "164",
+          "name": "Verde Agua",
+          "hex": "#cfdfdc",
+          "image": "/images/catalogo/carta-colores/komfy-mini/164-verde-agua.webp"
+        },
+        {
+          "code": "172",
+          "name": "Oro",
+          "hex": "#ecd6b2",
+          "image": "/images/catalogo/carta-colores/komfy-mini/172-oro.webp"
+        },
+        {
+          "code": "173",
+          "name": "Mirinda",
+          "hex": "#efccb6",
+          "image": "/images/catalogo/carta-colores/komfy-mini/173-mirinda.webp"
+        },
+        {
+          "code": "185",
+          "name": "Rosa BTE",
+          "hex": "#f8d9e1",
+          "image": "/images/catalogo/carta-colores/komfy-mini/185-rosa-bte.webp"
+        },
+        {
+          "code": "193",
+          "name": "Oxford",
+          "hex": "#d3ccca",
+          "image": "/images/catalogo/carta-colores/komfy-mini/193-oxford.webp"
+        },
+        {
+          "code": "209",
+          "name": "Ladrillo",
+          "hex": "#ceb6b1",
+          "image": "/images/catalogo/carta-colores/komfy-mini/209-ladrillo.webp"
+        },
+        {
+          "code": "215",
+          "name": "Carne",
+          "hex": "#f7ece7",
+          "image": "/images/catalogo/carta-colores/komfy-mini/215-carne.webp"
+        }
+      ]
+    },
+    {
+      "id": "kotton-milk",
+      "name": "Kotton Milk",
+      "type": "Estambre e hilo",
+      "colors": [
+        {
+          "code": "01",
+          "name": "Blanco",
+          "hex": "#e2e0e1",
+          "image": "/images/catalogo/carta-colores/kotton-milk/01-blanco.webp"
+        },
+        {
+          "code": "06",
+          "name": "Cielo",
+          "hex": "#cdd7e1",
+          "image": "/images/catalogo/carta-colores/kotton-milk/06-cielo.webp"
+        },
+        {
+          "code": "07",
+          "name": "Vidrio",
+          "hex": "#b9cadf",
+          "image": "/images/catalogo/carta-colores/kotton-milk/07-vidrio.webp"
+        },
+        {
+          "code": "15",
+          "name": "Palo de Rosa",
+          "hex": "#e0cbce",
+          "image": "/images/catalogo/carta-colores/kotton-milk/15-palo-de-rosa.webp"
+        },
+        {
+          "code": "16",
+          "name": "Rosa Nieve",
+          "hex": "#ebd1d8",
+          "image": "/images/catalogo/carta-colores/kotton-milk/16-rosa-nieve.webp"
+        },
+        {
+          "code": "30",
+          "name": "Nuez",
+          "hex": "#e4dad4",
+          "image": "/images/catalogo/carta-colores/kotton-milk/30-nuez.webp"
+        },
+        {
+          "code": "38",
+          "name": "Mango",
+          "hex": "#f4e6bd",
+          "image": "/images/catalogo/carta-colores/kotton-milk/38-mango.webp"
+        },
+        {
+          "code": "39",
+          "name": "Mango",
+          "hex": "#f4dcbb",
+          "image": "/images/catalogo/carta-colores/kotton-milk/39-mango.webp"
+        },
+        {
+          "code": "42",
+          "name": "Calabaza",
+          "hex": "#f0cfad",
+          "image": "/images/catalogo/carta-colores/kotton-milk/42-calabaza.webp"
+        },
+        {
+          "code": "56",
+          "name": "",
+          "hex": "#bbaca8",
+          "image": "/images/catalogo/carta-colores/kotton-milk/56.webp"
+        },
+        {
+          "code": "59",
+          "name": "Mentita",
+          "hex": "#d0e2d5",
+          "image": "/images/catalogo/carta-colores/kotton-milk/59-mentita.webp"
+        },
+        {
+          "code": "63",
+          "name": "Limón",
+          "hex": "#cde1b8",
+          "image": "/images/catalogo/carta-colores/kotton-milk/63-limon.webp"
+        },
+        {
+          "code": "78",
+          "name": "Rojo",
+          "hex": "#d5a1ae",
+          "image": "/images/catalogo/carta-colores/kotton-milk/78-rojo.webp"
+        },
+        {
+          "code": "79",
+          "name": "Sangre",
+          "hex": "#c7a8b0",
+          "image": "/images/catalogo/carta-colores/kotton-milk/79-sangre.webp"
+        },
+        {
+          "code": "87",
+          "name": "Plumbago",
+          "hex": "#cfc7de",
+          "image": "/images/catalogo/carta-colores/kotton-milk/87-plumbago.webp"
+        },
+        {
+          "code": "97",
+          "name": "Botella",
+          "hex": "#b1b4ae",
+          "image": "/images/catalogo/carta-colores/kotton-milk/97-botella.webp"
+        },
+        {
+          "code": "99",
+          "name": "Negro",
+          "hex": "#abaaaf",
+          "image": "/images/catalogo/carta-colores/kotton-milk/99-negro.webp"
+        },
+        {
+          "code": "103",
+          "name": "Gris Plata",
+          "hex": "#cccbce",
+          "image": "/images/catalogo/carta-colores/kotton-milk/103-gris-plata.webp"
+        },
+        {
+          "code": "106",
+          "name": "Lila",
+          "hex": "#d7c1db",
+          "image": "/images/catalogo/carta-colores/kotton-milk/106-lila.webp"
+        },
+        {
+          "code": "171",
+          "name": "Canela",
+          "hex": "#d5c6bb",
+          "image": "/images/catalogo/carta-colores/kotton-milk/171-canela.webp"
+        },
+        {
+          "code": "180",
+          "name": "Rosa",
+          "hex": "#efc9cf",
+          "image": "/images/catalogo/carta-colores/kotton-milk/180-rosa.webp"
+        },
+        {
+          "code": "198",
+          "name": "Lila",
+          "hex": "#d2b0d9",
+          "image": "/images/catalogo/carta-colores/kotton-milk/198-lila.webp"
+        },
+        {
+          "code": "215",
+          "name": "Carne",
+          "hex": "#e7dedf",
+          "image": "/images/catalogo/carta-colores/kotton-milk/215-carne.webp"
+        },
+        {
+          "code": "218",
+          "name": "Chícharo",
+          "hex": "#d4dbae",
+          "image": "/images/catalogo/carta-colores/kotton-milk/218-chicharo.webp"
+        },
+        {
+          "code": "851",
+          "name": "Lila",
+          "hex": "#cecbde",
+          "image": "/images/catalogo/carta-colores/kotton-milk/851-lila.webp"
+        }
+      ]
+    },
+    {
+      "id": "karina-kairo",
+      "name": "Karina Kairo",
+      "type": "Estambre",
+      "colors": [
+        {
+          "code": "01",
+          "name": "Blanco",
+          "hex": "#d2d1d6",
+          "image": "/images/catalogo/carta-colores/karina-kairo/01-blanco.webp"
+        },
+        {
+          "code": "07",
+          "name": "Vidrio",
+          "hex": "#bdc5d0",
+          "image": "/images/catalogo/carta-colores/karina-kairo/07-vidrio.webp"
+        },
+        {
+          "code": "08",
+          "name": "Turqueza",
+          "hex": "#c8d1d2",
+          "image": "/images/catalogo/carta-colores/karina-kairo/08-turqueza.webp"
+        },
+        {
+          "code": "12",
+          "name": "Pizarra",
+          "hex": "#a3b0c3",
+          "image": "/images/catalogo/carta-colores/karina-kairo/12-pizarra.webp"
+        },
+        {
+          "code": "13",
+          "name": "Rosa Pastel",
+          "hex": "#d0cbcf",
+          "image": "/images/catalogo/carta-colores/karina-kairo/13-rosa-pastel.webp"
+        },
+        {
+          "code": "14",
+          "name": "Rosa BB",
+          "hex": "#d8cdd8",
+          "image": "/images/catalogo/carta-colores/karina-kairo/14-rosa-bb.webp"
+        },
+        {
+          "code": "15",
+          "name": "Palo de Rosa",
+          "hex": "#d4c7d2",
+          "image": "/images/catalogo/carta-colores/karina-kairo/15-palo-de-rosa.webp"
+        },
+        {
+          "code": "17",
+          "name": "Clavel",
+          "hex": "#d8c7cf",
+          "image": "/images/catalogo/carta-colores/karina-kairo/17-clavel.webp"
+        },
+        {
+          "code": "23",
+          "name": "Fucsia",
+          "hex": "#d0a6b6",
+          "image": "/images/catalogo/carta-colores/karina-kairo/23-fucsia.webp"
+        },
+        {
+          "code": "25",
+          "name": "Marfil",
+          "hex": "#d4d2d1",
+          "image": "/images/catalogo/carta-colores/karina-kairo/25-marfil.webp"
+        },
+        {
+          "code": "27",
+          "name": "Trigo",
+          "hex": "#cecac7",
+          "image": "/images/catalogo/carta-colores/karina-kairo/27-trigo.webp"
+        },
+        {
+          "code": "30",
+          "name": "Nuez",
+          "hex": "#cec3c0",
+          "image": "/images/catalogo/carta-colores/karina-kairo/30-nuez.webp"
+        },
+        {
+          "code": "33",
+          "name": "Amarillo Paja",
+          "hex": "#d8d3c7",
+          "image": "/images/catalogo/carta-colores/karina-kairo/33-amarillo-paja.webp"
+        },
+        {
+          "code": "35",
+          "name": "Amarillo Pollo",
+          "hex": "#dcd3bb",
+          "image": "/images/catalogo/carta-colores/karina-kairo/35-amarillo-pollo.webp"
+        },
+        {
+          "code": "38",
+          "name": "Mango",
+          "hex": "#dcd5ae",
+          "image": "/images/catalogo/carta-colores/karina-kairo/38-mango.webp"
+        },
+        {
+          "code": "43",
+          "name": "Mirinda",
+          "hex": "#d8bfaf",
+          "image": "/images/catalogo/carta-colores/karina-kairo/43-mirinda.webp"
+        },
+        {
+          "code": "45",
+          "name": "Nemo",
+          "hex": "#d9b5a2",
+          "image": "/images/catalogo/carta-colores/karina-kairo/45-nemo.webp"
+        },
+        {
+          "code": "47",
+          "name": "Melon",
+          "hex": "#c9c0c0",
+          "image": "/images/catalogo/carta-colores/karina-kairo/47-melon.webp"
+        },
+        {
+          "code": "52",
+          "name": "Naranja",
+          "hex": "#d2bdc0",
+          "image": "/images/catalogo/carta-colores/karina-kairo/52-naranja.webp"
+        },
+        {
+          "code": "54",
+          "name": "Camello",
+          "hex": "#d9c6ba",
+          "image": "/images/catalogo/carta-colores/karina-kairo/54-camello.webp"
+        },
+        {
+          "code": "59",
+          "name": "Mentita",
+          "hex": "#c5cdc5",
+          "image": "/images/catalogo/carta-colores/karina-kairo/59-mentita.webp"
+        },
+        {
+          "code": "75",
+          "name": "Palo de Rosa",
+          "hex": "#ceb3bf",
+          "image": "/images/catalogo/carta-colores/karina-kairo/75-palo-de-rosa.webp"
+        },
+        {
+          "code": "78",
+          "name": "Rojo Escolar",
+          "hex": "#cba2a7",
+          "image": "/images/catalogo/carta-colores/karina-kairo/78-rojo-escolar.webp"
+        },
+        {
+          "code": "79",
+          "name": "Sangre",
+          "hex": "#c0a0a2",
+          "image": "/images/catalogo/carta-colores/karina-kairo/79-sangre.webp"
+        },
+        {
+          "code": "93",
+          "name": "Biznaga",
+          "hex": "#b4a9a8",
+          "image": "/images/catalogo/carta-colores/karina-kairo/93-biznaga.webp"
+        },
+        {
+          "code": "99",
+          "name": "Negro",
+          "hex": "#abaaaf",
+          "image": "/images/catalogo/carta-colores/karina-kairo/99-negro.webp"
+        },
+        {
+          "code": "101",
+          "name": "Gris Perla",
+          "hex": "#c9c9cb",
+          "image": "/images/catalogo/carta-colores/karina-kairo/101-gris-perla.webp"
+        },
+        {
+          "code": "106",
+          "name": "Lila",
+          "hex": "#d1c8d4",
+          "image": "/images/catalogo/carta-colores/karina-kairo/106-lila.webp"
+        },
+        {
+          "code": "121",
+          "name": "Pepsi",
+          "hex": "#b0bdd0",
+          "image": "/images/catalogo/carta-colores/karina-kairo/121-pepsi.webp"
+        },
+        {
+          "code": "132",
+          "name": "Limón",
+          "hex": "#c5c8b7",
+          "image": "/images/catalogo/carta-colores/karina-kairo/132-limon.webp"
+        },
+        {
+          "code": "179",
+          "name": "Malva",
+          "hex": "#d2aeb8",
+          "image": "/images/catalogo/carta-colores/karina-kairo/179-malva.webp"
+        },
+        {
+          "code": "215",
+          "name": "Carne",
+          "hex": "#d5cece",
+          "image": "/images/catalogo/carta-colores/karina-kairo/215-carne.webp"
+        },
+        {
+          "code": "218",
+          "name": "Cicharo",
+          "hex": "#b1baa2",
+          "image": "/images/catalogo/carta-colores/karina-kairo/218-cicharo.webp"
+        },
+        {
+          "code": "254",
+          "name": "Hielo",
+          "hex": "#ccd0d5",
+          "image": "/images/catalogo/carta-colores/karina-kairo/254-hielo.webp"
+        }
+      ]
+    },
+    {
+      "id": "trapillo-kraft",
+      "name": "Trapillo Kraft",
+      "type": "Trapillo",
+      "colors": [
+        {
+          "code": "01",
+          "name": "Blanco",
+          "hex": "#edd7b3",
+          "image": "/images/catalogo/carta-colores/trapillo-kraft/01-blanco.webp"
+        },
+        {
+          "code": "06",
+          "name": "Cielo",
+          "hex": "#b8cac0",
+          "image": "/images/catalogo/carta-colores/trapillo-kraft/06-cielo.webp"
+        },
+        {
+          "code": "15",
+          "name": "Palo de Rosa",
+          "hex": "#eebea5",
+          "image": "/images/catalogo/carta-colores/trapillo-kraft/15-palo-de-rosa.webp"
+        },
+        {
+          "code": "19",
+          "name": "Lila",
+          "hex": "#d4a1b2",
+          "image": "/images/catalogo/carta-colores/trapillo-kraft/19-lila.webp"
+        },
+        {
+          "code": "23",
+          "name": "Fucsia",
+          "hex": "#ed7882",
+          "image": "/images/catalogo/carta-colores/trapillo-kraft/23-fucsia.webp"
+        },
+        {
+          "code": "30",
+          "name": "Nuez",
+          "hex": "#e5bf90",
+          "image": "/images/catalogo/carta-colores/trapillo-kraft/30-nuez.webp"
+        },
+        {
+          "code": "39",
+          "name": "Mango",
+          "hex": "#fbcc65",
+          "image": "/images/catalogo/carta-colores/trapillo-kraft/39-mango.webp"
+        },
+        {
+          "code": "59",
+          "name": "Mentita",
+          "hex": "#d4e2b4",
+          "image": "/images/catalogo/carta-colores/trapillo-kraft/59-mentita.webp"
+        },
+        {
+          "code": "68",
+          "name": "Bandera",
+          "hex": "#7f906d",
+          "image": "/images/catalogo/carta-colores/trapillo-kraft/68-bandera.webp"
+        },
+        {
+          "code": "71",
+          "name": "Verde Militar",
+          "hex": "#887550",
+          "image": "/images/catalogo/carta-colores/trapillo-kraft/71-verde-militar.webp"
+        },
+        {
+          "code": "78",
+          "name": "Rojo Escolar",
+          "hex": "#ee6d5d",
+          "image": "/images/catalogo/carta-colores/trapillo-kraft/78-rojo-escolar.webp"
+        },
+        {
+          "code": "90",
+          "name": "Marino",
+          "hex": "#83756a",
+          "image": "/images/catalogo/carta-colores/trapillo-kraft/90-marino.webp"
+        },
+        {
+          "code": "96",
+          "name": "Cafe Craft",
+          "hex": "#8e7358",
+          "image": "/images/catalogo/carta-colores/trapillo-kraft/96-cafe-craft.webp"
+        },
+        {
+          "code": "99",
+          "name": "Negro",
+          "hex": "#8a7963",
+          "image": "/images/catalogo/carta-colores/trapillo-kraft/99-negro.webp"
+        },
+        {
+          "code": "101",
+          "name": "Gris Perla",
+          "hex": "#b39e86",
+          "image": "/images/catalogo/carta-colores/trapillo-kraft/101-gris-perla.webp"
+        },
+        {
+          "code": "162",
+          "name": "Guinda",
+          "hex": "#a97559",
+          "image": "/images/catalogo/carta-colores/trapillo-kraft/162-guinda.webp"
+        },
+        {
+          "code": "193",
+          "name": "Oxford",
+          "hex": "#9f8e76",
+          "image": "/images/catalogo/carta-colores/trapillo-kraft/193-oxford.webp"
+        }
+      ]
+    },
+    {
+      "id": "alize-velluto",
+      "name": "Alize Velluto",
+      "type": "Estambre",
+      "colors": [
+        {
+          "code": "06",
+          "name": "",
+          "hex": "#dfc0b6",
+          "image": "/images/catalogo/carta-colores/alize-velluto/06.webp"
+        },
+        {
+          "code": "11",
+          "name": "",
+          "hex": "#d8d5af",
+          "image": "/images/catalogo/carta-colores/alize-velluto/11.webp"
+        },
+        {
+          "code": "13",
+          "name": "",
+          "hex": "#e7e2d4",
+          "image": "/images/catalogo/carta-colores/alize-velluto/13.webp"
+        },
+        {
+          "code": "15",
+          "name": "",
+          "hex": "#e3e5e2",
+          "image": "/images/catalogo/carta-colores/alize-velluto/15.webp"
+        },
+        {
+          "code": "16",
+          "name": "",
+          "hex": "#addbe4",
+          "image": "/images/catalogo/carta-colores/alize-velluto/16.webp"
+        },
+        {
+          "code": "19",
+          "name": "",
+          "hex": "#c7e5e2",
+          "image": "/images/catalogo/carta-colores/alize-velluto/19.webp"
+        },
+        {
+          "code": "26",
+          "name": "",
+          "hex": "#b8b2af",
+          "image": "/images/catalogo/carta-colores/alize-velluto/26.webp"
+        },
+        {
+          "code": "31",
+          "name": "",
+          "hex": "#eadde4",
+          "image": "/images/catalogo/carta-colores/alize-velluto/31.webp"
+        },
+        {
+          "code": "36",
+          "name": "",
+          "hex": "#d8b2ac",
+          "image": "/images/catalogo/carta-colores/alize-velluto/36.webp"
+        },
+        {
+          "code": "43",
+          "name": "",
+          "hex": "#d4c8de",
+          "image": "/images/catalogo/carta-colores/alize-velluto/43.webp"
+        },
+        {
+          "code": "44",
+          "name": "",
+          "hex": "#c1b3c1",
+          "image": "/images/catalogo/carta-colores/alize-velluto/44.webp"
+        },
+        {
+          "code": "55",
+          "name": "",
+          "hex": "#e9e9e9",
+          "image": "/images/catalogo/carta-colores/alize-velluto/55.webp"
+        },
+        {
+          "code": "56",
+          "name": "",
+          "hex": "#e7bbbc",
+          "image": "/images/catalogo/carta-colores/alize-velluto/56.webp"
+        },
+        {
+          "code": "58",
+          "name": "",
+          "hex": "#abb0ba",
+          "image": "/images/catalogo/carta-colores/alize-velluto/58.webp"
+        },
+        {
+          "code": "60",
+          "name": "",
+          "hex": "#b1b1b1",
+          "image": "/images/catalogo/carta-colores/alize-velluto/60.webp"
+        },
+        {
+          "code": "62",
+          "name": "",
+          "hex": "#ebe8e3",
+          "image": "/images/catalogo/carta-colores/alize-velluto/62.webp"
+        },
+        {
+          "code": "87",
+          "name": "",
+          "hex": "#d4d3d8",
+          "image": "/images/catalogo/carta-colores/alize-velluto/87.webp"
+        },
+        {
+          "code": "98",
+          "name": "",
+          "hex": "#decdd3",
+          "image": "/images/catalogo/carta-colores/alize-velluto/98.webp"
+        },
+        {
+          "code": "103",
+          "name": "",
+          "hex": "#d5dcce",
+          "image": "/images/catalogo/carta-colores/alize-velluto/103.webp"
+        },
+        {
+          "code": "107",
+          "name": "",
+          "hex": "#ccb2b8",
+          "image": "/images/catalogo/carta-colores/alize-velluto/107.webp"
+        },
+        {
+          "code": "111",
+          "name": "",
+          "hex": "#beadb5",
+          "image": "/images/catalogo/carta-colores/alize-velluto/111.webp"
+        },
+        {
+          "code": "121",
+          "name": "",
+          "hex": "#efd2de",
+          "image": "/images/catalogo/carta-colores/alize-velluto/121.webp"
+        },
+        {
+          "code": "141",
+          "name": "Velutto",
+          "hex": "#adc6de",
+          "image": "/images/catalogo/carta-colores/alize-velluto/141-velutto.webp"
+        },
+        {
+          "code": "146",
+          "name": "",
+          "hex": "#e2dfe5",
+          "image": "/images/catalogo/carta-colores/alize-velluto/146.webp"
+        },
+        {
+          "code": "199",
+          "name": "",
+          "hex": "#dfd1c8",
+          "image": "/images/catalogo/carta-colores/alize-velluto/199.webp"
+        },
+        {
+          "code": "218",
+          "name": "",
+          "hex": "#dbdfe4",
+          "image": "/images/catalogo/carta-colores/alize-velluto/218.webp"
+        },
+        {
+          "code": "310",
+          "name": "",
+          "hex": "#e9e3dc",
+          "image": "/images/catalogo/carta-colores/alize-velluto/310.webp"
+        },
+        {
+          "code": "329",
+          "name": "",
+          "hex": "#d4ccc6",
+          "image": "/images/catalogo/carta-colores/alize-velluto/329.webp"
+        },
+        {
+          "code": "340",
+          "name": "",
+          "hex": "#e9e3de",
+          "image": "/images/catalogo/carta-colores/alize-velluto/340.webp"
+        },
+        {
+          "code": "360",
+          "name": "",
+          "hex": "#afaec3",
+          "image": "/images/catalogo/carta-colores/alize-velluto/360.webp"
+        },
+        {
+          "code": "374",
+          "name": "",
+          "hex": "#d1d2db",
+          "image": "/images/catalogo/carta-colores/alize-velluto/374.webp"
+        },
+        {
+          "code": "378",
+          "name": "",
+          "hex": "#e3cede",
+          "image": "/images/catalogo/carta-colores/alize-velluto/378.webp"
+        },
+        {
+          "code": "414",
+          "name": "",
+          "hex": "#e0e4e5",
+          "image": "/images/catalogo/carta-colores/alize-velluto/414.webp"
+        },
+        {
+          "code": "416",
+          "name": "",
+          "hex": "#e0dfe2",
+          "image": "/images/catalogo/carta-colores/alize-velluto/416.webp"
+        },
+        {
+          "code": "426",
+          "name": "",
+          "hex": "#a7b8bb",
+          "image": "/images/catalogo/carta-colores/alize-velluto/426.webp"
+        },
+        {
+          "code": "428",
+          "name": "",
+          "hex": "#d8dade",
+          "image": "/images/catalogo/carta-colores/alize-velluto/428.webp"
+        },
+        {
+          "code": "464",
+          "name": "",
+          "hex": "#e1e8e3",
+          "image": "/images/catalogo/carta-colores/alize-velluto/464.webp"
+        },
+        {
+          "code": "466",
+          "name": "",
+          "hex": "#c9bfb9",
+          "image": "/images/catalogo/carta-colores/alize-velluto/466.webp"
+        },
+        {
+          "code": "490",
+          "name": "",
+          "hex": "#b5dde0",
+          "image": "/images/catalogo/carta-colores/alize-velluto/490.webp"
+        },
+        {
+          "code": "493",
+          "name": "",
+          "hex": "#c0b5b2",
+          "image": "/images/catalogo/carta-colores/alize-velluto/493.webp"
+        },
+        {
+          "code": "530",
+          "name": "",
+          "hex": "#ddd7d3",
+          "image": "/images/catalogo/carta-colores/alize-velluto/530.webp"
+        },
+        {
+          "code": "532",
+          "name": "",
+          "hex": "#c7cdc7",
+          "image": "/images/catalogo/carta-colores/alize-velluto/532.webp"
+        },
+        {
+          "code": "550",
+          "name": "",
+          "hex": "#efcbbc",
+          "image": "/images/catalogo/carta-colores/alize-velluto/550.webp"
+        },
+        {
+          "code": "646",
+          "name": "",
+          "hex": "#a8b9c1",
+          "image": "/images/catalogo/carta-colores/alize-velluto/646.webp"
+        },
+        {
+          "code": "798",
+          "name": "",
+          "hex": "#e5adc0",
+          "image": "/images/catalogo/carta-colores/alize-velluto/798.webp"
+        },
+        {
+          "code": "866",
+          "name": "",
+          "hex": "#e6d8d8",
+          "image": "/images/catalogo/carta-colores/alize-velluto/866.webp"
+        },
+        {
+          "code": "993",
+          "name": "",
+          "hex": "#baafae",
+          "image": "/images/catalogo/carta-colores/alize-velluto/993.webp"
+        }
+      ]
+    }
+  ]
+}

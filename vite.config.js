@@ -1,6 +1,6 @@
 import { defineConfig, loadEnv } from 'vite'
 import react from '@vitejs/plugin-react'
-import { BRAND, PRICED_CATEGORIES, SOCIAL_LINKS } from './src/config/site.js'
+import { BRAND, SOCIAL_LINKS } from './src/config/site.js'
 import { PRODUCTS } from './src/data/products.js'
 
 // https://vite.dev/config/
@@ -32,9 +32,10 @@ function normalizeSiteUrl(value) {
  *
  *   - `#disenos`: piezas tejidas a pedido. Se describen como `VisualArtwork`
  *     (portafolio), sin oferta ni disponibilidad: no son inventario.
- *   - `#materiales`: hilos y estambres. Se publican como `Product`; solo los
- *     hilos de `PRICED_CATEGORIES` llevan `offers` con precio y stock. Los
- *     estambres se cotizan y una cifra inventada seria peor que omitirla.
+ *   - `#materiales`: hilos y estambres. Se publican como `Product`. Solo se
+ *     emite `offers` cuando la tienda ya definio un precio real; una cifra
+ *     inventada seria peor que omitirla. La disponibilidad se declara solo si
+ *     existe el dato (`available` booleano).
  *
  * @param {string} siteUrl URL publica sin barra final
  * @returns {string} etiqueta <script> con el JSON-LD
@@ -43,10 +44,10 @@ function buildCatalogJsonLd(siteUrl) {
   const designs = PRODUCTS.filter((product) => product.category === 'manualidades')
   const materials = PRODUCTS.filter((product) => product.category !== 'manualidades')
 
-  /** Imagen de la primera variante con stock; si no hay, la del producto. */
+  /** Imagen de la primera variante disponible; si no hay dato, la del producto. */
   const getImageUrl = (product) => {
     const primaryVariant =
-      product.variants?.find((variant) => variant.stock > 0) ?? product.variants?.[0]
+      product.variants?.find((variant) => Number(variant.stock) > 0) ?? product.variants?.[0]
     return `${siteUrl}${primaryVariant?.imageUrl ?? product.imageUrl}`
   }
 
@@ -69,7 +70,8 @@ function buildCatalogJsonLd(siteUrl) {
   }))
 
   const materialItems = materials.map((product, index) => {
-    const available = Boolean(product.available)
+    const hasPrice = Number.isFinite(product.price)
+    const hasAvailability = typeof product.available === 'boolean'
 
     return {
       '@type': 'ListItem',
@@ -84,15 +86,19 @@ function buildCatalogJsonLd(siteUrl) {
         url: `${siteUrl}/#materiales`,
         ...(product.brand ? { brand: { '@type': 'Brand', name: product.brand } } : {}),
         ...(product.tags?.length ? { keywords: product.tags.join(', ') } : {}),
-        ...(PRICED_CATEGORIES.includes(product.category)
+        ...(hasPrice
           ? {
               offers: {
                 '@type': 'Offer',
                 price: product.price,
                 priceCurrency: 'MXN',
-                availability: available
-                  ? 'https://schema.org/InStock'
-                  : 'https://schema.org/OutOfStock',
+                ...(hasAvailability
+                  ? {
+                      availability: product.available
+                        ? 'https://schema.org/InStock'
+                        : 'https://schema.org/OutOfStock',
+                    }
+                  : {}),
                 url: `${siteUrl}/#materiales`,
               },
             }

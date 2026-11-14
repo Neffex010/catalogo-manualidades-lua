@@ -26,9 +26,9 @@ export default function App() {
       <main className="flex-1">
         <Hero />
 
-        <div className="py-12 sm:py-16 lg:py-20">
-          <Catalog products={products} loading={loading} error={error} onRetry={refetch} />
-        </div>
+        {/* El catalogo maneja su propio ritmo: portafolio sobre papel y
+            materiales sobre una banda tintada de lado a lado. */}
+        <Catalog products={products} loading={loading} error={error} onRetry={refetch} />
 
         <StoreInfo />
       </main>

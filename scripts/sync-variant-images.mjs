@@ -1,11 +1,14 @@
 /**
  * sync-variant-images.mjs
  * -----------------------------------------------------------------------------
- * Prepara las fotos de las variantes de color (estambres e hilos).
+ * Prepara las fotos de las variantes de color de los productos que ya vende el
+ * catalogo (estambres e hilos).
  *
- * Las fotos originales viven en `assets/estambres-fotos` (fuera de `public/`
- * para que Vite no las copie al build) con los nombres que salen de Google
- * Drive (guiones, sufijos MINI/B, codigos de tres cifras...).
+ * Las fotos originales viven en `assets/<marca>/` (fuera de `public/` para que
+ * Vite no las copie al build) con los nombres que salen de Google Drive
+ * (guiones, sufijos MINI/B, codigos de tres cifras...). El script busca cada
+ * origen en cualquiera de esas carpetas.
+ *
  * La UI espera un nombre estable y predecible del tipo:
  *
  *   01_BLANCO_KOMFY.webp
@@ -20,13 +23,13 @@
  * -----------------------------------------------------------------------------
  */
 
-import { mkdir, stat } from 'node:fs/promises'
+import { mkdir, readdir, stat } from 'node:fs/promises'
 import path from 'node:path'
 import { fileURLToPath } from 'node:url'
 import sharp from 'sharp'
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..')
-const SOURCE_DIR = path.join(ROOT, 'assets', 'estambres-fotos')
+const ASSETS_DIR = path.join(ROOT, 'assets')
 const DEST_DIR = path.join(ROOT, 'public', 'images', 'catalogo')
 
 /** Proporcion final: la misma que el contenedor `aspect-4/5` de ProductCard. */
@@ -87,22 +90,57 @@ const JOBS = [
 
 const kb = (bytes) => `${(bytes / 1024).toFixed(1)} KB`
 
+/**
+ * Indexa los originales de todas las carpetas de marca.
+ *
+ * `assets/` esta organizado por marca, pero un mismo archivo puede repetirse en
+ * dos carpetas. Nos quedamos con la primera aparicion y avisamos del resto para
+ * que el indice sea determinista.
+ *
+ * @returns {Promise<Map<string, string>>} nombre de archivo -> ruta absoluta
+ */
+async function indexAssets() {
+  const index = new Map()
+
+  const brands = (await readdir(ASSETS_DIR, { withFileTypes: true }))
+    .filter((entry) => entry.isDirectory())
+    .map((entry) => entry.name)
+    .sort((a, b) => a.localeCompare(b, 'es'))
+
+  for (const brand of brands) {
+    const brandDir = path.join(ASSETS_DIR, brand)
+    const files = (await readdir(brandDir, { withFileTypes: true }))
+      .filter((entry) => entry.isFile())
+      .map((entry) => entry.name)
+
+    for (const filename of files) {
+      if (index.has(filename)) {
+        process.stderr.write(
+          `  Duplicado ${filename}: se usa ${index.get(filename)}, se ignora ${brand}\n`
+        )
+        continue
+      }
+      index.set(filename, path.join(brandDir, filename))
+    }
+  }
+
+  return index
+}
+
 async function main() {
   let totalBytes = 0
   let copied = 0
 
+  const originals = await indexAssets()
+
   for (const job of JOBS) {
-    const source = path.join(SOURCE_DIR, job.source)
+    const source = originals.get(job.source)
     const destinationDir = path.join(DEST_DIR, job.category)
     const destination = path.join(destinationDir, job.target)
 
     // Si falta un original se avisa y se continua: el resto del catalogo sigue
     // siendo valido y la tarjeta mostrara su imagen de respaldo.
-    const sourceExists = await stat(source).then(
-      () => true,
-      () => false
-    )
-    if (!sourceExists) {
+    if (!source) {
       process.stderr.write(`  Falta ${job.source}; se omite ${job.category}/${job.target}\n`)
       continue
     }

@@ -1,17 +1,18 @@
 /**
  * Hero.jsx
  * -----------------------------------------------------------------------------
- * Portada tipo Bento editorial.
+ * Portada editorial.
  *
- * En lugar de un bloque centrado generico, la primera pantalla combina cuatro
- * piezas: identidad + propuesta de valor, una pieza del portafolio, la carta de
- * color de estambres/hilos y el sello "hecho a mano". La retícula asimetrica
- * separa las dos intenciones del sitio: encargar un diseno o comprar material.
+ * La primera pantalla ya no es una reticula de cajas: el titular vive directo
+ * sobre el papel, la pieza destacada ocupa una columna completa y los datos de
+ * la tienda se leen como una ficha al pie. Se conservan el logotipo, los dos
+ * accesos, la carta de color, la pieza destacada y todos sus textos.
  * -----------------------------------------------------------------------------
  */
 
 import { ArrowRight, Gift, Heart, Palette, Scissors, Sparkles } from 'lucide-react'
 import { BRAND } from '../config/site'
+import colorCatalog from '../data/colorCatalog.json'
 
 /** Pilares de la marca mostrados bajo el eslogan. */
 const HIGHLIGHTS = [
@@ -21,18 +22,22 @@ const HIGHLIGHTS = [
 ]
 
 /**
- * Muestra de la carta de color. Son los tonos que abren la coleccion de
- * estambres e hilos; se pintan como muestras fisicas para que el hero comunique
- * de inmediato que el catalogo ya no es solo de manualidades.
+ * Muestra de la carta de color. Los tonos salen del manifiesto real
+ * (`colorCatalog.json`), no de una lista paralela que se desactualiza: el hero
+ * siempre enseña colores que existen en la tienda. Se eligen los tonos con más
+ * saturación para que la paleta se lea de un vistazo sobre el papel.
  */
-const HERO_SWATCHES = [
-  { name: 'Blanco', hex: '#F8F5EF' },
-  { name: 'Cielo', hex: '#A9D6E5' },
-  { name: 'Vidrio', hex: '#B8C9C5' },
-  { name: 'Lila', hex: '#B79EE6' },
-  { name: 'Rosa', hex: '#E7A6B8' },
-  { name: 'Rojo', hex: '#B9373F' },
-]
+const HERO_SWATCH_NAMES = ['Rojo Escolar', 'Mango', 'Fucsia', 'Guinda', 'Verde Militar', 'Cafe Craft']
+
+const HERO_SWATCHES = HERO_SWATCH_NAMES.map((name) => {
+  for (const brand of colorCatalog.brands) {
+    const match = brand.colors.find(
+      (color) => color.name.toLowerCase() === name.toLowerCase()
+    )
+    if (match) return { name, hex: match.hex }
+  }
+  return null
+}).filter(Boolean)
 
 /** Foto de la pieza destacada. */
 const FEATURED_IMAGE = '/images/catalogo/flores/ramo-romantico-pastel-luces.jpg'
@@ -41,7 +46,7 @@ export default function Hero() {
   return (
     <section
       id="inicio"
-      className="relative overflow-hidden border-b border-line/70 bg-canvas"
+      className="relative overflow-hidden border-b-2 border-ink/10 bg-canvas"
     >
       {/* Textura de papel + lino: el fondo deja de ser un color plano. */}
       <div aria-hidden="true" className="texture-linen pointer-events-none absolute inset-0" />
@@ -57,13 +62,13 @@ export default function Hero() {
         className="pointer-events-none absolute -bottom-24 right-1/4 h-64 w-64 rounded-full bg-sand-200/70 blur-3xl"
       />
 
-      <div className="relative mx-auto max-w-7xl px-4 py-10 sm:px-6 sm:py-14 lg:px-8 lg:py-16">
-        <div className="grid items-stretch gap-4 lg:grid-cols-12">
+      <div className="relative mx-auto max-w-7xl px-4 pb-14 pt-9 sm:px-6 sm:pb-16 sm:pt-12 lg:px-8 lg:pb-20 lg:pt-14">
+        <div className="grid gap-9 lg:grid-cols-12 lg:items-stretch lg:gap-10 xl:gap-14">
           {/* --------------------------------------------------------------
-           * Tile principal: marca y propuesta de valor
+           * Columna editorial: marca y propuesta de valor
            * ------------------------------------------------------------ */}
-          <div className="relative flex flex-col justify-between overflow-hidden rounded-4xl border border-line bg-surface/90 p-6 shadow-soft sm:p-9 lg:col-span-7 lg:p-10">
-            <div>
+          <div className="flex flex-col lg:col-span-7">
+            <div className="flex flex-wrap items-center gap-3">
               <img
                 src={BRAND.logo.mark}
                 width={BRAND.logo.width}
@@ -74,58 +79,62 @@ export default function Hero() {
                   event.currentTarget.src = BRAND.logo.markFallback
                 }}
               />
-
-              <h1 className="mt-5 max-w-xl font-display text-3xl font-semibold leading-[1.12] tracking-tight text-ink sm:text-4xl lg:text-5xl">
-                Diseños tejidos a pedido
-                <span className="mt-1 block text-lila-700">
-                  y los hilos para crear los tuyos
-                </span>
-              </h1>
-
-              <p className="mt-4 max-w-xl text-sm leading-relaxed text-ink-soft sm:mt-5 sm:text-base">
-                Amigurumis, flores, recuerdos y llaveros hechos a mano por encargo. Elige un
-                diseño del portafolio o llévate los hilos y estambres para tu propio proyecto.
-              </p>
+              {/* Etiqueta perforada: reutiliza el eslogan de la marca, no
+                  agrega informacion nueva. */}
+              <span className="rounded-md border border-dashed border-clay/60 bg-clay-soft/80 px-3 py-1.5 text-[12px] font-semibold leading-tight tracking-[0.01em] text-clay-deep">
+                {BRAND.tagline}
+              </span>
+              <span aria-hidden="true" className="hidden h-[2px] flex-1 bg-line sm:block" />
             </div>
 
-            <div className="mt-7">
-              <div className="flex flex-col gap-3 sm:flex-row sm:items-center">
-                <a
-                  href="#disenos"
-                  className="inline-flex items-center justify-center gap-2 rounded-full bg-brand px-6 py-3.5 text-sm font-semibold text-white shadow-brand transition-all duration-240 ease-artisan hover:-translate-y-0.5 hover:bg-lila-800 hover:shadow-lift focus:outline-none focus-visible:ring-2 focus-visible:ring-lila-600 focus-visible:ring-offset-2 focus-visible:ring-offset-surface"
-                >
-                  <Sparkles className="h-4 w-4" aria-hidden="true" />
-                  Ver diseños
-                  <ArrowRight className="h-4 w-4" aria-hidden="true" />
-                </a>
+            <h1 className="mt-7 font-display text-[3rem] font-semibold leading-[0.93] tracking-[-0.035em] text-ink sm:mt-9 sm:text-[4.4rem] lg:text-[5.4rem] xl:text-[6rem]">
+              Diseños tejidos a pedido
+              <span className="mt-2 block text-lila-700">
+                y los hilos para crear los tuyos
+              </span>
+            </h1>
 
-                <a
-                  href="#materiales"
-                  className="inline-flex items-center justify-center gap-2 rounded-full border border-line bg-sand-50 px-6 py-3.5 text-sm font-semibold text-ink transition-all duration-240 ease-artisan hover:-translate-y-0.5 hover:border-lila-400 hover:bg-surface hover:text-lila-800 focus:outline-none focus-visible:ring-2 focus-visible:ring-lila-600 focus-visible:ring-offset-2 focus-visible:ring-offset-surface"
-                >
-                  <Palette className="h-4 w-4" aria-hidden="true" />
-                  Ver materiales
-                </a>
-              </div>
+            <p className="mt-6 max-w-xl text-[16px] leading-[1.65] text-ink-soft sm:mt-7 sm:text-[18px]">
+              Amigurumis, flores, recuerdos y llaveros hechos a mano por encargo. Elige un
+              diseño del portafolio o llévate los hilos y estambres para tu propio proyecto.
+            </p>
 
-              <ul className="mt-6 flex flex-wrap items-center gap-x-5 gap-y-2.5 text-[11px] font-medium text-ink-muted sm:text-xs">
-                {HIGHLIGHTS.map(({ icon: Icon, label }) => (
-                  <li key={label} className="flex items-center gap-1.5">
-                    <Icon className="h-3.5 w-3.5 text-lila-600" aria-hidden="true" />
-                    {label}
-                  </li>
-                ))}
-              </ul>
+            <div className="mt-9 flex flex-col items-start gap-5 sm:flex-row sm:items-center sm:gap-8">
+              <a
+                href="#disenos"
+                className="inline-flex items-center justify-center gap-2.5 rounded-xl border-2 border-ink bg-brand px-7 py-4 text-[15px] font-bold text-white shadow-pop transition-all duration-240 ease-artisan hover:translate-x-[2px] hover:translate-y-[2px] hover:bg-lila-800 hover:shadow-none focus:outline-none focus-visible:ring-2 focus-visible:ring-lila-600 focus-visible:ring-offset-2 focus-visible:ring-offset-canvas sm:text-base"
+              >
+                <Sparkles className="h-[18px] w-[18px]" aria-hidden="true" />
+                Ver diseños
+                <ArrowRight className="h-[18px] w-[18px]" aria-hidden="true" />
+              </a>
+
+              <a
+                href="#materiales"
+                className="link-rule inline-flex items-center gap-2 pb-0.5 text-[15px] font-semibold text-ink transition-colors duration-240 hover:text-lila-800 focus:outline-none focus-visible:ring-2 focus-visible:ring-lila-600 focus-visible:ring-offset-2 focus-visible:ring-offset-canvas sm:text-base"
+              >
+                <Palette className="h-[18px] w-[18px] text-clay" aria-hidden="true" />
+                Ver materiales
+              </a>
             </div>
+
+            <ul className="mt-10 flex flex-wrap items-center gap-x-7 gap-y-3 border-t-2 border-ink/10 pt-5 text-[13px] font-medium tracking-wide text-ink-muted sm:mt-12">
+              {HIGHLIGHTS.map(({ icon: Icon, label }) => (
+                <li key={label} className="flex items-center gap-2">
+                  <Icon className="h-4 w-4 text-clay" aria-hidden="true" />
+                  {label}
+                </li>
+              ))}
+            </ul>
           </div>
 
           {/* --------------------------------------------------------------
-           * Columna derecha: pieza destacada + carta de color + sello
+           * Columna derecha: pieza destacada + ficha de la tienda
            * ------------------------------------------------------------ */}
-          <div className="flex flex-col gap-4 lg:col-span-5">
+          <div className="flex flex-col lg:col-span-5">
             <a
               href="#disenos"
-              className="group relative flex min-h-[280px] flex-1 overflow-hidden rounded-4xl border border-line bg-sand-100 shadow-soft focus:outline-none focus-visible:ring-2 focus-visible:ring-lila-600 focus-visible:ring-offset-2 focus-visible:ring-offset-canvas sm:min-h-[320px]"
+              className="group photo-frame relative flex min-h-[340px] flex-1 overflow-hidden rounded-[1.5rem] border-2 border-ink/10 bg-sand-100 shadow-pop-sand focus:outline-none focus-visible:ring-2 focus-visible:ring-lila-600 focus-visible:ring-offset-2 focus-visible:ring-offset-canvas sm:min-h-[420px]"
             >
               <img
                 src={FEATURED_IMAGE}
@@ -138,77 +147,68 @@ export default function Hero() {
               />
               <div
                 aria-hidden="true"
-                className="absolute inset-0 bg-gradient-to-t from-ink/75 via-ink/10 to-transparent"
+                className="absolute inset-0 bg-gradient-to-t from-ink/80 via-ink/10 to-transparent"
               />
 
-              <span className="absolute left-4 top-4 rounded-full bg-surface/95 px-3 py-1.5 text-[10px] font-bold uppercase tracking-wide text-lila-800 shadow-soft backdrop-blur-sm sm:left-5 sm:top-5">
+              <span className="absolute left-5 top-5 rounded-md border border-dashed border-clay bg-clay-soft/95 px-3 py-1.5 text-[11px] font-bold uppercase tracking-[0.14em] text-clay-deep shadow-sm backdrop-blur-sm">
                 Pieza destacada
               </span>
 
-              <div className="relative mt-auto w-full p-5 text-white sm:p-6">
-                <p className="text-[10px] font-bold uppercase tracking-[0.22em] text-white/80">
+              <div className="relative mt-auto w-full p-6 text-white sm:p-8">
+                <p className="text-[11px] font-bold uppercase tracking-[0.22em] text-white/80">
                   Portafolio
                 </p>
-                <p className="mt-1 font-display text-xl font-semibold leading-snug sm:text-2xl">
+                <p className="mt-1.5 font-display text-[1.8rem] font-semibold leading-[1.05] sm:text-[2.4rem]">
                   Ramo romántico pastel
                 </p>
-                <span className="mt-2 inline-flex items-center gap-1.5 text-xs font-semibold text-white/90">
+                <span className="mt-4 inline-flex items-center gap-2 text-[14px] font-semibold text-white/95">
                   Ver los diseños
                   <ArrowRight
-                    className="h-3.5 w-3.5 transition-transform duration-240 ease-artisan group-hover:translate-x-1"
+                    className="h-4 w-4 transition-transform duration-240 ease-artisan group-hover:translate-x-1"
                     aria-hidden="true"
                   />
                 </span>
               </div>
             </a>
 
-            <div className="grid grid-cols-2 gap-4">
-              <a
-                href="#materiales"
-                className="group flex flex-col justify-between rounded-4xl border border-line bg-sand-50 p-4 transition-all duration-240 ease-artisan hover:-translate-y-0.5 hover:border-lila-300 hover:bg-surface hover:shadow-soft focus:outline-none focus-visible:ring-2 focus-visible:ring-lila-600 focus-visible:ring-offset-2 focus-visible:ring-offset-canvas sm:p-5"
-              >
-                <div>
-                  <span className="grid h-9 w-9 place-items-center rounded-full bg-lila-100 text-lila-800">
-                    <Palette className="h-4 w-4" aria-hidden="true" />
-                  </span>
-                  <p className="mt-3 font-display text-base font-semibold text-ink sm:text-lg">
-                    Carta de color
-                  </p>
-                  <p className="mt-1 text-[11px] leading-relaxed text-ink-muted sm:text-xs">
-                    Elige el tono exacto para tu proyecto.
-                  </p>
+            {/* Ficha sin cajas: dos columnas separadas por un filo. La paleta
+             * es informativa; el acceso a Materiales ya vive en el boton de
+             * arriba, asi que no repetimos el destino. */}
+            <div className="mt-6 grid grid-cols-2 gap-6 border-t-2 border-ink/10 pt-5 sm:gap-8">
+              <div>
+                <p className="flex items-center gap-2 text-[11.5px] font-bold uppercase tracking-[0.16em] text-clay-deep">
+                  <Palette className="h-4 w-4" aria-hidden="true" />
+                  Carta de color
+                </p>
+
+                <div className="mt-3 flex -space-x-1.5" aria-hidden="true">
+                  {HERO_SWATCHES.map((swatch) => (
+                    <span
+                      key={swatch.name}
+                      title={swatch.name}
+                      style={{ backgroundColor: swatch.hex }}
+                      className="h-8 w-8 rounded-full border-2 border-canvas shadow-sm"
+                    />
+                  ))}
                 </div>
 
-                <div className="mt-4">
-                  <div className="flex -space-x-1.5" aria-hidden="true">
-                    {HERO_SWATCHES.map((swatch) => (
-                      <span
-                        key={swatch.name}
-                        title={swatch.name}
-                        style={{ backgroundColor: swatch.hex }}
-                        className="h-6 w-6 rounded-full border-2 border-surface shadow-sm sm:h-7 sm:w-7"
-                      />
-                    ))}
-                  </div>
-                  <p className="mt-2 text-[10px] font-semibold uppercase tracking-wide text-lila-800">
-                    Estambres e hilos
-                  </p>
-                </div>
-              </a>
+                <p className="mt-2.5 text-[13px] leading-relaxed text-ink-muted">
+                  Elige el tono exacto para tu proyecto.
+                </p>
+                <p className="mt-2 text-[11.5px] font-bold uppercase tracking-[0.12em] text-lila-800">
+                  Estambres e hilos
+                </p>
+              </div>
 
-              <div className="flex flex-col justify-between rounded-4xl border border-lila-300/70 bg-lila-100/70 p-4 sm:p-5">
-                <span className="grid h-9 w-9 place-items-center rounded-full bg-surface/80 text-lila-800">
+              <div className="border-l border-ink/10 pl-6 sm:pl-8">
+                <p className="flex items-center gap-2 text-[11.5px] font-bold uppercase tracking-[0.16em] text-clay-deep">
                   <Scissors className="h-4 w-4" aria-hidden="true" />
-                </span>
-                <div className="mt-3">
-                  <p className="font-display text-base font-semibold text-ink sm:text-lg">
-                    Hecho a mano
-                  </p>
-                  <p className="mt-1 text-[11px] leading-relaxed text-ink-soft sm:text-xs">
-                    Cada pieza se teje una por una, sin prisas.
-                  </p>
-                </div>
-                <p className="mt-4 text-[10px] font-bold uppercase tracking-wide text-lila-800">
+                  Hecho a mano
+                </p>
+                <p className="mt-3 text-[13px] leading-relaxed text-ink-soft">
+                  Cada pieza se teje una por una, sin prisas.
+                </p>
+                <p className="mt-2.5 text-[11.5px] font-bold uppercase tracking-[0.12em] text-lila-800">
                   Desde Pachuca, Hgo.
                 </p>
               </div>
