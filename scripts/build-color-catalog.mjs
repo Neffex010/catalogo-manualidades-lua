@@ -10,7 +10,8 @@
  *   2. Normaliza codigo + nombre de color a partir del nombre del archivo.
  *   3. Genera una miniatura cuadrada WebP en
  *      `public/images/catalogo/carta-colores/<marca>/`.
- *   4. Escribe `src/data/colorCatalog.json` con marcas, tonos y color promedio.
+ *   4. Escribe `src/data/colorCatalog.json` con marcas, tonos, color promedio y
+ *      la ruta de la foto 4:5 que genera despues `npm run variants`.
  *
  * Es idempotente: se puede volver a lanzar cuando cambien las fotos.
  *
@@ -26,6 +27,7 @@ import sharp from 'sharp'
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..')
 const ASSETS_DIR = path.join(ROOT, 'assets')
 const OUTPUT_DIR = path.join(ROOT, 'public', 'images', 'catalogo', 'carta-colores')
+const CARD_DIR = '/images/catalogo/estambres'
 const MANIFEST_PATH = path.join(ROOT, 'src', 'data', 'colorCatalog.json')
 
 /** Marcas visibles en la carta, en el orden en que se presentan. */
@@ -214,6 +216,7 @@ async function main() {
       await writeThumbnail(source, destination)
 
       const imageUrl = `/images/catalogo/carta-colores/${brand.id}/${outputName}`
+      const cardImage = `${CARD_DIR}/${brand.id}/${outputName}`
       const bytes = (await stat(destination)).size
       totalBytes += bytes
 
@@ -222,6 +225,10 @@ async function main() {
         name,
         hex: await averageColor(source),
         image: imageUrl,
+        imageCard: cardImage,
+        // Nombre del archivo original: `npm run variants` lo usa para generar
+        // la foto 4:5 de la tarjeta sin volver a adivinar el color.
+        source: filename,
       })
     }
 
@@ -232,6 +239,7 @@ async function main() {
       id: brand.id,
       name: brand.name,
       type: brand.type,
+      dir: brand.dir,
       colors,
     })
 

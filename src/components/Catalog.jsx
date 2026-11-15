@@ -4,7 +4,7 @@
  * Orquestador del catalogo en DOS bloques con intenciones distintas:
  *
  *   1. #disenos   -> portafolio de piezas tejidas a pedido (sin precio ni stock)
- *   2. #materiales -> hilos y estambres (variantes de color; precio y
+ *   2. #materiales -> estambres y trapillo (variantes de color; precio y
  *      disponibilidad solo si la tienda ya los cargo)
  *
  * Los dos bloques comparten el ancho de lectura, pero no el fondo: el

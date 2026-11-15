@@ -1,7 +1,7 @@
 /**
  * Materials.jsx
  * -----------------------------------------------------------------------------
- * Seccion #materiales: hilos y estambres.
+ * Seccion #materiales: estambres y trapillo.
  *
  * Es la parte comprable del catalogo. Reutiliza ProductCard, que resuelve las
  * variantes de color y solo afirma disponibilidad o precio cuando la tienda ya
@@ -16,8 +16,8 @@ import ProductCard from './ProductCard'
 import ProductCardSkeleton from './ProductCardSkeleton'
 import SectionHeading from './SectionHeading'
 
-/** Esqueletos visibles mientras llega el catalogo (4 productos reales). */
-const SKELETON_COUNT = 4
+/** Esqueletos visibles mientras llega el catalogo (5 marcas reales). */
+const SKELETON_COUNT = 5
 
 export default function Materials({ materials = [], loading = false, onOpenDetail }) {
   return (
@@ -26,11 +26,11 @@ export default function Materials({ materials = [], loading = false, onOpenDetai
         id="materiales-titulo"
         index="02"
         eyebrow="Materiales"
-        title="Hilos y estambres"
-        description="Marcas y tonos que manejamos. Pregunta existencias y precio por WhatsApp."
+        title="Estambres y trapillo"
+        description="Cinco marcas con todos sus tonos. Elige el color y confirma existencia y precio por WhatsApp."
       />
 
-      <div className="mt-7 grid grid-cols-1 gap-5 sm:mt-9 sm:grid-cols-2 sm:gap-6 xl:grid-cols-4 xl:gap-6">
+      <div className="mt-7 grid grid-cols-1 gap-5 sm:mt-9 sm:grid-cols-2 sm:gap-6 xl:grid-cols-3 xl:gap-6">
         {loading ? (
           Array.from({ length: SKELETON_COUNT }, (_, index) => (
             <ProductCardSkeleton key={`material-skeleton-${index}`} />

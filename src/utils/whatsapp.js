@@ -39,16 +39,16 @@ export function buildPhoneNumber(phone = WHATSAPP_NUMBER) {
 export const GENERAL_MESSAGE = [
   '¡Hola! Gracias por visitar el catálogo de Manualidades Lua.',
   '',
-  'Me gustaría recibir más información sobre sus creaciones tejidas a mano.',
+  'Me gustaría recibir información sobre los estambres, los hilos y las piezas tejidas a mano.',
   '',
-  '¿Me podrían compartir precios, tiempos de entrega y opciones de personalización?',
+  '¿Me podrían compartir precios, existencias y tiempos de entrega?',
   '¡Muchas gracias!',
 ].join('\n')
 
 /**
  * Mensaje prellenado de un producto concreto.
- * Incluye el nombre exacto del producto y, cuando hay una variante activa, su
- * codigo y nombre de color para que la tienda sepa de inmediato que pedir.
+ * Incluye la cantidad, el nombre del producto y, cuando hay una variante activa,
+ * su codigo y nombre de color para que la tienda sepa de inmediato que pedir.
  *
  * Las etiquetas NO se incluyen: en el mensaje solo sobraban. Los datos siguen
  * en el catalogo porque la busqueda (`matchesSearch`) y el JSON-LD los usan
@@ -56,16 +56,33 @@ export const GENERAL_MESSAGE = [
  *
  * @param {object} product
  * @param {object|null} [variant] Variante de color activa
+ * @param {number} [quantity] Ovillos o piezas solicitadas
  * @returns {string}
  */
-export function buildProductMessage(product, variant = null) {
+export function buildProductMessage(product, variant = null, quantity = 1) {
   if (!product) return GENERAL_MESSAGE
 
+  const units = Number(quantity) === 1 ? 'ovillo' : 'ovillos'
   const color = variant
-    ? ` (Color: ${variant.colorCode} - ${variant.colorName})`
+    ? `, color ${variant.colorCode} ${variant.colorName}`
     : ''
 
-  return `Hola, me interesa pedir: ${product.name}${color}`
+  return `Hola, quiero pedir de Manualidades Lua: ${quantity} ${units} de ${product.name}${color}. ¿Está disponible y cuánto cuesta?`
+}
+
+/**
+ * Mensaje para un tono concreto de la carta de color: no hay una tarjeta de
+ * producto por cada tono, asi que la marca y el codigo son la referencia.
+ *
+ * @param {{ name: string }} brand
+ * @param {{ code: string, name?: string }} color
+ * @returns {string}
+ */
+export function buildColorMessage(brand, color) {
+  const colorName = color?.name ? ` ${color.name}` : ''
+  const brandName = brand?.name ? ` de ${brand.name}` : ''
+
+  return `Hola, me interesa el tono ${color?.code ?? ''}${colorName}${brandName}. ¿Está disponible y cuánto cuesta?`
 }
 
 /**
@@ -93,13 +110,24 @@ export function buildWhatsAppUrl({ text = GENERAL_MESSAGE, phone } = {}) {
 }
 
 /**
- * Enlace de cotizacion de un producto (con su variante de color si aplica).
+ * Enlace de pedido de un producto (con su variante de color y cantidad).
  * @param {object} product
  * @param {object|null} [variant]
+ * @param {number} [quantity]
  * @returns {string}
  */
-export function getProductWhatsAppUrl(product, variant = null) {
-  return buildWhatsAppUrl({ text: buildProductMessage(product, variant) })
+export function getProductWhatsAppUrl(product, variant = null, quantity = 1) {
+  return buildWhatsAppUrl({ text: buildProductMessage(product, variant, quantity) })
+}
+
+/**
+ * Enlace para pedir un tono desde la carta de color.
+ * @param {{ name: string }} brand
+ * @param {{ code: string, name?: string }} color
+ * @returns {string}
+ */
+export function getColorWhatsAppUrl(brand, color) {
+  return buildWhatsAppUrl({ text: buildColorMessage(brand, color) })
 }
 
 /**

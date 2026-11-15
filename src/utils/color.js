@@ -11,7 +11,7 @@ import { normalizeToken } from './format.js'
 export const FALLBACK_SWATCH = '#D6D3D1'
 
 /**
- * Familias de color para organizar estambres e hilos.
+ * Familias de color para organizar los estambres.
  *
  * Se agrupan por temperatura percibida, no por codigo: asi alguien que busca
  * "algo calido" no tiene que recorrer los 17 nombres uno por uno. El orden es

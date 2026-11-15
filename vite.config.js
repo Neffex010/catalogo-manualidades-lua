@@ -32,7 +32,7 @@ function normalizeSiteUrl(value) {
  *
  *   - `#disenos`: piezas tejidas a pedido. Se describen como `VisualArtwork`
  *     (portafolio), sin oferta ni disponibilidad: no son inventario.
- *   - `#materiales`: hilos y estambres. Se publican como `Product`. Solo se
+ *   - `#materiales`: estambres y trapillo. Se publican como `Product`. Solo se
  *     emite `offers` cuando la tienda ya definio un precio real; una cifra
  *     inventada seria peor que omitirla. La disponibilidad se declara solo si
  *     existe el dato (`available` booleano).
@@ -81,7 +81,7 @@ function buildCatalogJsonLd(siteUrl) {
         '@id': `${siteUrl}/#material-${product.id}`,
         name: product.name,
         description: product.description,
-        category: 'Hilos y estambres',
+        category: 'Estambres',
         image: getImageUrl(product),
         url: `${siteUrl}/#materiales`,
         ...(product.brand ? { brand: { '@type': 'Brand', name: product.brand } } : {}),
@@ -141,7 +141,7 @@ function buildCatalogJsonLd(siteUrl) {
     {
       '@type': 'ItemList',
       '@id': `${siteUrl}/#materiales`,
-      name: `Hilos y estambres de ${BRAND.name}`,
+      name: `Estambres y trapillo de ${BRAND.name}`,
       numberOfItems: materialItems.length,
       itemListElement: materialItems,
     },

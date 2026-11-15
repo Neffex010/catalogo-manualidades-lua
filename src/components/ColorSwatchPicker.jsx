@@ -1,7 +1,7 @@
 /**
  * ColorSwatchPicker.jsx
  * -----------------------------------------------------------------------------
- * Selector de color para estambres e hilos.
+ * Selector de color para los estambres.
  *
  * Cada boton es una muestra circular pintada con `hexColor`. Dentro se pinta el
  * codigo de color (01, 06, 07...) para que la eleccion sea inequivoca incluso

@@ -112,7 +112,7 @@ export function filterProducts(
       !subcategory || subcategory === 'all' || product.subcategory === subcategory
     const bySearch = matchesSearch(product, search)
 
-    // Solo estambres e hilos tienen variantes; en manualidades el filtro de
+    // Solo los estambres tienen variantes; en manualidades el filtro de
     // familia no aplica y no debe vaciar la lista.
     const hasFamilyFilter = colorFamily && colorFamily !== ALL_COLOR_FAMILY
     const byColor =

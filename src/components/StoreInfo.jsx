@@ -175,8 +175,8 @@ export default function StoreInfo() {
               </div>
 
               <p className="mt-2 text-[13px] leading-relaxed text-ink-muted">
-                {colorCatalog.brands.length} de ellas tienen carta de color con todos sus
-                tonos en Materiales.
+                {colorCatalog.brands.length} marcas tienen todos sus tonos con foto en
+                Materiales; las demás se consultan por WhatsApp.
               </p>
 
               <div className="mt-5 grid gap-5 border-t border-ink/10 pt-4 sm:grid-cols-2">

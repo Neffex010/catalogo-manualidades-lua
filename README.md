@@ -7,10 +7,12 @@ Sitio web responsivo de **Manualidades Lua** con dos bloques con intención dist
 - **Diseños tejidos a pedido** (`#disenos`): un portafolio con piezas reales que se tejen
   por encargo. No hay precio, stock ni inventario: la foto muestra la calidad del trabajo y
   el pedido se cotiza por WhatsApp.
-- **Hilos y estambres** (`#materiales`): las marcas y tonos que maneja la tienda, con
-  variantes de color. El precio y el stock son **opcionales**: si la tienda aún no los define,
-  la interfaz invita a confirmarlos por WhatsApp en lugar de inventar cifras. Al final de la
-  sección, una **carta de color** muestra por marca todos los tonos reales con foto.
+- **Estambres y trapillo** (`#materiales`): cinco marcas con **todos** sus tonos (148 en
+  total), cada una como tarjeta comprable con selector de color y cantidad en ovillos. El
+  pedido sale por WhatsApp con producto, código, color y cantidad. El precio y el stock son
+  **opcionales**: si la tienda aún no los define, la interfaz invita a confirmarlos en lugar
+  de inventar cifras. Al final de la sección, la **carta de color** repite los tonos como
+  referencia visual y cada uno se pide con un toque.
 
 Construido con **React 18 + Vite 6 + Tailwind CSS 3** y una **capa de datos desacoplada** que hoy
 lee un catálogo local y mañana habla con FastAPI + PostgreSQL sin modificar un solo componente.
@@ -31,8 +33,8 @@ npm run dev      # http://localhost:5173
 | `npm run preview` | Sirve el build de producción                       |
 | `npm run lint`    | ESLint 9 (configuración flat)                      |
 | `npm run images`  | Genera las variantes responsivas de las fotos      |
-| `npm run variants`| Normaliza las fotos de estambres e hilos por color |
-| `npm run colors`  | Genera la carta de color de todas las marcas       |
+| `npm run variants`| Genera la foto 4:5 de cada tono (148)          |
+| `npm run colors`  | Genera el manifiesto y las miniaturas de la carta |
 
 > **Imágenes:** al añadir o reemplazar una foto en `public/images/catalogo/`, ejecuta
 > `npm run images`. El script crea las versiones 400/600/800 en AVIF y WebP, el placeholder
@@ -42,19 +44,18 @@ npm run dev      # http://localhost:5173
 > a todos los dispositivos en vez de elegir la resolución adecuada.
 
 > **Variantes de color:** las fotos originales viven en `assets/<marca>/` (fuera de
-> `public/`, así que no se publican). Al añadir un color a un producto que ya se vende,
-> agrégalo también en `src/data/products.js` y en el mapa de
-> `scripts/sync-variant-images.mjs`, y ejecuta `npm run variants`. El script busca cada
-> original en cualquiera de las carpetas de marca, recorta la foto a 4:5 y la guarda como
-> WebP con el nombre que espera el catálogo.
+> `public/`, así que no se publican). La lista de tonos **no se escribe a mano**: sale de
+> `src/data/colorCatalog.json`, el mismo manifiesto que alimenta la carta. Para añadir un
+> color, deja la foto en `assets/<marca>/`, ejecuta `npm run colors` y después
+> `npm run variants`. El segundo recorta cada original a 4:5 y lo guarda como WebP en
+> `public/images/catalogo/estambres/<marca>/`, que es la ruta que ya espera el catálogo.
 
-> **Carta de color:** `assets/<marca>/` es también la fuente de la carta de color que se
-> muestra al final de `#materiales`. `npm run colors` lee esas carpetas, ignora las
-> capturas (`SmartSelect*`, `alize-velluto.jpg`) y genera una miniatura cuadrada de 320 px
-> por tono en `public/images/catalogo/carta-colores/<marca>/`, además de
-> `src/data/colorCatalog.json`. Es idempotente: si cambias o agregas fotos, vuelve a
-> lanzarlo. La carta es solo una referencia visual (sin precio ni stock); los productos
-> comprables siguen definidos en `src/data/products.js`.
+> **Carta de color:** `npm run colors` lee `assets/<marca>/`, ignora las capturas
+> (`SmartSelect*`, `alize-velluto.jpg`), genera una miniatura cuadrada de 320 px por tono en
+> `public/images/catalogo/carta-colores/<marca>/` y escribe `src/data/colorCatalog.json` con
+> código, nombre, color promedio, miniatura y la ruta de la foto 4:5. Es idempotente: si
+> cambias o agregas fotos, vuelve a lanzarlo. La carta es solo una referencia visual; el
+> pedido sale por WhatsApp con marca, código y color.
 
 > **Nota Windows:** si `npm install` avisa sobre *install scripts* de `esbuild`, ejecuta
 > `npm approve-scripts esbuild` una sola vez. Es lo que permite que Vite compile.
@@ -121,7 +122,7 @@ manualidades-lua/
 │   ├── favicon-32.png, favicon-192.png, apple-touch-icon.png
 │   ├── og-image.jpg
 │   ├── images/brand/                    # Logotipos (PNG = master, WebP = derivado)
-│   ├── images/catalogo/                 # Manualidades + estambres/hilos por color
+│   ├── images/catalogo/                 # Manualidades + estambres/trapillo por tono
 │   ├── images/catalogo/carta-colores/   # Miniaturas de la carta de color
 │   └── images/product-placeholder.svg   # Imagen de respaldo si falla una foto
 └── src/
@@ -134,7 +135,7 @@ manualidades-lua/
     │
     ├── data/
     │   ├── manualidades.js        # 📦 105 piezas artesanales (sin variantes)
-    │   ├── products.js            # 📦 Fuente única: manualidades + estambres/hilos
+    │   ├── products.js            # 📦 Fuente única: manualidades + 5 marcas de estambre
     │   ├── colorCatalog.json      # 🤖 Generado: marcas, tonos y miniaturas
     │   └── images.json            # 🤖 Generado: srcset, LQIP y color de cada foto
     │
@@ -146,7 +147,8 @@ manualidades-lua/
     │   └── useRevealOnScroll.js   # Anima las tarjetas al entrar en pantalla
     │
     ├── utils/
-    │   ├── whatsapp.js            # Construye URLs wa.me con producto y color
+    │   ├── whatsapp.js            # URLs wa.me con producto, color y cantidad
+    │   ├── availability.js        # Estado disponible / agotado / sin dato
     │   ├── catalog.js             # Búsqueda, filtros, orden y familias de color
     │   ├── color.js               # Familias, paleta fallback y contraste
     │   └── format.js              # Precios en MXN
@@ -157,11 +159,11 @@ manualidades-lua/
         ├── Catalog.jsx             # ⭐ Reparte diseños/materiales + modal compartido
         ├── Portfolio.jsx           # Portafolio #disenos: subcategorías + paginación
         ├── DesignCard.jsx          # Tarjeta de diseño a pedido (sin precio ni stock)
-        ├── Materials.jsx           # Materiales #materiales: hilos y estambres
+        ├── Materials.jsx           # Materiales #materiales: estambres y trapillo
         ├── ColorCatalog.jsx        # Carta de color por marca (12 tonos + expandir)
         ├── SectionHeading.jsx      # Encabezado común de las dos secciones
-        ├── ProductCard.jsx         # Material: selector de color, precio y WhatsApp
-        ├── ProductDetailModal.jsx  # Detalle: copy de encargo o de material
+        ├── ProductCard.jsx         # Material: color, cantidad y pedido por WhatsApp
+        ├── ProductDetailModal.jsx  # Detalle: encargo o material con cantidad
         ├── ColorSwatchPicker.jsx   # Muestras circulares colapsables (6 + N)
         ├── SubcategoryFilter.jsx   # Tipos de diseño del portafolio
         ├── ProductCardSkeleton.jsx # Esqueletos de carga
@@ -231,18 +233,21 @@ cierra con una llamada a la acción, la identidad de la marca, accesos rápidos 
 | Instagram | @manualidades_lua_ |
 | Facebook | Manualidades lua |
 
-**Marcas y tipos de hilo/estambre:** Sinfonía, La Abuelita, Alize Velluto, Karina Komfy Mini,
-Candy, Karina Kairo, Karina Kotton Milk, Cristal, Hilo Vela e Hilo para coser.
+**Marcas y tipos de hilo/estambre:** Sinfonía, La Abuelita, Alize Velluto, Komfy Mini,
+Candy, Karina Kairo, Kotton Milk, Cristal, Hilo Vela e Hilo para coser. Cinco de ellas
+(Alize Velluto, Komfy Mini, Karina Kairo, Kotton Milk y Trapillo Kraft) tienen todos sus
+tonos con foto en Materiales; las demás se consultan por WhatsApp.
 
 **También encontrarás:** accesorios para tejido, bastidores/aros de bordado y ganchillos.
 
 **Servicio:** tejido 100% a mano y levantamiento de pedidos.
 
 > **Precios y stock:** ambos son opcionales y viven en `src/data/products.js`.
-> - `price` numérico → la tarjeta publica la cifra. `null` o ausente → "Se cotiza por
->   WhatsApp". No se usa `0` como sinónimo de "sin precio".
-> - `stock` por variante → `N` disponible, `0` agotado, ausente = sin dato ("Sobre pedido").
->   La tienda puede empezar sin inventario y activarlo color por color cuando quiera.
+> - `price` numérico → la tarjeta publica la cifra. `null` o ausente → "Precio por WhatsApp".
+>   No se usa `0` como sinónimo de "sin precio".
+> - `stock` por tono → `N` disponible, `0` agotado, ausente = sin dato ("Existencia por
+>   confirmar"). La tienda puede empezar sin inventario y activarlo color por color cuando
+>   quiera.
 >
 > El JSON-LD solo genera `offers` cuando hay precio real, y el orden por precio manda al final
 > las piezas sin cifra.
@@ -259,9 +264,9 @@ Candy, Karina Kairo, Karina Kotton Milk, Cristal, Hilo Vela e Hilo para coser.
   JavaScript:
   - `#disenos` publica las piezas como `VisualArtwork` (portafolio) **sin oferta ni
     disponibilidad**: no son inventario.
-  - `#materiales` publica hilos y estambres como `Product`. Solo llevan `offers` cuando la
-    tienda ya definió un precio real; la disponibilidad se declara únicamente si existe el
-    dato. Nada de cifras o existencias inventadas.
+  - `#materiales` publica las cinco marcas de estambre como `Product`. Solo llevan `offers`
+    cuando la tienda ya definió un precio real; la disponibilidad se declara únicamente si
+    existe el dato. Nada de cifras o existencias inventadas.
   La imagen publicada es la de la primera variante disponible; si no hay dato, la primera.
 
 ---
@@ -277,10 +282,17 @@ identifica lo que el cliente quiere:
 Hola, me interesa encargar un diseño como: Ramo romántico pastel (Flores). ¿Me podrían cotizar?
 ```
 
-- **Hilos y estambres**: incluyen el color elegido, si aplica.
+- **Estambres y trapillo**: incluyen cantidad, producto, código y color elegido.
 
 ```
-Hola, me interesa pedir: Estambre Kotton Milk (Color: 06 - Vidrio)
+Hola, quiero pedir de Manualidades Lua: 2 ovillos de Estambre Kotton Milk, color 06 Vidrio. ¿Está disponible y cuánto cuesta?
+```
+
+- **Tonos de la carta de color**: no tienen tarjeta propia, así que la marca y el código son
+  la referencia.
+
+```
+Hola, me interesa el tono 06 Vidrio de Alize Velluto. ¿Está disponible y cuánto cuesta?
 ```
 
 El contacto general del hero y del footer usa un mensaje más largo:
@@ -288,9 +300,9 @@ El contacto general del hero y del footer usa un mensaje más largo:
 ```
 ¡Hola! Gracias por visitar el catálogo de Manualidades Lua.
 
-Me gustaría recibir más información sobre sus creaciones tejidas a mano.
+Me gustaría recibir información sobre los estambres, los hilos y las piezas tejidas a mano.
 
-¿Me podrían compartir precios, tiempos de entrega y opciones de personalización?
+¿Me podrían compartir precios, existencias y tiempos de entrega?
 ¡Muchas gracias!
 ```
 
@@ -392,16 +404,18 @@ CREATE TABLE product_variants (
 - **Portafolio por tandas**: 8 diseños visibles, filtro por tipo (Amigurumis, Eventos, Flores,
   Llaveros) y botón "Ver más diseños" con contador "Mostrando X de Y". Cambiar de tipo reinicia la
   tanda.
-- **Materiales directos**: los 4 productos (2 estambres y 2 hilos) se muestran sin buscador,
-  orden, filtros de categoría ni familias de color. Menos controles, menos carga visual.
-- **Variantes de color**: solo los productos de `estambres` e `hilos` muestran el selector. Al
-  cambiar de color se actualizan la foto, la disponibilidad y el mensaje de WhatsApp de esa
-  tarjeta. Los nombres de archivo (`01_BLANCO_KOMFY.webp`, `07_VIDRIO_KOTTON_MILK.webp`) son la
-  fuente del código y del nombre del color; `parseDriveFilename()` los traduce al modelo de la UI.
+- **Materiales directos**: las 5 marcas de estambre (148 tonos en total) se muestran sin
+  buscador, orden, filtros de categoría ni familias de color. Menos controles, menos carga
+  visual.
+- **Variantes de color**: cada marca trae el selector completo. Al cambiar de tono se
+  actualizan la foto, la disponibilidad y el mensaje de WhatsApp de esa tarjeta. La lista no
+  se mantiene a mano: `src/data/colorCatalog.json` guarda código, nombre, color promedio y
+  las dos rutas de imagen (miniatura de la carta y foto 4:5 de la tarjeta), y
+  `products.js` la convierte en variantes comprables.
 - **Precio y stock opcionales**: el producto publica precio si `price` es numérico; si no,
-  muestra "Se cotiza por WhatsApp". El stock por color es `número` (disponible), `0` (agotado)
-  o ausente (sin dato → "Sobre pedido"). El helper `src/utils/availability.js` centraliza esa
-  lectura y evita que "sin dato" se confunda con "agotado".
+  muestra "Precio por WhatsApp". El stock por tono es `número` (disponible), `0` (agotado)
+  o ausente (sin dato → "Existencia por confirmar"). El helper `src/utils/availability.js`
+  centraliza esa lectura y evita que "sin dato" se confunda con "agotado".
 - **Imagen de respaldo**: si la foto falla, la tarjeta muestra el placeholder de marca
   (`onError` en `ProductCard.jsx` y `DesignCard.jsx`); nunca se ve el ícono de imagen rota.
 - **Estados incluidos**: carga (skeletons), error con reintento, categoría sin diseños, material
@@ -417,34 +431,42 @@ CREATE TABLE product_variants (
   `aria-pressed` (son botones de filtro) y no el patrón `tablist`, que exigiría un `tabpanel`
   y navegación con flechas que aquí no existen.
 - **Responsive**: el portafolio usa 2 columnas en móvil, 2 en tablet, 3 en escritorio y 4 en
-  pantallas anchas; Materiales pasa de 1 a 2 y a 4. La navbar de móvil coloca la navegación en
-  una segunda fila desplazable y `scroll-padding-top` compensa la cabecera fija al usar anclas.
+  pantallas anchas; Materiales pasa de 1 a 2 y a 3 (5 marcas → 3 + 2). La navbar de móvil
+  coloca la navegación en una segunda fila desplazable y `scroll-padding-top` compensa la
+  cabecera fija al usar anclas.
 
 ---
 
 ## 🧪 Verificación realizada
 
 - `npm run lint` → sin errores ni advertencias.
-- `npm run build` → `✓ built` (JS 310.57 kB / 77.97 kB gzip · CSS 42.94 kB / 8.11 kB gzip ·
-  HTML 57.11 kB / 6.79 kB gzip). El HTML publica dos listas JSON-LD separadas (diseños y
+- `npm run build` → `✓ built` (JS 325.05 kB / 79.57 kB gzip · CSS 43.46 kB / 8.21 kB gzip ·
+  HTML 57.55 kB / 6.68 kB gzip). El HTML publica dos listas JSON-LD separadas (diseños y
   materiales).
-- **Datos separados:** 105 diseños en `#disenos` y 4 materiales en `#materiales` (2 estambres y
-  2 hilos).
-- **Variantes:** las 36 rutas de imagen generadas por `npm run variants` existen en
-  `public/images/catalogo/estambres` y `public/images/catalogo/hilos` (18 + 18).
-- **Precios y stock:** ninguna tarjeta inventa cifras. Sin `price`, muestra "Se cotiza por
-  WhatsApp"; sin `stock`, el badge dice "Sobre pedido" y el selector invita a confirmar
-  existencias. En el JSON-LD, `#materiales` publica 4 `Product` sin `offers` mientras no haya
-  precio.
+- **Datos separados:** 105 diseños en `#disenos` y 5 marcas en `#materiales` (25 + 25 + 34 +
+  17 + 47 = 148 tonos).
+- **Variantes:** `npm run variants` generó 148 fotos 4:5 en
+  `public/images/catalogo/estambres/<marca>/` (9.8 MB). La carpeta legacy
+  `public/images/catalogo/hilos/` se eliminó: no hay productos de hilo con foto propia.
+- **Precios y stock:** ninguna tarjeta inventa cifras. Sin `price`, muestra "Precio por
+  WhatsApp"; sin `stock`, la línea dice "Existencia por confirmar" y no se pinta badge. En el
+  JSON-LD, `#materiales` publica 5 `Product` sin `offers` mientras no haya precio.
+- **Materiales (Playwright, 1440 px y 390 px):** se ven las 5 tarjetas con su conteo real; en
+  escritorio el grid queda 3 + 2 y en móvil en una columna, sin desbordamiento horizontal. Las
+  17 imágenes visibles (5 portadas + 12 miniaturas) cargan sin errores y la consola queda
+  limpia.
+- **Modal de material:** conserva el selector completo, "Existencia por confirmar" y el
+  contador de cantidad (1 a 99). Con 3 ovillos, el CTA abre
+  `Hola, quiero pedir de Manualidades Lua: 3 ovillos de Estambre Komfy Mini, color 01 Blanco.
+  ¿Está disponible y cuánto cuesta?`. El CTA es "Pedir por WhatsApp".
+- **Carta de color:** las 5 pestañas muestran 25/25/34/17/47 tonos con "Ver todos"; cada tono es
+  un enlace `wa.me` con marca, código y nombre, y el encabezado declara "5 marcas · 148 tonos".
 - **Portafolio (Playwright, 1440 px y 390 px):** se ven 8 diseños al entrar; el filtro
   "Amigurumis" muestra "Mostrando 8 de 40 diseños"; "Ver más diseños" sube a 16 y el contador lo
   refleja; "Todos los diseños" vuelve a 105 y reinicia la tanda.
 - **Modal de diseño:** muestra "Hecho por encargo", "Se cotiza a tu medida" y el CTA
   "Quiero uno así"; no aparece "Disponible"/"Agotado" ni selector de color. El enlace de WhatsApp
   envía `Hola, me interesa encargar un diseño como: Abejita (Amigurumis). ¿Me podrían cotizar?`.
-- **Modal de material:** conserva el selector de color y la ficha de marca/tono, sin números de
-  inventario ni "Tejido 100% a mano" (ese copy es solo para diseños). El CTA es "Consultar por
-  WhatsApp".
 - **Sin desbordamiento horizontal** en 1440, 390, 375, 360 y 320 px. La navbar mide 73 px en
   escritorio y 95 px en móvil; en 320 px los cuatro enlaces de navegación caben sin scroll. Los
   anclas dejan 88 px de margen en escritorio y 120 px en móvil, por encima de la cabecera fija.

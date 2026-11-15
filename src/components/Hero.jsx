@@ -39,6 +39,12 @@ const HERO_SWATCHES = HERO_SWATCH_NAMES.map((name) => {
   return null
 }).filter(Boolean)
 
+/** Conteo real de la carta, para que el hero no prometa tonos de mas. */
+const TOTAL_TONES = colorCatalog.brands.reduce(
+  (total, brand) => total + brand.colors.length,
+  0
+)
+
 /** Foto de la pieza destacada. */
 const FEATURED_IMAGE = '/images/catalogo/flores/ramo-romantico-pastel-luces.jpg'
 
@@ -196,7 +202,7 @@ export default function Hero() {
                   Elige el tono exacto para tu proyecto.
                 </p>
                 <p className="mt-2 text-[11.5px] font-bold uppercase tracking-[0.12em] text-lila-800">
-                  Estambres e hilos
+                  {colorCatalog.brands.length} marcas · {TOTAL_TONES} tonos
                 </p>
               </div>
 

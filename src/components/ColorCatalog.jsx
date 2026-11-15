@@ -12,8 +12,9 @@
  */
 
 import { useState } from 'react'
-import { Minus, Plus } from 'lucide-react'
+import { MessageCircle, Minus, Plus } from 'lucide-react'
 import colorCatalog from '../data/colorCatalog.json'
+import { getColorWhatsAppUrl } from '../utils/whatsapp'
 
 /** Tonos visibles antes de ofrecer "Ver todos". */
 const INITIAL_VISIBLE = 12
@@ -68,8 +69,8 @@ export default function ColorCatalog() {
           Tonos de nuestras marcas
         </h3>
         <p className="mt-2 max-w-xl text-[14px] leading-[1.6] text-ink-soft sm:text-[15px]">
-          Las tarjetas de arriba muestran los colores con foto lista para pedir; aquí están
-          todos los tonos por marca. Elige una para ver su paleta completa.
+          Las tarjetas de arriba ya traen el selector completo; esta carta te deja comparar
+          todos los tonos en foto. Toca cualquiera para pedirlo por WhatsApp.
         </p>
       </div>
 
@@ -141,37 +142,55 @@ export default function ColorCatalog() {
         </div>
 
         <ul className="mt-4 grid grid-cols-3 gap-x-3 gap-y-4 sm:grid-cols-4 md:grid-cols-6 lg:grid-cols-8">
-          {visibleColors.map((color) => (
-            <li key={`${activeBrand.id}-${color.code}`} className="min-w-0">
-              <div
-                className="aspect-square overflow-hidden rounded-xl border border-line/80 bg-sand-100"
-                style={{ backgroundColor: color.hex }}
-              >
-                <img
-                  src={color.image}
-                  alt={`${activeBrand.name} ${color.name || `tono ${color.code}`}`}
-                  width={320}
-                  height={320}
-                  loading="lazy"
-                  decoding="async"
-                  className="h-full w-full object-cover"
-                />
-              </div>
+          {visibleColors.map((color) => {
+            const colorLabel = color.name ? `${color.code} ${color.name}` : color.code
+            const orderLabel = `Pedir ${activeBrand.name} tono ${colorLabel} por WhatsApp`
 
-              <p className="mt-2 flex items-baseline gap-1.5 text-[12px] leading-tight">
-                <span className="font-mono font-bold tabular-nums text-clay-deep">
-                  {color.code}
-                </span>
-                {color.name && (
-                  <span className="truncate text-ink-soft">{color.name}</span>
-                )}
-              </p>
-            </li>
-          ))}
+            return (
+              <li key={`${activeBrand.id}-${color.code}`} className="min-w-0">
+                <a
+                  href={getColorWhatsAppUrl(activeBrand, color)}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={orderLabel}
+                  title={orderLabel}
+                  className="group block rounded-xl focus:outline-none focus-visible:ring-2 focus-visible:ring-lila-600 focus-visible:ring-offset-2 focus-visible:ring-offset-surface"
+                >
+                  <div
+                    className="aspect-square overflow-hidden rounded-xl border border-line/80 bg-sand-100 transition-colors duration-160 ease-artisan group-hover:border-clay/60"
+                    style={{ backgroundColor: color.hex }}
+                  >
+                    <img
+                      src={color.image}
+                      alt={`${activeBrand.name} ${color.name || `tono ${color.code}`}`}
+                      width={320}
+                      height={320}
+                      loading="lazy"
+                      decoding="async"
+                      className="h-full w-full object-cover"
+                    />
+                  </div>
+
+                  <p className="mt-2 flex items-baseline gap-1.5 text-[12px] leading-tight">
+                    <span className="font-mono font-bold tabular-nums text-clay-deep">
+                      {color.code}
+                    </span>
+                    {color.name && (
+                      <span className="truncate text-ink-soft">{color.name}</span>
+                    )}
+                    <MessageCircle
+                      aria-hidden="true"
+                      className="ml-auto h-3 w-3 shrink-0 text-ink-muted/60 transition-colors duration-160 ease-artisan group-hover:text-whatsapp"
+                    />
+                  </p>
+                </a>
+              </li>
+            )
+          })}
         </ul>
 
         <p className="mt-4 border-t border-line/70 pt-3 text-[12px] leading-relaxed text-ink-muted">
-          Los tonos pueden variar según la pantalla. Pregunta existencias y precio por
+          Los tonos pueden variar según la pantalla. Confirma existencia y precio por
           WhatsApp.
         </p>
       </div>

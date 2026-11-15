@@ -4,7 +4,7 @@
  * Tarjeta de producto.
  *
  * - Piezas artesanales: imagen, marca, titulo, descripcion, precio y WhatsApp.
- * - Estambres e hilos: ademas muestran el selector de color. Al elegir una
+ * - Estambres y trapillo: ademas muestran el selector de color. Al elegir una
  *   variante se actualizan la foto de vista previa, el codigo/nombre de color y
  *   el mensaje precargado de WhatsApp.
  *
@@ -16,7 +16,7 @@
  */
 
 import { useEffect, useMemo, useRef, useState } from 'react'
-import { Clock, Eye, MessageCircle, PackageCheck } from 'lucide-react'
+import { Clock, Eye, Info, MessageCircle, PackageCheck } from 'lucide-react'
 import ColorSwatchPicker from './ColorSwatchPicker'
 import { useRevealOnScroll } from '../hooks/useRevealOnScroll'
 import { getProductWhatsAppUrl } from '../utils/whatsapp'
@@ -39,8 +39,10 @@ const STATUS_STYLES = {
     badge: 'bg-danger-soft/95 text-danger',
     dot: 'bg-danger',
   },
+  // Sin dato no se pinta badge: "no lo se" no es un estado que el comprador
+  // necesite leer en la foto. La linea de existencia lo explica abajo.
   [AVAILABILITY.UNKNOWN]: {
-    label: 'Sobre pedido',
+    label: null,
     badge: 'bg-sand-100/95 text-ink-soft',
     dot: 'bg-ink-muted',
   },
@@ -48,10 +50,10 @@ const STATUS_STYLES = {
 
 /**
  * Ancho con el que se pinta la tarjeta en cada breakpoint. Debe mantenerse en
- * sync con las columnas del grid de Materials: 1 en movil, 2 en tablet y 4 en
- * pantallas anchas.
+ * sync con las columnas del grid de Materials: 1 en movil, 2 en tablet y 3 en
+ * pantallas anchas (5 marcas -> 3 + 2).
  */
-const IMAGE_SIZES = '(min-width: 1280px) 300px, (min-width: 640px) 45vw, 92vw'
+const IMAGE_SIZES = '(min-width: 1280px) 33vw, (min-width: 640px) 45vw, 92vw'
 
 export default function ProductCard({ product, index = 0, onOpenDetail }) {
   const variants = useMemo(
@@ -208,18 +210,20 @@ export default function ProductCard({ product, index = 0, onOpenDetail }) {
         )}
 
         {/* Estado de disponibilidad: solo se afirma cuando hay dato real. */}
-        <span
-          className={[
-            'absolute right-3 top-3 inline-flex items-center gap-1.5 rounded-full px-2.5 py-1.5 text-[12px] font-bold shadow-soft backdrop-blur-sm sm:right-4 sm:top-4 sm:text-[13px]',
-            productStatusStyle.badge,
-          ].join(' ')}
-        >
+        {productStatusStyle.label && (
           <span
-            aria-hidden="true"
-            className={['h-1.5 w-1.5 rounded-full', productStatusStyle.dot].join(' ')}
-          />
-          {productStatusStyle.label}
-        </span>
+            className={[
+              'absolute right-3 top-3 inline-flex items-center gap-1.5 rounded-full px-2.5 py-1.5 text-[12px] font-bold shadow-soft backdrop-blur-sm sm:right-4 sm:top-4 sm:text-[13px]',
+              productStatusStyle.badge,
+            ].join(' ')}
+          >
+            <span
+              aria-hidden="true"
+              className={['h-1.5 w-1.5 rounded-full', productStatusStyle.dot].join(' ')}
+            />
+            {productStatusStyle.label}
+          </span>
+        )}
       </div>
 
       {/* Franja del color activo: conecta la foto con la variante elegida sin
@@ -277,7 +281,7 @@ export default function ProductCard({ product, index = 0, onOpenDetail }) {
          * y precio. */}
         <div className="mt-4 border-t-2 border-ink/10 pt-3.5">
           {/* -----------------------------------------------------------
-           * Variantes de color (solo estambres e hilos)
+           * Variantes de color (solo estambres y trapillo)
            * ----------------------------------------------------------- */}
           {supportsVariants && (
             <div>
@@ -317,14 +321,15 @@ export default function ProductCard({ product, index = 0, onOpenDetail }) {
 
               {variantStatus === AVAILABILITY.UNKNOWN && (
                 <p className="mt-2.5 flex items-center gap-1.5 text-[12.5px] font-medium text-ink-muted">
-                  <MessageCircle className="h-4 w-4" aria-hidden="true" />
-                  Confirma existencias por WhatsApp
+                  <Info className="h-4 w-4" aria-hidden="true" />
+                  Existencia por confirmar
                 </p>
               )}
             </div>
           )}
 
-          {/* Precio: solo si la tienda ya publico una cifra. */}
+          {/* Precio: solo si la tienda ya publico una cifra. Sin dato se
+           * mantiene en una linea discreta para no competir con el CTA. */}
           <div className={supportsVariants ? 'mt-4' : ''}>
             <p className="meta-label">Precio</p>
             {priceLabel ? (
@@ -335,8 +340,8 @@ export default function ProductCard({ product, index = 0, onOpenDetail }) {
                 </span>
               </p>
             ) : (
-              <p className="mt-0.5 font-display text-[1.4rem] font-semibold leading-tight text-ink">
-                Se cotiza por WhatsApp
+              <p className="mt-1 text-[14px] font-semibold text-ink-soft">
+                Precio por WhatsApp
               </p>
             )}
           </div>
@@ -346,22 +351,21 @@ export default function ProductCard({ product, index = 0, onOpenDetail }) {
         <div className="flex-1" />
 
         {/* -----------------------------------------------------------
-         * FLUJO DE WHATSAPP
-         * El mensaje incluye el producto y, si hay variante activa, su
-         * codigo y nombre de color.
+         * FLUJO DE PEDIDO
+         * El mensaje incluye producto, cantidad y el color activo.
          * ----------------------------------------------------------- */}
         <a
           href={whatsappUrl}
           target="_blank"
           rel="noopener noreferrer"
-          aria-label={`Consultar por WhatsApp ${product.name}${
+          aria-label={`Pedir por WhatsApp ${product.name}${
             activeVariant ? ` en color ${activeVariant.colorName}` : ''
           }`}
-          title={`Consultar "${product.name}" por WhatsApp`}
+          title={`Pedir "${product.name}" por WhatsApp`}
           className="mt-5 inline-flex w-full items-center justify-center gap-2 rounded-xl border-2 border-ink bg-brand px-4 py-3.5 text-center text-[14px] font-bold leading-tight text-white shadow-pop transition-all duration-240 ease-artisan hover:translate-x-[2px] hover:translate-y-[2px] hover:bg-whatsapp hover:shadow-none focus:outline-none focus-visible:ring-2 focus-visible:ring-lila-600 focus-visible:ring-offset-2 focus-visible:ring-offset-surface active:translate-y-0 sm:text-[15px]"
         >
           <MessageCircle className="h-[18px] w-[18px] shrink-0" aria-hidden="true" />
-          Consultar por WhatsApp
+          Pedir por WhatsApp
         </a>
       </div>
     </article>
