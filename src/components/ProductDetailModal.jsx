@@ -16,7 +16,7 @@
  * -----------------------------------------------------------------------------
  */
 
-import { useEffect, useMemo, useState } from 'react'
+import { useEffect, useMemo, useRef, useState } from 'react'
 import {
   Check,
   Clock,
@@ -59,6 +59,8 @@ export default function ProductDetailModal({ product, onClose, initialVariantId 
   const [selectedVariantId, setSelectedVariantId] = useState(null)
   const [quantity, setQuantity] = useState(1)
   const [copied, setCopied] = useState(false)
+  const dialogRef = useRef(null)
+  const previousFocusRef = useRef(null)
 
   const variants = useMemo(
     () => (Array.isArray(product?.variants) ? product.variants : []),
@@ -86,11 +88,55 @@ export default function ProductDetailModal({ product, onClose, initialVariantId 
     setQuantity(1)
   }, [product])
 
-  // Cierra con la tecla Escape
+  // Foco: al abrir se entra en el dialogo y al cerrar se devuelve el foco a la
+  // tarjeta que lo abrio. Tab se queda dentro de la ficha en lugar de saltar al
+  // contenido de detras, que sigue visible bajo el telon.
   useEffect(() => {
+    previousFocusRef.current = document.activeElement
+    const dialog = dialogRef.current
+    dialog?.focus()
+
+    const focusableSelector = [
+      'a[href]',
+      'button:not([disabled])',
+      'input:not([disabled])',
+      'select:not([disabled])',
+      'textarea:not([disabled])',
+      '[tabindex]:not([tabindex="-1"])',
+    ].join(',')
+
     const handleKeyDown = (event) => {
-      if (event.key === 'Escape') onClose?.()
+      if (event.key === 'Escape') {
+        onClose?.()
+        return
+      }
+      if (event.key !== 'Tab') return
+
+      const focusable = Array.from(
+        dialog?.querySelectorAll(focusableSelector) ?? []
+      ).filter((node) => node.getClientRects().length > 0)
+      if (focusable.length === 0) return
+
+      const first = focusable[0]
+      const last = focusable[focusable.length - 1]
+
+      // El dialogo arranca con el foco en su contenedor: el primer Tab entra
+      // al contenido y Shift+Tab salta al ultimo control, sin escapar.
+      if (document.activeElement === dialog) {
+        event.preventDefault()
+        ;(event.shiftKey ? last : first).focus()
+        return
+      }
+
+      if (event.shiftKey && document.activeElement === first) {
+        event.preventDefault()
+        last.focus()
+      } else if (!event.shiftKey && document.activeElement === last) {
+        event.preventDefault()
+        first.focus()
+      }
     }
+
     window.addEventListener('keydown', handleKeyDown)
     // Bloquear scroll de fondo mientras el modal este abierto
     document.body.style.overflow = 'hidden'
@@ -98,6 +144,7 @@ export default function ProductDetailModal({ product, onClose, initialVariantId 
     return () => {
       window.removeEventListener('keydown', handleKeyDown)
       document.body.style.overflow = ''
+      previousFocusRef.current?.focus?.()
     }
   }, [onClose])
 
@@ -158,10 +205,13 @@ export default function ProductDetailModal({ product, onClose, initialVariantId 
 
   return (
     <div
+      ref={dialogRef}
       role="dialog"
       aria-modal="true"
       aria-labelledby="modal-producto-titulo"
-      className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-4 md:p-6"
+      aria-describedby="modal-producto-descripcion"
+      tabIndex={-1}
+      className="fixed inset-0 z-50 flex items-center justify-center p-3 outline-none sm:p-4 md:p-6"
     >
       {/* Telon de fondo desenfocado */}
       <div
@@ -249,7 +299,10 @@ export default function ProductDetailModal({ product, onClose, initialVariantId 
               {title}
             </h2>
 
-            <p className="mt-3 text-[15px] leading-relaxed text-ink-soft sm:text-[16px]">
+            <p
+              id="modal-producto-descripcion"
+              className="mt-3 text-[15px] leading-relaxed text-ink-soft sm:text-[16px]"
+            >
               {product.description}
             </p>
 
@@ -339,13 +392,8 @@ export default function ProductDetailModal({ product, onClose, initialVariantId 
                 <div className="flex items-start gap-2">
                   <Sparkles className="mt-0.5 h-3.5 w-3.5 shrink-0 text-lila-700" />
                   <span>
-                    <strong>Elaboración:</strong> Tejido 100% a mano con ganchillo y materiales nobles de alta durabilidad.
-                  </span>
-                </div>
-                <div className="flex items-start gap-2">
-                  <Clock className="mt-0.5 h-3.5 w-3.5 shrink-0 text-lila-700" />
-                  <span>
-                    <strong>Hecho a pedido:</strong> La foto es una muestra del acabado; tu pieza se teje después de confirmar el encargo.
+                    <strong>Elaboración:</strong> Tejido a mano con ganchillo; la foto es una
+                    muestra del acabado y tu pieza se teje al confirmar el encargo.
                   </span>
                 </div>
                 <div className="flex items-start gap-2">
@@ -368,7 +416,7 @@ export default function ProductDetailModal({ product, onClose, initialVariantId 
               ) : isDesign ? (
                 <>
                   <p className="font-display text-[1.35rem] font-semibold text-ink">
-                    Se cotiza a tu medida
+                    Lo cotizo a tu medida
                   </p>
                   <p className="mt-1 text-[13px] text-ink-muted">
                     Según tamaño, color y detalles.
@@ -394,12 +442,12 @@ export default function ProductDetailModal({ product, onClose, initialVariantId 
               </a>
               {isDesign ? (
                 <p className="mt-2 text-center text-[13px] text-ink-muted">
-                  Cuéntanos tu idea y te compartimos opciones, tiempos y precio.
+                  Cuéntame tu idea y te comparto opciones, tiempos y precio.
                 </p>
               ) : (
                 variantStatus === AVAILABILITY.SOLD_OUT && (
                   <p className="mt-2 text-center text-[13px] text-ink-muted">
-                    Escríbenos para encargar tu color en el próximo lote.
+                    Escríbeme para encargar tu color en el próximo lote.
                   </p>
                 )
               )}

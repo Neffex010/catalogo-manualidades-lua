@@ -14,7 +14,7 @@
  */
 
 import { useState } from 'react'
-import { MessageCircle, Minus, Plus } from 'lucide-react'
+import { Minus, Plus } from 'lucide-react'
 import colorCatalog from '../data/colorCatalog.json'
 import { getColorWhatsAppUrl } from '../utils/whatsapp'
 
@@ -30,7 +30,6 @@ export default function ColorCatalog() {
 
   if (!activeBrand) return null
 
-  const totalColors = brands.reduce((total, brand) => total + brand.colors.length, 0)
   const isExpanded = Boolean(expandedByBrand[activeBrand.id])
   const hiddenCount = Math.max(0, activeBrand.colors.length - INITIAL_VISIBLE)
 
@@ -58,21 +57,15 @@ export default function ColorCatalog() {
       className="mt-10 border-t-2 border-ink/15 pt-7 sm:mt-14 sm:pt-9"
     >
       <div className="max-w-2xl">
-        <div className="flex flex-wrap items-baseline gap-x-3 gap-y-1">
-          <p className="eyebrow">Carta de color</p>
-          <span className="text-[12px] font-semibold text-ink-muted">
-            {brands.length} marcas · {totalColors} tonos
-          </span>
-        </div>
+        <p className="eyebrow">Carta de color</p>
         <h3
           id="carta-color-titulo"
           className="mt-2 font-display text-[1.75rem] font-semibold leading-[1.02] tracking-[-0.03em] text-ink sm:text-[2.3rem]"
         >
-          Tonos de nuestras marcas
+          Todos los tonos
         </h3>
         <p className="mt-2 max-w-xl text-[14px] leading-[1.6] text-ink-soft sm:text-[15px]">
-          Las tarjetas muestran una selección de tonos; aquí están todos los de cada
-          marca. Toca cualquiera para pedirlo por WhatsApp.
+          Elige una marca y toca el tono para pedirlo por WhatsApp.
         </p>
       </div>
 
@@ -124,7 +117,7 @@ export default function ColorCatalog() {
       >
         <div className="flex flex-wrap items-center justify-between gap-3">
           <p className="text-[12.5px] font-semibold text-ink-muted">
-            {activeBrand.type} · {activeBrand.colors.length} tonos
+            {activeBrand.type}
           </p>
 
           {hiddenCount > 0 && (
@@ -139,7 +132,7 @@ export default function ColorCatalog() {
               ) : (
                 <Plus className="h-3.5 w-3.5" aria-hidden="true" />
               )}
-              {isExpanded ? 'Ver menos' : `Ver los ${activeBrand.colors.length}`}
+              {isExpanded ? 'Ver menos' : `Ver los ${activeBrand.colors.length} tonos`}
             </button>
           )}
         </div>
@@ -181,10 +174,6 @@ export default function ColorCatalog() {
                     {color.name && (
                       <span className="truncate text-ink-soft">{color.name}</span>
                     )}
-                    <MessageCircle
-                      aria-hidden="true"
-                      className="ml-auto h-3 w-3 shrink-0 text-ink-muted/60 transition-colors duration-160 ease-artisan group-hover:text-whatsapp"
-                    />
                   </p>
                 </a>
               </li>
@@ -193,8 +182,7 @@ export default function ColorCatalog() {
         </ul>
 
         <p className="mt-4 border-t border-line/70 pt-3 text-[12px] leading-relaxed text-ink-muted">
-          Los tonos pueden variar según la pantalla. Confirma existencia y precio por
-          WhatsApp.
+          Los tonos pueden variar según la pantalla.
         </p>
       </div>
     </section>

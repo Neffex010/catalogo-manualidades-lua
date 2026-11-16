@@ -58,8 +58,8 @@ export default function Portfolio({ designs = [], loading = false, onOpenDetail 
         id="disenos-titulo"
         index="01"
         eyebrow="Portafolio"
-        title="Diseños tejidos a pedido"
-        description="Estas fotos son muestras reales de nuestro trabajo. Elige el diseño que te guste y lo tejemos especialmente para ti: no manejamos inventario de piezas terminadas."
+        title="Diseños que ya tejí"
+        description="Fotos de piezas reales. Elige la que te guste y la hago a tu medida."
       />
 
       {/* Segmento por tipo de pieza. Los conteos salen del catalogo real. */}
@@ -89,10 +89,10 @@ export default function Portfolio({ designs = [], loading = false, onOpenDetail 
           <div className="col-span-full rounded-2xl border border-line bg-surface px-6 py-12 text-center">
             <Sparkles className="mx-auto h-8 w-8 text-lila-700" aria-hidden="true" />
             <p className="mt-3 font-display text-lg font-semibold text-ink">
-              Estamos preparando nuevos diseños
+              Estoy preparando nuevos diseños
             </p>
             <p className="mx-auto mt-2 max-w-md text-sm text-ink-soft">
-              Escríbenos y con gusto te mostramos trabajos recientes de esta categoría.
+              Escríbeme y te muestro trabajos recientes de esta categoría.
             </p>
           </div>
         )}
@@ -129,26 +129,21 @@ export default function Portfolio({ designs = [], loading = false, onOpenDetail 
         </div>
       )}
 
-      {/* Cierre del portafolio: refuerza el trabajo personalizado. */}
-      <div className="mt-10 flex flex-col items-start gap-5 border-l-[3px] border-clay bg-clay-soft/45 px-5 py-6 sm:mt-12 sm:flex-row sm:items-center sm:justify-between sm:px-8 sm:py-7">
-        <div>
-          <p className="font-display text-[1.35rem] font-semibold text-ink sm:text-[1.5rem]">
-            ¿Tienes otra idea en mente?
-          </p>
-          <p className="mt-1 text-[15px] leading-relaxed text-ink-soft">
-            También tejemos diseños personalizados: cuéntanos qué imaginas y lo hacemos realidad.
-          </p>
-        </div>
+      {/* Cierre del portafolio: una linea, no un segundo banner. El bloque
+       * grande de WhatsApp vive al pie de la pagina; repetirlo aqui alargaba
+       * el scroll con el mismo mensaje. */}
+      <p className="mt-8 text-center text-[14px] text-ink-soft sm:mt-10 sm:text-[15px]">
+        ¿No está lo que buscas?{' '}
         <a
           href={getGeneralWhatsAppUrl()}
           target="_blank"
           rel="noopener noreferrer"
-          className="inline-flex shrink-0 items-center justify-center gap-2 rounded-xl border-2 border-ink bg-brand px-6 py-3.5 text-[15px] font-bold text-white shadow-pop transition-all duration-240 ease-artisan hover:translate-x-[2px] hover:translate-y-[2px] hover:bg-lila-800 hover:shadow-none focus:outline-none focus-visible:ring-2 focus-visible:ring-lila-600 focus-visible:ring-offset-2 focus-visible:ring-offset-clay-soft"
+          className="inline-flex items-center gap-1 font-semibold text-lila-800 underline decoration-clay/50 decoration-2 underline-offset-4 transition-colors duration-160 hover:text-ink hover:decoration-clay focus:outline-none focus-visible:ring-2 focus-visible:ring-lila-600 focus-visible:ring-offset-2 focus-visible:ring-offset-canvas"
         >
-          Platícame tu idea
-          <ArrowRight className="h-4 w-4" aria-hidden="true" />
+          Tejo tu diseño a medida
+          <ArrowRight className="h-3.5 w-3.5" aria-hidden="true" />
         </a>
-      </div>
+      </p>
     </section>
   )
 }

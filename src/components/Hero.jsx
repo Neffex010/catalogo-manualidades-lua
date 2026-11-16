@@ -10,16 +10,9 @@
  * -----------------------------------------------------------------------------
  */
 
-import { ArrowRight, Gift, Heart, Palette, Scissors, Sparkles } from 'lucide-react'
+import { ArrowRight, Palette, Scissors, Sparkles } from 'lucide-react'
 import { BRAND } from '../config/site'
 import colorCatalog from '../data/colorCatalog.json'
-
-/** Pilares de la marca mostrados bajo el eslogan. */
-const HIGHLIGHTS = [
-  { icon: Gift, label: 'Hecho por encargo' },
-  { icon: Palette, label: 'Hilos y estambres' },
-  { icon: Heart, label: 'Piezas únicas' },
-]
 
 /**
  * Muestra de la carta de color. Los tonos salen del manifiesto real
@@ -101,8 +94,7 @@ export default function Hero() {
             </h1>
 
             <p className="mt-6 max-w-xl text-[16px] leading-[1.65] text-ink-soft sm:mt-7 sm:text-[18px]">
-              Amigurumis, flores, recuerdos y llaveros hechos a mano por encargo. Elige un
-              diseño del portafolio o llévate los hilos y estambres para tu propio proyecto.
+              Amigurumis, flores, recuerdos y llaveros tejidos a mano.
             </p>
 
             <div className="mt-9 flex flex-col items-start gap-5 sm:flex-row sm:items-center sm:gap-8">
@@ -123,15 +115,6 @@ export default function Hero() {
                 Ver materiales
               </a>
             </div>
-
-            <ul className="mt-10 flex flex-wrap items-center gap-x-7 gap-y-3 border-t-2 border-ink/10 pt-5 text-[13px] font-medium tracking-wide text-ink-muted sm:mt-12">
-              {HIGHLIGHTS.map(({ icon: Icon, label }) => (
-                <li key={label} className="flex items-center gap-2">
-                  <Icon className="h-4 w-4 text-clay" aria-hidden="true" />
-                  {label}
-                </li>
-              ))}
-            </ul>
           </div>
 
           {/* --------------------------------------------------------------
@@ -140,7 +123,7 @@ export default function Hero() {
           <div className="flex flex-col lg:col-span-5">
             <a
               href="#disenos"
-              className="group photo-frame relative flex min-h-[340px] flex-1 overflow-hidden rounded-[1.5rem] border-2 border-ink/10 bg-sand-100 shadow-pop-sand focus:outline-none focus-visible:ring-2 focus-visible:ring-lila-600 focus-visible:ring-offset-2 focus-visible:ring-offset-canvas sm:min-h-[420px]"
+              className="group photo-frame relative flex min-h-[300px] flex-1 overflow-hidden rounded-[1.5rem] border-2 border-ink/10 bg-sand-100 shadow-pop-sand focus:outline-none focus-visible:ring-2 focus-visible:ring-lila-600 focus-visible:ring-offset-2 focus-visible:ring-offset-canvas sm:min-h-[420px]"
             >
               <img
                 src={FEATURED_IMAGE}
@@ -161,10 +144,7 @@ export default function Hero() {
               </span>
 
               <div className="relative mt-auto w-full p-6 text-white sm:p-8">
-                <p className="text-[11px] font-bold uppercase tracking-[0.22em] text-white/80">
-                  Portafolio
-                </p>
-                <p className="mt-1.5 font-display text-[1.8rem] font-semibold leading-[1.05] sm:text-[2.4rem]">
+                <p className="font-display text-[1.8rem] font-semibold leading-[1.05] sm:text-[2.4rem]">
                   Ramo romántico pastel
                 </p>
                 <span className="mt-4 inline-flex items-center gap-2 text-[14px] font-semibold text-white/95">
@@ -178,10 +158,13 @@ export default function Hero() {
             </a>
 
             {/* Ficha sin cajas: dos columnas separadas por un filo. La paleta
-             * es informativa; el acceso a Materiales ya vive en el boton de
-             * arriba, asi que no repetimos el destino. */}
+             * enlaza a la carta completa; repetir aqui la invitacion a elegir
+             * un tono sobraba porque ese es justo el trabajo del enlace. */}
             <div className="mt-6 grid grid-cols-2 gap-6 border-t-2 border-ink/10 pt-5 sm:gap-8">
-              <div>
+              <a
+                href="#carta-color"
+                className="group rounded-lg focus:outline-none focus-visible:ring-2 focus-visible:ring-lila-600 focus-visible:ring-offset-2 focus-visible:ring-offset-canvas"
+              >
                 <p className="flex items-center gap-2 text-[11.5px] font-bold uppercase tracking-[0.16em] text-clay-deep">
                   <Palette className="h-4 w-4" aria-hidden="true" />
                   Carta de color
@@ -198,13 +181,14 @@ export default function Hero() {
                   ))}
                 </div>
 
-                <p className="mt-2.5 text-[13px] leading-relaxed text-ink-muted">
-                  Elige el tono exacto para tu proyecto.
-                </p>
-                <p className="mt-2 text-[11.5px] font-bold uppercase tracking-[0.12em] text-lila-800">
+                <p className="mt-2.5 inline-flex items-center gap-1 text-[11.5px] font-bold uppercase tracking-[0.12em] text-lila-800">
                   {colorCatalog.brands.length} marcas · {TOTAL_TONES} tonos
+                  <ArrowRight
+                    className="h-3.5 w-3.5 transition-transform duration-240 ease-artisan group-hover:translate-x-0.5"
+                    aria-hidden="true"
+                  />
                 </p>
-              </div>
+              </a>
 
               <div className="border-l border-ink/10 pl-6 sm:pl-8">
                 <p className="flex items-center gap-2 text-[11.5px] font-bold uppercase tracking-[0.16em] text-clay-deep">
@@ -212,10 +196,7 @@ export default function Hero() {
                   Hecho a mano
                 </p>
                 <p className="mt-3 text-[13px] leading-relaxed text-ink-soft">
-                  Cada pieza se teje una por una, sin prisas.
-                </p>
-                <p className="mt-2.5 text-[11.5px] font-bold uppercase tracking-[0.12em] text-lila-800">
-                  Desde Pachuca, Hgo.
+                  Cada pieza la tejo yo, desde Pachuca.
                 </p>
               </div>
             </div>

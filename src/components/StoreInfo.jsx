@@ -11,6 +11,7 @@
  */
 
 import {
+  ArrowRight,
   ArrowUpRight,
   Clock,
   MapPin,
@@ -86,17 +87,26 @@ export default function StoreInfo() {
 
         <div className="relative">
           {/* Encabezado */}
-          <div className="max-w-2xl">
-            <p className="eyebrow">Visítanos</p>
-            <h2
-              id="tienda-titulo"
-              className="mt-3 font-display text-[2.5rem] font-semibold leading-[0.98] tracking-[-0.03em] text-ink sm:text-[3.4rem] lg:text-[3.8rem]"
+          <div className="flex max-w-2xl gap-4 sm:gap-6">
+            <span
+              aria-hidden="true"
+              className="mt-1 shrink-0 font-mono text-[13px] font-semibold tracking-[0.18em] text-clay"
             >
-              Ven a conocer la tienda
-            </h2>
-            <p className="mt-4 max-w-xl text-[15px] leading-[1.65] text-ink-soft sm:text-[17px]">
-              Compara tonos, toca las texturas y elige el material para tu próximo proyecto.
-            </p>
+              03
+            </span>
+            <div>
+              <p className="eyebrow">En persona</p>
+              <h2
+                id="tienda-titulo"
+                className="mt-3 font-display text-[2.5rem] font-semibold leading-[0.98] tracking-[-0.03em] text-ink sm:text-[3.4rem] lg:text-[3.8rem]"
+              >
+                Ven a conocer la tienda
+              </h2>
+              <p className="mt-4 max-w-xl text-[15px] leading-[1.65] text-ink-soft sm:text-[17px]">
+                Compara tonos, toca las texturas y elige el material para tu próximo
+                proyecto.
+              </p>
+            </div>
           </div>
 
           <div className="mt-7 grid gap-3 lg:grid-cols-5 sm:mt-9">
@@ -176,12 +186,14 @@ export default function StoreInfo() {
 
               <div className="mt-4 grid gap-4 sm:grid-cols-2">
                 <div>
-                  <p className="meta-label text-clay-deep">Con carta completa</p>
-                  <div className="mt-2 flex flex-wrap gap-2">
-                    {catalogBrands.map((brand) => (
-                      <Tag key={brand.id}>{brand.name}</Tag>
-                    ))}
-                  </div>
+                  <p className="meta-label text-clay-deep">Carta de color completa</p>
+                  <a
+                    href="#materiales"
+                    className="mt-2 inline-flex items-center gap-1.5 text-[14px] font-semibold text-lila-800 underline decoration-clay/50 decoration-2 underline-offset-4 transition-colors duration-160 ease-artisan hover:text-ink hover:decoration-clay focus:outline-none focus-visible:ring-2 focus-visible:ring-lila-600 focus-visible:ring-offset-2 focus-visible:ring-offset-surface"
+                  >
+                    Ver las marcas y sus tonos
+                    <ArrowRight className="h-4 w-4" aria-hidden="true" />
+                  </a>
                 </div>
 
                 <div>
@@ -194,16 +206,11 @@ export default function StoreInfo() {
                 </div>
               </div>
 
-              <p className="mt-3 text-[13px] leading-relaxed text-ink-muted">
-                Las marcas con carta completa tienen todos sus tonos con foto en
-                Materiales; las demás se consultan por WhatsApp.
-              </p>
-
               <div className="mt-5 grid gap-5 border-t border-ink/10 pt-4 sm:grid-cols-2">
                 <div>
                   <p className="meta-label flex items-center gap-2">
                     <ShoppingBag className="h-4 w-4 text-lila-700" aria-hidden="true" />
-                    También encontrarás
+                    Otros productos
                   </p>
                   <div className="mt-2 flex flex-wrap gap-2">
                     {STORE_EXTRAS.map((item) => (

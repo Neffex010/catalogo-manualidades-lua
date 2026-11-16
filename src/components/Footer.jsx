@@ -43,7 +43,7 @@ export default function Footer() {
               ¿Tienes una idea en mente? 🧶
             </h2>
             <p className="mx-auto mt-3 max-w-md text-[16px] leading-relaxed text-white sm:text-[17px]">
-              Cuéntanos qué quieres crear y te cotizamos sin compromiso.
+              Cuéntame qué quieres crear y te cotizo sin compromiso.
             </p>
 
             <a
@@ -53,7 +53,7 @@ export default function Footer() {
               className="mt-7 inline-flex items-center justify-center gap-2 rounded-xl border-2 border-ink bg-white px-7 py-4 text-[15px] font-bold text-lila-800 shadow-pop transition-all duration-240 ease-artisan hover:translate-x-[2px] hover:translate-y-[2px] hover:bg-sand-50 hover:shadow-none focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-brand sm:text-base"
             >
               <MessageCircle className="h-[18px] w-[18px]" aria-hidden="true" />
-              Escríbenos por WhatsApp
+              Escríbeme por WhatsApp
             </a>
           </div>
         </div>
@@ -93,14 +93,6 @@ export default function Footer() {
                 {label}
               </a>
             ))}
-            <a
-              href={getGeneralWhatsAppUrl()}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="link-rule py-1 text-[12px] font-semibold text-ink-soft transition-colors duration-160 ease-artisan hover:text-ink focus:outline-none focus-visible:ring-2 focus-visible:ring-lila-600 focus-visible:ring-offset-2 focus-visible:ring-offset-surface sm:text-[13px]"
-            >
-              WhatsApp
-            </a>
           </nav>
         </div>
 

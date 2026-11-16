@@ -11,7 +11,6 @@ import Hero from './components/Hero'
 import Catalog from './components/Catalog'
 import StoreInfo from './components/StoreInfo'
 import Footer from './components/Footer'
-import BackToTop from './components/BackToTop'
 import { useProducts } from './hooks/useProducts'
 
 export default function App() {
@@ -21,9 +20,13 @@ export default function App() {
   return (
     // El layout usa flex-col + min-h-screen para que el footer quede al pie
     <div className="flex min-h-screen flex-col bg-canvas text-ink antialiased">
+      <a href="#contenido" className="skip-link">
+        Saltar al contenido
+      </a>
+
       <Navbar />
 
-      <main className="flex-1">
+      <main id="contenido" tabIndex={-1} className="flex-1 outline-none">
         <Hero />
 
         {/* El catalogo maneja su propio ritmo: portafolio sobre papel y
@@ -34,8 +37,6 @@ export default function App() {
       </main>
 
       <Footer />
-
-      <BackToTop />
     </div>
   )
 }

@@ -10,7 +10,7 @@
  * -----------------------------------------------------------------------------
  */
 
-import { ArrowRight, MessageCircle, ShoppingBag } from 'lucide-react'
+import { ArrowDown, ArrowRight, MessageCircle, ShoppingBag } from 'lucide-react'
 import ColorCatalog from './ColorCatalog'
 import ProductCard from './ProductCard'
 import ProductCardSkeleton from './ProductCardSkeleton'
@@ -38,8 +38,23 @@ export default function Materials({ materials = [], loading = false, onOpenDetai
         index="02"
         eyebrow="Materiales"
         title="Estambres y trapillo"
-        description="Cinco marcas con todos sus tonos. Elige el tono, la cantidad y envía tu pedido."
-      />
+        description={
+          materials.length > 0
+            ? `${materials.length} marcas con todos sus tonos. Elige el tuyo.`
+            : 'Marcas con todos sus tonos. Elige el tuyo.'
+        }
+      >
+        {/* Atajo para quien viene a buscar un tono concreto: la carta vive
+         * despues de las cinco tarjetas y, sin este enlace, obligaba a
+         * recorrerlas todas. */}
+        <a
+          href="#carta-color"
+          className="inline-flex items-center gap-1.5 text-[13px] font-semibold text-lila-800 underline decoration-clay/50 decoration-2 underline-offset-4 transition-colors duration-160 hover:text-ink hover:decoration-clay focus:outline-none focus-visible:ring-2 focus-visible:ring-lila-600 focus-visible:ring-offset-2 focus-visible:ring-offset-canvas sm:text-[14px]"
+        >
+          Ir a la carta de color
+          <ArrowDown className="h-4 w-4" aria-hidden="true" />
+        </a>
+      </SectionHeading>
 
       {lacksPriceAndStock && (
         <p className="mt-3 text-[13px] font-medium text-ink-muted sm:text-[14px]">
@@ -78,7 +93,7 @@ export default function Materials({ materials = [], loading = false, onOpenDetai
                 ¿Buscas otra marca?
               </p>
               <p className="max-w-[28ch] text-[13.5px] leading-relaxed text-ink-muted">
-                También manejamos otras marcas de hilo y estambre. Pregúntanos cuál
+                También hay otras marcas de hilo y estambre. Pregunta por WhatsApp cuál
                 necesitas.
               </p>
               <span className="mt-1 inline-flex items-center gap-1.5 text-[13px] font-bold text-lila-800">
@@ -94,7 +109,7 @@ export default function Materials({ materials = [], loading = false, onOpenDetai
               Materiales en camino
             </p>
             <p className="mx-auto mt-2 max-w-md text-[15px] text-ink-soft">
-              Escríbenos por WhatsApp para consultar existencias y tonos disponibles.
+              Escríbeme por WhatsApp para consultar existencias y tonos disponibles.
             </p>
           </div>
         )}

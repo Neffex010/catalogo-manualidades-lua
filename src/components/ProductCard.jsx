@@ -238,34 +238,31 @@ export default function ProductCard({ product, index = 0, onOpenDetail }) {
       {/* ---------------------------------------------------------------
        * Contenido
        * --------------------------------------------------------------- */}
-      <div className="flex flex-1 flex-col p-4 sm:p-5">
-        {/* Ficha corta: tonos (o categoria en piezas) y acceso visible a la
-         * ficha completa, sin depender del hover. */}
+      <div className="flex flex-1 flex-col p-3 min-[360px]:p-4 sm:p-5">
+        {/* Ficha corta: en piezas, la categoria; en materiales el conteo ya lo
+         * dicen el selector (+N) y la carta. A la derecha, acceso visible a la
+         * ficha completa sin depender del hover. */}
         <div className="flex flex-wrap items-center justify-between gap-x-2 gap-y-1 text-[12px] font-semibold tracking-normal sm:text-[13px]">
-          <div className="flex flex-wrap items-center gap-x-2 gap-y-1">
-            {supportsVariants ? (
-              <span className="text-clay-deep">{variants.length} tonos</span>
-            ) : (
-              <>
-                <span className="text-clay-deep">{categoryLabel}</span>
-                {product.subcategory && (
-                  <>
-                    <span aria-hidden="true" className="text-line">
-                      /
-                    </span>
-                    <span className="font-medium text-ink-muted">
-                      {product.subcategory}
-                    </span>
-                  </>
-                )}
-              </>
-            )}
-          </div>
+          {!supportsVariants && (
+            <div className="flex flex-wrap items-center gap-x-2 gap-y-1">
+              <span className="text-clay-deep">{categoryLabel}</span>
+              {product.subcategory && (
+                <>
+                  <span aria-hidden="true" className="text-line">
+                    /
+                  </span>
+                  <span className="font-medium text-ink-muted">
+                    {product.subcategory}
+                  </span>
+                </>
+              )}
+            </div>
+          )}
 
           <button
             type="button"
             onClick={() => onOpenDetail?.(product, activeVariantId)}
-            className="inline-flex items-center gap-1 rounded text-[12px] font-semibold text-ink-muted transition-colors duration-160 ease-artisan hover:text-lila-800 focus:outline-none focus-visible:ring-2 focus-visible:ring-lila-600 focus-visible:ring-offset-2 focus-visible:ring-offset-surface"
+            className="ml-auto inline-flex items-center gap-1 rounded text-[12px] font-semibold text-ink-muted transition-colors duration-160 ease-artisan hover:text-lila-800 focus:outline-none focus-visible:ring-2 focus-visible:ring-lila-600 focus-visible:ring-offset-2 focus-visible:ring-offset-surface"
           >
             <Eye className="h-3.5 w-3.5" aria-hidden="true" />
             Ver ficha
@@ -279,7 +276,10 @@ export default function ProductCard({ product, index = 0, onOpenDetail }) {
           {product.brand || product.name}
         </h3>
 
-        <p className="mt-2 line-clamp-2 text-[15px] leading-relaxed text-ink-soft sm:text-[16px]">
+        {/* En movil la ficha completa ya cuenta la historia de la marca: la
+         * tarjeta se queda con foto, tonos y pedido para no alargar la lista.
+         * Mismo criterio que DesignCard. */}
+        <p className="mt-2 hidden line-clamp-2 text-[15px] leading-relaxed text-ink-soft sm:block sm:text-[16px]">
           {product.description}
         </p>
 

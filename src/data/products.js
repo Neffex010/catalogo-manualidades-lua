@@ -39,7 +39,7 @@ const PRODUCT_NAMES = {
  */
 const PRODUCT_DESCRIPTIONS = {
   'komfy-mini': 'Para amigurumis, accesorios y proyectos de uso diario.',
-  'kotton-milk': 'También disponible como hilo; pregunta por la presentación.',
+  'kotton-milk': 'También disponible como hilo.',
   'karina-kairo': 'Para prendas, accesorios y detalles.',
   'trapillo-kraft': 'Para bolsos, cestas y piezas de mayor cuerpo.',
   'alize-velluto': 'Textura suave para piezas de abrigo y detalles.',

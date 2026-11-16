@@ -49,7 +49,7 @@ export default function Catalog({ products = [], loading = false, error = null, 
         <div className="flex flex-col items-center justify-center rounded-2xl border border-danger/30 bg-danger-soft/40 px-6 py-16 text-center">
           <AlertTriangle className="h-10 w-10 text-danger" aria-hidden="true" />
           <h2 className="mt-4 font-display text-xl font-semibold text-ink">
-            No pudimos cargar el catálogo
+            No se pudo cargar el catálogo
           </h2>
           <p className="mt-2 max-w-md text-sm text-ink-soft">{error.message}</p>
           {onRetry && (

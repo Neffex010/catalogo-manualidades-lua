@@ -16,9 +16,14 @@
 
 import { MessageCircle } from 'lucide-react'
 import { BRAND, SECTIONS } from '../config/site'
+import { useActiveSection } from '../hooks/useActiveSection'
 import { getGeneralWhatsAppUrl } from '../utils/whatsapp'
 
+const SECTION_IDS = SECTIONS.map(({ id }) => id)
+
 export default function Navbar() {
+  const activeSection = useActiveSection(SECTION_IDS)
+
   return (
     <header className="sticky top-0 z-50 border-b-2 border-ink/15 bg-canvas/85 backdrop-blur-xl">
       {/* Filo de marca: reemplaza la sombra y separa la cabecera del papel. */}
@@ -51,9 +56,6 @@ export default function Navbar() {
             <span className="block truncate font-display text-[14px] font-semibold leading-tight tracking-[0.08em] text-ink transition-colors group-hover:text-lila-800 sm:text-[18px] sm:tracking-[0.14em]">
               {BRAND.name}
             </span>
-            <span className="hidden truncate text-[11px] font-medium tracking-wide text-ink-muted lg:block">
-              {BRAND.tagline}
-            </span>
           </span>
         </a>
 
@@ -79,7 +81,11 @@ export default function Navbar() {
             <a
               key={id}
               href={`#${id}`}
-              className="link-rule shrink-0 py-1.5 text-[13px] font-semibold tracking-[0.01em] text-ink-soft transition-colors duration-240 ease-artisan hover:text-ink focus:outline-none focus-visible:ring-2 focus-visible:ring-lila-600 focus-visible:ring-offset-2 focus-visible:ring-offset-canvas sm:text-[13.5px]"
+              aria-current={activeSection === id ? 'location' : undefined}
+              className={[
+                'link-rule shrink-0 py-1.5 text-[13px] font-semibold tracking-[0.01em] transition-colors duration-240 ease-artisan focus:outline-none focus-visible:ring-2 focus-visible:ring-lila-600 focus-visible:ring-offset-2 focus-visible:ring-offset-canvas sm:text-[13.5px]',
+                activeSection === id ? 'text-ink' : 'text-ink-soft hover:text-ink',
+              ].join(' ')}
             >
               {label}
             </a>

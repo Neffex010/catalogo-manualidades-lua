@@ -77,7 +77,7 @@ export default function ColorSwatchPicker({
       <div
         role="group"
         aria-label="Seleccionar tono"
-        className="flex flex-wrap items-center gap-1.5 lg:gap-2"
+        className="flex flex-wrap items-center gap-1 min-[360px]:gap-1.5 lg:gap-2"
       >
         {visibleVariants.map((variant) => {
           const isActive = variant.id === activeVariantId
@@ -99,7 +99,7 @@ export default function ColorSwatchPicker({
               title={`${label}${isSoldOut ? ' · Agotado' : ''}`}
               style={{ backgroundColor: swatchColor }}
               className={[
-                'relative grid h-11 w-11 shrink-0 place-items-center rounded-full border border-black/10 text-[11px] font-bold uppercase shadow-sm transition-all duration-160 ease-artisan lg:h-12 lg:w-12',
+                'relative grid h-10 w-10 shrink-0 place-items-center rounded-full border border-black/10 text-[11px] font-bold uppercase shadow-sm transition-all duration-160 ease-artisan min-[360px]:h-11 min-[360px]:w-11 lg:h-12 lg:w-12',
                 'focus:outline-none focus-visible:ring-2 focus-visible:ring-lila-600 focus-visible:ring-offset-2 focus-visible:ring-offset-surface',
                 isActive
                   ? 'ring-2 ring-ink ring-offset-2 ring-offset-surface'
@@ -137,7 +137,7 @@ export default function ColorSwatchPicker({
             title={
               showAll || !expanded ? `Ver los ${variants.length} tonos` : 'Mostrar menos'
             }
-            className="inline-flex h-11 w-11 shrink-0 items-center justify-center gap-0.5 rounded-full border border-dashed border-ink/25 bg-sand-50 text-[11px] font-bold tabular-nums text-ink-soft transition-all duration-160 ease-artisan hover:border-lila-400 hover:bg-surface hover:text-lila-800 focus:outline-none focus-visible:ring-2 focus-visible:ring-lila-600 focus-visible:ring-offset-2 focus-visible:ring-offset-surface lg:h-12 lg:w-12"
+            className="inline-flex h-10 w-10 shrink-0 items-center justify-center gap-0.5 rounded-full border border-dashed border-ink/25 bg-sand-50 text-[11px] font-bold tabular-nums text-ink-soft transition-all duration-160 ease-artisan hover:border-lila-400 hover:bg-surface hover:text-lila-800 focus:outline-none focus-visible:ring-2 focus-visible:ring-lila-600 focus-visible:ring-offset-2 focus-visible:ring-offset-surface min-[360px]:h-11 min-[360px]:w-11 lg:h-12 lg:w-12"
           >
             {expanded && !showAll ? (
               <ChevronUp className="h-3.5 w-3.5" aria-hidden="true" />

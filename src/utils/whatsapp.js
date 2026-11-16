@@ -41,7 +41,7 @@ export const GENERAL_MESSAGE = [
   '',
   'Me gustaría recibir información sobre los estambres, los hilos y las piezas tejidas a mano.',
   '',
-  '¿Me podrían compartir precios, existencias y tiempos de entrega?',
+  '¿Me podrías compartir precios, existencias y tiempos de entrega?',
   '¡Muchas gracias!',
 ].join('\n')
 
@@ -112,7 +112,7 @@ export function buildDesignMessage(design) {
 
   const type = design.subcategory ? ` (${design.subcategory})` : ''
 
-  return `Hola, me interesa encargar un diseño como: ${design.name}${type}. ¿Me podrían cotizar?`
+  return `Hola, me interesa encargar un diseño como: ${design.name}${type}. ¿Me podrías cotizar?`
 }
 
 /**

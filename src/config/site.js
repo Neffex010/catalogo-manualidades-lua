@@ -63,7 +63,7 @@ export const STORE_EXTRAS = [
 ]
 
 /** Servicios que ofrece la tienda. */
-export const STORE_SERVICES = ['Tejido 100% a mano', 'Levantamiento de pedidos']
+export const STORE_SERVICES = ['Tejido por encargo', 'Pedidos personalizados']
 
 /**
  * Categorias cuyos productos manejan variantes de color (selector de muestras).
