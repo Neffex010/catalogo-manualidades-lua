@@ -55,7 +55,7 @@ const STATUS_STYLES = {
   },
 }
 
-export default function ProductDetailModal({ product, onClose }) {
+export default function ProductDetailModal({ product, onClose, initialVariantId = null }) {
   const [selectedVariantId, setSelectedVariantId] = useState(null)
   const [quantity, setQuantity] = useState(1)
   const [copied, setCopied] = useState(false)
@@ -66,12 +66,20 @@ export default function ProductDetailModal({ product, onClose }) {
   )
   const supportsVariants = variants.length > 0 && VARIANT_CATEGORIES.has(product?.category)
 
-  // Inicializa la variante seleccionada con la primera disponible
+  // Respeta el tono elegido en la tarjeta: abrir la ficha desde un swatch no
+  // debe devolver al primer tono de la marca. Si ese tono ya no existe, cae
+  // al primero disponible.
   useEffect(() => {
-    if (supportsVariants) {
-      setSelectedVariantId(getInitialVariantId(variants))
+    if (!supportsVariants) {
+      setSelectedVariantId(null)
+      return
     }
-  }, [product, supportsVariants, variants])
+    const preferred =
+      initialVariantId && variants.some((variant) => variant.id === initialVariantId)
+        ? initialVariantId
+        : getInitialVariantId(variants)
+    setSelectedVariantId(preferred)
+  }, [product, initialVariantId, supportsVariants, variants])
 
   // Cada producto arranca con un ovillo; la cantidad no se hereda entre piezas.
   useEffect(() => {
@@ -107,6 +115,14 @@ export default function ProductDetailModal({ product, onClose }) {
   const variantStatus = getVariantStatus(activeVariant)
   const categoryLabel = CATEGORY_LABELS[product.category] ?? product.category
   const priceLabel = formatPrice(product.price)
+  // Linea comercial real del material: el trapillo no es un estambre.
+  const materialType = product.type || categoryLabel
+  const title = isDesign ? product.name : product.brand || product.name
+  // El trapillo se pide por pieza; los estambres, por ovillo. No se afirma una
+  // presentacion que la tienda no confirmo.
+  const isTrapillo = product.type === 'Trapillo'
+  const unitOne = isTrapillo ? 'pieza' : 'ovillo'
+  const unitMany = isTrapillo ? 'piezas' : 'ovillos'
   const whatsappUrl = isDesign
     ? getDesignWhatsAppUrl(product)
     : getProductWhatsAppUrl(product, activeVariant, quantity)
@@ -128,9 +144,10 @@ export default function ProductDetailModal({ product, onClose }) {
         if (err.name !== 'AbortError') console.error('Error sharing:', err)
       }
     } else {
-      // Fallback a portapapeles
+      // Fallback a portapapeles: el enlace de la seccion, no la URL actual
+      // (puede incluir cualquier ancla o parametro de la visita).
       try {
-        await navigator.clipboard.writeText(window.location.href)
+        await navigator.clipboard.writeText(shareData.url)
         setCopied(true)
         setTimeout(() => setCopied(false), 2200)
       } catch (err) {
@@ -167,10 +184,10 @@ export default function ProductDetailModal({ product, onClose }) {
 
         <div className="grid flex-1 overflow-y-auto md:grid-cols-2">
           {/* Columna Izquierda: Imagen grande */}
-          <div className="photo-frame relative aspect-4/5 w-full bg-sand-100 md:aspect-auto md:h-full">
+          <div className="photo-frame relative aspect-4/5 max-h-[42vh] w-full bg-sand-100 md:aspect-auto md:h-full md:max-h-none">
             <img
               src={imageUrl}
-              alt={`${product.name}${activeVariant ? ` en color ${activeVariant.colorName}` : ''}`}
+              alt={`${product.name}${activeVariant ? ` en tono ${activeVariant.colorName}` : ''}`}
               className="h-full w-full object-cover"
             />
             {/* Badge: encargo para diseños; disponibilidad solo si hay dato */}
@@ -195,28 +212,41 @@ export default function ProductDetailModal({ product, onClose }) {
 
           {/* Columna Derecha: Informacion y Acciones */}
           <div className="flex flex-col p-6 sm:p-8">
-            {/* Categorias */}
-            <div className="flex flex-wrap items-center gap-2">
-              <span className="rounded-full bg-lila-50 px-3 py-1 text-[12px] font-bold uppercase tracking-[0.1em] text-lila-800">
-                {categoryLabel}
-              </span>
-              {product.subcategory && (
-                <span className="rounded-full border border-line/80 px-3 py-1 text-[12px] font-semibold text-ink-muted">
-                  {product.subcategory}
+            {/* Encabezado: tipo real del material y compartir. El titulo es la
+             * marca; repetirla tambien en un chip era ruido. */}
+            <div className="flex items-center justify-between gap-3 md:pr-11">
+              <div className="flex flex-wrap items-center gap-2">
+                <span className="rounded-full bg-lila-50 px-3 py-1 text-[12px] font-bold uppercase tracking-[0.1em] text-lila-800">
+                  {isDesign ? categoryLabel : materialType}
                 </span>
-              )}
-              {product.brand && (
-                <span className="rounded-full border border-line/80 px-3 py-1 text-[12px] font-semibold text-ink-muted">
-                  {product.brand}
-                </span>
-              )}
+                {product.subcategory && (
+                  <span className="rounded-full border border-line/80 px-3 py-1 text-[12px] font-semibold text-ink-muted">
+                    {product.subcategory}
+                  </span>
+                )}
+              </div>
+
+              <button
+                type="button"
+                onClick={handleShare}
+                aria-label={copied ? 'Enlace copiado' : 'Compartir este producto'}
+                title="Compartir este producto"
+                className="inline-flex shrink-0 items-center gap-1.5 rounded-full border border-line bg-surface px-3 py-2 text-[12px] font-semibold text-ink-soft shadow-soft transition-all duration-160 ease-artisan hover:border-lila-300 hover:text-lila-800 focus:outline-none focus-visible:ring-2 focus-visible:ring-lila-600 focus-visible:ring-offset-2 focus-visible:ring-offset-surface"
+              >
+                {copied ? (
+                  <Check className="h-3.5 w-3.5 text-success" aria-hidden="true" />
+                ) : (
+                  <Share2 className="h-3.5 w-3.5" aria-hidden="true" />
+                )}
+                <span className="hidden sm:inline">{copied ? 'Copiado' : 'Compartir'}</span>
+              </button>
             </div>
 
             <h2
               id="modal-producto-titulo"
               className="mt-3 font-display text-[1.75rem] font-semibold tracking-tight text-ink sm:text-[2.1rem]"
             >
-              {product.name}
+              {title}
             </h2>
 
             <p className="mt-3 text-[15px] leading-relaxed text-ink-soft sm:text-[16px]">
@@ -227,20 +257,22 @@ export default function ProductDetailModal({ product, onClose }) {
             {supportsVariants && (
               <div className="mt-5 border-t border-line/80 pt-4">
                 <div className="flex items-baseline justify-between gap-2">
-                  <p className="meta-label">Color seleccionado</p>
+                  <p className="meta-label">Tono seleccionado</p>
                   <p className="meta-value text-right">
                     {activeVariant
                       ? `${activeVariant.colorCode} · ${activeVariant.colorName}`
-                      : 'Elige un color'}
+                      : 'Elige un tono'}
                   </p>
                 </div>
 
                 <div className="mt-3">
+                  {/* Paleta completa: aqui si cabe, es la superficie para
+                   * recorrer todos los tonos de la marca. */}
                   <ColorSwatchPicker
                     variants={variants}
                     activeVariantId={selectedVariantId}
                     onChange={setSelectedVariantId}
-                    maxVisible={12}
+                    maxVisible={variants.length}
                   />
                 </div>
 
@@ -249,7 +281,7 @@ export default function ProductDetailModal({ product, onClose }) {
                     <PackageCheck className="h-4 w-4" aria-hidden="true" />
                     <span>
                       <span className="font-mono tabular-nums">{activeVariant.stock}</span>{' '}
-                      disponibles en este color
+                      disponibles en este tono
                     </span>
                   </p>
                 )}
@@ -257,7 +289,7 @@ export default function ProductDetailModal({ product, onClose }) {
                 {variantStatus === AVAILABILITY.SOLD_OUT && (
                   <p className="mt-3 flex items-center gap-1.5 text-[13px] font-medium text-danger">
                     <Clock className="h-4 w-4" aria-hidden="true" />
-                    Color agotado temporalmente
+                    Tono agotado temporalmente
                   </p>
                 )}
 
@@ -270,13 +302,13 @@ export default function ProductDetailModal({ product, onClose }) {
 
                 {/* Cantidad: se suma al mensaje de WhatsApp, no hay carrito. */}
                 <div className="mt-4 flex items-center justify-between gap-3 border-t border-line/70 pt-3">
-                  <p className="meta-label">Cantidad (ovillos)</p>
+                  <p className="meta-label">Cantidad ({unitMany})</p>
                   <div className="inline-flex items-center gap-1 rounded-full border border-line bg-surface p-1">
                     <button
                       type="button"
                       onClick={() => setQuantity((value) => Math.max(1, value - 1))}
                       disabled={quantity <= 1}
-                      aria-label="Quitar un ovillo"
+                      aria-label={`Quitar 1 ${unitOne}`}
                       className="grid h-8 w-8 place-items-center rounded-full text-ink-soft transition-colors hover:bg-sand-100 hover:text-ink focus:outline-none focus-visible:ring-2 focus-visible:ring-lila-600 disabled:cursor-not-allowed disabled:opacity-40"
                     >
                       <Minus className="h-3.5 w-3.5" aria-hidden="true" />
@@ -290,7 +322,7 @@ export default function ProductDetailModal({ product, onClose }) {
                     <button
                       type="button"
                       onClick={() => setQuantity((value) => Math.min(99, value + 1))}
-                      aria-label="Agregar un ovillo"
+                      aria-label={`Agregar 1 ${unitOne}`}
                       className="grid h-8 w-8 place-items-center rounded-full text-ink-soft transition-colors hover:bg-sand-100 hover:text-ink focus:outline-none focus-visible:ring-2 focus-visible:ring-lila-600"
                     >
                       <Plus className="h-3.5 w-3.5" aria-hidden="true" />
@@ -325,56 +357,32 @@ export default function ProductDetailModal({ product, onClose }) {
               </div>
             )}
 
-            {/* Precio o cotización */}
-            <div className="mt-6 flex items-baseline justify-between border-t border-line pt-4">
-              <div>
-                <p className="meta-label">
-                  {isDesign ? 'Cotización' : 'Precio'}
+            {/* Precio o cotización. Compartir ya vive en el encabezado. */}
+            <div className="mt-6 border-t border-line pt-4">
+              <p className="meta-label">{isDesign ? 'Cotización' : 'Precio'}</p>
+              {priceLabel ? (
+                <p className="font-display text-[2rem] font-semibold leading-tight text-ink">
+                  <span className="tabular-nums">{priceLabel}</span>
+                  <span className="ml-1.5 text-[12px] font-medium text-ink-muted">MXN</span>
                 </p>
-                {priceLabel ? (
-                  <p className="font-display text-[2rem] font-semibold leading-tight text-ink">
-                    <span className="tabular-nums">{priceLabel}</span>
-                    <span className="ml-1.5 text-[12px] font-medium text-ink-muted">MXN</span>
+              ) : isDesign ? (
+                <>
+                  <p className="font-display text-[1.35rem] font-semibold text-ink">
+                    Se cotiza a tu medida
                   </p>
-                ) : isDesign ? (
-                  <>
-                    <p className="font-display text-[1.35rem] font-semibold text-ink">
-                      Se cotiza a tu medida
-                    </p>
-                    <p className="mt-1 text-[13px] text-ink-muted">
-                      Según tamaño, color y detalles.
-                    </p>
-                  </>
-                ) : (
-                  <p className="font-display text-[1.05rem] font-semibold text-ink sm:text-[1.2rem]">
-                    Precio por WhatsApp
+                  <p className="mt-1 text-[13px] text-ink-muted">
+                    Según tamaño, color y detalles.
                   </p>
-                )}
-              </div>
-
-              {/* Boton compartir */}
-              <button
-                type="button"
-                onClick={handleShare}
-                className="inline-flex shrink-0 items-center gap-1.5 rounded-full border border-line bg-surface px-3.5 py-2 text-[13px] font-semibold text-ink-soft shadow-soft transition-all hover:border-lila-300 hover:text-lila-800"
-                title="Compartir este producto"
-              >
-                {copied ? (
-                  <>
-                    <Check className="h-3.5 w-3.5 text-success" />
-                    <span>¡Enlace copiado!</span>
-                  </>
-                ) : (
-                  <>
-                    <Share2 className="h-3.5 w-3.5" />
-                    <span>Compartir</span>
-                  </>
-                )}
-              </button>
+                </>
+              ) : (
+                <p className="font-display text-[1.05rem] font-semibold text-ink sm:text-[1.2rem]">
+                  Precio por WhatsApp
+                </p>
+              )}
             </div>
 
-            {/* Accion Principal WhatsApp */}
-            <div className="mt-6">
+            {/* Accion Principal WhatsApp (escritorio; en movil va fija abajo) */}
+            <div className="mt-6 hidden md:block">
               <a
                 href={whatsappUrl}
                 target="_blank"
@@ -397,6 +405,22 @@ export default function ProductDetailModal({ product, onClose }) {
               )}
             </div>
           </div>
+        </div>
+
+        {/* CTA fijo en movil: pedir sin recorrer toda la ficha. En escritorio
+         * el boton vive al final de la columna de informacion. */}
+        <div className="shrink-0 border-t border-line bg-surface px-4 py-3 pb-[max(0.75rem,env(safe-area-inset-bottom))] md:hidden">
+          <a
+            href={whatsappUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex w-full items-center justify-center gap-2.5 rounded-xl border-2 border-ink bg-brand px-6 py-3.5 text-center text-[15px] font-bold text-white shadow-pop transition-all duration-240 ease-artisan hover:bg-whatsapp hover:shadow-none focus:outline-none focus-visible:ring-2 focus-visible:ring-lila-600 focus-visible:ring-offset-2"
+          >
+            <MessageCircle className="h-5 w-5" aria-hidden="true" />
+            {isDesign
+              ? 'Quiero uno así'
+              : `Pedir ${quantity} ${quantity === 1 ? unitOne : unitMany} por WhatsApp`}
+          </a>
         </div>
       </div>
     </div>

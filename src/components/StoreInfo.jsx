@@ -69,6 +69,12 @@ function Tag({ children }) {
 }
 
 export default function StoreInfo() {
+  // Las marcas con carta completa salen del manifiesto de tonos, no de una
+  // lista paralela: asi Tienda y Materiales no se contradicen.
+  const catalogBrands = colorCatalog.brands
+  const catalogNames = new Set(catalogBrands.map((brand) => brand.name))
+  const otherBrands = MATERIAL_BRANDS.filter((brand) => !catalogNames.has(brand))
+
   return (
     <section
       id="tienda"
@@ -165,17 +171,31 @@ export default function StoreInfo() {
                 <span className="grid h-10 w-10 place-items-center rounded-full bg-lila-100 text-lila-800">
                   <Scissors className="h-4 w-4" aria-hidden="true" />
                 </span>
-                <p className="meta-label">Marcas de hilo y estambre</p>
+                <p className="meta-label">Marcas y materiales</p>
               </div>
 
-              <div className="mt-3 flex flex-wrap gap-2">
-                {MATERIAL_BRANDS.map((brand) => (
-                  <Tag key={brand}>{brand}</Tag>
-                ))}
+              <div className="mt-4 grid gap-4 sm:grid-cols-2">
+                <div>
+                  <p className="meta-label text-clay-deep">Con carta completa</p>
+                  <div className="mt-2 flex flex-wrap gap-2">
+                    {catalogBrands.map((brand) => (
+                      <Tag key={brand.id}>{brand.name}</Tag>
+                    ))}
+                  </div>
+                </div>
+
+                <div>
+                  <p className="meta-label">También en tienda</p>
+                  <div className="mt-2 flex flex-wrap gap-2">
+                    {otherBrands.map((brand) => (
+                      <Tag key={brand}>{brand}</Tag>
+                    ))}
+                  </div>
+                </div>
               </div>
 
-              <p className="mt-2 text-[13px] leading-relaxed text-ink-muted">
-                {colorCatalog.brands.length} marcas tienen todos sus tonos con foto en
+              <p className="mt-3 text-[13px] leading-relaxed text-ink-muted">
+                Las marcas con carta completa tienen todos sus tonos con foto en
                 Materiales; las demás se consultan por WhatsApp.
               </p>
 

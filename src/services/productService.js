@@ -149,6 +149,7 @@ function normalizeProduct(raw) {
     id: String(id),
     name: raw.name ?? raw.nombre ?? 'Producto sin nombre',
     brand: raw.brand ?? raw.marca ?? '',
+    type: raw.type ?? raw.tipo ?? '',
     category: raw.category ?? raw.categoria ?? 'manualidades',
     subcategory: raw.subcategory ?? raw.subcategoria ?? '',
     price,

@@ -7,7 +7,9 @@
  * precio ni stock: es una referencia visual, no un producto a la venta.
  *
  * Para no saturar: una marca a la vez, 12 tonos visibles y un boton para ver
- * el resto. Los conteos salen del manifiesto generado por `npm run colors`.
+ * el resto. El grid es de 6 columnas en escritorio, 4 en tablet y 3 en movil,
+ * asi que las primeras 12 muestras forman dos filas exactas. Los conteos salen
+ * del manifiesto generado por `npm run colors`.
  * -----------------------------------------------------------------------------
  */
 
@@ -69,16 +71,17 @@ export default function ColorCatalog() {
           Tonos de nuestras marcas
         </h3>
         <p className="mt-2 max-w-xl text-[14px] leading-[1.6] text-ink-soft sm:text-[15px]">
-          Las tarjetas de arriba ya traen el selector completo; esta carta te deja comparar
-          todos los tonos en foto. Toca cualquiera para pedirlo por WhatsApp.
+          Las tarjetas muestran una selección de tonos; aquí están todos los de cada
+          marca. Toca cualquiera para pedirlo por WhatsApp.
         </p>
       </div>
 
-      {/* Pestañas de marca: la activa se marca con el acento terracota. */}
+      {/* Pestañas de marca: la activa se marca con el acento terracota. Se
+       * envuelven en varias filas para que ninguna marca quede cortada. */}
       <div
         role="tablist"
         aria-label="Marcas de la carta de color"
-        className="no-scrollbar mt-5 flex gap-1 overflow-x-auto border-b-2 border-ink/10 sm:flex-wrap sm:overflow-visible"
+        className="mt-5 flex flex-wrap gap-x-1 border-b-2 border-ink/10"
       >
         {brands.map((brand) => {
           const isActive = brand.id === activeBrand.id
@@ -141,7 +144,7 @@ export default function ColorCatalog() {
           )}
         </div>
 
-        <ul className="mt-4 grid grid-cols-3 gap-x-3 gap-y-4 sm:grid-cols-4 md:grid-cols-6 lg:grid-cols-8">
+        <ul className="mt-4 grid grid-cols-3 gap-x-3 gap-y-4 sm:grid-cols-4 md:grid-cols-6">
           {visibleColors.map((color) => {
             const colorLabel = color.name ? `${color.code} ${color.name}` : color.code
             const orderLabel = `Pedir ${activeBrand.name} tono ${colorLabel} por WhatsApp`

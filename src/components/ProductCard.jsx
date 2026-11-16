@@ -16,7 +16,7 @@
  */
 
 import { useEffect, useMemo, useRef, useState } from 'react'
-import { Clock, Eye, Info, MessageCircle, PackageCheck } from 'lucide-react'
+import { Clock, Eye, MessageCircle, PackageCheck } from 'lucide-react'
 import ColorSwatchPicker from './ColorSwatchPicker'
 import { useRevealOnScroll } from '../hooks/useRevealOnScroll'
 import { getProductWhatsAppUrl } from '../utils/whatsapp'
@@ -80,7 +80,7 @@ export default function ProductCard({ product, index = 0, onOpenDetail }) {
   const displayImage = activeVariant ?? product
   const imageUrl = displayImage.imageUrl || FALLBACK_IMAGE
   const imageAlt = activeVariant
-    ? `${product.name} en color ${activeVariant.colorName}`
+    ? `${product.name} en tono ${activeVariant.colorName}`
     : product.name
 
   const [failedUrl, setFailedUrl] = useState(null)
@@ -131,13 +131,13 @@ export default function ProductCard({ product, index = 0, onOpenDetail }) {
        * Imagen con efecto hover suave y clic para vista rapida
        * --------------------------------------------------------------- */}
       <div
-        onClick={() => onOpenDetail?.(product)}
+        onClick={() => onOpenDetail?.(product, activeVariantId)}
         role="button"
         tabIndex={0}
         onKeyDown={(event) => {
           if (event.key === 'Enter' || event.key === ' ') {
             event.preventDefault()
-            onOpenDetail?.(product)
+            onOpenDetail?.(product, activeVariantId)
           }
         }}
         aria-label={`Ver detalles de ${product.name}`}
@@ -201,11 +201,10 @@ export default function ProductCard({ product, index = 0, onOpenDetail }) {
           </span>
         </div>
 
-        {/* Marca: solo si el producto la tiene. La categoria ya se muestra
-         * como chip bajo la foto, asi que repetirla aqui era ruido. */}
-        {product.brand && (
+        {/* Tipo real del material: el trapillo no es estambre. */}
+        {product.type && (
           <span className="absolute left-3 top-3 inline-flex max-w-[70%] items-center truncate rounded-full bg-surface/95 px-3 py-1.5 text-[12px] font-bold uppercase tracking-wide text-lila-800 shadow-soft backdrop-blur-sm sm:left-4 sm:top-4 sm:text-[13px]">
-            {product.brand}
+            {product.type}
           </span>
         )}
 
@@ -240,40 +239,47 @@ export default function ProductCard({ product, index = 0, onOpenDetail }) {
        * Contenido
        * --------------------------------------------------------------- */}
       <div className="flex flex-1 flex-col p-4 sm:p-5">
-        {/* Categoria / subcategoria y numero de colores. Sin pildoras: el
-         * dato se lee como linea de ficha, no como etiqueta de color. */}
-        <div className="flex flex-wrap items-center gap-x-2 gap-y-1 text-[12px] font-semibold tracking-normal sm:text-[13px]">
-          <span className="text-clay-deep">{categoryLabel}</span>
-          {product.subcategory && (
-            <>
-              <span aria-hidden="true" className="text-line">
-                /
-              </span>
-              <span className="font-medium text-ink-muted">
-                {product.subcategory}
-              </span>
-            </>
-          )}
-          {supportsVariants && (
-            <>
-              <span aria-hidden="true" className="text-line">
-                /
-              </span>
-              <span className="font-mono text-[12px] font-semibold text-ink-muted sm:text-[13px]">
-                {variants.length} colores
-              </span>
-            </>
-          )}
+        {/* Ficha corta: tonos (o categoria en piezas) y acceso visible a la
+         * ficha completa, sin depender del hover. */}
+        <div className="flex flex-wrap items-center justify-between gap-x-2 gap-y-1 text-[12px] font-semibold tracking-normal sm:text-[13px]">
+          <div className="flex flex-wrap items-center gap-x-2 gap-y-1">
+            {supportsVariants ? (
+              <span className="text-clay-deep">{variants.length} tonos</span>
+            ) : (
+              <>
+                <span className="text-clay-deep">{categoryLabel}</span>
+                {product.subcategory && (
+                  <>
+                    <span aria-hidden="true" className="text-line">
+                      /
+                    </span>
+                    <span className="font-medium text-ink-muted">
+                      {product.subcategory}
+                    </span>
+                  </>
+                )}
+              </>
+            )}
+          </div>
+
+          <button
+            type="button"
+            onClick={() => onOpenDetail?.(product, activeVariantId)}
+            className="inline-flex items-center gap-1 rounded text-[12px] font-semibold text-ink-muted transition-colors duration-160 ease-artisan hover:text-lila-800 focus:outline-none focus-visible:ring-2 focus-visible:ring-lila-600 focus-visible:ring-offset-2 focus-visible:ring-offset-surface"
+          >
+            <Eye className="h-3.5 w-3.5" aria-hidden="true" />
+            Ver ficha
+          </button>
         </div>
 
         <h3
-          onClick={() => onOpenDetail?.(product)}
+          onClick={() => onOpenDetail?.(product, activeVariantId)}
           className="mt-2.5 cursor-pointer font-display text-[1.35rem] font-semibold leading-[1.12] text-ink transition-colors duration-240 group-hover:text-lila-800 sm:text-[1.5rem]"
         >
-          {product.name}
+          {product.brand || product.name}
         </h3>
 
-        <p className="mt-2 line-clamp-3 text-[15px] leading-relaxed text-ink-soft sm:text-[16px]">
+        <p className="mt-2 line-clamp-2 text-[15px] leading-relaxed text-ink-soft sm:text-[16px]">
           {product.description}
         </p>
 
@@ -286,11 +292,11 @@ export default function ProductCard({ product, index = 0, onOpenDetail }) {
           {supportsVariants && (
             <div>
               <div className="flex items-baseline justify-between gap-2">
-                <p className="meta-label">Color</p>
+                <p className="meta-label">Tono</p>
                 <p className="meta-value text-right" aria-live="polite">
                   {activeVariant
                     ? `${activeVariant.colorCode} · ${activeVariant.colorName}`
-                    : 'Elige un color'}
+                    : 'Elige un tono'}
                 </p>
               </div>
 
@@ -299,6 +305,7 @@ export default function ProductCard({ product, index = 0, onOpenDetail }) {
                   variants={variants}
                   activeVariantId={activeVariantId}
                   onChange={setActiveVariantId}
+                  onShowAll={() => onOpenDetail?.(product, activeVariantId)}
                 />
               </div>
 
@@ -315,36 +322,28 @@ export default function ProductCard({ product, index = 0, onOpenDetail }) {
               {variantStatus === AVAILABILITY.SOLD_OUT && (
                 <p className="mt-2.5 flex items-center gap-1.5 text-[12.5px] font-medium text-danger">
                   <Clock className="h-4 w-4" aria-hidden="true" />
-                  Color agotado por el momento
+                  Tono agotado por el momento
                 </p>
               )}
 
-              {variantStatus === AVAILABILITY.UNKNOWN && (
-                <p className="mt-2.5 flex items-center gap-1.5 text-[12.5px] font-medium text-ink-muted">
-                  <Info className="h-4 w-4" aria-hidden="true" />
-                  Existencia por confirmar
-                </p>
-              )}
+              {/* Sin dato de stock no se repite "existencia por confirmar" en
+               * cada tarjeta: la seccion lo dice una sola vez. */}
             </div>
           )}
 
-          {/* Precio: solo si la tienda ya publico una cifra. Sin dato se
-           * mantiene en una linea discreta para no competir con el CTA. */}
-          <div className={supportsVariants ? 'mt-4' : ''}>
-            <p className="meta-label">Precio</p>
-            {priceLabel ? (
+          {/* Precio: solo si la tienda ya publico una cifra. Sin dato, el CTA
+           * de WhatsApp es la unica llamada a la accion. */}
+          {priceLabel && (
+            <div className={supportsVariants ? 'mt-4' : ''}>
+              <p className="meta-label">Precio</p>
               <p className="mt-0.5 font-display text-[2rem] font-semibold leading-tight text-ink">
                 <span className="tabular-nums">{priceLabel}</span>
                 <span className="ml-1 align-middle text-[12px] font-medium text-ink-muted">
                   MXN
                 </span>
               </p>
-            ) : (
-              <p className="mt-1 text-[14px] font-semibold text-ink-soft">
-                Precio por WhatsApp
-              </p>
-            )}
-          </div>
+            </div>
+          )}
         </div>
 
         {/* Espaciador flexible: alinea los botones entre tarjetas */}
@@ -359,7 +358,7 @@ export default function ProductCard({ product, index = 0, onOpenDetail }) {
           target="_blank"
           rel="noopener noreferrer"
           aria-label={`Pedir por WhatsApp ${product.name}${
-            activeVariant ? ` en color ${activeVariant.colorName}` : ''
+            activeVariant ? ` en tono ${activeVariant.colorName}` : ''
           }`}
           title={`Pedir "${product.name}" por WhatsApp`}
           className="mt-5 inline-flex w-full items-center justify-center gap-2 rounded-xl border-2 border-ink bg-brand px-4 py-3.5 text-center text-[14px] font-bold leading-tight text-white shadow-pop transition-all duration-240 ease-artisan hover:translate-x-[2px] hover:translate-y-[2px] hover:bg-whatsapp hover:shadow-none focus:outline-none focus-visible:ring-2 focus-visible:ring-lila-600 focus-visible:ring-offset-2 focus-visible:ring-offset-surface active:translate-y-0 sm:text-[15px]"

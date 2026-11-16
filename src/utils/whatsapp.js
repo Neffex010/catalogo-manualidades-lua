@@ -46,6 +46,21 @@ export const GENERAL_MESSAGE = [
 ].join('\n')
 
 /**
+ * Unidad de venta segun el tipo real del material. El trapillo no se vende
+ * como ovillo de estambre, asi que el mensaje usa "pieza(s)" para no afirmar
+ * una presentacion que la tienda no confirmo.
+ *
+ * @param {object} product
+ * @param {number} quantity
+ * @returns {string}
+ */
+function getUnitLabel(product, quantity) {
+  const isTrapillo = product?.type === 'Trapillo'
+  if (isTrapillo) return Number(quantity) === 1 ? 'pieza' : 'piezas'
+  return Number(quantity) === 1 ? 'ovillo' : 'ovillos'
+}
+
+/**
  * Mensaje prellenado de un producto concreto.
  * Incluye la cantidad, el nombre del producto y, cuando hay una variante activa,
  * su codigo y nombre de color para que la tienda sepa de inmediato que pedir.
@@ -56,13 +71,13 @@ export const GENERAL_MESSAGE = [
  *
  * @param {object} product
  * @param {object|null} [variant] Variante de color activa
- * @param {number} [quantity] Ovillos o piezas solicitadas
+ * @param {number} [quantity] Unidades solicitadas
  * @returns {string}
  */
 export function buildProductMessage(product, variant = null, quantity = 1) {
   if (!product) return GENERAL_MESSAGE
 
-  const units = Number(quantity) === 1 ? 'ovillo' : 'ovillos'
+  const units = getUnitLabel(product, quantity)
   const color = variant
     ? `, color ${variant.colorCode} ${variant.colorName}`
     : ''

@@ -24,7 +24,11 @@ import Portfolio from './Portfolio'
 import ProductDetailModal from './ProductDetailModal'
 
 export default function Catalog({ products = [], loading = false, error = null, onRetry }) {
-  const [selectedProductForDetail, setSelectedProductForDetail] = useState(null)
+  const [detail, setDetail] = useState(null)
+
+  // El tono viaja con el producto: abrir la ficha desde un swatch no debe
+  // devolver al primer tono de la marca.
+  const openDetail = (product, variantId = null) => setDetail({ product, variantId })
 
   // Separacion por intencion de compra, no por categoria tecnica.
   const designs = useMemo(
@@ -70,7 +74,7 @@ export default function Catalog({ products = [], loading = false, error = null, 
         <Portfolio
           designs={designs}
           loading={loading}
-          onOpenDetail={setSelectedProductForDetail}
+          onOpenDetail={openDetail}
         />
       </div>
 
@@ -80,16 +84,17 @@ export default function Catalog({ products = [], loading = false, error = null, 
           <Materials
             materials={materials}
             loading={loading}
-            onOpenDetail={setSelectedProductForDetail}
+            onOpenDetail={openDetail}
           />
         </div>
       </div>
 
       {/* Modal compartido: adapta su copy segun sea diseno o material. */}
-      {selectedProductForDetail && (
+      {detail && (
         <ProductDetailModal
-          product={selectedProductForDetail}
-          onClose={() => setSelectedProductForDetail(null)}
+          product={detail.product}
+          initialVariantId={detail.variantId}
+          onClose={() => setDetail(null)}
         />
       )}
     </div>

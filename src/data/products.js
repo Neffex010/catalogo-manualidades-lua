@@ -34,19 +34,15 @@ const PRODUCT_NAMES = {
 
 /**
  * Copy breve por marca. Describe usos generales, nunca composicion, precio ni
- * existencias: esos datos solo se publican cuando la tienda los carga.
+ * existencias: esos datos solo se publican cuando la tienda los carga. El
+ * llamado a WhatsApp vive una sola vez en la seccion, no en cada descripcion.
  */
 const PRODUCT_DESCRIPTIONS = {
-  'komfy-mini':
-    'Paleta completa de Komfy Mini para amigurumis, accesorios y proyectos de uso diario. Elige el tono y confirma existencia y precio por WhatsApp.',
-  'kotton-milk':
-    'Paleta completa de Kotton Milk, disponible también como hilo. Elige el tono y pregunta por la presentación que necesitas.',
-  'karina-kairo':
-    'Paleta completa de Karina Kairo para prendas, accesorios y detalles. Elige el tono y confirma existencia y precio por WhatsApp.',
-  'trapillo-kraft':
-    'Paleta completa de Trapillo Kraft para bolsos, cestas y piezas de mayor cuerpo. Elige el tono y confirma existencia y precio por WhatsApp.',
-  'alize-velluto':
-    'Paleta completa de Alize Velluto, de textura suave, para piezas de abrigo y detalles. Elige el tono y confirma existencia y precio por WhatsApp.',
+  'komfy-mini': 'Para amigurumis, accesorios y proyectos de uso diario.',
+  'kotton-milk': 'También disponible como hilo; pregunta por la presentación.',
+  'karina-kairo': 'Para prendas, accesorios y detalles.',
+  'trapillo-kraft': 'Para bolsos, cestas y piezas de mayor cuerpo.',
+  'alize-velluto': 'Textura suave para piezas de abrigo y detalles.',
 }
 
 /** Etiquetas por marca (se usan como palabras clave, no se muestran). */
@@ -92,6 +88,8 @@ function buildBrandProduct(brand) {
     id: `estambre-${brand.id}`,
     name: PRODUCT_NAMES[brand.id] ?? brand.name,
     brand: brand.name,
+    // Linea comercial real del manifiesto: evita llamar "estambre" al trapillo.
+    type: brand.type,
     category: 'estambres',
     description: PRODUCT_DESCRIPTIONS[brand.id] ?? '',
     // 4:5, la misma proporcion del contenedor de la tarjeta.
