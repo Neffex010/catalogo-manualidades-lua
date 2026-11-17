@@ -6,10 +6,10 @@
  * Presenta las marcas reales de `assets/` con una muestra de cada tono, sin
  * precio ni stock: es una referencia visual, no un producto a la venta.
  *
- * Para no saturar: una marca a la vez, 12 tonos visibles y un boton para ver
+ * Para no saturar: una marca a la vez, 6 tonos visibles y un boton para ver
  * el resto. El grid es de 6 columnas en escritorio, 4 en tablet y 3 en movil,
- * asi que las primeras 12 muestras forman dos filas exactas. Los conteos salen
- * del manifiesto generado por `npm run colors`.
+ * asi que las primeras 6 muestras forman dos filas exactas en movil y una en
+ * escritorio. Los conteos salen del manifiesto generado por `npm run colors`.
  * -----------------------------------------------------------------------------
  */
 
@@ -19,7 +19,7 @@ import colorCatalog from '../data/colorCatalog.json'
 import { getColorWhatsAppUrl } from '../utils/whatsapp'
 
 /** Tonos visibles antes de ofrecer "Ver todos". */
-const INITIAL_VISIBLE = 12
+const INITIAL_VISIBLE = 6
 
 export default function ColorCatalog() {
   const brands = colorCatalog.brands
@@ -57,10 +57,9 @@ export default function ColorCatalog() {
       className="mt-10 border-t-2 border-ink/15 pt-7 sm:mt-14 sm:pt-9"
     >
       <div className="max-w-2xl">
-        <p className="eyebrow">Carta de color</p>
         <h3
           id="carta-color-titulo"
-          className="mt-2 font-display text-[1.75rem] font-semibold leading-[1.02] tracking-[-0.03em] text-ink sm:text-[2.3rem]"
+          className="font-display text-[1.75rem] font-semibold leading-[1.02] tracking-[-0.03em] text-ink sm:text-[2.3rem]"
         >
           Todos los tonos
         </h3>

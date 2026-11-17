@@ -83,7 +83,7 @@ export default function Footer() {
             </div>
           </div>
 
-          <nav aria-label="Enlaces del pie" className="flex flex-wrap items-center justify-center gap-x-4 gap-y-2">
+          <nav aria-label="Enlaces del pie" className="hidden flex-wrap items-center justify-center gap-x-4 gap-y-2 sm:flex">
             {quickLinks.map(({ id, label }) => (
               <a
                 key={id}

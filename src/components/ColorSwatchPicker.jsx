@@ -7,10 +7,14 @@
  * codigo de color (01, 06, 07...) para que la eleccion sea inequivoca incluso
  * entre tonos parecidos. La variante activa lleva un anillo oscuro de 2px.
  *
- * Los productos con muchos tonos arrancan colapsados (`5 + N`). Si el padre
+ * Los productos con muchos tonos arrancan colapsados (`N + resto`). Si el padre
  * entrega `onShowAll`, ese boton abre la ficha completa (modal) en lugar de
  * estirar la tarjeta: asi la paleta de 47 tonos no empuja el resto del catalogo.
  * Sin `onShowAll` se conserva el comportamiento de expandir/contraer en sitio.
+ *
+ * En modo `compact` (tarjetas de dos columnas) las muestras bajan de tamano y
+ * pierden el codigo pintado dentro: el codigo del tono activo ya aparece en la
+ * linea "Tono" de la tarjeta y la ficha mantiene la paleta completa con codigos.
  *
  * Es un componente controlado: no guarda la variante activa. El producto dueño
  * de la tarjeta decide cual es y reacciona al cambio.
@@ -38,6 +42,7 @@ const DEFAULT_VISIBLE = 5
  * @param {(variantId: string) => void} props.onChange
  * @param {number} [props.maxVisible]
  * @param {() => void} [props.onShowAll] Cuando existe, el boton "+N" delega en el padre
+ * @param {boolean} [props.compact] Muestras mas pequenas y sin codigo pintado
  */
 export default function ColorSwatchPicker({
   variants = [],
@@ -45,6 +50,7 @@ export default function ColorSwatchPicker({
   onChange,
   maxVisible = DEFAULT_VISIBLE,
   onShowAll,
+  compact = false,
 }) {
   const [expanded, setExpanded] = useState(false)
 
@@ -71,6 +77,12 @@ export default function ColorSwatchPicker({
   })()
 
   const showAll = Boolean(onShowAll)
+
+  // La tarjeta compacta vive en dos columnas: las muestras tienen que caber
+  // junto al chip "+N" incluso a 320 px, donde el hueco util ronda 114 px.
+  const swatchSize = compact
+    ? 'h-6 w-6 text-[9px] min-[360px]:h-7 min-[360px]:w-7 min-[400px]:h-8 min-[400px]:w-8 sm:h-9 sm:w-9 sm:text-[10px] lg:h-11 lg:w-11 lg:text-[11px]'
+    : 'h-10 w-10 text-[11px] min-[360px]:h-11 min-[360px]:w-11 lg:h-12 lg:w-12'
 
   return (
     <div>
@@ -99,7 +111,8 @@ export default function ColorSwatchPicker({
               title={`${label}${isSoldOut ? ' · Agotado' : ''}`}
               style={{ backgroundColor: swatchColor }}
               className={[
-                'relative grid h-10 w-10 shrink-0 place-items-center rounded-full border border-black/10 text-[11px] font-bold uppercase shadow-sm transition-all duration-160 ease-artisan min-[360px]:h-11 min-[360px]:w-11 lg:h-12 lg:w-12',
+                'relative grid shrink-0 place-items-center rounded-full border border-black/10 font-bold uppercase shadow-sm transition-all duration-160 ease-artisan',
+                swatchSize,
                 'focus:outline-none focus-visible:ring-2 focus-visible:ring-lila-600 focus-visible:ring-offset-2 focus-visible:ring-offset-surface',
                 isActive
                   ? 'ring-2 ring-ink ring-offset-2 ring-offset-surface'
@@ -107,7 +120,7 @@ export default function ColorSwatchPicker({
                 isSoldOut ? 'cursor-not-allowed opacity-40' : 'cursor-pointer',
               ].join(' ')}
             >
-              <span style={{ color: textColor }}>{variant.colorCode}</span>
+              {!compact && <span style={{ color: textColor }}>{variant.colorCode}</span>}
 
               {/* Tachado sutil para los colores sin stock */}
               {isSoldOut && (
@@ -115,7 +128,7 @@ export default function ColorSwatchPicker({
                   aria-hidden="true"
                   className="pointer-events-none absolute inset-0 grid place-items-center"
                 >
-                  <span className="block h-px w-8 rotate-45 bg-ink/80" />
+                  <span className="block h-px w-3/4 rotate-45 bg-ink/80" />
                 </span>
               )}
             </button>
@@ -137,14 +150,19 @@ export default function ColorSwatchPicker({
             title={
               showAll || !expanded ? `Ver los ${variants.length} tonos` : 'Mostrar menos'
             }
-            className="inline-flex h-10 w-10 shrink-0 items-center justify-center gap-0.5 rounded-full border border-dashed border-ink/25 bg-sand-50 text-[11px] font-bold tabular-nums text-ink-soft transition-all duration-160 ease-artisan hover:border-lila-400 hover:bg-surface hover:text-lila-800 focus:outline-none focus-visible:ring-2 focus-visible:ring-lila-600 focus-visible:ring-offset-2 focus-visible:ring-offset-surface min-[360px]:h-11 min-[360px]:w-11 lg:h-12 lg:w-12"
+            className={[
+              'inline-flex shrink-0 items-center justify-center gap-0.5 rounded-full border border-dashed border-ink/25 bg-sand-50 font-bold tabular-nums text-ink-soft transition-all duration-160 ease-artisan hover:border-lila-400 hover:bg-surface hover:text-lila-800 focus:outline-none focus-visible:ring-2 focus-visible:ring-lila-600 focus-visible:ring-offset-2 focus-visible:ring-offset-surface',
+              swatchSize,
+            ].join(' ')}
           >
             {expanded && !showAll ? (
               <ChevronUp className="h-3.5 w-3.5" aria-hidden="true" />
             ) : (
               <>
                 +{variants.length - maxVisible}
-                <ChevronDown className="h-3 w-3 opacity-60" aria-hidden="true" />
+                {!compact && (
+                  <ChevronDown className="h-3 w-3 opacity-60" aria-hidden="true" />
+                )}
               </>
             )}
           </button>

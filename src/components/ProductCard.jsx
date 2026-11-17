@@ -50,10 +50,10 @@ const STATUS_STYLES = {
 
 /**
  * Ancho con el que se pinta la tarjeta en cada breakpoint. Debe mantenerse en
- * sync con las columnas del grid de Materials: 1 en movil, 2 en tablet y 3 en
- * pantallas anchas (5 marcas -> 3 + 2).
+ * sync con las columnas del grid de Materials: 2 en movil y tablet, 3 en
+ * pantallas anchas (5 marcas + la celda de "otra marca").
  */
-const IMAGE_SIZES = '(min-width: 1280px) 33vw, (min-width: 640px) 45vw, 92vw'
+const IMAGE_SIZES = '(min-width: 768px) 30vw, 45vw'
 
 export default function ProductCard({ product, index = 0, onOpenDetail }) {
   const variants = useMemo(
@@ -203,7 +203,7 @@ export default function ProductCard({ product, index = 0, onOpenDetail }) {
 
         {/* Tipo real del material: el trapillo no es estambre. */}
         {product.type && (
-          <span className="absolute left-3 top-3 inline-flex max-w-[70%] items-center truncate rounded-full bg-surface/95 px-3 py-1.5 text-[12px] font-bold uppercase tracking-wide text-lila-800 shadow-soft backdrop-blur-sm sm:left-4 sm:top-4 sm:text-[13px]">
+          <span className="absolute left-2 top-2 inline-flex max-w-[85%] items-center truncate rounded-full bg-surface/95 px-2 py-1 text-[10px] font-bold uppercase tracking-wide text-lila-800 shadow-soft backdrop-blur-sm sm:left-4 sm:top-4 sm:px-3 sm:py-1.5 sm:text-[13px]">
             {product.type}
           </span>
         )}
@@ -212,7 +212,7 @@ export default function ProductCard({ product, index = 0, onOpenDetail }) {
         {productStatusStyle.label && (
           <span
             className={[
-              'absolute right-3 top-3 inline-flex items-center gap-1.5 rounded-full px-2.5 py-1.5 text-[12px] font-bold shadow-soft backdrop-blur-sm sm:right-4 sm:top-4 sm:text-[13px]',
+              'absolute right-2 top-2 inline-flex items-center gap-1.5 rounded-full px-2 py-1 text-[11px] font-bold shadow-soft backdrop-blur-sm sm:right-4 sm:top-4 sm:px-2.5 sm:py-1.5 sm:text-[13px]',
               productStatusStyle.badge,
             ].join(' ')}
           >
@@ -238,74 +238,87 @@ export default function ProductCard({ product, index = 0, onOpenDetail }) {
       {/* ---------------------------------------------------------------
        * Contenido
        * --------------------------------------------------------------- */}
-      <div className="flex flex-1 flex-col p-3 min-[360px]:p-4 sm:p-5">
-        {/* Ficha corta: en piezas, la categoria; en materiales el conteo ya lo
-         * dicen el selector (+N) y la carta. A la derecha, acceso visible a la
-         * ficha completa sin depender del hover. */}
-        <div className="flex flex-wrap items-center justify-between gap-x-2 gap-y-1 text-[12px] font-semibold tracking-normal sm:text-[13px]">
-          {!supportsVariants && (
-            <div className="flex flex-wrap items-center gap-x-2 gap-y-1">
-              <span className="text-clay-deep">{categoryLabel}</span>
-              {product.subcategory && (
-                <>
-                  <span aria-hidden="true" className="text-line">
-                    /
-                  </span>
-                  <span className="font-medium text-ink-muted">
-                    {product.subcategory}
-                  </span>
-                </>
-              )}
-            </div>
-          )}
+      <div className="flex flex-1 flex-col p-3 sm:p-4 lg:p-5">
+        {/* En piezas, la categoria. El acceso a la ficha completa vive junto al
+         * titulo: en las tarjetas con selector de color una fila propia solo
+         * agregaba aire. */}
+        {!supportsVariants && (
+          <div className="flex flex-wrap items-center gap-x-2 gap-y-1 text-[12px] font-semibold">
+            <span className="text-clay-deep">{categoryLabel}</span>
+            {product.subcategory && (
+              <>
+                <span aria-hidden="true" className="text-line">
+                  /
+                </span>
+                <span className="font-medium text-ink-muted">{product.subcategory}</span>
+              </>
+            )}
+          </div>
+        )}
+
+        <div className="flex items-start justify-between gap-2">
+          <h3
+            onClick={() => onOpenDetail?.(product, activeVariantId)}
+            className="line-clamp-2 cursor-pointer font-display text-[1.05rem] font-semibold leading-[1.15] text-ink transition-colors duration-240 group-hover:text-lila-800 min-[360px]:text-[1.15rem] sm:text-[1.4rem]"
+          >
+            {product.brand || product.name}
+          </h3>
 
           <button
             type="button"
             onClick={() => onOpenDetail?.(product, activeVariantId)}
-            className="ml-auto inline-flex items-center gap-1 rounded text-[12px] font-semibold text-ink-muted transition-colors duration-160 ease-artisan hover:text-lila-800 focus:outline-none focus-visible:ring-2 focus-visible:ring-lila-600 focus-visible:ring-offset-2 focus-visible:ring-offset-surface"
+            aria-label={`Ver ficha de ${product.brand || product.name}`}
+            className="-mr-1 mt-0.5 inline-flex shrink-0 items-center gap-1 rounded p-1 text-[11px] font-semibold text-ink-muted transition-colors duration-160 ease-artisan hover:text-lila-800 focus:outline-none focus-visible:ring-2 focus-visible:ring-lila-600 focus-visible:ring-offset-2 focus-visible:ring-offset-surface sm:text-[12px]"
           >
             <Eye className="h-3.5 w-3.5" aria-hidden="true" />
-            Ver ficha
+            <span className="hidden sm:inline">Ver ficha</span>
           </button>
         </div>
 
-        <h3
-          onClick={() => onOpenDetail?.(product, activeVariantId)}
-          className="mt-2.5 cursor-pointer font-display text-[1.35rem] font-semibold leading-[1.12] text-ink transition-colors duration-240 group-hover:text-lila-800 sm:text-[1.5rem]"
-        >
-          {product.brand || product.name}
-        </h3>
-
         {/* En movil la ficha completa ya cuenta la historia de la marca: la
-         * tarjeta se queda con foto, tonos y pedido para no alargar la lista.
-         * Mismo criterio que DesignCard. */}
+         * tarjeta se queda con foto, tonos y pedido para no alargar la lista. */}
         <p className="mt-2 hidden line-clamp-2 text-[15px] leading-relaxed text-ink-soft sm:block sm:text-[16px]">
           {product.description}
         </p>
 
         {/* Un solo separador agrupa la ficha de compra: color, disponibilidad
          * y precio. */}
-        <div className="mt-4 border-t-2 border-ink/10 pt-3.5">
+        <div className="mt-3 border-t-2 border-ink/10 pt-3 sm:mt-4 sm:pt-3.5">
           {/* -----------------------------------------------------------
            * Variantes de color (solo estambres y trapillo)
            * ----------------------------------------------------------- */}
           {supportsVariants && (
             <div>
               <div className="flex items-baseline justify-between gap-2">
-                <p className="meta-label">Tono</p>
-                <p className="meta-value text-right" aria-live="polite">
-                  {activeVariant
-                    ? `${activeVariant.colorCode} · ${activeVariant.colorName}`
-                    : 'Elige un tono'}
+                <p className="text-[11px] font-bold uppercase tracking-[0.1em] text-ink-muted sm:text-[12px]">
+                  Tono
+                </p>
+                <p
+                  className="truncate text-right font-mono text-[11px] font-medium tabular-nums text-ink-soft sm:text-[13px]"
+                  aria-live="polite"
+                >
+                  {activeVariant ? (
+                    <>
+                      <span>{activeVariant.colorCode}</span>
+                      <span className="sr-only sm:not-sr-only">
+                        {' '}
+                        · {activeVariant.colorName}
+                      </span>
+                    </>
+                  ) : (
+                    'Elige un tono'
+                  )}
                 </p>
               </div>
 
-              <div className="mt-2.5">
+              <div className="mt-2 sm:mt-2.5">
                 <ColorSwatchPicker
                   variants={variants}
                   activeVariantId={activeVariantId}
                   onChange={setActiveVariantId}
                   onShowAll={() => onOpenDetail?.(product, activeVariantId)}
+                  maxVisible={3}
+                  compact
                 />
               </div>
 
@@ -361,10 +374,11 @@ export default function ProductCard({ product, index = 0, onOpenDetail }) {
             activeVariant ? ` en tono ${activeVariant.colorName}` : ''
           }`}
           title={`Pedir "${product.name}" por WhatsApp`}
-          className="mt-5 inline-flex w-full items-center justify-center gap-2 rounded-xl border-2 border-ink bg-brand px-4 py-3.5 text-center text-[14px] font-bold leading-tight text-white shadow-pop transition-all duration-240 ease-artisan hover:translate-x-[2px] hover:translate-y-[2px] hover:bg-whatsapp hover:shadow-none focus:outline-none focus-visible:ring-2 focus-visible:ring-lila-600 focus-visible:ring-offset-2 focus-visible:ring-offset-surface active:translate-y-0 sm:text-[15px]"
+          className="mt-4 inline-flex w-full items-center justify-center gap-2 rounded-xl border-2 border-ink bg-brand px-3 py-2.5 text-center text-[13px] font-bold leading-tight text-white shadow-pop transition-all duration-240 ease-artisan hover:translate-x-[2px] hover:translate-y-[2px] hover:bg-whatsapp hover:shadow-none focus:outline-none focus-visible:ring-2 focus-visible:ring-lila-600 focus-visible:ring-offset-2 focus-visible:ring-offset-surface active:translate-y-0 sm:px-4 sm:py-3.5 sm:text-[15px] md:px-3 md:text-[13px] lg:px-4 lg:text-[15px]"
         >
-          <MessageCircle className="h-[18px] w-[18px] shrink-0" aria-hidden="true" />
-          Pedir por WhatsApp
+          <MessageCircle className="h-4 w-4 shrink-0 sm:h-[18px] sm:w-[18px]" aria-hidden="true" />
+          <span className="sm:hidden">Pedir</span>
+          <span className="hidden sm:inline">Pedir por WhatsApp</span>
         </a>
       </div>
     </article>

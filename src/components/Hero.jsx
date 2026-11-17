@@ -67,7 +67,10 @@ export default function Hero() {
            * Columna editorial: marca y propuesta de valor
            * ------------------------------------------------------------ */}
           <div className="flex flex-col lg:col-span-7">
-            <div className="flex flex-wrap items-center gap-3">
+            {/* La marca ya vive en la cabecera sticky: en movil esta fila
+             * dejaba el sello solo y empujaba el titular. Se conserva en
+             * escritorio como masthead. */}
+            <div className="hidden flex-wrap items-center gap-3 sm:flex">
               <img
                 src={BRAND.logo.mark}
                 width={BRAND.logo.width}
@@ -86,7 +89,7 @@ export default function Hero() {
               <span aria-hidden="true" className="hidden h-[2px] flex-1 bg-line sm:block" />
             </div>
 
-            <h1 className="mt-7 font-display text-[3rem] font-semibold leading-[0.93] tracking-[-0.035em] text-ink sm:mt-9 sm:text-[4.4rem] lg:text-[5.4rem] xl:text-[6rem]">
+            <h1 className="mt-7 font-display text-[2.6rem] font-semibold leading-[0.95] tracking-[-0.035em] text-ink min-[360px]:text-[3rem] sm:mt-9 sm:text-[4.4rem] lg:text-[5.4rem] xl:text-[6rem]">
               Diseños tejidos a pedido
               <span className="mt-2 block text-lila-700">
                 y los hilos para crear los tuyos
@@ -147,23 +150,16 @@ export default function Hero() {
                 <p className="font-display text-[1.8rem] font-semibold leading-[1.05] sm:text-[2.4rem]">
                   Ramo romántico pastel
                 </p>
-                <span className="mt-4 inline-flex items-center gap-2 text-[14px] font-semibold text-white/95">
-                  Ver los diseños
-                  <ArrowRight
-                    className="h-4 w-4 transition-transform duration-240 ease-artisan group-hover:translate-x-1"
-                    aria-hidden="true"
-                  />
-                </span>
               </div>
             </a>
 
-            {/* Ficha sin cajas: dos columnas separadas por un filo. La paleta
-             * enlaza a la carta completa; repetir aqui la invitacion a elegir
-             * un tono sobraba porque ese es justo el trabajo del enlace. */}
-            <div className="mt-6 grid grid-cols-2 gap-6 border-t-2 border-ink/10 pt-5 sm:gap-8">
+            {/* Ficha sin cajas: dos columnas separadas por un filo. En movil la
+             * paleta se oculta porque el hero ya lleva dos accesos y la foto
+             * enlaza al portafolio; queda solo la linea de autoria. */}
+            <div className="mt-6 flex flex-col gap-4 border-t-2 border-ink/10 pt-5 sm:grid sm:grid-cols-2 sm:gap-8">
               <a
                 href="#carta-color"
-                className="group rounded-lg focus:outline-none focus-visible:ring-2 focus-visible:ring-lila-600 focus-visible:ring-offset-2 focus-visible:ring-offset-canvas"
+                className="group hidden rounded-lg focus:outline-none focus-visible:ring-2 focus-visible:ring-lila-600 focus-visible:ring-offset-2 focus-visible:ring-offset-canvas sm:block"
               >
                 <p className="flex items-center gap-2 text-[11.5px] font-bold uppercase tracking-[0.16em] text-clay-deep">
                   <Palette className="h-4 w-4" aria-hidden="true" />
@@ -190,7 +186,7 @@ export default function Hero() {
                 </p>
               </a>
 
-              <div className="border-l border-ink/10 pl-6 sm:pl-8">
+              <div className="sm:border-l sm:border-ink/10 sm:pl-8">
                 <p className="flex items-center gap-2 text-[11.5px] font-bold uppercase tracking-[0.16em] text-clay-deep">
                   <Scissors className="h-4 w-4" aria-hidden="true" />
                   Hecho a mano

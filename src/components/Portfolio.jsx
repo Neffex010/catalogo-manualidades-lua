@@ -19,8 +19,8 @@ import SubcategoryFilter from './SubcategoryFilter'
 import { getSubcategories } from '../utils/catalog'
 import { getGeneralWhatsAppUrl } from '../utils/whatsapp'
 
-/** Diseños visibles al entrar. Una primera pantalla corta invita a seguir. */
-const INITIAL_COUNT = 8
+/** Diseños visibles al entrar. Dos tandas cortas invitan a seguir. */
+const INITIAL_COUNT = 6
 
 /** Cuantos diseños se suman con "Ver más diseños". */
 const PAGE_SIZE = 8
@@ -57,7 +57,6 @@ export default function Portfolio({ designs = [], loading = false, onOpenDetail 
       <SectionHeading
         id="disenos-titulo"
         index="01"
-        eyebrow="Portafolio"
         title="Diseños que ya tejí"
         description="Fotos de piezas reales. Elige la que te guste y la hago a tu medida."
       />
@@ -98,34 +97,43 @@ export default function Portfolio({ designs = [], loading = false, onOpenDetail 
         )}
       </div>
 
-      {/* Paginacion por tandas: el portafolio no obliga a recorrer todo. */}
+      {/* Paginacion por tandas: el portafolio no obliga a recorrer todo. El
+       * conteo viaja dentro del boton para no gastar una linea aparte. */}
       {!loading && shownDesigns.length > 0 && (
-        <div className="mt-8 flex flex-col items-center gap-3 sm:mt-10">
-          <p role="status" aria-live="polite" className="text-[13px] text-ink-muted sm:text-[14px]">
-            Mostrando{' '}
-            <span className="font-semibold tabular-nums text-ink-soft">
-              {shownDesigns.length}
-            </span>{' '}
-            de{' '}
-            <span className="font-semibold tabular-nums text-ink-soft">
-              {filteredDesigns.length}
-            </span>{' '}
-            {filteredDesigns.length === 1 ? 'diseño' : 'diseños'}
-          </p>
-
-          {hasMore && (
+        <div className="mt-8 flex flex-col items-center sm:mt-10">
+          {hasMore ? (
             <button
               type="button"
               onClick={() => setVisibleCount((count) => count + PAGE_SIZE)}
-              className="group inline-flex items-center gap-2 rounded-full border-2 border-lila-300 bg-surface px-7 py-3.5 text-[15px] font-semibold text-lila-800 shadow-soft transition-all duration-240 ease-artisan hover:-translate-y-0.5 hover:border-brand hover:bg-brand hover:text-white hover:shadow-brand focus:outline-none focus-visible:ring-2 focus-visible:ring-lila-600 focus-visible:ring-offset-2 focus-visible:ring-offset-canvas active:translate-y-0"
+              className="group inline-flex items-center gap-2 rounded-full border-2 border-lila-300 bg-surface px-6 py-3.5 text-[14px] font-semibold text-lila-800 shadow-soft transition-all duration-240 ease-artisan hover:-translate-y-0.5 hover:border-brand hover:bg-brand hover:text-white hover:shadow-brand focus:outline-none focus-visible:ring-2 focus-visible:ring-lila-600 focus-visible:ring-offset-2 focus-visible:ring-offset-canvas active:translate-y-0 sm:px-7 sm:text-[15px]"
             >
               <Plus
                 className="h-4 w-4 transition-transform duration-240 group-hover:rotate-90"
                 aria-hidden="true"
               />
-              Ver más diseños
+              Ver{' '}
+              <span className="tabular-nums">
+                {Math.min(PAGE_SIZE, filteredDesigns.length - shownDesigns.length)}
+              </span>{' '}
+              más
+              <span className="ml-1 font-normal text-ink-muted group-hover:text-white/80">
+                · {filteredDesigns.length}{' '}
+                {filteredDesigns.length === 1 ? 'diseño' : 'diseños'}
+              </span>
             </button>
+          ) : (
+            <p className="text-[13px] text-ink-muted sm:text-[14px]">
+              {filteredDesigns.length === 1
+                ? '1 diseño'
+                : `${filteredDesigns.length} diseños`}
+            </p>
           )}
+
+          {/* Anuncio para lectores de pantalla al cargar una tanda nueva. */}
+          <p role="status" aria-live="polite" className="sr-only">
+            Mostrando {shownDesigns.length} de {filteredDesigns.length}{' '}
+            {filteredDesigns.length === 1 ? 'diseño' : 'diseños'}
+          </p>
         </div>
       )}
 

@@ -62,7 +62,7 @@ export default function Materials({ materials = [], loading = false, onOpenDetai
         </p>
       )}
 
-      <div className="mt-7 grid grid-cols-1 gap-5 sm:mt-9 sm:grid-cols-2 sm:gap-6 xl:grid-cols-3 xl:gap-6">
+      <div className="mt-7 grid grid-cols-2 gap-x-3 gap-y-8 sm:mt-9 sm:gap-x-5 sm:gap-y-10 md:grid-cols-3">
         {loading ? (
           Array.from({ length: SKELETON_COUNT }, (_, index) => (
             <ProductCardSkeleton key={`material-skeleton-${index}`} />
@@ -78,25 +78,26 @@ export default function Materials({ materials = [], loading = false, onOpenDetai
               />
             ))}
 
-            {/* Sexta celda en xl: completa el grid 3+2 y abre la puerta a las
-             * marcas que no tienen carta completa, sin inventar un producto. */}
+            {/* Sexta celda: completa la rejilla de dos columnas (2 + 2 + 2) y
+             * abre la puerta a las marcas que no tienen carta completa, sin
+             * inventar un producto. */}
             <a
               href={getGeneralWhatsAppUrl()}
               target="_blank"
               rel="noopener noreferrer"
-              className="hidden flex-col items-center justify-center gap-3 rounded-2xl border-2 border-dashed border-line bg-sand-50/40 p-6 text-center transition-colors duration-240 ease-artisan hover:border-lila-300 hover:bg-sand-50 focus:outline-none focus-visible:ring-2 focus-visible:ring-lila-600 focus-visible:ring-offset-2 focus-visible:ring-offset-canvas xl:flex"
+              className="flex flex-col items-center justify-center gap-2.5 rounded-2xl border-2 border-dashed border-line bg-sand-50/40 p-4 text-center transition-colors duration-240 ease-artisan hover:border-lila-300 hover:bg-sand-50 focus:outline-none focus-visible:ring-2 focus-visible:ring-lila-600 focus-visible:ring-offset-2 focus-visible:ring-offset-canvas sm:gap-3 sm:p-6"
             >
-              <span className="grid h-12 w-12 place-items-center rounded-full bg-lila-100 text-lila-800">
-                <MessageCircle className="h-5 w-5" aria-hidden="true" />
+              <span className="grid h-10 w-10 place-items-center rounded-full bg-lila-100 text-lila-800 sm:h-12 sm:w-12">
+                <MessageCircle className="h-4 w-4 sm:h-5 sm:w-5" aria-hidden="true" />
               </span>
-              <p className="font-display text-[1.3rem] font-semibold leading-tight text-ink">
+              <p className="font-display text-[1.05rem] font-semibold leading-tight text-ink sm:text-[1.3rem]">
                 ¿Buscas otra marca?
               </p>
-              <p className="max-w-[28ch] text-[13.5px] leading-relaxed text-ink-muted">
+              <p className="max-w-[28ch] text-[12.5px] leading-relaxed text-ink-muted sm:text-[13.5px]">
                 También hay otras marcas de hilo y estambre. Pregunta por WhatsApp cuál
                 necesitas.
               </p>
-              <span className="mt-1 inline-flex items-center gap-1.5 text-[13px] font-bold text-lila-800">
+              <span className="mt-0.5 inline-flex items-center gap-1.5 text-[12.5px] font-bold text-lila-800 sm:mt-1 sm:text-[13px]">
                 Preguntar por WhatsApp
                 <ArrowRight className="h-4 w-4" aria-hidden="true" />
               </span>

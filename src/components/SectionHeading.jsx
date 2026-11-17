@@ -34,11 +34,14 @@ export default function SectionHeading({ id, index, eyebrow, title, description,
           )}
 
           <div className="max-w-2xl">
-            <p className="eyebrow">{eyebrow}</p>
+            {eyebrow && <p className="eyebrow">{eyebrow}</p>}
 
             <h2
               id={id}
-              className="mt-3 font-display text-[2.5rem] font-semibold leading-[0.98] tracking-[-0.03em] text-ink sm:text-[3.4rem] lg:text-[3.8rem]"
+              className={[
+                'font-display text-[2.5rem] font-semibold leading-[0.98] tracking-[-0.03em] text-ink sm:text-[3.4rem] lg:text-[3.8rem]',
+                eyebrow ? 'mt-3' : '',
+              ].join(' ')}
             >
               {title}
             </h2>

@@ -17,10 +17,8 @@ import {
   MapPin,
   MessageCircle,
   Navigation,
-  Phone,
   Scissors,
   ShoppingBag,
-  Sparkles,
 } from 'lucide-react'
 import {
   CONTACT,
@@ -148,16 +146,12 @@ export default function StoreInfo() {
               <p className="meta-label">Contacto y atención</p>
 
               <div className="mt-3 flex flex-col gap-2">
-                <ContactLink
-                  icon={Phone}
-                  label="Teléfono"
-                  value={CONTACT.phone.display}
-                  href={CONTACT.phone.href}
-                />
+                {/* Telefono y WhatsApp son el mismo numero: una sola fila
+                 * evita pedirle al cliente que elija entre dos iguales. */}
                 <ContactLink
                   icon={MessageCircle}
-                  label="WhatsApp"
-                  value={CONTACT.whatsappDisplay}
+                  label="Teléfono / WhatsApp"
+                  value={CONTACT.phone.display}
                   href={getGeneralWhatsAppUrl()}
                   external
                 />
@@ -206,38 +200,15 @@ export default function StoreInfo() {
                 </div>
               </div>
 
-              <div className="mt-5 grid gap-5 border-t border-ink/10 pt-4 sm:grid-cols-2">
-                <div>
-                  <p className="meta-label flex items-center gap-2">
-                    <ShoppingBag className="h-4 w-4 text-lila-700" aria-hidden="true" />
-                    Otros productos
-                  </p>
-                  <div className="mt-2 flex flex-wrap gap-2">
-                    {STORE_EXTRAS.map((item) => (
-                      <Tag key={item}>{item}</Tag>
-                    ))}
-                  </div>
-                </div>
-
-                <div>
-                  <p className="meta-label flex items-center gap-2">
-                    <Sparkles className="h-4 w-4 text-lila-700" aria-hidden="true" />
-                    Servicios
-                  </p>
-                  <ul className="mt-2 space-y-1.5">
-                    {STORE_SERVICES.map((service) => (
-                      <li
-                        key={service}
-                        className="flex items-center gap-2 text-[15px] font-medium text-ink-soft"
-                      >
-                        <span
-                          aria-hidden="true"
-                          className="h-1.5 w-1.5 shrink-0 rounded-full bg-lila-600"
-                        />
-                        {service}
-                      </li>
-                    ))}
-                  </ul>
+              <div className="mt-5 border-t border-ink/10 pt-4">
+                <p className="meta-label flex items-center gap-2">
+                  <ShoppingBag className="h-4 w-4 text-lila-700" aria-hidden="true" />
+                  Otros productos y servicios
+                </p>
+                <div className="mt-2 flex flex-wrap gap-2">
+                  {[...STORE_EXTRAS, ...STORE_SERVICES].map((item) => (
+                    <Tag key={item}>{item}</Tag>
+                  ))}
                 </div>
               </div>
             </div>
