@@ -221,7 +221,7 @@ export default function ProductDetailModal({ product, onClose, initialVariantId 
       />
 
       {/* Contenedor del modal */}
-      <div className="relative z-10 flex max-h-[92vh] w-full max-w-4xl flex-col overflow-hidden rounded-[1.5rem] border border-line bg-surface shadow-2xl transition-all animate-in fade-in zoom-in-95 duration-200">
+      <div className="relative z-10 flex max-h-[90vh] w-full max-w-3xl flex-col overflow-hidden rounded-[1.5rem] border border-line bg-surface shadow-2xl transition-all animate-in fade-in zoom-in-95 duration-200">
         {/* Boton cerrar */}
         <button
           type="button"
@@ -234,7 +234,7 @@ export default function ProductDetailModal({ product, onClose, initialVariantId 
 
         <div className="grid flex-1 overflow-y-auto md:grid-cols-2">
           {/* Columna Izquierda: Imagen grande */}
-          <div className="photo-frame relative aspect-4/5 max-h-[42vh] w-full bg-sand-100 md:aspect-auto md:h-full md:max-h-none">
+          <div className="photo-frame relative aspect-4/5 max-h-[30vh] w-full bg-sand-100 md:aspect-auto md:h-full md:max-h-none">
             <img
               src={imageUrl}
               alt={`${product.name}${activeVariant ? ` en tono ${activeVariant.colorName}` : ''}`}
@@ -261,7 +261,7 @@ export default function ProductDetailModal({ product, onClose, initialVariantId 
           </div>
 
           {/* Columna Derecha: Informacion y Acciones */}
-          <div className="flex flex-col p-6 sm:p-8">
+          <div className="flex flex-col p-5 sm:p-6">
             {/* Encabezado: tipo real del material y compartir. El titulo es la
              * marca; repetirla tambien en un chip era ruido. */}
             <div className="flex items-center justify-between gap-3 md:pr-11">
@@ -294,21 +294,21 @@ export default function ProductDetailModal({ product, onClose, initialVariantId 
 
             <h2
               id="modal-producto-titulo"
-              className="mt-3 font-display text-[1.75rem] font-semibold tracking-tight text-ink sm:text-[2.1rem]"
+              className="mt-2.5 font-display text-[1.6rem] font-semibold tracking-tight text-ink sm:text-[1.85rem]"
             >
               {title}
             </h2>
 
             <p
               id="modal-producto-descripcion"
-              className="mt-3 text-[15px] leading-relaxed text-ink-soft sm:text-[16px]"
+              className="mt-2.5 text-[14.5px] leading-relaxed text-ink-soft sm:text-[15px]"
             >
               {product.description}
             </p>
 
             {/* Selector de variantes (si aplica) */}
             {supportsVariants && (
-              <div className="mt-5 border-t border-line/80 pt-4">
+              <div className="mt-4 border-t border-line/80 pt-3">
                 <div className="flex items-baseline justify-between gap-2">
                   <p className="meta-label">Tono seleccionado</p>
                   <p className="meta-value text-right">
@@ -318,7 +318,7 @@ export default function ProductDetailModal({ product, onClose, initialVariantId 
                   </p>
                 </div>
 
-                <div className="mt-3">
+                <div className="mt-2.5">
                   {/* Paleta completa: aqui si cabe, es la superficie para
                    * recorrer todos los tonos de la marca. */}
                   <ColorSwatchPicker
@@ -330,7 +330,7 @@ export default function ProductDetailModal({ product, onClose, initialVariantId 
                 </div>
 
                 {variantStatus === AVAILABILITY.AVAILABLE && (
-                  <p className="mt-3 flex items-center gap-1.5 text-[13px] font-medium text-success">
+                  <p className="mt-2.5 flex items-center gap-1.5 text-[13px] font-medium text-success">
                     <PackageCheck className="h-4 w-4" aria-hidden="true" />
                     <span>
                       <span className="font-mono tabular-nums">{activeVariant.stock}</span>{' '}
@@ -340,21 +340,21 @@ export default function ProductDetailModal({ product, onClose, initialVariantId 
                 )}
 
                 {variantStatus === AVAILABILITY.SOLD_OUT && (
-                  <p className="mt-3 flex items-center gap-1.5 text-[13px] font-medium text-danger">
+                  <p className="mt-2.5 flex items-center gap-1.5 text-[13px] font-medium text-danger">
                     <Clock className="h-4 w-4" aria-hidden="true" />
                     Tono agotado temporalmente
                   </p>
                 )}
 
                 {variantStatus === AVAILABILITY.UNKNOWN && (
-                  <p className="mt-3 flex items-center gap-1.5 text-[13px] font-medium text-ink-muted">
+                  <p className="mt-2.5 flex items-center gap-1.5 text-[13px] font-medium text-ink-muted">
                     <Info className="h-4 w-4" aria-hidden="true" />
                     Existencia por confirmar
                   </p>
                 )}
 
                 {/* Cantidad: se suma al mensaje de WhatsApp, no hay carrito. */}
-                <div className="mt-4 flex items-center justify-between gap-3 border-t border-line/70 pt-3">
+                <div className="mt-3 flex items-center justify-between gap-3 border-t border-line/70 pt-3">
                   <p className="meta-label">Cantidad ({unitMany})</p>
                   <div className="inline-flex items-center gap-1 rounded-full border border-line bg-surface p-1">
                     <button
@@ -388,7 +388,7 @@ export default function ProductDetailModal({ product, onClose, initialVariantId 
             {/* Ficha de calidad: solo para piezas tejidas a mano. Los estambres
              * y el trapillo no se tejen, asi que no deben heredar este copy. */}
             {isDesign && (
-              <div className="mt-5 space-y-2.5 rounded-xl border border-line/70 bg-canvas/60 p-4 text-[13px] leading-relaxed text-ink-soft">
+              <div className="mt-4 space-y-2.5 rounded-xl border border-line/70 bg-canvas/60 p-4 text-[13px] leading-relaxed text-ink-soft">
                 <div className="flex items-start gap-2">
                   <Sparkles className="mt-0.5 h-3.5 w-3.5 shrink-0 text-lila-700" />
                   <span>
@@ -406,31 +406,31 @@ export default function ProductDetailModal({ product, onClose, initialVariantId 
             )}
 
             {/* Precio o cotización. Compartir ya vive en el encabezado. */}
-            <div className="mt-6 border-t border-line pt-4">
+            <div className="mt-4 border-t border-line pt-3">
               <p className="meta-label">{isDesign ? 'Cotización' : 'Precio'}</p>
               {priceLabel ? (
-                <p className="font-display text-[2rem] font-semibold leading-tight text-ink">
+                <p className="font-display text-[1.85rem] font-semibold leading-tight text-ink">
                   <span className="tabular-nums">{priceLabel}</span>
                   <span className="ml-1.5 text-[12px] font-medium text-ink-muted">MXN</span>
                 </p>
               ) : isDesign ? (
                 <>
-                  <p className="font-display text-[1.35rem] font-semibold text-ink">
+                  <p className="font-display text-[1.25rem] font-semibold text-ink">
                     Lo cotizo a tu medida
                   </p>
-                  <p className="mt-1 text-[13px] text-ink-muted">
+                  <p className="mt-0.5 text-[13px] text-ink-muted">
                     Según tamaño, color y detalles.
                   </p>
                 </>
               ) : (
-                <p className="font-display text-[1.05rem] font-semibold text-ink sm:text-[1.2rem]">
-                  Precio por WhatsApp
+                <p className="mt-0.5 text-[13.5px] font-medium text-ink-soft">
+                  Se confirma por WhatsApp.
                 </p>
               )}
             </div>
 
             {/* Accion Principal WhatsApp (escritorio; en movil va fija abajo) */}
-            <div className="mt-6 hidden md:block">
+            <div className="mt-4 hidden md:block">
               <a
                 href={whatsappUrl}
                 target="_blank"

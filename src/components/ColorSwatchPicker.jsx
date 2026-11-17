@@ -78,11 +78,13 @@ export default function ColorSwatchPicker({
 
   const showAll = Boolean(onShowAll)
 
-  // La tarjeta compacta vive en dos columnas: las muestras tienen que caber
-  // junto al chip "+N" incluso a 320 px, donde el hueco util ronda 114 px.
+  // Compacto = tarjeta en dos columnas: las muestras deben caber junto al chip
+  // "+N" incluso a 320 px, donde el hueco util ronda 114 px. En la ficha (sin
+  // compacto) la paleta va completa, asi que las muestras bajan un punto para
+  // que 25-47 tonos no alarguen el modal.
   const swatchSize = compact
     ? 'h-6 w-6 text-[9px] min-[360px]:h-7 min-[360px]:w-7 min-[400px]:h-8 min-[400px]:w-8 sm:h-9 sm:w-9 sm:text-[10px] lg:h-11 lg:w-11 lg:text-[11px]'
-    : 'h-10 w-10 text-[11px] min-[360px]:h-11 min-[360px]:w-11 lg:h-12 lg:w-12'
+    : 'h-9 w-9 text-[10px] min-[360px]:h-10 min-[360px]:w-10 sm:text-[11px]'
 
   return (
     <div>

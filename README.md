@@ -506,12 +506,16 @@ CREATE TABLE product_variants (
   servicios quedan en una sola tarjeta con dos franjas de etiquetas, sin bordes internos.
 - **Modal de material:** el título es la marca y el chip dice el tipo real (`Estambre`,
   `Trapillo`). La paleta muestra los 25/34/47 tonos completos, el tono elegido en la tarjeta se
-  conserva al abrir y la ficha arranca en "Tono seleccionado". En móvil la foto se limita a
-  `42vh` y el CTA queda fijo al pie del modal; en escritorio el botón vive al final de la
-  columna y "Compartir" está en el encabezado, sin chocar con el cierre. Con 3 unidades, el
-  mensaje es `Hola, quiero pedir de Manualidades Lua: 3 ovillos de Estambre Komfy Mini, color 01
-  Blanco. ¿Está disponible y cuánto cuesta?`; para Trapillo Kraft dice `3 piezas` y la etiqueta
-  del contador es `Cantidad (piezas)`.
+  conserva al abrir y la ficha arranca en "Tono seleccionado". La ficha se compactó para no
+  dominar la pantalla: ancho máximo `3xl` (**768 px**), alto máximo `90vh` y espaciados de 12–16
+  px entre bloques. Las muestras bajan a 36–40 px, así 25 tonos caben en **4 filas** en 390 y 1280
+  px (5 filas a 320 y 768 px, donde la columna es más angosta). Resultado medido: **768 × 697 px**
+  en 1024/1280 (antes 896 × 828) y **720 × 737 px** en 768. En móvil la foto se limita a `30vh`
+  y el CTA queda fijo al pie del modal, fuera del área que hace scroll; en escritorio el botón
+  vive al final de la columna y "Compartir" está en el encabezado, sin chocar con el cierre. Con
+  3 unidades, el mensaje es `Hola, quiero pedir de Manualidades Lua: 3 ovillos de Estambre Komfy
+  Mini, color 01 Blanco. ¿Está disponible y cuánto cuesta?`; para Trapillo Kraft dice `3 piezas`
+  y la etiqueta del contador es `Cantidad (piezas)`.
 - **Carta de color:** las 5 pestañas muestran 25/25/34/17/47 tonos con "Ver los N tonos"; cada
   tono es un enlace `wa.me` con marca, código y nombre. La cuadrícula ya no repite un icono de
   WhatsApp en cada tono: la instrucción vive una sola vez en el encabezado. Se abren 6 muestras;
