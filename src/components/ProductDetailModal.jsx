@@ -234,11 +234,17 @@ export default function ProductDetailModal({ product, onClose, initialVariantId 
 
         <div className="grid flex-1 overflow-y-auto md:grid-cols-2">
           {/* Columna Izquierda: Imagen grande */}
-          <div className="photo-frame relative aspect-4/5 max-h-[30vh] w-full bg-sand-100 md:aspect-auto md:h-full md:max-h-none">
+          <div className="photo-frame relative aspect-4/5 max-h-[30vh] w-full bg-white md:aspect-auto md:h-full md:max-h-none">
             <img
               src={imageUrl}
               alt={`${product.name}${activeVariant ? ` en tono ${activeVariant.colorName}` : ''}`}
-              className="h-full w-full object-cover"
+              // Los materiales son fotos recortadas sobre blanco: `contain` las
+              // muestra completas y centradas. Los diseños son fotos de ambiente;
+              // recortarlas a sangre se ve mejor que dejarlas flotando.
+              className={[
+                'h-full w-full',
+                isDesign ? 'object-cover' : 'object-contain',
+              ].join(' ')}
             />
             {/* Badge: encargo para diseños; disponibilidad solo si hay dato */}
             {(isDesign || productStatusStyle.label) && (

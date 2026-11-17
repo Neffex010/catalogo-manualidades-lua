@@ -143,8 +143,7 @@ export default function ProductCard({ product, index = 0, onOpenDetail }) {
           }
         }}
         aria-label={`Ver detalles de ${product.name}`}
-        className="photo-frame relative aspect-[4/3] w-full cursor-pointer overflow-hidden sm:max-h-44 md:aspect-auto md:max-h-none md:w-32 md:shrink-0 lg:w-36"
-        style={{ backgroundColor: displayImage.imageColor || FALLBACK_COLOR }}
+        className="photo-frame relative aspect-[4/3] w-full cursor-pointer overflow-hidden bg-white sm:max-h-44 md:aspect-auto md:max-h-none md:w-32 md:shrink-0 lg:w-36"
       >
         {/* Placeholder borroso (~0.2 KB): cubre el hueco mientras carga la foto */}
         {displayImage.imageLqip && !imageFailed && (
@@ -154,7 +153,7 @@ export default function ProductCard({ product, index = 0, onOpenDetail }) {
             aria-hidden="true"
             loading="lazy"
             decoding="async"
-            className="absolute inset-0 h-full w-full scale-110 object-cover blur-sm"
+            className="absolute inset-0 h-full w-full object-contain blur-sm"
           />
         )}
 
@@ -180,7 +179,7 @@ export default function ProductCard({ product, index = 0, onOpenDetail }) {
               setFailedUrl(imageUrl)
             }}
             className={[
-              'absolute inset-0 h-full w-full object-cover transition-all duration-400 ease-artisan group-hover:scale-[1.07]',
+              'absolute inset-0 h-full w-full object-contain transition-opacity duration-400 ease-artisan',
               imageLoaded ? 'opacity-100' : 'opacity-0',
             ].join(' ')}
           />

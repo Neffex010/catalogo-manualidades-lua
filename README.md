@@ -421,8 +421,9 @@ CREATE TABLE product_variants (
   muestran sin buscador, orden, filtros de categoría ni familias de color. Menos controles,
   menos carga visual. El título de cada tarjeta es la marca, el chip dice el tipo real
   (`Estambre`, `Estambre e hilo`, `Trapillo`) y el selector muestra 3 muestras + `+N`; el
-  conteo total vive en la ficha y en la carta, no se repite en cada tarjeta. La foto va cuadrada
-  y la descripción se queda en la ficha, así la lista no repite seis párrafos.
+  conteo total vive en la ficha y en la carta, no se repite en cada tarjeta. La foto ocupa una
+  banda 4:3 hasta `md` (miniatura vertical después) y la descripción se queda en la ficha, así
+  la lista no repite seis párrafos.
 - **Variantes de color**: cada marca trae el selector completo. Al cambiar de tono se
   actualizan la foto, la disponibilidad y el mensaje de WhatsApp de esa tarjeta. La lista no
   se mantiene a mano: `src/data/colorCatalog.json` guarda código, nombre, color promedio y
@@ -434,6 +435,11 @@ CREATE TABLE product_variants (
   por tono es `número` (disponible), `0` (agotado) o ausente (sin dato). El helper
   `src/utils/availability.js` centraliza esa lectura y evita que "sin dato" se confunda con
   "agotado".
+- **Fotos completas y centradas**: los materiales son recortes sobre blanco, así que la foto se
+  pinta con `object-contain` sobre un marco blanco: el ovillo aparece entero y centrado en la
+  rejilla, en la miniatura horizontal y en la ficha, sin recortes ni desplazamientos. El zoom al
+  pasar el cursor se retiró de la tarjeta de material para no volver a recortar el producto. Los
+  diseños conservan `object-cover` porque son fotos de ambiente y lucen mejor a sangre.
 - **Imagen de respaldo**: si la foto falla, la tarjeta muestra el placeholder de marca
   (`onError` en `ProductCard.jsx` y `DesignCard.jsx`); nunca se ve el ícono de imagen rota.
 - **Estados incluidos**: carga (skeletons), error con reintento, categoría sin diseños, material
