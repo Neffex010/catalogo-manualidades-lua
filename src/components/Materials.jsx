@@ -62,7 +62,7 @@ export default function Materials({ materials = [], loading = false, onOpenDetai
         </p>
       )}
 
-      <div className="mt-7 grid grid-cols-2 gap-x-3 gap-y-8 sm:mt-9 sm:gap-x-5 sm:gap-y-10 md:grid-cols-3">
+      <div className="mt-7 grid grid-cols-2 gap-x-3 gap-y-8 sm:mt-9 sm:gap-x-5 sm:gap-y-10 md:grid-cols-2 md:gap-x-4 md:gap-y-4 xl:grid-cols-3 xl:gap-y-5">
         {loading ? (
           Array.from({ length: SKELETON_COUNT }, (_, index) => (
             <ProductCardSkeleton key={`material-skeleton-${index}`} />
@@ -78,9 +78,9 @@ export default function Materials({ materials = [], loading = false, onOpenDetai
               />
             ))}
 
-            {/* Sexta celda: completa la rejilla de dos columnas (2 + 2 + 2) y
-             * abre la puerta a las marcas que no tienen carta completa, sin
-             * inventar un producto. */}
+            {/* Sexta celda: completa la rejilla (2 + 2 + 2 en movil y tablet,
+             * 3 + 3 en pantallas anchas) y abre la puerta a las marcas que no
+             * tienen carta completa, sin inventar un producto. */}
             <a
               href={getGeneralWhatsAppUrl()}
               target="_blank"

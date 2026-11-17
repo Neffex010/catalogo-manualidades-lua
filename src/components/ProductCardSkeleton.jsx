@@ -18,28 +18,28 @@ export default function ProductCardSkeleton({ variant = 'material' }) {
       className={
         isDesign
           ? 'flex h-full flex-col'
-          : 'flex h-full flex-col overflow-hidden rounded-2xl border border-line bg-surface'
+          : 'flex h-full flex-col overflow-hidden rounded-2xl border border-line bg-surface md:flex-row'
       }
     >
       {/* Bloque de imagen */}
       <div
         className={[
-          'relative aspect-4/5 w-full overflow-hidden bg-sand-100',
-          isDesign ? 'rounded-[1.25rem]' : '',
+          'relative aspect-[4/3] w-full overflow-hidden bg-sand-100',
+          isDesign ? 'rounded-[1.25rem]' : 'sm:max-h-44 md:aspect-auto md:max-h-none md:w-32 md:shrink-0 lg:w-36',
         ].join(' ')}
       >
         <div className="absolute inset-0 -translate-x-full animate-shimmer bg-gradient-to-r from-transparent via-white/60 to-transparent" />
-      </div>
 
-      {/* Franja del color activo (misma altura que en ProductCard) */}
-      {!isDesign && <div className="h-1.5 w-full bg-sand-100" />}
+        {/* Franja del color activo (misma altura que en ProductCard) */}
+        {!isDesign && <div className="absolute inset-x-0 bottom-0 h-1.5 bg-sand-200" />}
+      </div>
 
       {/* Bloque de texto */}
       <div
         className={
           isDesign
             ? 'flex flex-1 flex-col pt-3'
-            : 'flex flex-1 flex-col p-4 sm:p-5'
+            : 'flex flex-1 flex-col p-4 md:p-4'
         }
       >
         <div className="h-5 w-3/4 rounded-full bg-sand-100" />

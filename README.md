@@ -221,8 +221,10 @@ manualidades-lua/
 
 Estos datos viven en `CONTACT`, `MATERIAL_BRANDS`, `STORE_EXTRAS` y `STORE_SERVICES` de
 `src/config/site.js`. `StoreInfo.jsx` los muestra en la sección **Tienda**, que también es el
-destino del enlace "Tienda" de la navbar. El footer ya no repite la ficha de contacto: solo
-cierra con una llamada a la acción, la identidad de la marca, accesos rápidos y el aviso legal.
+destino del enlace "Tienda" de la navbar. Dirección y contacto comparten una sola tarjeta:
+a la izquierda la dirección, la referencia, el horario y "Cómo llegar"; a la derecha WhatsApp,
+Instagram y Facebook. El footer ya no repite la ficha de contacto: solo cierra con una llamada
+a la acción, la identidad de la marca, accesos rápidos y el aviso legal.
 
 | Dato | Valor |
 | --- | --- |
@@ -234,12 +236,11 @@ cierra con una llamada a la acción, la identidad de la marca, accesos rápidos 
 | Facebook | Manualidades lua |
 
 **Marcas y tipos de hilo/estambre:** Sinfonía, La Abuelita, Alize Velluto, Komfy Mini,
-Candy, Karina Kairo, Kotton Milk, Cristal, Hilo Vela e Hilo para coser. La sección Tienda
-separa dos grupos: **Carta de color completa**, un enlace a Materiales para las marcas del
-manifiesto (Alize Velluto, Komfy Mini, Karina Kairo, Kotton Milk y Trapillo Kraft), y
-**También en tienda**, con las marcas que solo se consultan por WhatsApp. Así la tienda ya no
-promete tonos con foto para marcas que no los tienen. Trapillo Kraft se muestra como
-**trapillo**, no como estambre.
+Candy, Karina Kairo, Kotton Milk, Cristal, Hilo Vela e Hilo para coser. En Tienda la carta
+completa se resume en un enlace a Materiales para las marcas del manifiesto (Alize Velluto,
+Komfy Mini, Karina Kairo, Kotton Milk y Trapillo Kraft), y solo se listan con etiquetas las
+marcas que no tienen carta ("También en tienda"). Así la tienda ya no promete tonos con foto
+para marcas que no los tienen. Trapillo Kraft se muestra como **trapillo**, no como estambre.
 
 **Otros productos:** accesorios para tejido, bastidores/aros de bordado y ganchillos.
 
@@ -444,7 +445,8 @@ CREATE TABLE product_variants (
   (`initialVariantId`).
 - **Información sin duplicados**: la ficha de tienda (dirección, horario, WhatsApp y redes) se
   muestra una sola vez en `StoreInfo`, con un único acceso a WhatsApp y sin publicar la cifra;
-  "Otros productos" y "Servicios" comparten una franja de etiquetas. El footer
+  dirección y contacto comparten tarjeta y "También en tienda" / "También hay" van en una sola
+  franja de etiquetas. El footer
   cierra con CTA, identidad y aviso legal; sus accesos rápidos se ocultan en móvil porque la
   cabecera fija ya los repite. El hero tiene un solo acceso a Materiales y su paleta enlaza a la
   carta completa en lugar de repetir la invitación a elegir un tono; en móvil la ficha de dos
@@ -464,9 +466,10 @@ CREATE TABLE product_variants (
   atrapa el foco, lo devuelve a la tarjeta al cerrar y se anuncia con `aria-labelledby` y
   `aria-describedby`.
 - **Responsive**: el portafolio usa 2 columnas en móvil, 2 en tablet, 3 en escritorio y 4 en
-  pantallas anchas; Materiales usa 2 columnas desde 320 px y 3 desde `md`, con tarjetas
-  compactas (foto, título, tono y CTA). La sexta celda del grid es una tarjeta de contacto
-  ("¿Buscas otra marca?") que completa cualquier rejilla sin inventar un producto. La carta de
+  pantallas anchas; Materiales usa 2 columnas con foto 4:3 hasta `md` y, desde ahí, filas
+  horizontales con miniatura de 128–144 px (2 columnas en tablet y 3 desde `xl`). La sexta
+  celda del grid es una tarjeta de contacto ("¿Buscas otra marca?") que completa cualquier
+  rejilla sin inventar un producto. La carta de
   color usa 6 columnas en escritorio, 4 en tablet y 3 en móvil, con pestañas que se envuelven en
   varias filas para que ninguna marca quede cortada. La navbar de móvil coloca la navegación en
   una segunda fila desplazable y `scroll-padding-top` compensa la cabecera fija al usar anclas.
@@ -476,7 +479,7 @@ CREATE TABLE product_variants (
 ## 🧪 Verificación realizada
 
 - `npm run lint` → sin errores ni advertencias.
-- `npm run build` → `✓ built` (JS 325.81 kB / 80.12 kB gzip · CSS 44.90 kB / 8.57 kB gzip ·
+- `npm run build` → `✓ built` (JS 326.04 kB / 80.28 kB gzip · CSS 46.03 kB / 8.85 kB gzip ·
   HTML 57.09 kB / 6.57 kB gzip). El HTML publica dos listas JSON-LD separadas (diseños y
   materiales).
 - **Datos separados:** 105 diseños en `#disenos` y 5 marcas en `#materiales` (25 + 25 + 34 +
@@ -488,11 +491,19 @@ CREATE TABLE product_variants (
   sección explica una sola vez que se confirman por WhatsApp; sin `stock` no se repite
   "Existencia por confirmar" en cada tarjeta. En el JSON-LD, `#materiales` publica 5 `Product`
   sin `offers` mientras no haya precio.
-- **Materiales (Edge headless, 1440 px y 390 px):** se ven las 5 tarjetas con su selector de
-  tonos y la sexta celda "¿Buscas otra marca?" en cualquier ancho; en escritorio el grid queda
-  3 + 3 y en móvil 2 + 2 + 2. Cada tarjeta muestra 3 muestras y el chip `+N` en una sola fila y
-  mide **363 px** en 390 px (antes 716 px); la sección baja de **4,963 px a 2,028 px** y la página
-  de 10,556 px a **6,868 px**. Sin desbordamiento horizontal y con la consola limpia.
+- **Materiales (Edge headless, 320–1280 px):** se ven las 5 tarjetas con su selector de tonos y
+  la sexta celda "¿Buscas otra marca?" en cualquier ancho; en escritorio el grid queda 3 + 3 y
+  en móvil/tablet 2 + 2 + 2. Hasta `md` la tarjeta es una rejilla con foto 4:3 (con tope de
+  176 px desde `sm`); desde `md` pasa a fila horizontal con miniatura de 128–144 px y el CTA
+  vuelve a decir "Pedir". Cada tarjeta muestra 3 muestras y el chip `+N` en una sola fila y mide
+  **314 px** en 390 px (antes 363 px, y 716 px al inicio de la reducción); la sección baja de
+  **2,028 px a 1,882 px** y la página de 6,868 px a **6,395 px**. En 1280 la tarjeta pasa de
+  **641 px a 223 px** y Materiales de **2,154 px a 1,328 px**. Sin desbordamiento horizontal y
+  con la consola limpia.
+- **Tienda (Edge headless):** dirección y contacto comparten una tarjeta de dos columnas (una en
+  móvil), así que la sección baja de **1,511 px a 1,185 px** en 390 y de **1,021 px a 849 px** en
+  1280. El encabezado pasa a "Compara tonos y toca las texturas." y las marcas, extras y
+  servicios quedan en una sola tarjeta con dos franjas de etiquetas, sin bordes internos.
 - **Modal de material:** el título es la marca y el chip dice el tipo real (`Estambre`,
   `Trapillo`). La paleta muestra los 25/34/47 tonos completos, el tono elegido en la tarjeta se
   conserva al abrir y la ficha arranca en "Tono seleccionado". En móvil la foto se limita a
@@ -519,12 +530,14 @@ CREATE TABLE product_variants (
   mide 73 px en escritorio y 109 px en móvil; en 320 px los cuatro enlaces de navegación caben sin
   scroll. Los anclas dejan 88 px de margen en escritorio y 120 px en móvil, por encima de la
   cabecera fija.
-- **Medidas finales (Edge headless, `scrollHeight`):** 390×844 → página **6,868 px**, secciones
-  966 / 1,491 / 2,028 / 1,511 / 568 y tarjeta de material **363 px**; 320×720 → **6,855 px** y
-  tarjeta **339 px**; 640×900 → **8,438 px** y tarjeta **519 px**; 768×900 → **7,472 px** y
-  tarjeta **481 px**; 1280×900 → **6,374 px** y tarjeta **641 px**. La página baja de 10,556 px
-  a 6,868 px en móvil (−3,688 px, −35 %) y de los 12,294 px originales (−5,426 px). Las 3 muestras
-  y el chip `+N` caben en una sola fila en todos los anchos medidos.
+- **Medidas finales (Edge headless, `scrollHeight`):** 390×844 → página **6,395 px**, secciones
+  966 / 1,491 / 1,882 / 1,185 / 568 y tarjeta de material **314 px**; 320×720 → **6,417 px** y
+  tarjeta **299 px**; 640×900 → **7,555 px** y tarjeta **405 px**; 768×900 → **6,631 px** y
+  tarjeta **205 px**; 1024×900 → **5,585 px** y tarjeta **223 px**; 1280×900 → **5,377 px** y
+  tarjeta **223 px**. Frente al paso anterior, la página baja 473 px en móvil (−7 %) y 997 px en
+  1280 (−16 %); frente a los 10,556 px de partida, −39 % en móvil, y frente a los 12,294 px
+  originales, −48 %. Las 3 muestras y el chip `+N` caben en una sola fila en todos los anchos
+  medidos.
 - **Redundancia (DOM):** dirección, horario y WhatsApp aparecen una sola vez en `StoreInfo`; el
   teléfono no se publica, solo se enlaza WhatsApp. Las redes no se repiten en la navbar; el hero
   tiene un único acceso a Materiales y su paleta enlaza a la carta. En `#materiales` las menciones
@@ -535,8 +548,8 @@ CREATE TABLE product_variants (
 - **Pulido de navegación:** la navbar subraya la sección activa (`aria-current`), el salto directo
   "Ir a la carta de color" evita recorrer las cinco tarjetas y el botón flotante de volver arriba
   se retiró: la cabecera fija ya ofrece "Inicio" y el flotante tapaba el CTA de las tarjetas.
-  En móvil las descripciones de material se ocultan (la ficha las conserva), como ya hacía el
-  portafolio, y el pie eliminó el enlace duplicado a WhatsApp.
+  Las descripciones de material no se repiten en la lista (la ficha las conserva), como ya hacía
+  el portafolio, y el pie eliminó el enlace duplicado a WhatsApp.
 - **Teclado y foco:** "Saltar al contenido" aparece como botón fijo de 164×48 px al recibir foco
   (verificado con `Emulation.setFocusEmulationEnabled`; sin eso, un headless reporta 1×1 px
   porque la ventana no tiene foco y `:focus` no matchea). La ficha modal enfoca el diálogo al

@@ -18,7 +18,6 @@ import {
   MessageCircle,
   Navigation,
   Scissors,
-  ShoppingBag,
 } from 'lucide-react'
 import {
   CONTACT,
@@ -37,9 +36,9 @@ function ContactLink({ icon: Icon, label, value, href, external = false }) {
     <a
       href={href}
       {...(external ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
-      className="group flex items-center gap-3 rounded-xl border border-line/70 bg-sand-50/70 px-3.5 py-3 transition-all duration-160 ease-artisan hover:-translate-y-0.5 hover:border-lila-300 hover:bg-sand-50 hover:shadow-soft focus:outline-none focus-visible:ring-2 focus-visible:ring-lila-600 focus-visible:ring-offset-2 focus-visible:ring-offset-surface"
+      className="group flex items-center gap-2.5 rounded-xl border border-line/70 bg-sand-50/70 px-3 py-2.5 transition-all duration-160 ease-artisan hover:-translate-y-0.5 hover:border-lila-300 hover:bg-sand-50 hover:shadow-soft focus:outline-none focus-visible:ring-2 focus-visible:ring-lila-600 focus-visible:ring-offset-2 focus-visible:ring-offset-surface"
     >
-      <span className="grid h-10 w-10 shrink-0 place-items-center rounded-full bg-lila-100 text-lila-800">
+      <span className="grid h-9 w-9 shrink-0 place-items-center rounded-full bg-lila-100 text-lila-800">
         <Icon className="h-4 w-4" aria-hidden="true" />
       </span>
       <span className="min-w-0 flex-1">
@@ -61,7 +60,7 @@ function ContactLink({ icon: Icon, label, value, href, external = false }) {
 /** Etiqueta compacta para marcas, extras y servicios. */
 function Tag({ children }) {
   return (
-    <span className="rounded-full border border-line bg-sand-50 px-3 py-1.5 text-[13px] font-semibold text-ink-soft">
+    <span className="rounded-full border border-line bg-sand-50 px-2.5 py-1 text-[12.5px] font-semibold text-ink-soft">
       {children}
     </span>
   )
@@ -78,7 +77,7 @@ export default function StoreInfo() {
     <section
       id="tienda"
       aria-labelledby="tienda-titulo"
-      className="mx-auto w-full max-w-7xl scroll-mt-24 px-4 py-16 sm:px-6 sm:py-20 lg:px-8 lg:py-24"
+      className="mx-auto w-full max-w-7xl scroll-mt-24 px-4 py-14 sm:px-6 sm:py-20 lg:px-8 lg:py-24"
     >
       <div className="relative border-t-2 border-ink/15 pt-8 sm:pt-10">
         <div aria-hidden="true" className="texture-linen pointer-events-none absolute inset-0 opacity-70" />
@@ -96,120 +95,115 @@ export default function StoreInfo() {
               <p className="eyebrow">En persona</p>
               <h2
                 id="tienda-titulo"
-                className="mt-3 font-display text-[2.5rem] font-semibold leading-[0.98] tracking-[-0.03em] text-ink sm:text-[3.4rem] lg:text-[3.8rem]"
+                className="mt-2.5 font-display text-[2.2rem] font-semibold leading-[0.98] tracking-[-0.03em] text-ink sm:text-[3.1rem] lg:text-[3.5rem]"
               >
                 Ven a conocer la tienda
               </h2>
-              <p className="mt-4 max-w-xl text-[15px] leading-[1.65] text-ink-soft sm:text-[17px]">
-                Compara tonos, toca las texturas y elige el material para tu próximo
-                proyecto.
+              <p className="mt-3 text-[15px] leading-[1.6] text-ink-soft sm:text-[17px]">
+                Compara tonos y toca las texturas.
               </p>
             </div>
           </div>
 
-          <div className="mt-7 grid gap-3 lg:grid-cols-5 sm:mt-9">
-            {/* Direccion y horario */}
-            <div className="flex flex-col justify-between rounded-[1.35rem] border-2 border-ink/10 bg-surface p-5 shadow-pop-sand sm:p-6 lg:col-span-3">
-              <div>
-                <div className="flex items-center gap-2">
-                  <span className="grid h-10 w-10 place-items-center rounded-full bg-lila-100 text-lila-800">
-                    <MapPin className="h-4 w-4" aria-hidden="true" />
-                  </span>
-                  <p className="meta-label">Dirección</p>
-                </div>
-
-                <p className="mt-3 font-display text-[1.45rem] font-semibold leading-snug text-ink sm:text-[1.6rem]">
-                  {CONTACT.address.street}
-                </p>
-                <p className="mt-1 text-[15px] text-ink-soft">{CONTACT.address.reference}</p>
-                <p className="text-[15px] text-ink-soft">{CONTACT.address.city}</p>
-
-                <p className="mt-4 flex items-center gap-2 text-[15px] font-medium text-ink-soft">
-                  <Clock className="h-4 w-4 shrink-0 text-lila-700" aria-hidden="true" />
-                  Horario: {CONTACT.hours}
-                </p>
-              </div>
-
-              <a
-                href={CONTACT.address.mapsUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="mt-5 inline-flex w-fit items-center gap-2 rounded-xl border-2 border-ink bg-brand px-5 py-3 text-[14px] font-bold text-white shadow-pop transition-all duration-240 ease-artisan hover:translate-x-[2px] hover:translate-y-[2px] hover:bg-lila-800 hover:shadow-none focus:outline-none focus-visible:ring-2 focus-visible:ring-lila-600 focus-visible:ring-offset-2 focus-visible:ring-offset-surface"
-              >
-                <Navigation className="h-4 w-4" aria-hidden="true" />
-                Cómo llegar
-              </a>
-            </div>
-
-            {/* Contacto directo */}
-            <div className="rounded-[1.35rem] border border-line/80 bg-surface p-5 sm:p-6 lg:col-span-2">
-              <p className="meta-label">Contacto y atención</p>
-
-              <div className="mt-3 flex flex-col gap-2">
-                {/* El telefono es el mismo numero de WhatsApp: se deja un solo
-                 * acceso, sin publicar la cifra en la pagina. */}
-                <ContactLink
-                  icon={MessageCircle}
-                  label="WhatsApp"
-                  value="Escríbeme"
-                  href={getGeneralWhatsAppUrl()}
-                  external
-                />
-
-                {SOCIAL_LINKS.map(({ id, label, handle, href }) => (
-                  <ContactLink
-                    key={id}
-                    icon={(props) => <SocialIcon id={id} {...props} />}
-                    label={label}
-                    value={handle}
-                    href={href}
-                    external
-                  />
-                ))}
-              </div>
-            </div>
-
-            {/* Marcas, extras y servicios */}
-            <div className="rounded-[1.35rem] border border-line/80 bg-surface p-5 sm:p-6 lg:col-span-5">
-              <div className="flex flex-wrap items-center gap-2">
-                <span className="grid h-10 w-10 place-items-center rounded-full bg-lila-100 text-lila-800">
-                  <Scissors className="h-4 w-4" aria-hidden="true" />
-                </span>
-                <p className="meta-label">Marcas y materiales</p>
-              </div>
-
-              <div className="mt-4 grid gap-4 sm:grid-cols-2">
+          <div className="mt-6 grid gap-3 sm:mt-8">
+            {/* Direccion y contacto: una sola tarjeta. Antes eran dos y el
+             * telefono repetia el mismo numero que WhatsApp. */}
+            <div className="rounded-[1.35rem] border-2 border-ink/10 bg-surface p-5 shadow-pop-sand sm:p-6">
+              <div className="grid gap-5 sm:grid-cols-2 sm:gap-8">
                 <div>
-                  <p className="meta-label text-clay-deep">Carta de color completa</p>
+                  <p className="meta-label flex items-center gap-1.5">
+                    <MapPin className="h-3.5 w-3.5 text-lila-700" aria-hidden="true" />
+                    Dirección
+                  </p>
+
+                  <p className="mt-2.5 font-display text-[1.35rem] font-semibold leading-snug text-ink sm:text-[1.5rem]">
+                    {CONTACT.address.street}
+                  </p>
+                  <p className="mt-1 text-[14.5px] text-ink-soft">{CONTACT.address.reference}</p>
+                  <p className="text-[14.5px] text-ink-soft">{CONTACT.address.city}</p>
+
+                  <p className="mt-3 flex items-center gap-2 text-[14.5px] font-medium text-ink-soft">
+                    <Clock className="h-4 w-4 shrink-0 text-lila-700" aria-hidden="true" />
+                    Horario: {CONTACT.hours}
+                  </p>
+
                   <a
-                    href="#materiales"
-                    className="mt-2 inline-flex items-center gap-1.5 text-[14px] font-semibold text-lila-800 underline decoration-clay/50 decoration-2 underline-offset-4 transition-colors duration-160 ease-artisan hover:text-ink hover:decoration-clay focus:outline-none focus-visible:ring-2 focus-visible:ring-lila-600 focus-visible:ring-offset-2 focus-visible:ring-offset-surface"
+                    href={CONTACT.address.mapsUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="mt-3.5 inline-flex w-fit items-center gap-2 rounded-xl border-2 border-ink bg-brand px-4 py-2.5 text-[14px] font-bold text-white shadow-pop transition-all duration-240 ease-artisan hover:translate-x-[2px] hover:translate-y-[2px] hover:bg-lila-800 hover:shadow-none focus:outline-none focus-visible:ring-2 focus-visible:ring-lila-600 focus-visible:ring-offset-2 focus-visible:ring-offset-surface"
                   >
-                    Ver las marcas y sus tonos
-                    <ArrowRight className="h-4 w-4" aria-hidden="true" />
+                    <Navigation className="h-4 w-4" aria-hidden="true" />
+                    Cómo llegar
                   </a>
                 </div>
 
-                <div>
-                  <p className="meta-label">También en tienda</p>
-                  <div className="mt-2 flex flex-wrap gap-2">
-                    {otherBrands.map((brand) => (
-                      <Tag key={brand}>{brand}</Tag>
+                <div className="sm:border-l sm:border-line/70 sm:pl-8">
+                  <p className="meta-label flex items-center gap-1.5">
+                    <MessageCircle className="h-3.5 w-3.5 text-lila-700" aria-hidden="true" />
+                    WhatsApp y redes
+                  </p>
+
+                  <div className="mt-2.5 flex flex-col gap-2">
+                    {/* El telefono es el mismo numero de WhatsApp: un solo
+                     * acceso y sin publicar la cifra en la pagina. */}
+                    <ContactLink
+                      icon={MessageCircle}
+                      label="WhatsApp"
+                      value="Escríbeme"
+                      href={getGeneralWhatsAppUrl()}
+                      external
+                    />
+
+                    {SOCIAL_LINKS.map(({ id, label, handle, href }) => (
+                      <ContactLink
+                        key={id}
+                        icon={(props) => <SocialIcon id={id} {...props} />}
+                        label={label}
+                        value={handle}
+                        href={href}
+                        external
+                      />
                     ))}
                   </div>
                 </div>
               </div>
+            </div>
 
-              <div className="mt-5 border-t border-ink/10 pt-4">
-                <p className="meta-label flex items-center gap-2">
-                  <ShoppingBag className="h-4 w-4 text-lila-700" aria-hidden="true" />
-                  Otros productos y servicios
+            {/* Marcas y extras: un solo bloque de etiquetas, sin cajas ni
+             * bordes internos. Las marcas con carta se resumen en el enlace. */}
+            <div className="rounded-[1.35rem] border border-line/80 bg-surface p-5 sm:p-6">
+              <div className="flex flex-wrap items-center justify-between gap-x-4 gap-y-2">
+                <p className="meta-label flex items-center gap-1.5">
+                  <Scissors className="h-3.5 w-3.5 text-lila-700" aria-hidden="true" />
+                  Marcas y materiales
                 </p>
-                <div className="mt-2 flex flex-wrap gap-2">
-                  {[...STORE_EXTRAS, ...STORE_SERVICES].map((item) => (
-                    <Tag key={item}>{item}</Tag>
-                  ))}
-                </div>
+
+                <a
+                  href="#materiales"
+                  className="inline-flex items-center gap-1.5 text-[13.5px] font-semibold text-lila-800 underline decoration-clay/50 decoration-2 underline-offset-4 transition-colors duration-160 ease-artisan hover:text-ink hover:decoration-clay focus:outline-none focus-visible:ring-2 focus-visible:ring-lila-600 focus-visible:ring-offset-2 focus-visible:ring-offset-surface"
+                >
+                  Carta de color completa
+                  <ArrowRight className="h-4 w-4" aria-hidden="true" />
+                </a>
+              </div>
+
+              <div className="mt-3 flex flex-wrap items-center gap-2">
+                <span className="text-[11px] font-bold uppercase tracking-[0.1em] text-clay-deep">
+                  También en tienda
+                </span>
+                {otherBrands.map((brand) => (
+                  <Tag key={brand}>{brand}</Tag>
+                ))}
+              </div>
+
+              <div className="mt-2 flex flex-wrap items-center gap-2">
+                <span className="text-[11px] font-bold uppercase tracking-[0.1em] text-clay-deep">
+                  También hay
+                </span>
+                {[...STORE_EXTRAS, ...STORE_SERVICES].map((item) => (
+                  <Tag key={item}>{item}</Tag>
+                ))}
               </div>
             </div>
           </div>

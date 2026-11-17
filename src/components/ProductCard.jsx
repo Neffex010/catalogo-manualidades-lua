@@ -49,11 +49,11 @@ const STATUS_STYLES = {
 }
 
 /**
- * Ancho con el que se pinta la tarjeta en cada breakpoint. Debe mantenerse en
- * sync con las columnas del grid de Materials: 2 en movil y tablet, 3 en
- * pantallas anchas (5 marcas + la celda de "otra marca").
+ * Ancho con el que se pinta la foto en cada breakpoint. En movil la tarjeta
+ * ocupa media rejilla; desde `md` la foto es una miniatura fija a la izquierda
+ * y el contenido va al lado. Debe mantenerse en sync con Materials.
  */
-const IMAGE_SIZES = '(min-width: 768px) 30vw, 45vw'
+const IMAGE_SIZES = '(min-width: 1024px) 144px, (min-width: 768px) 128px, 45vw'
 
 export default function ProductCard({ product, index = 0, onOpenDetail }) {
   const variants = useMemo(
@@ -122,13 +122,15 @@ export default function ProductCard({ product, index = 0, onOpenDetail }) {
       ref={cardRef}
       style={{ animationDelay: revealDelay }}
       className={[
-        'group flex h-full flex-col overflow-hidden rounded-2xl border border-line bg-surface transition-all duration-240 ease-artisan hover:-translate-y-1 hover:border-lila-300 hover:shadow-card',
+        'group flex h-full flex-col overflow-hidden rounded-2xl border border-line bg-surface transition-all duration-240 ease-artisan hover:-translate-y-1 hover:border-lila-300 hover:shadow-card md:flex-row',
         'reveal',
         isRevealed ? 'is-visible' : '',
       ].join(' ')}
     >
       {/* ---------------------------------------------------------------
-       * Imagen con efecto hover suave y clic para vista rapida
+       * Imagen con efecto hover suave y clic para vista rapida.
+       * En movil es la foto 4:3 de la tarjeta; desde `md` se convierte en
+       * una miniatura de 128-144 px y el contenido pasa al lado.
        * --------------------------------------------------------------- */}
       <div
         onClick={() => onOpenDetail?.(product, activeVariantId)}
@@ -141,7 +143,7 @@ export default function ProductCard({ product, index = 0, onOpenDetail }) {
           }
         }}
         aria-label={`Ver detalles de ${product.name}`}
-        className="photo-frame relative aspect-square w-full cursor-pointer overflow-hidden"
+        className="photo-frame relative aspect-[4/3] w-full cursor-pointer overflow-hidden sm:max-h-44 md:aspect-auto md:max-h-none md:w-32 md:shrink-0 lg:w-36"
         style={{ backgroundColor: displayImage.imageColor || FALLBACK_COLOR }}
       >
         {/* Placeholder borroso (~0.2 KB): cubre el hueco mientras carga la foto */}
@@ -190,10 +192,12 @@ export default function ProductCard({ product, index = 0, onOpenDetail }) {
           className="pointer-events-none absolute inset-0 bg-gradient-to-t from-ink/45 via-transparent to-transparent opacity-70"
         />
 
-        {/* Pildora flotante "Ver detalle" al pasar el cursor */}
+        {/* Pildora flotante "Ver detalle" al pasar el cursor. Se oculta
+         * desde `md`: la miniatura es demasiado angosta para ella y la
+         * tarjeta ya tiene "Ver ficha". */}
         <div
           aria-hidden="true"
-          className="pointer-events-none absolute inset-0 flex items-center justify-center opacity-0 transition-opacity duration-240 group-hover:opacity-100"
+          className="pointer-events-none absolute inset-0 flex items-center justify-center opacity-0 transition-opacity duration-240 group-hover:opacity-100 md:hidden"
         >
           <span className="inline-flex items-center gap-1.5 rounded-full bg-surface/95 px-3.5 py-1.5 text-[13px] font-semibold text-ink shadow-soft backdrop-blur-md">
             <Eye className="h-4 w-4 text-lila-800" />
@@ -203,16 +207,17 @@ export default function ProductCard({ product, index = 0, onOpenDetail }) {
 
         {/* Tipo real del material: el trapillo no es estambre. */}
         {product.type && (
-          <span className="absolute left-2 top-2 inline-flex max-w-[85%] items-center truncate rounded-full bg-surface/95 px-2 py-1 text-[10px] font-bold uppercase tracking-wide text-lila-800 shadow-soft backdrop-blur-sm sm:left-4 sm:top-4 sm:px-3 sm:py-1.5 sm:text-[13px]">
+          <span className="absolute left-2 top-2 inline-flex max-w-[85%] items-center truncate rounded-full bg-surface/95 px-2 py-1 text-[10px] font-bold uppercase tracking-wide text-lila-800 shadow-soft backdrop-blur-sm sm:left-4 sm:top-4 sm:px-3 sm:py-1.5 sm:text-[13px] md:left-1.5 md:top-1.5 md:max-w-[calc(100%-0.75rem)] md:px-1.5 md:py-0.5 md:text-[9px] md:tracking-normal lg:text-[10px]">
             {product.type}
           </span>
         )}
 
-        {/* Estado de disponibilidad: solo se afirma cuando hay dato real. */}
+        {/* Estado de disponibilidad: solo se afirma cuando hay dato real.
+         * En la miniatura de `md` baja al pie para no chocar con el tipo. */}
         {productStatusStyle.label && (
           <span
             className={[
-              'absolute right-2 top-2 inline-flex items-center gap-1.5 rounded-full px-2 py-1 text-[11px] font-bold shadow-soft backdrop-blur-sm sm:right-4 sm:top-4 sm:px-2.5 sm:py-1.5 sm:text-[13px]',
+              'absolute right-2 top-2 inline-flex items-center gap-1.5 rounded-full px-2 py-1 text-[11px] font-bold shadow-soft backdrop-blur-sm sm:right-4 sm:top-4 sm:px-2.5 sm:py-1.5 sm:text-[13px] md:right-1.5 md:top-auto md:bottom-3 md:gap-1 md:px-1.5 md:py-0.5 md:text-[9px]',
               productStatusStyle.badge,
             ].join(' ')}
           >
@@ -223,22 +228,23 @@ export default function ProductCard({ product, index = 0, onOpenDetail }) {
             {productStatusStyle.label}
           </span>
         )}
-      </div>
 
-      {/* Franja del color activo: conecta la foto con la variante elegida sin
-       * agregar texto ni otra caja. */}
-      {supportsVariants && (
-        <div
-          aria-hidden="true"
-          className="h-1.5 w-full border-b border-black/5"
-          style={{ backgroundColor: activeVariant?.hexColor || FALLBACK_COLOR }}
-        />
-      )}
+        {/* Franja del color activo: conecta la foto con la variante elegida
+         * sin agregar texto ni otra caja. Vive dentro de la foto para que
+         * funcione igual en la rejilla y en la lista horizontal. */}
+        {supportsVariants && (
+          <div
+            aria-hidden="true"
+            className="pointer-events-none absolute inset-x-0 bottom-0 h-1.5 border-t border-black/5"
+            style={{ backgroundColor: activeVariant?.hexColor || FALLBACK_COLOR }}
+          />
+        )}
+      </div>
 
       {/* ---------------------------------------------------------------
        * Contenido
        * --------------------------------------------------------------- */}
-      <div className="flex flex-1 flex-col p-3 sm:p-4 lg:p-5">
+      <div className="flex flex-1 flex-col p-3 sm:p-4 md:p-4">
         {/* En piezas, la categoria. El acceso a la ficha completa vive junto al
          * titulo: en las tarjetas con selector de color una fila propia solo
          * agregaba aire. */}
@@ -259,7 +265,7 @@ export default function ProductCard({ product, index = 0, onOpenDetail }) {
         <div className="flex items-start justify-between gap-2">
           <h3
             onClick={() => onOpenDetail?.(product, activeVariantId)}
-            className="line-clamp-2 cursor-pointer font-display text-[1.05rem] font-semibold leading-[1.15] text-ink transition-colors duration-240 group-hover:text-lila-800 min-[360px]:text-[1.15rem] sm:text-[1.4rem]"
+            className="line-clamp-2 cursor-pointer font-display text-[1.05rem] font-semibold leading-[1.15] text-ink transition-colors duration-240 group-hover:text-lila-800 min-[360px]:text-[1.15rem] sm:text-[1.4rem] md:text-[1.1rem] lg:text-[1.25rem]"
           >
             {product.brand || product.name}
           </h3>
@@ -271,7 +277,7 @@ export default function ProductCard({ product, index = 0, onOpenDetail }) {
             className="-mr-1 mt-0.5 inline-flex shrink-0 items-center gap-1 rounded p-1 text-[11px] font-semibold text-ink-muted transition-colors duration-160 ease-artisan hover:text-lila-800 focus:outline-none focus-visible:ring-2 focus-visible:ring-lila-600 focus-visible:ring-offset-2 focus-visible:ring-offset-surface sm:text-[12px]"
           >
             <Eye className="h-3.5 w-3.5" aria-hidden="true" />
-            <span className="hidden sm:inline">Ver ficha</span>
+            <span className="hidden sm:inline md:hidden lg:inline">Ver ficha</span>
           </button>
         </div>
 
@@ -281,7 +287,7 @@ export default function ProductCard({ product, index = 0, onOpenDetail }) {
 
         {/* Un solo separador agrupa la ficha de compra: color, disponibilidad
          * y precio. */}
-        <div className="mt-3 border-t-2 border-ink/10 pt-3 sm:mt-4 sm:pt-3.5">
+        <div className="mt-3 border-t-2 border-ink/10 pt-3 sm:mt-4 sm:pt-3.5 md:mt-3 md:pt-3">
           {/* -----------------------------------------------------------
            * Variantes de color (solo estambres y trapillo)
            * ----------------------------------------------------------- */}
@@ -298,7 +304,7 @@ export default function ProductCard({ product, index = 0, onOpenDetail }) {
                   {activeVariant ? (
                     <>
                       <span>{activeVariant.colorCode}</span>
-                      <span className="sr-only sm:not-sr-only">
+                      <span className="sr-only lg:not-sr-only">
                         {' '}
                         · {activeVariant.colorName}
                       </span>
@@ -372,11 +378,11 @@ export default function ProductCard({ product, index = 0, onOpenDetail }) {
             activeVariant ? ` en tono ${activeVariant.colorName}` : ''
           }`}
           title={`Pedir "${product.name}" por WhatsApp`}
-          className="mt-4 inline-flex w-full items-center justify-center gap-2 rounded-xl border-2 border-ink bg-brand px-3 py-2.5 text-center text-[13px] font-bold leading-tight text-white shadow-pop transition-all duration-240 ease-artisan hover:translate-x-[2px] hover:translate-y-[2px] hover:bg-whatsapp hover:shadow-none focus:outline-none focus-visible:ring-2 focus-visible:ring-lila-600 focus-visible:ring-offset-2 focus-visible:ring-offset-surface active:translate-y-0 sm:px-4 sm:py-3.5 sm:text-[15px] md:px-3 md:text-[13px] lg:px-4 lg:text-[15px]"
+          className="mt-4 inline-flex w-full items-center justify-center gap-2 rounded-xl border-2 border-ink bg-brand px-3 py-2.5 text-center text-[13px] font-bold leading-tight text-white shadow-pop transition-all duration-240 ease-artisan hover:translate-x-[2px] hover:translate-y-[2px] hover:bg-whatsapp hover:shadow-none focus:outline-none focus-visible:ring-2 focus-visible:ring-lila-600 focus-visible:ring-offset-2 focus-visible:ring-offset-surface active:translate-y-0 sm:px-4 sm:py-3.5 sm:text-[15px] md:mt-3 md:gap-1.5 md:px-3 md:py-2.5 md:text-[13px] lg:px-4 lg:py-3 lg:text-[15px]"
         >
           <MessageCircle className="h-4 w-4 shrink-0 sm:h-[18px] sm:w-[18px]" aria-hidden="true" />
-          <span className="sm:hidden">Pedir</span>
-          <span className="hidden sm:inline">Pedir por WhatsApp</span>
+          <span className="lg:hidden">Pedir</span>
+          <span className="hidden lg:inline">Pedir por WhatsApp</span>
         </a>
       </div>
     </article>
