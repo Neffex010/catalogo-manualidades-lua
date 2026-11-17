@@ -44,7 +44,7 @@ export default function Catalog({ products = [], loading = false, error = null, 
     return (
       <section
         id="catalogo"
-        className="mx-auto w-full max-w-7xl scroll-mt-24 px-4 py-12 sm:px-6 sm:py-16 lg:px-8 lg:py-20"
+        className="mx-auto w-full max-w-7xl scroll-mt-24 px-4 py-10 sm:px-6 sm:py-12 lg:px-8 lg:py-16"
       >
         <div className="flex flex-col items-center justify-center rounded-2xl border border-danger/30 bg-danger-soft/40 px-6 py-16 text-center">
           <AlertTriangle className="h-10 w-10 text-danger" aria-hidden="true" />
@@ -70,7 +70,7 @@ export default function Catalog({ products = [], loading = false, error = null, 
   return (
     <div id="catalogo" className="scroll-mt-24">
       {/* Portafolio: fondo de papel */}
-      <div className="mx-auto w-full max-w-7xl px-4 pb-4 pt-12 sm:px-6 sm:pb-6 sm:pt-16 lg:px-8 lg:pb-8 lg:pt-20">
+      <div className="mx-auto w-full max-w-7xl px-4 pb-3 pt-8 sm:px-6 sm:pb-4 sm:pt-10 lg:px-8 lg:pb-4 lg:pt-12">
         <Portfolio
           designs={designs}
           loading={loading}
@@ -80,7 +80,7 @@ export default function Catalog({ products = [], loading = false, error = null, 
 
       {/* Materiales: banda tintada a todo el ancho para separar la compra */}
       <div className="border-y border-line bg-sand-50/60">
-        <div className="mx-auto w-full max-w-7xl px-4 py-14 sm:px-6 sm:py-16 lg:px-8 lg:py-20">
+        <div className="mx-auto w-full max-w-7xl px-4 py-10 sm:px-6 sm:py-12 lg:px-8 lg:py-14">
           <Materials
             materials={materials}
             loading={loading}

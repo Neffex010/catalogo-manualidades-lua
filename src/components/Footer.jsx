@@ -20,7 +20,7 @@ export default function Footer() {
 
   return (
     <footer className="mt-4 border-t border-line bg-surface sm:mt-8">
-      <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6 sm:py-16 lg:px-8">
+      <div className="mx-auto max-w-7xl px-4 py-10 sm:px-6 sm:py-12 lg:px-8">
         {/* Llamada final a la accion */}
         <div className="relative overflow-hidden rounded-[1.5rem] border-2 border-ink bg-brand px-6 py-9 text-center shadow-pop sm:px-10 sm:py-12">
           {/* Puntada interior: guiño a la costura sin sumar peso visual */}

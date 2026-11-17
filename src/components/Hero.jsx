@@ -61,7 +61,7 @@ export default function Hero() {
         className="pointer-events-none absolute -bottom-24 right-1/4 h-64 w-64 rounded-full bg-sand-200/70 blur-3xl"
       />
 
-      <div className="relative mx-auto max-w-7xl px-4 pb-14 pt-9 sm:px-6 sm:pb-16 sm:pt-12 lg:px-8 lg:pb-20 lg:pt-14">
+      <div className="relative mx-auto max-w-7xl px-4 pb-10 pt-9 sm:px-6 sm:pb-12 sm:pt-12 lg:px-8 lg:pb-14 lg:pt-14">
         <div className="grid gap-9 lg:grid-cols-12 lg:items-stretch lg:gap-10 xl:gap-14">
           {/* --------------------------------------------------------------
            * Columna editorial: marca y propuesta de valor
