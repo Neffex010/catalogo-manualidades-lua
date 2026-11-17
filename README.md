@@ -503,11 +503,11 @@ CREATE TABLE product_variants (
   176 px desde `sm`); desde `md` pasa a fila horizontal con miniatura de 128–144 px y el CTA
   vuelve a decir "Pedir". Cada tarjeta muestra 3 muestras y el chip `+N` en una sola fila y mide
   **314 px** en 390 px (antes 363 px, y 716 px al inicio de la reducción); la sección baja de
-  **2,028 px a 1,882 px** y la página de 6,868 px a **6,279 px**. En 1280 la tarjeta pasa de
-  **641 px a 223 px** y Materiales de **2,154 px a 1,328 px**. Sin desbordamiento horizontal y
+  **2,028 px a 1,862 px** y la página de 6,868 px a **6,187 px**. En 1280 la tarjeta pasa de
+  **641 px a 223 px** y Materiales de **2,154 px a 1,300 px**. Sin desbordamiento horizontal y
   con la consola limpia.
 - **Tienda (Edge headless):** dirección y contacto comparten una tarjeta de dos columnas (una en
-  móvil), así que la sección baja de **1,511 px a 1,153 px** en 390 y de **1,021 px a 785 px** en
+  móvil), así que la sección baja de **1,511 px a 1,121 px** en 390 y de **1,021 px a 721 px** en
   1280. El encabezado pasa a "Compara tonos y toca las texturas." y las marcas, extras y
   servicios quedan en una sola tarjeta con dos franjas de etiquetas, sin bordes internos.
 - **Modal de material:** el título es la marca y el chip dice el tipo real (`Estambre`,
@@ -540,15 +540,17 @@ CREATE TABLE product_variants (
   mide 73 px en escritorio y 109 px en móvil; en 320 px los cuatro enlaces de navegación caben sin
   scroll. Los anclas dejan 88 px de margen en escritorio y 120 px en móvil, por encima de la
   cabecera fija.
-- **Medidas finales (Edge headless, `scrollHeight`):** 390×844 → página **6,279 px**, secciones
-  950 / 1,491 / 1,882 / 1,153 / 552 y tarjeta de material **314 px**; 320×720 → **6,301 px** y
-  tarjeta **299 px**; 640×900 → **7,379 px** y tarjeta **405 px**; 768×900 → **6,455 px** y
-  tarjeta **205 px**; 1024×900 → **5,369 px** y tarjeta **223 px**; 1280×900 → **5,161 px** y
-  tarjeta **223 px**. El ritmo entre secciones se recortó cerca de un 30 % (hero `pb` 40/56 px,
-  portafolio `pt` 32/40, banda de materiales 40/56, tienda 40/56 y pie 40/48), lo que quita entre
-  116 y 216 px de página según el ancho sin tocar el contenido. Frente a los 10,556 px de
-  partida, −41 % en móvil; frente a los 12,294 px originales, −49 %. Las 3 muestras y el chip
-  `+N` caben en una sola fila en todos los anchos medidos.
+- **Medidas finales (Edge headless, `scrollHeight`):** 390×844 → página **6,187 px**, secciones
+  950 / 1,491 / 1,862 / 1,121 / 544 y tarjeta de material **314 px**; 320×720 → **6,209 px** y
+  tarjeta **299 px**; 640×900 → **7,263 px** y tarjeta **405 px**; 768×900 → **6,339 px** y
+  tarjeta **205 px**; 1024×900 → **5,229 px** y tarjeta **223 px**; 1280×900 → **5,021 px** y
+  tarjeta **223 px**. El ritmo se ajustó en dos pasos: primero entre secciones (hero `pb` 40/56,
+  portafolio `pt` 32/40 y pie 40/48) y después de Materiales hacia abajo (banda `py` 32/40/48,
+  carta de color `mt`+`pt` 48/64, tienda `pt` 32/48 y `pb` 32/40, pie sin margen superior y
+  `pt` 32/40).
+  Eso quita entre 92 y 140 px de página según el ancho sin tocar contenido. Frente a los
+  10,556 px de partida, −41 % en móvil; frente a los 12,294 px originales, −50 %. Las 3 muestras
+  y el chip `+N` caben en una sola fila en todos los anchos medidos.
 - **Redundancia (DOM):** dirección, horario y WhatsApp aparecen una sola vez en `StoreInfo`; el
   teléfono no se publica, solo se enlaza WhatsApp. Las redes no se repiten en la navbar; el hero
   tiene un único acceso a Materiales y su paleta enlaza a la carta. En `#materiales` las menciones

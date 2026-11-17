@@ -77,9 +77,9 @@ export default function StoreInfo() {
     <section
       id="tienda"
       aria-labelledby="tienda-titulo"
-      className="mx-auto w-full max-w-7xl scroll-mt-24 px-4 py-10 sm:px-6 sm:py-12 lg:px-8 lg:py-16"
+      className="mx-auto w-full max-w-7xl scroll-mt-24 px-4 pb-8 pt-8 sm:px-6 sm:pb-10 sm:pt-10 lg:px-8 lg:pb-10 lg:pt-12"
     >
-      <div className="relative border-t-2 border-ink/15 pt-8 sm:pt-10">
+      <div className="relative border-t-2 border-ink/15 pt-5 sm:pt-6">
         <div aria-hidden="true" className="texture-linen pointer-events-none absolute inset-0 opacity-70" />
 
         <div className="relative">
@@ -105,7 +105,7 @@ export default function StoreInfo() {
             </div>
           </div>
 
-          <div className="mt-6 grid gap-3 sm:mt-8">
+          <div className="mt-5 grid gap-3 sm:mt-6">
             {/* Direccion y contacto: una sola tarjeta. Antes eran dos y el
              * telefono repetia el mismo numero que WhatsApp. */}
             <div className="rounded-[1.35rem] border-2 border-ink/10 bg-surface p-5 shadow-pop-sand sm:p-6">

@@ -54,7 +54,7 @@ export default function ColorCatalog() {
     <section
       id="carta-color"
       aria-labelledby="carta-color-titulo"
-      className="mt-10 border-t-2 border-ink/15 pt-7 sm:mt-14 sm:pt-9"
+      className="mt-7 border-t-2 border-ink/15 pt-5 sm:mt-10 sm:pt-6"
     >
       <div className="max-w-2xl">
         <h3

@@ -80,7 +80,7 @@ export default function Catalog({ products = [], loading = false, error = null, 
 
       {/* Materiales: banda tintada a todo el ancho para separar la compra */}
       <div className="border-y border-line bg-sand-50/60">
-        <div className="mx-auto w-full max-w-7xl px-4 py-10 sm:px-6 sm:py-12 lg:px-8 lg:py-14">
+        <div className="mx-auto w-full max-w-7xl px-4 py-8 sm:px-6 sm:py-10 lg:px-8 lg:py-12">
           <Materials
             materials={materials}
             loading={loading}
