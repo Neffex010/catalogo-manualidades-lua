@@ -141,7 +141,7 @@ export default function ProductCard({ product, index = 0, onOpenDetail }) {
           }
         }}
         aria-label={`Ver detalles de ${product.name}`}
-        className="photo-frame relative aspect-4/5 w-full cursor-pointer overflow-hidden"
+        className="photo-frame relative aspect-square w-full cursor-pointer overflow-hidden"
         style={{ backgroundColor: displayImage.imageColor || FALLBACK_COLOR }}
       >
         {/* Placeholder borroso (~0.2 KB): cubre el hueco mientras carga la foto */}
@@ -275,11 +275,9 @@ export default function ProductCard({ product, index = 0, onOpenDetail }) {
           </button>
         </div>
 
-        {/* En movil la ficha completa ya cuenta la historia de la marca: la
-         * tarjeta se queda con foto, tonos y pedido para no alargar la lista. */}
-        <p className="mt-2 hidden line-clamp-2 text-[15px] leading-relaxed text-ink-soft sm:block sm:text-[16px]">
-          {product.description}
-        </p>
+        {/* La ficha completa cuenta la historia de la marca: la tarjeta se
+         * queda con foto, tonos y pedido. La descripcion vive en el modal y en
+         * el JSON-LD, no se repite seis veces en la lista. */}
 
         {/* Un solo separador agrupa la ficha de compra: color, disponibilidad
          * y precio. */}

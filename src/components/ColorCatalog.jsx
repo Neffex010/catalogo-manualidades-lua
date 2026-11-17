@@ -137,12 +137,17 @@ export default function ColorCatalog() {
         </div>
 
         <ul className="mt-4 grid grid-cols-3 gap-x-3 gap-y-4 sm:grid-cols-4 md:grid-cols-6">
-          {visibleColors.map((color) => {
+          {visibleColors.map((color, index) => {
             const colorLabel = color.name ? `${color.code} ${color.name}` : color.code
             const orderLabel = `Pedir ${activeBrand.name} tono ${colorLabel} por WhatsApp`
 
             return (
-              <li key={`${activeBrand.id}-${color.code}`} className="min-w-0">
+              <li
+                key={`${activeBrand.id}-${color.code}`}
+                // En movil se ve una sola fila de 3: la carta se hojea sin
+                // empujar la seccion. Desde `sm` se muestran las 6.
+                className={['min-w-0', index >= 3 ? 'hidden sm:block' : ''].join(' ')}
+              >
                 <a
                   href={getColorWhatsAppUrl(activeBrand, color)}
                   target="_blank"

@@ -1,7 +1,7 @@
 /**
  * StoreInfo.jsx
  * -----------------------------------------------------------------------------
- * Informacion de la tienda fisica: direccion, horario, telefono, redes, marcas
+ * Informacion de la tienda fisica: direccion, horario, WhatsApp, redes, marcas
  * y servicios.
  *
  * Es la seccion a la que apunta "Tienda" en la navbar. La direccion se enlaza
@@ -146,12 +146,12 @@ export default function StoreInfo() {
               <p className="meta-label">Contacto y atención</p>
 
               <div className="mt-3 flex flex-col gap-2">
-                {/* Telefono y WhatsApp son el mismo numero: una sola fila
-                 * evita pedirle al cliente que elija entre dos iguales. */}
+                {/* El telefono es el mismo numero de WhatsApp: se deja un solo
+                 * acceso, sin publicar la cifra en la pagina. */}
                 <ContactLink
                   icon={MessageCircle}
-                  label="Teléfono / WhatsApp"
-                  value={CONTACT.phone.display}
+                  label="WhatsApp"
+                  value="Escríbeme"
                   href={getGeneralWhatsAppUrl()}
                   external
                 />

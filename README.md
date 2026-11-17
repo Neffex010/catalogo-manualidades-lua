@@ -229,7 +229,7 @@ cierra con una llamada a la acción, la identidad de la marca, accesos rápidos 
 | Dirección | San Antonio el Desmonte, calle 24 de febrero No. 33 |
 | Referencia | Dentro de "Ferre-eléctrica Chofo" |
 | Horario | 1:00 pm a 9:00 pm |
-| Teléfono / WhatsApp | 771-141-5822 |
+| Teléfono / WhatsApp | 771-141-5822 (solo se enlaza WhatsApp; la cifra no se publica en la página) |
 | Instagram | @manualidades_lua_ |
 | Facebook | Manualidades lua |
 
@@ -420,7 +420,8 @@ CREATE TABLE product_variants (
   muestran sin buscador, orden, filtros de categoría ni familias de color. Menos controles,
   menos carga visual. El título de cada tarjeta es la marca, el chip dice el tipo real
   (`Estambre`, `Estambre e hilo`, `Trapillo`) y el selector muestra 3 muestras + `+N`; el
-  conteo total vive en la ficha y en la carta, no se repite en cada tarjeta.
+  conteo total vive en la ficha y en la carta, no se repite en cada tarjeta. La foto va cuadrada
+  y la descripción se queda en la ficha, así la lista no repite seis párrafos.
 - **Variantes de color**: cada marca trae el selector completo. Al cambiar de tono se
   actualizan la foto, la disponibilidad y el mensaje de WhatsApp de esa tarjeta. La lista no
   se mantiene a mano: `src/data/colorCatalog.json` guarda código, nombre, color promedio y
@@ -441,9 +442,9 @@ CREATE TABLE product_variants (
   y sus códigos, en lugar de estirar la tarjeta. Si la variante activa cae fuera de la primera
   tanda, se reserva su lugar. Al abrir la ficha, el tono elegido se conserva
   (`initialVariantId`).
-- **Información sin duplicados**: la ficha de tienda (dirección, horario, teléfono y redes) se
-  muestra una sola vez en `StoreInfo`, con teléfono y WhatsApp en una sola fila porque son el
-  mismo número; "Otros productos" y "Servicios" comparten una franja de etiquetas. El footer
+- **Información sin duplicados**: la ficha de tienda (dirección, horario, WhatsApp y redes) se
+  muestra una sola vez en `StoreInfo`, con un único acceso a WhatsApp y sin publicar la cifra;
+  "Otros productos" y "Servicios" comparten una franja de etiquetas. El footer
   cierra con CTA, identidad y aviso legal; sus accesos rápidos se ocultan en móvil porque la
   cabecera fija ya los repite. El hero tiene un solo acceso a Materiales y su paleta enlaza a la
   carta completa en lugar de repetir la invitación a elegir un tono; en móvil la ficha de dos
@@ -475,7 +476,7 @@ CREATE TABLE product_variants (
 ## 🧪 Verificación realizada
 
 - `npm run lint` → sin errores ni advertencias.
-- `npm run build` → `✓ built` (JS 325.95 kB / 80.16 kB gzip · CSS 44.87 kB / 8.57 kB gzip ·
+- `npm run build` → `✓ built` (JS 325.81 kB / 80.12 kB gzip · CSS 44.90 kB / 8.57 kB gzip ·
   HTML 57.09 kB / 6.57 kB gzip). El HTML publica dos listas JSON-LD separadas (diseños y
   materiales).
 - **Datos separados:** 105 diseños en `#disenos` y 5 marcas en `#materiales` (25 + 25 + 34 +
@@ -490,8 +491,8 @@ CREATE TABLE product_variants (
 - **Materiales (Edge headless, 1440 px y 390 px):** se ven las 5 tarjetas con su selector de
   tonos y la sexta celda "¿Buscas otra marca?" en cualquier ancho; en escritorio el grid queda
   3 + 3 y en móvil 2 + 2 + 2. Cada tarjeta muestra 3 muestras y el chip `+N` en una sola fila y
-  mide **406 px** en 390 px (antes 716 px); la sección baja de **4,963 px a 2,296 px** y la página
-  de 10,556 px a **7,205 px**. Sin desbordamiento horizontal y con la consola limpia.
+  mide **363 px** en 390 px (antes 716 px); la sección baja de **4,963 px a 2,028 px** y la página
+  de 10,556 px a **6,868 px**. Sin desbordamiento horizontal y con la consola limpia.
 - **Modal de material:** el título es la marca y el chip dice el tipo real (`Estambre`,
   `Trapillo`). La paleta muestra los 25/34/47 tonos completos, el tono elegido en la tarjeta se
   conserva al abrir y la ficha arranca en "Tono seleccionado". En móvil la foto se limita a
@@ -502,11 +503,11 @@ CREATE TABLE product_variants (
   del contador es `Cantidad (piezas)`.
 - **Carta de color:** las 5 pestañas muestran 25/25/34/17/47 tonos con "Ver los N tonos"; cada
   tono es un enlace `wa.me` con marca, código y nombre. La cuadrícula ya no repite un icono de
-  WhatsApp en cada tono: la instrucción vive una sola vez en el encabezado. Se abren 6 muestras
-  (dos filas en móvil) y el botón suma el resto. El hero declara "5 marcas · 148 tonos" y la
-  carta no repite el conteo: cada pestaña ya lo muestra. El grid queda en 6 columnas en
-  escritorio (6 muestras = una fila), 4 en tablet y 3 en móvil. Las pestañas se envuelven en
-  varias filas: en 390 px caben las 5 sin cortes ni scroll horizontal.
+  WhatsApp en cada tono: la instrucción vive una sola vez en el encabezado. Se abren 6 muestras;
+  en móvil se ve una fila de 3 y desde `sm` las 6, y el botón suma el resto. El hero declara
+  "5 marcas · 148 tonos" y la carta no repite el conteo: cada pestaña ya lo muestra. El grid queda
+  en 6 columnas en escritorio (6 muestras = una fila), 4 en tablet y 3 en móvil. Las pestañas se
+  envuelven en varias filas: en 390 px caben las 5 sin cortes ni scroll horizontal.
 - **Portafolio (Edge headless, 1440 px y 390 px):** se ven 6 diseños al entrar; el filtro
   "Amigurumis" muestra 6 de 40 y el botón indica "Ver 8 más · 40 diseños"; al pulsarlo sube a 14
   y el anuncio de lectores de pantalla lo refleja; "Todos los diseños" vuelve a 105 y reinicia
@@ -518,19 +519,19 @@ CREATE TABLE product_variants (
   mide 73 px en escritorio y 109 px en móvil; en 320 px los cuatro enlaces de navegación caben sin
   scroll. Los anclas dejan 88 px de margen en escritorio y 120 px en móvil, por encima de la
   cabecera fija.
-- **Medidas finales (Edge headless, `scrollHeight`):** 390×844 → página **7,205 px**, secciones
-  966 / 1,491 / 2,296 / 1,511 / 637 y tarjeta de material **406 px**; 320×720 → **7,197 px** y
-  tarjeta **373 px**; 640×900 → **8,907 px** y tarjeta **650 px**; 768×900 → **7,873 px** y
-  tarjeta **623 px**; 1280×900 → **6,760 px** y tarjeta **799 px**. La página baja de 10,556 px
-  a 7,205 px en móvil (−3,351 px, −32 %) y de los 12,294 px originales (−5,089 px). Las 3 muestras
+- **Medidas finales (Edge headless, `scrollHeight`):** 390×844 → página **6,868 px**, secciones
+  966 / 1,491 / 2,028 / 1,511 / 568 y tarjeta de material **363 px**; 320×720 → **6,855 px** y
+  tarjeta **339 px**; 640×900 → **8,438 px** y tarjeta **519 px**; 768×900 → **7,472 px** y
+  tarjeta **481 px**; 1280×900 → **6,374 px** y tarjeta **641 px**. La página baja de 10,556 px
+  a 6,868 px en móvil (−3,688 px, −35 %) y de los 12,294 px originales (−5,426 px). Las 3 muestras
   y el chip `+N` caben en una sola fila en todos los anchos medidos.
-- **Redundancia (DOM):** dirección, horario y teléfono aparecen una sola vez en `StoreInfo`, con
-  teléfono y WhatsApp en la misma fila; las redes no se repiten en la navbar; el hero tiene un
-  único acceso a Materiales y su paleta enlaza a la carta. En `#materiales` las menciones visibles
-  de "WhatsApp" bajan de 17 a 5 y desaparecen "Existencia por confirmar" y "Precio por WhatsApp"
-  de cada tarjeta; "colores" se unifica como "tonos". Las tarjetas muestran 3 muestras sin repetir
-  el total, la carta concentra la paleta completa y Tienda resume las marcas de la carta en un
-  enlace.
+- **Redundancia (DOM):** dirección, horario y WhatsApp aparecen una sola vez en `StoreInfo`; el
+  teléfono no se publica, solo se enlaza WhatsApp. Las redes no se repiten en la navbar; el hero
+  tiene un único acceso a Materiales y su paleta enlaza a la carta. En `#materiales` las menciones
+  visibles de "WhatsApp" bajan de 17 a 5 y desaparecen "Existencia por confirmar" y "Precio por
+  WhatsApp" de cada tarjeta; "colores" se unifica como "tonos". Las tarjetas muestran 3 muestras
+  sin repetir el total ni la descripción, la carta concentra la paleta completa y Tienda resume
+  las marcas de la carta en un enlace.
 - **Pulido de navegación:** la navbar subraya la sección activa (`aria-current`), el salto directo
   "Ir a la carta de color" evita recorrer las cinco tarjetas y el botón flotante de volver arriba
   se retiró: la cabecera fija ya ofrece "Inicio" y el flotante tapaba el CTA de las tarjetas.

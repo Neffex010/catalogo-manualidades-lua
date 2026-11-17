@@ -22,7 +22,7 @@ export default function Footer() {
     <footer className="mt-4 border-t border-line bg-surface sm:mt-8">
       <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6 sm:py-16 lg:px-8">
         {/* Llamada final a la accion */}
-        <div className="relative overflow-hidden rounded-[1.5rem] border-2 border-ink bg-brand px-6 py-12 text-center shadow-pop sm:px-10 sm:py-16">
+        <div className="relative overflow-hidden rounded-[1.5rem] border-2 border-ink bg-brand px-6 py-9 text-center shadow-pop sm:px-10 sm:py-12">
           {/* Puntada interior: guiño a la costura sin sumar peso visual */}
           <div
             aria-hidden="true"
@@ -39,10 +39,10 @@ export default function Footer() {
           />
 
           <div className="relative">
-            <h2 className="font-display text-[2.1rem] font-semibold leading-[1.02] text-white sm:text-[2.8rem]">
+            <h2 className="font-display text-[1.85rem] font-semibold leading-[1.02] text-white sm:text-[2.5rem]">
               ¿Tienes una idea en mente? 🧶
             </h2>
-            <p className="mx-auto mt-3 max-w-md text-[16px] leading-relaxed text-white sm:text-[17px]">
+            <p className="mx-auto mt-2.5 max-w-md text-[15px] leading-relaxed text-white sm:text-[17px]">
               Cuéntame qué quieres crear y te cotizo sin compromiso.
             </p>
 
@@ -50,7 +50,7 @@ export default function Footer() {
               href={getGeneralWhatsAppUrl()}
               target="_blank"
               rel="noopener noreferrer"
-              className="mt-7 inline-flex items-center justify-center gap-2 rounded-xl border-2 border-ink bg-white px-7 py-4 text-[15px] font-bold text-lila-800 shadow-pop transition-all duration-240 ease-artisan hover:translate-x-[2px] hover:translate-y-[2px] hover:bg-sand-50 hover:shadow-none focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-brand sm:text-base"
+              className="mt-5 inline-flex items-center justify-center gap-2 rounded-xl border-2 border-ink bg-white px-6 py-3.5 text-[15px] font-bold text-lila-800 shadow-pop transition-all duration-240 ease-artisan hover:translate-x-[2px] hover:translate-y-[2px] hover:bg-sand-50 hover:shadow-none focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-brand sm:text-base"
             >
               <MessageCircle className="h-[18px] w-[18px]" aria-hidden="true" />
               Escríbeme por WhatsApp
@@ -59,7 +59,7 @@ export default function Footer() {
         </div>
 
         {/* Identidad y accesos rapidos */}
-        <div className="mt-10 flex flex-col items-center gap-6 text-center sm:mt-12 sm:flex-row sm:justify-between sm:text-left">
+        <div className="mt-8 flex flex-col items-center gap-4 text-center sm:mt-10 sm:flex-row sm:justify-between sm:text-left">
           <div className="flex items-center gap-3">
             <img
               src={BRAND.logo.mark}
@@ -97,7 +97,7 @@ export default function Footer() {
         </div>
 
         {/* Linea de copyright */}
-        <div className="mt-8 flex flex-col items-center gap-2 border-t border-line pt-6 text-center sm:flex-row sm:justify-between sm:text-left">
+        <div className="mt-6 flex flex-col items-center gap-2 border-t border-line pt-5 text-center sm:flex-row sm:justify-between sm:text-left">
           <p className="text-[13px] text-ink-muted">
             © {year} {BRAND.name}. Todos los derechos reservados.
           </p>
