@@ -122,7 +122,7 @@ export default function ProductCard({ product, index = 0, onOpenDetail }) {
       ref={cardRef}
       style={{ animationDelay: revealDelay }}
       className={[
-        'group flex h-full flex-col overflow-hidden rounded-2xl border border-line bg-surface transition-all duration-240 ease-artisan hover:-translate-y-1 hover:border-lila-300 hover:shadow-card md:flex-row',
+        'group flex h-full flex-col overflow-hidden rounded-2xl border border-line bg-surface shadow-rest transition-all duration-240 ease-artisan hover:-translate-y-1 hover:border-lila-300 hover:shadow-card md:flex-row',
         'reveal',
         isRevealed ? 'is-visible' : '',
       ].join(' ')}
@@ -206,7 +206,7 @@ export default function ProductCard({ product, index = 0, onOpenDetail }) {
 
         {/* Tipo real del material: el trapillo no es estambre. */}
         {product.type && (
-          <span className="absolute left-2 top-2 inline-flex max-w-[85%] items-center truncate rounded-full bg-surface/95 px-2 py-1 text-[10px] font-bold uppercase tracking-wide text-lila-800 shadow-soft backdrop-blur-sm sm:left-4 sm:top-4 sm:px-3 sm:py-1.5 sm:text-[13px] md:left-1.5 md:top-1.5 md:max-w-[calc(100%-0.75rem)] md:px-1.5 md:py-0.5 md:text-[9px] md:tracking-normal lg:text-[10px]">
+          <span className="absolute left-2 top-2 inline-flex max-w-[85%] items-center truncate rounded-full bg-surface/95 px-2 py-1 text-[10px] font-bold uppercase tracking-wide text-lila-800 shadow-soft ring-1 ring-white/50 backdrop-blur-sm sm:left-4 sm:top-4 sm:px-3 sm:py-1.5 sm:text-[13px] md:left-1.5 md:top-1.5 md:max-w-[calc(100%-0.75rem)] md:px-1.5 md:py-0.5 md:text-[9px] md:tracking-normal lg:text-[10px]">
             {product.type}
           </span>
         )}
@@ -216,7 +216,7 @@ export default function ProductCard({ product, index = 0, onOpenDetail }) {
         {productStatusStyle.label && (
           <span
             className={[
-              'absolute right-2 top-2 inline-flex items-center gap-1.5 rounded-full px-2 py-1 text-[11px] font-bold shadow-soft backdrop-blur-sm sm:right-4 sm:top-4 sm:px-2.5 sm:py-1.5 sm:text-[13px] md:right-1.5 md:top-auto md:bottom-3 md:gap-1 md:px-1.5 md:py-0.5 md:text-[9px]',
+              'absolute right-2 top-2 inline-flex items-center gap-1.5 rounded-full px-2 py-1 text-[11px] font-bold shadow-soft ring-1 ring-white/50 backdrop-blur-sm sm:right-4 sm:top-4 sm:px-2.5 sm:py-1.5 sm:text-[13px] md:right-1.5 md:top-auto md:bottom-3 md:gap-1 md:px-1.5 md:py-0.5 md:text-[9px]',
               productStatusStyle.badge,
             ].join(' ')}
           >
@@ -264,7 +264,7 @@ export default function ProductCard({ product, index = 0, onOpenDetail }) {
         <div className="flex items-start justify-between gap-2">
           <h3
             onClick={() => onOpenDetail?.(product, activeVariantId)}
-            className="line-clamp-2 cursor-pointer font-display text-[1.05rem] font-semibold leading-[1.15] text-ink transition-colors duration-240 group-hover:text-lila-800 min-[360px]:text-[1.15rem] sm:text-[1.4rem] md:text-[1.1rem] lg:text-[1.25rem]"
+            className="line-clamp-2 cursor-pointer font-display text-[1.05rem] font-semibold leading-[1.15] text-ink transition-colors duration-240 group-hover:text-lila-800 group-hover:underline group-hover:decoration-clay/70 group-hover:decoration-2 group-hover:underline-offset-4 min-[360px]:text-[1.15rem] sm:text-[1.4rem] md:text-[1.1rem] lg:text-[1.25rem]"
           >
             {product.brand || product.name}
           </h3>
@@ -286,7 +286,7 @@ export default function ProductCard({ product, index = 0, onOpenDetail }) {
 
         {/* Un solo separador agrupa la ficha de compra: color, disponibilidad
          * y precio. */}
-        <div className="mt-3 border-t-2 border-ink/10 pt-3 sm:mt-4 sm:pt-3.5 md:mt-3 md:pt-3">
+        <div className="mt-3 border-t-2 border-line/90 pt-3 sm:mt-4 sm:pt-3.5 md:mt-3 md:pt-3">
           {/* -----------------------------------------------------------
            * Variantes de color (solo estambres y trapillo)
            * ----------------------------------------------------------- */}

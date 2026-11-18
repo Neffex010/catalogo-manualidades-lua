@@ -83,7 +83,7 @@ export default function DesignCard({ design, index = 0, onOpenDetail }) {
           }
         }}
         aria-label={`Ver detalles de ${design.name}`}
-        className="photo-frame relative aspect-4/5 w-full cursor-pointer overflow-hidden rounded-[1.25rem] border border-line/80"
+        className="photo-frame relative aspect-4/5 w-full cursor-pointer overflow-hidden rounded-[1.25rem] border border-line/80 shadow-rest"
         style={{ backgroundColor: design.imageColor || FALLBACK_COLOR }}
       >
         {design.imageLqip && !imageFailed && (
@@ -152,7 +152,7 @@ export default function DesignCard({ design, index = 0, onOpenDetail }) {
 
         <h3
           onClick={openDetail}
-          className="mt-1.5 cursor-pointer font-display text-[1.15rem] font-semibold leading-[1.15] text-ink transition-colors duration-240 group-hover:text-lila-800 sm:text-[1.3rem]"
+          className="mt-1.5 cursor-pointer font-display text-[1.15rem] font-semibold leading-[1.15] text-ink transition-colors duration-240 group-hover:text-lila-800 group-hover:underline group-hover:decoration-clay/70 group-hover:decoration-2 group-hover:underline-offset-4 sm:text-[1.3rem]"
         >
           {design.name}
         </h3>
@@ -170,7 +170,7 @@ export default function DesignCard({ design, index = 0, onOpenDetail }) {
           rel="noopener noreferrer"
           aria-label={`Quiero un diseño como ${design.name}`}
           title={`Pedir un diseño como "${design.name}" por WhatsApp`}
-          className="group/link mt-3 inline-flex w-full items-center justify-between gap-2 border-t-2 border-ink/10 py-3.5 text-[13px] font-semibold text-lila-800 transition-colors duration-240 ease-artisan hover:text-ink focus:outline-none focus-visible:ring-2 focus-visible:ring-lila-600 focus-visible:ring-offset-2 focus-visible:ring-offset-canvas sm:text-[14px]"
+          className="group/link mt-3 inline-flex w-full items-center justify-between gap-2 border-t-2 border-line/90 py-3.5 text-[13px] font-semibold text-lila-800 transition-colors duration-240 ease-artisan hover:text-ink focus:outline-none focus-visible:ring-2 focus-visible:ring-lila-600 focus-visible:ring-offset-2 focus-visible:ring-offset-canvas sm:text-[14px]"
         >
           <span className="inline-flex items-center gap-1.5">
             <MessageCircle className="h-4 w-4 shrink-0" aria-hidden="true" />

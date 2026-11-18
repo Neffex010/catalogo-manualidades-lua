@@ -45,7 +45,7 @@ export default function Hero() {
   return (
     <section
       id="inicio"
-      className="relative overflow-hidden border-b-2 border-ink/10 bg-canvas"
+      className="relative overflow-hidden border-b-2 border-ink/10"
     >
       {/* Textura de papel + lino: el fondo deja de ser un color plano. */}
       <div aria-hidden="true" className="texture-linen pointer-events-none absolute inset-0" />
@@ -156,7 +156,7 @@ export default function Hero() {
             {/* Ficha sin cajas: dos columnas separadas por un filo. En movil la
              * paleta se oculta porque el hero ya lleva dos accesos y la foto
              * enlaza al portafolio; queda solo la linea de autoria. */}
-            <div className="mt-6 flex flex-col gap-4 border-t-2 border-ink/10 pt-5 sm:grid sm:grid-cols-2 sm:gap-8">
+            <div className="mt-6 flex flex-col gap-4 border-t-2 border-line/90 pt-5 sm:grid sm:grid-cols-2 sm:gap-8">
               <a
                 href="#carta-color"
                 className="group hidden rounded-lg focus:outline-none focus-visible:ring-2 focus-visible:ring-lila-600 focus-visible:ring-offset-2 focus-visible:ring-offset-canvas sm:block"

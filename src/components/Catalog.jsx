@@ -78,9 +78,14 @@ export default function Catalog({ products = [], loading = false, error = null, 
         />
       </div>
 
-      {/* Materiales: banda tintada a todo el ancho para separar la compra */}
-      <div className="border-y border-line bg-sand-50/60">
-        <div className="mx-auto w-full max-w-7xl px-4 py-8 sm:px-6 sm:py-10 lg:px-8 lg:py-12">
+      {/* Materiales: banda tintada a todo el ancho para separar la compra. El
+       * degradado y el lino evitan que se lea como un rectangulo plano. */}
+      <div className="relative border-y border-line bg-gradient-to-b from-sand-50/80 via-sand-50/50 to-canvas/30">
+        <div
+          aria-hidden="true"
+          className="texture-linen pointer-events-none absolute inset-0 opacity-50"
+        />
+        <div className="relative mx-auto w-full max-w-7xl px-4 py-8 sm:px-6 sm:py-10 lg:px-8 lg:py-12">
           <Materials
             materials={materials}
             loading={loading}

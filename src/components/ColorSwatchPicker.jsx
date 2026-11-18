@@ -113,7 +113,7 @@ export default function ColorSwatchPicker({
               title={`${label}${isSoldOut ? ' · Agotado' : ''}`}
               style={{ backgroundColor: swatchColor }}
               className={[
-                'relative grid shrink-0 place-items-center rounded-full border border-black/10 font-bold uppercase shadow-sm transition-all duration-160 ease-artisan',
+                'relative grid shrink-0 place-items-center rounded-full border border-black/10 font-bold uppercase shadow-[inset_0_1px_3px_rgba(255,255,255,0.35),inset_0_-2px_4px_rgba(0,0,0,0.06),0_1px_2px_rgba(44,42,41,0.10)] transition-all duration-160 ease-artisan',
                 swatchSize,
                 'focus:outline-none focus-visible:ring-2 focus-visible:ring-lila-600 focus-visible:ring-offset-2 focus-visible:ring-offset-surface',
                 isActive

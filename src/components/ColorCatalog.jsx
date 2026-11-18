@@ -112,7 +112,7 @@ export default function ColorCatalog() {
         id="carta-color-panel"
         role="tabpanel"
         aria-labelledby={`carta-tab-${activeBrand.id}`}
-        className="mt-4 rounded-2xl border border-line bg-surface p-4 sm:p-5"
+        className="mt-4 rounded-2xl border border-line bg-surface p-4 shadow-rest sm:p-5"
       >
         <div className="flex flex-wrap items-center justify-between gap-3">
           <p className="text-[12.5px] font-semibold text-ink-muted">

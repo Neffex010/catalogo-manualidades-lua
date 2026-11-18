@@ -80,6 +80,9 @@ export default {
        * de la caja no desentone con los botones. */
       boxShadow: {
         soft: '0 1px 2px rgba(44, 42, 41, 0.04), 0 8px 24px -8px rgba(131, 99, 201, 0.18)',
+        // Reposo: brillo de papel arriba y una sombra calida muy baja. Separa
+        // la tarjeta del fondo sin competir con el `pop` de los botones.
+        rest: 'inset 0 1px 0 rgba(255, 255, 255, 0.85), 0 1px 2px rgba(44, 42, 41, 0.04), 0 12px 26px -20px rgba(78, 56, 120, 0.22)',
         card: '0 1px 3px rgba(44, 42, 41, 0.05), 0 12px 32px -12px rgba(131, 99, 201, 0.22)',
         lift: '0 8px 16px -6px rgba(44, 42, 41, 0.10), 0 24px 48px -16px rgba(131, 99, 201, 0.32)',
         brand: '0 8px 20px -6px rgba(131, 99, 201, 0.5)',

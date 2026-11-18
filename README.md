@@ -199,6 +199,20 @@ manualidades-lua/
 > `.texture-linen` y `.texture-grain` (en `src/index.css`) son CSS puro —cero peticiones—
 > y se desactivan con `prefers-reduced-motion`.
 
+> **Pulido de superficie:** el sitio suma profundidad sin elementos nuevos.
+> `shadow-rest` (en `tailwind.config.js`) es un brillo de papel de 1 px más una
+> sombra cálida muy baja: las tarjetas se separan del fondo en reposo y el
+> `shadow-card` existente sigue siendo el estado de hover. El `body` pinta dos
+> manchas radiales fijas (lila arriba-izquierda, terracota abajo-derecha) con
+> `background-attachment: fixed`, así que el papel se siente teñido sin sumar
+> peticiones ni capas al DOM. La banda de Materiales usa un degradado
+> `sand-50 → canvas` con `.texture-linen` al 50 %, y el CTA del pie pasa de
+> `bg-brand` plano a un degradado `#8363C9 → #6B4FA8` que conserva el extremo
+> claro del token para no bajar de **4.57:1**. Chips y muestras de color suman
+> un filo blanco y un brillo satinado; los títulos de tarjeta se subrayan en
+> terracota al pasar el ratón. Nada de esto mueve layout, paddings ni copy, y
+> el `pop` de 3 px de los botones se mantiene intacto.
+
 > **Contraste:** todo lo que lleva texto encima está elegido para cumplir WCAG AA (≥ 4.5:1).
 > `brand` solía ser `#9B7EDE` y daba solo **3.26:1** contra blanco, lo que dejaba ilegibles
 > todos los botones; por eso el morado "de marca" ahora es el tono 700 de la escala. Si subes
@@ -485,7 +499,7 @@ CREATE TABLE product_variants (
 ## 🧪 Verificación realizada
 
 - `npm run lint` → sin errores ni advertencias.
-- `npm run build` → `✓ built` (JS 326.04 kB / 80.28 kB gzip · CSS 46.03 kB / 8.85 kB gzip ·
+- `npm run build` → `✓ built` (JS 326.68 kB / 80.50 kB gzip · CSS 48.24 kB / 9.32 kB gzip ·
   HTML 57.09 kB / 6.57 kB gzip). El HTML publica dos listas JSON-LD separadas (diseños y
   materiales).
 - **Datos separados:** 105 diseños en `#disenos` y 5 marcas en `#materiales` (25 + 25 + 34 +

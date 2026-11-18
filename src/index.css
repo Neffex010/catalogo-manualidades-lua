@@ -32,6 +32,13 @@
 
   body {
     @apply bg-canvas font-sans text-base leading-relaxed text-ink;
+    /* Papel tenido: dos manchas casi imperceptibles fijas al viewport. No son
+       un elemento del DOM ni una peticion: se pintan detras de todo y las
+       secciones conservan su color. */
+    background-image:
+      radial-gradient(1100px 640px at 6% -6%, rgba(227, 213, 242, 0.35), transparent 62%),
+      radial-gradient(900px 560px at 96% 104%, rgba(247, 233, 226, 0.45), transparent 62%);
+    background-attachment: fixed;
     /* Evita el rebote horizontal en moviles por elementos decorativos */
     overflow-x: hidden;
   }

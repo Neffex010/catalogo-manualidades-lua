@@ -22,7 +22,7 @@ export default function Footer() {
     <footer className="mt-0 border-t border-line bg-surface sm:mt-2">
       <div className="mx-auto max-w-7xl px-4 pb-10 pt-8 sm:px-6 sm:pb-12 sm:pt-10 lg:px-8">
         {/* Llamada final a la accion */}
-        <div className="relative overflow-hidden rounded-[1.5rem] border-2 border-ink bg-brand px-6 py-9 text-center shadow-pop sm:px-10 sm:py-12">
+        <div className="relative overflow-hidden rounded-[1.5rem] border-2 border-ink bg-[linear-gradient(145deg,#8363C9_0%,#7A5CBE_55%,#6B4FA8_100%)] px-6 py-9 text-center shadow-pop sm:px-10 sm:py-12">
           {/* Puntada interior: guiño a la costura sin sumar peso visual */}
           <div
             aria-hidden="true"

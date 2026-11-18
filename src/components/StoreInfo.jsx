@@ -172,7 +172,7 @@ export default function StoreInfo() {
 
             {/* Marcas y extras: un solo bloque de etiquetas, sin cajas ni
              * bordes internos. Las marcas con carta se resumen en el enlace. */}
-            <div className="rounded-[1.35rem] border border-line/80 bg-surface p-5 sm:p-6">
+            <div className="rounded-[1.35rem] border border-line/80 bg-surface p-5 shadow-rest sm:p-6">
               <div className="flex flex-wrap items-center justify-between gap-x-4 gap-y-2">
                 <p className="meta-label flex items-center gap-1.5">
                   <Scissors className="h-3.5 w-3.5 text-lila-700" aria-hidden="true" />
