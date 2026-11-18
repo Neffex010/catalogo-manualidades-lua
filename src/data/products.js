@@ -25,6 +25,9 @@ import { normalizeToken } from '../utils/format.js'
 
 /** Nombre comercial de la tarjeta. El trapillo no es estambre. */
 const PRODUCT_NAMES = {
+  'sinfonia': 'Hilaza Sinfonía',
+  'la-abuelita': 'Hilaza La Abuelita',
+  'candy': 'Estambre Candy',
   'komfy-mini': 'Estambre Komfy Mini',
   'kotton-milk': 'Estambre Kotton Milk',
   'karina-kairo': 'Estambre Karina Kairo',
@@ -38,6 +41,9 @@ const PRODUCT_NAMES = {
  * llamado a WhatsApp vive una sola vez en la seccion, no en cada descripcion.
  */
 const PRODUCT_DESCRIPTIONS = {
+  'sinfonia': 'Para amigurumis, prendas ligeras y detalles finos.',
+  'la-abuelita': 'Para amigurumis y piezas de punto definido.',
+  'candy': 'Para prendas, accesorios y proyectos de uso diario.',
   'komfy-mini': 'Para amigurumis, accesorios y proyectos de uso diario.',
   'kotton-milk': 'También disponible como hilo.',
   'karina-kairo': 'Para prendas, accesorios y detalles.',
@@ -47,6 +53,9 @@ const PRODUCT_DESCRIPTIONS = {
 
 /** Etiquetas por marca (se usan como palabras clave, no se muestran). */
 const PRODUCT_TAGS = {
+  'sinfonia': ['hilaza', 'algodón', 'ovillo', 'amigurumi', 'sinfonía'],
+  'la-abuelita': ['hilaza', 'algodón', 'ovillo', 'amigurumi', 'la abuelita'],
+  'candy': ['estambre', 'ovillo', 'prendas', 'tejido', 'candy'],
   'komfy-mini': ['estambre', 'ovillo', 'amigurumi', 'tejido', 'komfy mini'],
   'kotton-milk': ['estambre', 'hilo', 'ovillo', 'suave', 'kotton milk'],
   'karina-kairo': ['estambre', 'ovillo', 'prendas', 'tejido', 'karina kairo'],

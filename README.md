@@ -7,12 +7,12 @@ Sitio web responsivo de **Manualidades Lua** con dos bloques con intención dist
 - **Diseños tejidos a pedido** (`#disenos`): un portafolio con piezas reales que se tejen
   por encargo. No hay precio, stock ni inventario: la foto muestra la calidad del trabajo y
   el pedido se cotiza por WhatsApp.
-- **Estambres y trapillo** (`#materiales`): cinco marcas con **todos** sus tonos (148 en
+- **Estambres y trapillo** (`#materiales`): ocho marcas con **todos** sus tonos (357 en
   total), cada una como tarjeta comprable. La tarjeta muestra cinco muestras; `+N` abre la
   ficha con la paleta completa y la cantidad. El pedido sale por WhatsApp con producto, código,
   color y cantidad. El precio y el stock son **opcionales**: si la tienda aún no los define,
   una sola nota en la sección invita a confirmarlos en lugar de inventar cifras. Al final, la
-  **carta de color** muestra los 148 tonos en foto y cada uno se pide con un toque.
+  **carta de color** muestra los 357 tonos en foto y cada uno se pide con un toque.
 
 Construido con **React 18 + Vite 6 + Tailwind CSS 3** y una **capa de datos desacoplada** que hoy
 lee un catálogo local y mañana habla con FastAPI + PostgreSQL sin modificar un solo componente.
@@ -33,7 +33,7 @@ npm run dev      # http://localhost:5173
 | `npm run preview` | Sirve el build de producción                       |
 | `npm run lint`    | ESLint 9 (configuración flat)                      |
 | `npm run images`  | Genera las variantes responsivas de las fotos      |
-| `npm run variants`| Genera la foto 4:5 de cada tono (148)          |
+| `npm run variants`| Genera la foto 4:5 de cada tono (357)          |
 | `npm run colors`  | Genera el manifiesto y las miniaturas de la carta |
 
 > **Imágenes:** al añadir o reemplazar una foto en `public/images/catalogo/`, ejecuta
@@ -51,11 +51,14 @@ npm run dev      # http://localhost:5173
 > `public/images/catalogo/estambres/<marca>/`, que es la ruta que ya espera el catálogo.
 
 > **Carta de color:** `npm run colors` lee `assets/<marca>/`, ignora las capturas
-> (`SmartSelect*`, `alize-velluto.jpg`), genera una miniatura cuadrada de 320 px por tono en
-> `public/images/catalogo/carta-colores/<marca>/` y escribe `src/data/colorCatalog.json` con
-> código, nombre, color promedio, miniatura y la ruta de la foto 4:5. Es idempotente: si
-> cambias o agregas fotos, vuelve a lanzarlo. La carta es solo una referencia visual; el
-> pedido sale por WhatsApp con marca, código y color.
+> (`SmartSelect*`, `gemini_generated_*`, `alize-velluto.jpg`), genera una miniatura cuadrada de
+> 320 px por tono en `public/images/catalogo/carta-colores/<marca>/` y escribe
+> `src/data/colorCatalog.json` con código, nombre, color promedio, miniatura y la ruta de la foto
+> 4:5. Es idempotente: si cambias o agregas fotos, vuelve a lanzarlo. Cada marca declara su propio
+> lector porque los nombres no siguen una sola convención: La Abuelita usa códigos de 2 dígitos,
+> Sinfonía de 3 y Candy de 4 (algunas fotos de Candy no traen código y se completan con la lista
+> oficial de la marca). Cuando un tono llega repetido, se conserva la foto de mayor tamaño. La
+> carta es solo una referencia visual; el pedido sale por WhatsApp con marca, código y color.
 
 > **Nota Windows:** si `npm install` avisa sobre *install scripts* de `esbuild`, ejecuta
 > `npm approve-scripts esbuild` una sola vez. Es lo que permite que Vite compile.
@@ -135,7 +138,7 @@ manualidades-lua/
     │
     ├── data/
     │   ├── manualidades.js        # 📦 105 piezas artesanales (sin variantes)
-    │   ├── products.js            # 📦 Fuente única: manualidades + 5 marcas de estambre
+    │   ├── products.js            # 📦 Fuente única: manualidades + 8 marcas de estambre
     │   ├── colorCatalog.json      # 🤖 Generado: marcas, tonos y miniaturas
     │   └── images.json            # 🤖 Generado: srcset, LQIP y color de cada foto
     │
@@ -161,7 +164,7 @@ manualidades-lua/
         ├── Portfolio.jsx           # Portafolio #disenos: subcategorías + paginación
         ├── DesignCard.jsx          # Tarjeta de diseño a pedido (sin precio ni stock)
         ├── Materials.jsx           # Materiales #materiales: estambres y trapillo
-        ├── ColorCatalog.jsx        # Carta de color por marca (12 tonos + expandir)
+        ├── ColorCatalog.jsx        # Carta de color por marca (6 tonos + expandir)
         ├── SectionHeading.jsx      # Encabezado común de las dos secciones
         ├── ProductCard.jsx         # Material: tipo, tonos y pedido por WhatsApp
         ├── ProductDetailModal.jsx  # Detalle: paleta completa, cantidad y CTA
@@ -249,12 +252,13 @@ a la acción, la identidad de la marca, accesos rápidos y el aviso legal.
 | Instagram | @manualidades_lua_ |
 | Facebook | Manualidades lua |
 
-**Marcas y tipos de hilo/estambre:** Sinfonía, La Abuelita, Alize Velluto, Komfy Mini,
-Candy, Karina Kairo, Kotton Milk, Cristal, Hilo Vela e Hilo para coser. En Tienda la carta
-completa se resume en un enlace a Materiales para las marcas del manifiesto (Alize Velluto,
-Komfy Mini, Karina Kairo, Kotton Milk y Trapillo Kraft), y solo se listan con etiquetas las
-marcas que no tienen carta ("También en tienda"). Así la tienda ya no promete tonos con foto
-para marcas que no los tienen. Trapillo Kraft se muestra como **trapillo**, no como estambre.
+**Marcas y tipos de hilo/estambre:** Sinfonía, La Abuelita, Candy, Karina Kairo, Komfy Mini,
+Kotton Milk, Alize Velluto, Cristal, Hilo Vela e Hilo para coser. En Tienda la carta
+completa se resume en un enlace a Materiales para las marcas del manifiesto (Sinfonía, La
+Abuelita, Candy, Karina Kairo, Komfy Mini, Kotton Milk, Alize Velluto y Trapillo Kraft), y solo
+se listan con etiquetas las marcas que no tienen carta ("También en tienda"). Así la tienda ya
+no promete tonos con foto para marcas que no los tienen. Trapillo Kraft se muestra como
+**trapillo**, no como estambre; Sinfonía y La Abuelita se muestran como **hilaza**.
 
 **Otros productos:** accesorios para tejido, bastidores/aros de bordado y ganchillos.
 
@@ -283,7 +287,7 @@ para marcas que no los tienen. Trapillo Kraft se muestra como **trapillo**, no c
   JavaScript:
   - `#disenos` publica las piezas como `VisualArtwork` (portafolio) **sin oferta ni
     disponibilidad**: no son inventario.
-  - `#materiales` publica las cinco marcas de estambre como `Product`. Solo llevan `offers`
+  - `#materiales` publica las ocho marcas de estambre como `Product`. Solo llevan `offers`
     cuando la tienda ya definió un precio real; la disponibilidad se declara únicamente si
     existe el dato. Nada de cifras o existencias inventadas.
   La imagen publicada es la de la primera variante disponible; si no hay dato, la primera.
@@ -431,10 +435,10 @@ CREATE TABLE product_variants (
 - **Portafolio por tandas**: 6 diseños visibles, filtro por tipo (Amigurumis, Eventos, Flores,
   Llaveros) y botón "Ver 8 más · N diseños", que lleva el conteo dentro del propio botón.
   Cambiar de tipo reinicia la tanda.
-- **Materiales directos**: las 5 marcas de estambre y trapillo (148 tonos en total) se
+- **Materiales directos**: las 8 marcas de estambre y trapillo (357 tonos en total) se
   muestran sin buscador, orden, filtros de categoría ni familias de color. Menos controles,
   menos carga visual. El título de cada tarjeta es la marca, el chip dice el tipo real
-  (`Estambre`, `Estambre e hilo`, `Trapillo`) y el selector muestra 3 muestras + `+N`; el
+  (`Hilaza`, `Estambre`, `Estambre e hilo`, `Trapillo`) y el selector muestra 3 muestras + `+N`; el
   conteo total vive en la ficha y en la carta, no se repite en cada tarjeta. La foto ocupa una
   banda 4:3 hasta `md` (miniatura vertical después) y la descripción se queda en la ficha, así
   la lista no repite seis párrafos.
@@ -473,7 +477,7 @@ CREATE TABLE product_variants (
   columnas se reduce a la línea de autoría. La carta de color toma sus tonos del mismo manifiesto
   que el catálogo; las pestañas declaran cuántos tonos tiene cada marca y el panel no repite ese
   conteo. Las tarjetas de material ya no repiten el total de tonos: el chip `+N` y la carta lo
-  cubren. En Tienda, las 5 marcas de la carta se resumen en un enlace a Materiales y solo se
+  cubren. En Tienda, las 8 marcas de la carta se resumen en un enlace a Materiales y solo se
   listan las que no tienen carta.
 - **Voz de una sola artesana**: el copy habla en primera persona ("tejo", "te cotizo",
   "escríbeme"), no en plural. Los mensajes de WhatsApp también usan el singular
@@ -499,50 +503,50 @@ CREATE TABLE product_variants (
 ## 🧪 Verificación realizada
 
 - `npm run lint` → sin errores ni advertencias.
-- `npm run build` → `✓ built` (JS 326.68 kB / 80.50 kB gzip · CSS 48.24 kB / 9.32 kB gzip ·
-  HTML 57.09 kB / 6.57 kB gzip). El HTML publica dos listas JSON-LD separadas (diseños y
+- `npm run build` → `✓ built` (JS 383.43 kB / 91.85 kB gzip · CSS 48.24 kB / 9.32 kB gzip ·
+  HTML 58.52 kB / 6.74 kB gzip). El HTML publica dos listas JSON-LD separadas (diseños y
   materiales).
-- **Datos separados:** 105 diseños en `#disenos` y 5 marcas en `#materiales` (25 + 25 + 34 +
-  17 + 47 = 148 tonos).
-- **Variantes:** `npm run variants` generó 148 fotos 4:5 en
-  `public/images/catalogo/estambres/<marca>/` (9.8 MB). La carpeta legacy
+- **Datos separados:** 105 diseños en `#disenos` y 8 marcas en `#materiales`
+  (83 + 78 + 48 + 34 + 25 + 25 + 47 + 17 = 357 tonos).
+- **Variantes:** `npm run variants` generó 357 fotos 4:5 en
+  `public/images/catalogo/estambres/<marca>/` (21.5 MB). La carpeta legacy
   `public/images/catalogo/hilos/` se eliminó: no hay productos de hilo con foto propia.
 - **Precios y stock:** ninguna tarjeta inventa cifras. Sin `price` no se pinta el bloque y la
   sección explica una sola vez que se confirman por WhatsApp; sin `stock` no se repite
-  "Existencia por confirmar" en cada tarjeta. En el JSON-LD, `#materiales` publica 5 `Product`
+  "Existencia por confirmar" en cada tarjeta. En el JSON-LD, `#materiales` publica 8 `Product`
   sin `offers` mientras no haya precio.
-- **Materiales (Edge headless, 320–1280 px):** se ven las 5 tarjetas con su selector de tonos y
-  la sexta celda "¿Buscas otra marca?" en cualquier ancho; en escritorio el grid queda 3 + 3 y
-  en móvil/tablet 2 + 2 + 2. Hasta `md` la tarjeta es una rejilla con foto 4:3 (con tope de
-  176 px desde `sm`); desde `md` pasa a fila horizontal con miniatura de 128–144 px y el CTA
-  vuelve a decir "Pedir". Cada tarjeta muestra 3 muestras y el chip `+N` en una sola fila y mide
-  **314 px** en 390 px (antes 363 px, y 716 px al inicio de la reducción); la sección baja de
-  **2,028 px a 1,862 px** y la página de 6,868 px a **6,187 px**. En 1280 la tarjeta pasa de
-  **641 px a 223 px** y Materiales de **2,154 px a 1,300 px**. Sin desbordamiento horizontal y
+- **Materiales (Edge headless, 320–1280 px):** se ven las 8 tarjetas con su selector de tonos y
+  la novena celda "¿Buscas otra marca?" en cualquier ancho; en escritorio el grid queda 3 + 3 + 3
+  y en móvil/tablet 2 + 2 + 2 + 2 + 1. Hasta `md` la tarjeta es una rejilla con foto 4:3 (con
+  tope de 176 px desde `sm`); desde `md` pasa a fila horizontal con miniatura de 128–144 px y el
+  CTA vuelve a decir "Pedir". Cada tarjeta muestra 3 muestras y el chip `+N` en una sola fila y
+  mide **314 px** en 390 px. En 1280 la tarjeta mide **223 px**. Sin desbordamiento horizontal y
   con la consola limpia.
 - **Tienda (Edge headless):** dirección y contacto comparten una tarjeta de dos columnas (una en
-  móvil), así que la sección baja de **1,511 px a 1,121 px** en 390 y de **1,021 px a 721 px** en
-  1280. El encabezado pasa a "Compara tonos y toca las texturas." y las marcas, extras y
-  servicios quedan en una sola tarjeta con dos franjas de etiquetas, sin bordes internos.
-- **Modal de material:** el título es la marca y el chip dice el tipo real (`Estambre`,
-  `Trapillo`). La paleta muestra los 25/34/47 tonos completos, el tono elegido en la tarjeta se
-  conserva al abrir y la ficha arranca en "Tono seleccionado". La ficha se compactó para no
-  dominar la pantalla: ancho máximo `3xl` (**768 px**), alto máximo `90vh` y espaciados de 12–16
-  px entre bloques. Las muestras bajan a 36–40 px, así 25 tonos caben en **4 filas** en 390 y 1280
-  px (5 filas a 320 y 768 px, donde la columna es más angosta). Resultado medido: **768 × 697 px**
-  en 1024/1280 (antes 896 × 828) y **720 × 737 px** en 768. En móvil la foto se limita a `30vh`
+  móvil). La sección mide **1,083 px** en 390 y **721 px** en 1280. El encabezado pasa a "Compara
+  tonos y toca las texturas." y las marcas, extras y servicios quedan en una sola tarjeta con dos
+  franjas de etiquetas, sin bordes internos.
+- **Modal de material:** el título es la marca y el chip dice el tipo real (`Hilaza`, `Estambre`,
+  `Estambre e hilo`, `Trapillo`). La paleta muestra los tonos completos de cada marca (hasta 83),
+  el tono elegido en la tarjeta se conserva al abrir y la ficha arranca en "Tono seleccionado". La
+  ficha se compactó para no dominar la pantalla: ancho máximo `3xl` (**768 px**), alto máximo
+  `90vh` y espaciados de 12–16 px entre bloques. Las muestras bajan a 36–40 px, así los 83 tonos
+  de Sinfonía caben en **12 filas** en 390 y 1280 px (14 filas a 768 px, donde la columna es más
+  angosta). Resultado medido: **768 × 810 px** en 1280, **720 × 810 px** en 768 y **366 × 760 px**
+  en 390. En móvil la foto se limita a `30vh`
   y el CTA queda fijo al pie del modal, fuera del área que hace scroll; en escritorio el botón
   vive al final de la columna y "Compartir" está en el encabezado, sin chocar con el cierre. Con
   3 unidades, el mensaje es `Hola, quiero pedir de Manualidades Lua: 3 ovillos de Estambre Komfy
   Mini, color 01 Blanco. ¿Está disponible y cuánto cuesta?`; para Trapillo Kraft dice `3 piezas`
   y la etiqueta del contador es `Cantidad (piezas)`.
-- **Carta de color:** las 5 pestañas muestran 25/25/34/17/47 tonos con "Ver los N tonos"; cada
-  tono es un enlace `wa.me` con marca, código y nombre. La cuadrícula ya no repite un icono de
-  WhatsApp en cada tono: la instrucción vive una sola vez en el encabezado. Se abren 6 muestras;
-  en móvil se ve una fila de 3 y desde `sm` las 6, y el botón suma el resto. El hero declara
-  "5 marcas · 148 tonos" y la carta no repite el conteo: cada pestaña ya lo muestra. El grid queda
-  en 6 columnas en escritorio (6 muestras = una fila), 4 en tablet y 3 en móvil. Las pestañas se
-  envuelven en varias filas: en 390 px caben las 5 sin cortes ni scroll horizontal.
+- **Carta de color:** las 8 pestañas muestran 83/78/48/34/25/25/47/17 tonos con "Ver los N
+  tonos"; cada tono es un enlace `wa.me` con marca, código y nombre. La cuadrícula ya no repite un
+  icono de WhatsApp en cada tono: la instrucción vive una sola vez en el encabezado. Se abren 6
+  muestras; en móvil se ve una fila de 3 y desde `sm` las 6, y el botón suma el resto. El hero
+  declara "8 marcas · 357 tonos" y la carta no repite el conteo: cada pestaña ya lo muestra. El
+  grid queda en 6 columnas en escritorio (6 muestras = una fila), 4 en tablet y 3 en móvil. Las
+  pestañas se envuelven en varias filas: en 390 px ocupan 3 filas sin cortes ni scroll horizontal;
+  en 1280 px caben las 8 en una sola fila.
 - **Portafolio (Edge headless, 1440 px y 390 px):** se ven 6 diseños al entrar; el filtro
   "Amigurumis" muestra 6 de 40 y el botón indica "Ver 8 más · 40 diseños"; al pulsarlo sube a 14
   y el anuncio de lectores de pantalla lo refleja; "Todos los diseños" vuelve a 105 y reinicia
@@ -554,17 +558,16 @@ CREATE TABLE product_variants (
   mide 73 px en escritorio y 109 px en móvil; en 320 px los cuatro enlaces de navegación caben sin
   scroll. Los anclas dejan 88 px de margen en escritorio y 120 px en móvil, por encima de la
   cabecera fija.
-- **Medidas finales (Edge headless, `scrollHeight`):** 390×844 → página **6,187 px**, secciones
-  950 / 1,491 / 1,862 / 1,121 / 544 y tarjeta de material **314 px**; 320×720 → **6,209 px** y
-  tarjeta **299 px**; 640×900 → **7,263 px** y tarjeta **405 px**; 768×900 → **6,339 px** y
-  tarjeta **205 px**; 1024×900 → **5,229 px** y tarjeta **223 px**; 1280×900 → **5,021 px** y
-  tarjeta **223 px**. El ritmo se ajustó en dos pasos: primero entre secciones (hero `pb` 40/56,
-  portafolio `pt` 32/40 y pie 40/48) y después de Materiales hacia abajo (banda `py` 32/40/48,
-  carta de color `mt`+`pt` 48/64, tienda `pt` 32/48 y `pb` 32/40, pie sin margen superior y
-  `pt` 32/40).
-  Eso quita entre 92 y 140 px de página según el ancho sin tocar contenido. Frente a los
-  10,556 px de partida, −41 % en móvil; frente a los 12,294 px originales, −50 %. Las 3 muestras
-  y el chip `+N` caben en una sola fila en todos los anchos medidos.
+- **Medidas finales (Edge headless, `scrollHeight`):** 390×844 → página **6,861 px**, secciones
+  950 / 1,491 / 2,574 / 1,083 / 544 y tarjeta de material **314 px**; 320×720 → **6,874 px** y
+  tarjeta **299 px**; 640×900 → **7,963 px** y tarjeta **405 px**; 768×900 → **6,825 px** y
+  tarjeta **205 px**; 1024×900 → **5,751 px** y tarjeta **223 px**; 1280×900 → **5,264 px** y
+  tarjeta **223 px**. El ritmo vertical se ajustó antes en dos pasos: primero entre secciones
+  (hero `pb` 40/56, portafolio `pt` 32/40 y pie 40/48) y después de Materiales hacia abajo (banda
+  `py` 32/40/48, carta de color `mt`+`pt` 48/64, tienda `pt` 32/48 y `pb` 32/40, pie sin margen
+  superior y `pt` 32/40). Ese ajuste sigue vigente; el crecimiento actual viene de las 3 marcas
+  nuevas (209 tonos más), no del espaciado. Las 3 muestras y el chip `+N` caben en una sola fila
+  en todos los anchos medidos.
 - **Redundancia (DOM):** dirección, horario y WhatsApp aparecen una sola vez en `StoreInfo`; el
   teléfono no se publica, solo se enlaza WhatsApp. Las redes no se repiten en la navbar; el hero
   tiene un único acceso a Materiales y su paleta enlaza a la carta. En `#materiales` las menciones

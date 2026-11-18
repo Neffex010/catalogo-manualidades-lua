@@ -17,12 +17,12 @@ import ProductCardSkeleton from './ProductCardSkeleton'
 import SectionHeading from './SectionHeading'
 import { getGeneralWhatsAppUrl } from '../utils/whatsapp'
 
-/** Esqueletos visibles mientras llega el catalogo (5 marcas reales). */
-const SKELETON_COUNT = 5
+/** Esqueletos visibles mientras llega el catalogo (8 marcas reales). */
+const SKELETON_COUNT = 8
 
 export default function Materials({ materials = [], loading = false, onOpenDetail }) {
   // Si ninguna marca publica precio ni stock, la condicion se explica una sola
-  // vez aqui en lugar de repetirla en las cinco tarjetas.
+  // vez aqui en lugar de repetirla en las ocho tarjetas.
   const lacksPriceAndStock =
     materials.length > 0 &&
     materials.every(

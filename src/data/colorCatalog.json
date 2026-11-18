@@ -1,6 +1,1982 @@
 {
   "brands": [
     {
+      "id": "sinfonia",
+      "name": "Sinfonía",
+      "type": "Hilaza",
+      "dir": "sinfonia",
+      "colors": [
+        {
+          "code": "801",
+          "name": "Blanco",
+          "hex": "#e6e9ef",
+          "image": "/images/catalogo/carta-colores/sinfonia/801-blanco.webp",
+          "imageCard": "/images/catalogo/estambres/sinfonia/801-blanco.webp",
+          "source": "1-sinfonia-blanco-8011-ef5fafa067092a372d16755765734487-1024-1024.webp"
+        },
+        {
+          "code": "802",
+          "name": "Hueso",
+          "hex": "#dddfd5",
+          "image": "/images/catalogo/carta-colores/sinfonia/802-hueso.webp",
+          "imageCard": "/images/catalogo/estambres/sinfonia/802-hueso.webp",
+          "source": "2-sinfonia-hueso-8021-8a585634f2c13f1f9d16755766287322-1024-1024.webp"
+        },
+        {
+          "code": "803",
+          "name": "Negro",
+          "hex": "#abacb0",
+          "image": "/images/catalogo/carta-colores/sinfonia/803-negro.webp",
+          "imageCard": "/images/catalogo/estambres/sinfonia/803-negro.webp",
+          "source": "38-sinfonia-negro-8031-ec697a6c86de18f2ce16755776053768-1024-1024.webp"
+        },
+        {
+          "code": "804",
+          "name": "Café Mink",
+          "hex": "#c1b7b8",
+          "image": "/images/catalogo/carta-colores/sinfonia/804-cafe-mink.webp",
+          "imageCard": "/images/catalogo/estambres/sinfonia/804-cafe-mink.webp",
+          "source": "12-sinfonia-cafe-mink-8041-37ea9ca4af4c36ba4316755769081380-1024-1024.webp"
+        },
+        {
+          "code": "805",
+          "name": "Ladrillo",
+          "hex": "#ccb8b6",
+          "image": "/images/catalogo/carta-colores/sinfonia/805-ladrillo.webp",
+          "imageCard": "/images/catalogo/estambres/sinfonia/805-ladrillo.webp",
+          "source": "11-sinfonia-ladrillo-8051-88fd92250c882be28a16755768876072-1024-1024.webp"
+        },
+        {
+          "code": "806",
+          "name": "Paja",
+          "hex": "#dbd7c8",
+          "image": "/images/catalogo/carta-colores/sinfonia/806-paja.webp",
+          "imageCard": "/images/catalogo/estambres/sinfonia/806-paja.webp",
+          "source": "8-sinfonia-paja-8061-aa0162d5d63048821e16755768156707-1024-1024.webp"
+        },
+        {
+          "code": "807",
+          "name": "Caqui",
+          "hex": "#d0ceca",
+          "image": "/images/catalogo/carta-colores/sinfonia/807-caqui.webp",
+          "imageCard": "/images/catalogo/estambres/sinfonia/807-caqui.webp",
+          "source": "6-sinfonia-caqui-8071-839808d92c0539bd3916755767609344-1024-1024.webp"
+        },
+        {
+          "code": "808",
+          "name": "Gris Claro",
+          "hex": "#d1cdcc",
+          "image": "/images/catalogo/carta-colores/sinfonia/808-gris-claro.webp",
+          "imageCard": "/images/catalogo/estambres/sinfonia/808-gris-claro.webp",
+          "source": "40-sinfonia-gris-claro-8081-92e9465308aec61b7916755776415417-1024-1024.webp"
+        },
+        {
+          "code": "809",
+          "name": "Verde Niebla",
+          "hex": "#cfd0c9",
+          "image": "/images/catalogo/carta-colores/sinfonia/809-verde-niebla.webp",
+          "imageCard": "/images/catalogo/estambres/sinfonia/809-verde-niebla.webp",
+          "source": "39-sinfonia-verde-niebla-8091-109a1aa0cb85af4c5f16755776202364-1024-1024.webp"
+        },
+        {
+          "code": "810",
+          "name": "Rosa",
+          "hex": "#e6cfd0",
+          "image": "/images/catalogo/carta-colores/sinfonia/810-rosa.webp",
+          "imageCard": "/images/catalogo/estambres/sinfonia/810-rosa.webp",
+          "source": "21-sinfonia-rosa-8101-62f20e0ed03091d16a16755771068238-1024-1024.webp"
+        },
+        {
+          "code": "811",
+          "name": "Rosa Viejo",
+          "hex": "#d3c5c9",
+          "image": "/images/catalogo/carta-colores/sinfonia/811-rosa-viejo.webp",
+          "imageCard": "/images/catalogo/estambres/sinfonia/811-rosa-viejo.webp",
+          "source": "22-sinfonia-rosa-viejo-81111-0bbfb85b392a89a21116755783882325-1024-1024.webp"
+        },
+        {
+          "code": "812",
+          "name": "Lavanda Seco",
+          "hex": "#b1aeb6",
+          "image": "/images/catalogo/carta-colores/sinfonia/812-lavanda-seco.webp",
+          "imageCard": "/images/catalogo/estambres/sinfonia/812-lavanda-seco.webp",
+          "source": "23-sinfonia-lavanda-seco-8121-68337253f40c20b6c716755771726313-1024-1024.webp"
+        },
+        {
+          "code": "813",
+          "name": "Azul Cenizo",
+          "hex": "#b1bac7",
+          "image": "/images/catalogo/carta-colores/sinfonia/813-azul-cenizo.webp",
+          "imageCard": "/images/catalogo/estambres/sinfonia/813-azul-cenizo.webp",
+          "source": "24-sinfonia-azul-cenizo-8131-e949a74ed477a87ff716755772044167-1024-1024.webp"
+        },
+        {
+          "code": "814",
+          "name": "Marino",
+          "hex": "#abb2bd",
+          "image": "/images/catalogo/carta-colores/sinfonia/814-marino.webp",
+          "imageCard": "/images/catalogo/estambres/sinfonia/814-marino.webp",
+          "source": "37-sinfonia-marino-8141-e9fc595eea91b983ca16755775914746-1024-1024.webp"
+        },
+        {
+          "code": "815",
+          "name": "Jacaranda",
+          "hex": "#bbbfd4",
+          "image": "/images/catalogo/carta-colores/sinfonia/815-jacaranda.webp",
+          "imageCard": "/images/catalogo/estambres/sinfonia/815-jacaranda.webp",
+          "source": "25-sinfonia-jacaranda-8151-07676de9bf9a01047d16755772262590-480-0.webp"
+        },
+        {
+          "code": "816",
+          "name": "Azul Nórdico",
+          "hex": "#c5d0d3",
+          "image": "/images/catalogo/carta-colores/sinfonia/816-azul-nordico.webp",
+          "imageCard": "/images/catalogo/estambres/sinfonia/816-azul-nordico.webp",
+          "source": "26-sinfonia-azul-nordico-8161-e9696946fb43d87ec716755772646580-1024-1024.webp"
+        },
+        {
+          "code": "817",
+          "name": "Verde Cristal",
+          "hex": "#c7cece",
+          "image": "/images/catalogo/carta-colores/sinfonia/817-verde-cristal.webp",
+          "imageCard": "/images/catalogo/estambres/sinfonia/817-verde-cristal.webp",
+          "source": "27-sinfonia-verde-cristal-8171-72f51799496fb22cc616755772787279-1024-1024.webp"
+        },
+        {
+          "code": "818",
+          "name": "Verde Pradera",
+          "hex": "#c4cecb",
+          "image": "/images/catalogo/carta-colores/sinfonia/818-verde-pradera.webp",
+          "imageCard": "/images/catalogo/estambres/sinfonia/818-verde-pradera.webp",
+          "source": "33-sinfonia-verde-pradera-8181-cb9cc49e74d14122e116755774321121-1024-1024.webp"
+        },
+        {
+          "code": "819",
+          "name": "Olivo Intenso",
+          "hex": "#c3c1bd",
+          "image": "/images/catalogo/carta-colores/sinfonia/819-olivo-intenso.webp",
+          "imageCard": "/images/catalogo/estambres/sinfonia/819-olivo-intenso.webp",
+          "source": "32-sinfonia-olivo-intenso-8191-b4c313240c5b246eda16755774067995-1024-1024.webp"
+        },
+        {
+          "code": "820",
+          "name": "Mango",
+          "hex": "#e3daad",
+          "image": "/images/catalogo/carta-colores/sinfonia/820-mango.webp",
+          "imageCard": "/images/catalogo/estambres/sinfonia/820-mango.webp",
+          "source": "43-sinfonia-mango-8201-00e6bf5c20bc44441b16755777309470-480-0.webp"
+        },
+        {
+          "code": "821",
+          "name": "Mandarina",
+          "hex": "#d2b2a6",
+          "image": "/images/catalogo/carta-colores/sinfonia/821-mandarina.webp",
+          "imageCard": "/images/catalogo/estambres/sinfonia/821-mandarina.webp",
+          "source": "45-sinfonia-mandarina-8211-d35bce6aade98e0a0b16755777902005-480-0.webp"
+        },
+        {
+          "code": "822",
+          "name": "Fresa",
+          "hex": "#cca6ac",
+          "image": "/images/catalogo/carta-colores/sinfonia/822-fresa.webp",
+          "imageCard": "/images/catalogo/estambres/sinfonia/822-fresa.webp",
+          "source": "51-sinfonia-fresa-8221-8d9193d98006fa378816755779579225-480-0.webp"
+        },
+        {
+          "code": "823",
+          "name": "Granate",
+          "hex": "#be9da6",
+          "image": "/images/catalogo/carta-colores/sinfonia/823-granate.webp",
+          "imageCard": "/images/catalogo/estambres/sinfonia/823-granate.webp",
+          "source": "52-sinfonia-granate-8231-ad878b984d3f59628516755779817708-1024-1024.webp"
+        },
+        {
+          "code": "824",
+          "name": "Burdeos",
+          "hex": "#c4a9b2",
+          "image": "/images/catalogo/carta-colores/sinfonia/824-burdeos.webp",
+          "imageCard": "/images/catalogo/estambres/sinfonia/824-burdeos.webp",
+          "source": "53-sinfonia-burdeos-8241-04f866e0ced63b188216755779983367-1024-1024.webp"
+        },
+        {
+          "code": "825",
+          "name": "Rosa Mexicano",
+          "hex": "#cfb1bf",
+          "image": "/images/catalogo/carta-colores/sinfonia/825-rosa-mexicano.webp",
+          "imageCard": "/images/catalogo/estambres/sinfonia/825-rosa-mexicano.webp",
+          "source": "47-sinfonia-rosa-mex-8251-b40ffb033ea0280b1416755778452722-1024-1024.webp"
+        },
+        {
+          "code": "826",
+          "name": "Azul Cielo",
+          "hex": "#c3cdd1",
+          "image": "/images/catalogo/carta-colores/sinfonia/826-azul-cielo.webp",
+          "imageCard": "/images/catalogo/estambres/sinfonia/826-azul-cielo.webp",
+          "source": "28-sinfonia-azul-cielo-8261-0f2f509dee54e67a1516755772958741-1024-1024.webp"
+        },
+        {
+          "code": "827",
+          "name": "Rosa Tierno",
+          "hex": "#e8dadc",
+          "image": "/images/catalogo/carta-colores/sinfonia/827-rosa-tierno.webp",
+          "imageCard": "/images/catalogo/estambres/sinfonia/827-rosa-tierno.webp",
+          "source": "20-sinfonia-rosa-tierno-8271-4a7e7d19b4513845a816755770951617-1024-1024.webp"
+        },
+        {
+          "code": "828",
+          "name": "Lila",
+          "hex": "#c1bfcb",
+          "image": "/images/catalogo/carta-colores/sinfonia/828-lila.webp",
+          "imageCard": "/images/catalogo/estambres/sinfonia/828-lila.webp",
+          "source": "46-sinfonia-lila-8281-464fb1aa2844c893f916755778180659-480-0.webp"
+        },
+        {
+          "code": "829",
+          "name": "Pistache",
+          "hex": "#d1d9c4",
+          "image": "/images/catalogo/carta-colores/sinfonia/829-pistache.webp",
+          "imageCard": "/images/catalogo/estambres/sinfonia/829-pistache.webp",
+          "source": "31-sinfonia-pistache-8291-fc6015c2dea6a4667b16755773696585-480-0.webp"
+        },
+        {
+          "code": "830",
+          "name": "Amarillo Vivo",
+          "hex": "#e3dabd",
+          "image": "/images/catalogo/carta-colores/sinfonia/830-amarillo-vivo.webp",
+          "imageCard": "/images/catalogo/estambres/sinfonia/830-amarillo-vivo.webp",
+          "source": "17-sinfonia-amarillo-vivo-8301-d7ad2cc6a0af641e3116755770403711-1024-1024.webp"
+        },
+        {
+          "code": "831",
+          "name": "Agua Fuerte",
+          "hex": "#c3d9d4",
+          "image": "/images/catalogo/carta-colores/sinfonia/831-agua-fuerte.webp",
+          "imageCard": "/images/catalogo/estambres/sinfonia/831-agua-fuerte.webp",
+          "source": "30-sinfonia-agua-fuerte-8311-d3e7630dbd8bc5723716755773443527-1024-1024.webp"
+        },
+        {
+          "code": "832",
+          "name": "Turquesa",
+          "hex": "#a0bdd3",
+          "image": "/images/catalogo/carta-colores/sinfonia/832-turquesa.webp",
+          "imageCard": "/images/catalogo/estambres/sinfonia/832-turquesa.webp",
+          "source": "49-sinfonia-turquesa-8321-3d32b41b7d4aaafb0216755778972506-480-0.webp"
+        },
+        {
+          "code": "833",
+          "name": "Azul Rey",
+          "hex": "#a4b2cb",
+          "image": "/images/catalogo/carta-colores/sinfonia/833-azul-rey.webp",
+          "imageCard": "/images/catalogo/estambres/sinfonia/833-azul-rey.webp",
+          "source": "50-sinfonia-azul-rey-8331-6a161ef115fa5d3ee116755779314518-1024-1024.webp"
+        },
+        {
+          "code": "834",
+          "name": "Amarillo Intenso",
+          "hex": "#e1cea9",
+          "image": "/images/catalogo/carta-colores/sinfonia/834-amarillo-intenso.webp",
+          "imageCard": "/images/catalogo/estambres/sinfonia/834-amarillo-intenso.webp",
+          "source": "44-sinfonia-amarillo-intenso-8341-88479138ef664d341f16755777708758-1024-1024.webp"
+        },
+        {
+          "code": "835",
+          "name": "Verde Cítrico",
+          "hex": "#c8cdb0",
+          "image": "/images/catalogo/carta-colores/sinfonia/835-verde-citrico.webp",
+          "imageCard": "/images/catalogo/estambres/sinfonia/835-verde-citrico.webp",
+          "source": "48-sinfonia-verde-citrico-8351-8ef3b52fb84cb0252a16755778691809-1024-1024.webp"
+        },
+        {
+          "code": "836",
+          "name": "Morado",
+          "hex": "#c9afc1",
+          "image": "/images/catalogo/carta-colores/sinfonia/836-morado.webp",
+          "imageCard": "/images/catalogo/estambres/sinfonia/836-morado.webp",
+          "source": "42-sinfonia-morado-8361-ffe652d0c9c784965216755777016918-480-0.webp"
+        },
+        {
+          "code": "837",
+          "name": "Morado Intenso",
+          "hex": "#bfb0bc",
+          "image": "/images/catalogo/carta-colores/sinfonia/837-morado-intenso.webp",
+          "imageCard": "/images/catalogo/estambres/sinfonia/837-morado-intenso.webp",
+          "source": "41-sinfonia-morado-intenso-8371-6f522bc2f0749b00af16755776823709-480-0.webp"
+        },
+        {
+          "code": "838",
+          "name": "Café Oscuro",
+          "hex": "#c4c2c0",
+          "image": "/images/catalogo/carta-colores/sinfonia/838-cafe-oscuro.webp",
+          "imageCard": "/images/catalogo/estambres/sinfonia/838-cafe-oscuro.webp",
+          "source": "7-sinfonia-cafe-oscuro-8381-b52075dbb9a4192d4216755767944904-1024-1024.webp"
+        },
+        {
+          "code": "839",
+          "name": "Verde Limón",
+          "hex": "#d2d9be",
+          "image": "/images/catalogo/carta-colores/sinfonia/839-verde-limon.webp",
+          "imageCard": "/images/catalogo/estambres/sinfonia/839-verde-limon.webp",
+          "source": "35-sinfonia-verde-limon-8391-8881eee23d4361eda916755775183447-1024-1024.webp"
+        },
+        {
+          "code": "840",
+          "name": "Verde Hoja",
+          "hex": "#c4ccb7",
+          "image": "/images/catalogo/carta-colores/sinfonia/840-verde-hoja.webp",
+          "imageCard": "/images/catalogo/estambres/sinfonia/840-verde-hoja.webp",
+          "source": "36-sinfonia-verde-hoja-8401-e70f0ff208ddf772ac16755775380828-1024-1024.webp"
+        },
+        {
+          "code": "842",
+          "name": "Canela",
+          "hex": "#d6c8bc",
+          "image": "/images/catalogo/carta-colores/sinfonia/842-canela.webp",
+          "imageCard": "/images/catalogo/estambres/sinfonia/842-canela.webp",
+          "source": "9-sinfonia-canela-8421-3dade2b6af9d2fe7d216755768349229-1024-1024.webp"
+        },
+        {
+          "code": "843",
+          "name": "Canela Fuerte",
+          "hex": "#d5c2bb",
+          "image": "/images/catalogo/carta-colores/sinfonia/843-canela-fuerte.webp",
+          "imageCard": "/images/catalogo/estambres/sinfonia/843-canela-fuerte.webp",
+          "source": "10-sinfonia-canela-fuerte-8431-44d9d6934fbf5f9b4c16755768735060-1024-1024.webp"
+        },
+        {
+          "code": "844",
+          "name": "Matizado Frambuesa",
+          "hex": "#c7bac3",
+          "image": "/images/catalogo/carta-colores/sinfonia/844-matizado-frambuesa.webp",
+          "imageCard": "/images/catalogo/estambres/sinfonia/844-matizado-frambuesa.webp",
+          "source": "76-sinfonia-matizado-frambuesa-8441-17c15632d714f92c3e16757822967332-1024-1024.webp"
+        },
+        {
+          "code": "845",
+          "name": "Matizado Azules",
+          "hex": "#b2bbca",
+          "image": "/images/catalogo/carta-colores/sinfonia/845-matizado-azules.webp",
+          "imageCard": "/images/catalogo/estambres/sinfonia/845-matizado-azules.webp",
+          "source": "70-sinfonia-matizado-azules-8451-3313a1e3de730d65f016757820614237-1024-1024.webp"
+        },
+        {
+          "code": "846",
+          "name": "Matizado Bosque",
+          "hex": "#b5bfbb",
+          "image": "/images/catalogo/carta-colores/sinfonia/846-matizado-bosque.webp",
+          "imageCard": "/images/catalogo/estambres/sinfonia/846-matizado-bosque.webp",
+          "source": "66-sinfonia-matizado-bosque-8461-480f70ef71b109796316757817978773-1024-1024.webp"
+        },
+        {
+          "code": "847",
+          "name": "Matizado Morado Lila",
+          "hex": "#bcb7c6",
+          "image": "/images/catalogo/carta-colores/sinfonia/847-matizado-morado-lila.webp",
+          "imageCard": "/images/catalogo/estambres/sinfonia/847-matizado-morado-lila.webp",
+          "source": "75-sinfonia-matizado-morado-lila-8471-4ad17b840d60e82f1f16757822643412-1024-1024.webp"
+        },
+        {
+          "code": "848",
+          "name": "Matizado Naranjas",
+          "hex": "#c9b8b5",
+          "image": "/images/catalogo/carta-colores/sinfonia/848-matizado-naranjas.webp",
+          "imageCard": "/images/catalogo/estambres/sinfonia/848-matizado-naranjas.webp",
+          "source": "74-sinfonia-matizado-naranjas-8481-3bedad9b9724a1ea9916757822285814-1024-1024.webp"
+        },
+        {
+          "code": "849",
+          "name": "Matizado Cafés",
+          "hex": "#c0b7b5",
+          "image": "/images/catalogo/carta-colores/sinfonia/849-matizado-cafes.webp",
+          "imageCard": "/images/catalogo/estambres/sinfonia/849-matizado-cafes.webp",
+          "source": "72-sinfonia-matizado-cafes-8491-4f203ee33ac8ff727416757821773916-1024-1024.webp"
+        },
+        {
+          "code": "850",
+          "name": "Matizado Malvas",
+          "hex": "#c5bdc4",
+          "image": "/images/catalogo/carta-colores/sinfonia/850-matizado-malvas.webp",
+          "imageCard": "/images/catalogo/estambres/sinfonia/850-matizado-malvas.webp",
+          "source": "77-sinfonia-matizado-malvas-8501-66895d2bf1bab9d55a16757823276596-1024-1024.webp"
+        },
+        {
+          "code": "851",
+          "name": "Matizado Fresco",
+          "hex": "#bdc2c0",
+          "image": "/images/catalogo/carta-colores/sinfonia/851-matizado-fresco.webp",
+          "imageCard": "/images/catalogo/estambres/sinfonia/851-matizado-fresco.webp",
+          "source": "67-sinfonia-matizado-fresco-8511-a33a288472a5b2f85016757818200797-1024-1024.webp"
+        },
+        {
+          "code": "852",
+          "name": "Matizado Alegre",
+          "hex": "#b6bbc2",
+          "image": "/images/catalogo/carta-colores/sinfonia/852-matizado-alegre.webp",
+          "imageCard": "/images/catalogo/estambres/sinfonia/852-matizado-alegre.webp",
+          "source": "68-sinfonia-matizado-alegre-8521-f13e0fbf178ed1131e16757818434689-1024-1024.webp"
+        },
+        {
+          "code": "853",
+          "name": "Matizado Español",
+          "hex": "#b0b6b9",
+          "image": "/images/catalogo/carta-colores/sinfonia/853-matizado-espanol.webp",
+          "imageCard": "/images/catalogo/estambres/sinfonia/853-matizado-espanol.webp",
+          "source": "69-sinfonia-matizado-espanol-8531-0ee05f68200154378d16757819678238-1024-1024.webp"
+        },
+        {
+          "code": "854",
+          "name": "Matizado Primavera",
+          "hex": "#d4d0ca",
+          "image": "/images/catalogo/carta-colores/sinfonia/854-matizado-primavera.webp",
+          "imageCard": "/images/catalogo/estambres/sinfonia/854-matizado-primavera.webp",
+          "source": "83-sinfonia-matizado-primavera-8541-b4fb78ea00382a92c716757825141915-1024-1024.webp"
+        },
+        {
+          "code": "856",
+          "name": "Matizado Tinto",
+          "hex": "#c4b6b8",
+          "image": "/images/catalogo/carta-colores/sinfonia/856-matizado-tinto.webp",
+          "imageCard": "/images/catalogo/estambres/sinfonia/856-matizado-tinto.webp",
+          "source": "73-sinfonia-matizado-tinto-8561-a3742a113f17a6030016757822022480-1024-1024.webp"
+        },
+        {
+          "code": "857",
+          "name": "Matizado Beige",
+          "hex": "#cccac9",
+          "image": "/images/catalogo/carta-colores/sinfonia/857-matizado-beige.webp",
+          "imageCard": "/images/catalogo/estambres/sinfonia/857-matizado-beige.webp",
+          "source": "81-sinfonia-matizado-beige-85711-0909d99ad8cb9b232016757824560427-1024-1024.webp"
+        },
+        {
+          "code": "858",
+          "name": "Matizado Melón",
+          "hex": "#cbc7b4",
+          "image": "/images/catalogo/carta-colores/sinfonia/858-matizado-melon.webp",
+          "imageCard": "/images/catalogo/estambres/sinfonia/858-matizado-melon.webp",
+          "source": "80-sinfonia-matizado-melon-8581-fde20cb4669a35020916757824170154-1024-1024.webp"
+        },
+        {
+          "code": "859",
+          "name": "Matizado Rosas",
+          "hex": "#cfc8cd",
+          "image": "/images/catalogo/carta-colores/sinfonia/859-matizado-rosas.webp",
+          "imageCard": "/images/catalogo/estambres/sinfonia/859-matizado-rosas.webp",
+          "source": "79-sinfonia-matizado-rosas-8591-d620864620cdaf6be016757823912756-1024-1024.webp"
+        },
+        {
+          "code": "860",
+          "name": "Matizado Turquesa",
+          "hex": "#c5d1d8",
+          "image": "/images/catalogo/carta-colores/sinfonia/860-matizado-turquesa.webp",
+          "imageCard": "/images/catalogo/estambres/sinfonia/860-matizado-turquesa.webp",
+          "source": "78-sinfonia-matizado-turquesa-8601-100a727e37dbf5fa9716757823575688-1024-1024.webp"
+        },
+        {
+          "code": "861",
+          "name": "Arena",
+          "hex": "#e0dfd6",
+          "image": "/images/catalogo/carta-colores/sinfonia/861-arena.webp",
+          "imageCard": "/images/catalogo/estambres/sinfonia/861-arena.webp",
+          "source": "3-sinfonia-arena-8611-e2bd19b944b2a364f116755766957376-1024-1024.webp"
+        },
+        {
+          "code": "862",
+          "name": "Trigo",
+          "hex": "#dfdacc",
+          "image": "/images/catalogo/carta-colores/sinfonia/862-trigo.webp",
+          "imageCard": "/images/catalogo/estambres/sinfonia/862-trigo.webp",
+          "source": "4-sinfonia-trigo-8621-aa22c04b191aa4602b16755767146814-1024-1024.webp"
+        },
+        {
+          "code": "863",
+          "name": "Camello",
+          "hex": "#d0ccc7",
+          "image": "/images/catalogo/carta-colores/sinfonia/863-camello.webp",
+          "imageCard": "/images/catalogo/estambres/sinfonia/863-camello.webp",
+          "source": "5-sinfonia-camello-8631-816dac213577593b7516755767325235-1024-1024.webp"
+        },
+        {
+          "code": "864",
+          "name": "Rosado",
+          "hex": "#e3d6d6",
+          "image": "/images/catalogo/carta-colores/sinfonia/864-rosado.webp",
+          "imageCard": "/images/catalogo/estambres/sinfonia/864-rosado.webp",
+          "source": "19-sinfonia-rosado-8641-e1649c546b21dad75916755770733080-1024-1024.webp"
+        },
+        {
+          "code": "865",
+          "name": "Azul Orquídea",
+          "hex": "#cad0d9",
+          "image": "/images/catalogo/carta-colores/sinfonia/865-azul-orquidea.webp",
+          "imageCard": "/images/catalogo/estambres/sinfonia/865-azul-orquidea.webp",
+          "source": "29-sinfonia-azul-orquidea-8651-7a411de937fadeea2c16755773295355-1024-1024.webp"
+        },
+        {
+          "code": "866",
+          "name": "Verde Fresco",
+          "hex": "#c2c2b0",
+          "image": "/images/catalogo/carta-colores/sinfonia/866-verde-fresco.webp",
+          "imageCard": "/images/catalogo/estambres/sinfonia/866-verde-fresco.webp",
+          "source": "34-sinfonia-verde-fresco-8661-1f76e53d515631c1f016755774606652-1024-1024.webp"
+        },
+        {
+          "code": "867",
+          "name": "Amarillo Bebé",
+          "hex": "#e2e0ce",
+          "image": "/images/catalogo/carta-colores/sinfonia/867-amarillo-bebe.webp",
+          "imageCard": "/images/catalogo/estambres/sinfonia/867-amarillo-bebe.webp",
+          "source": "15-sinfonia-amarillo-bebe-8671-40e52acae8f1c6cf5016755770064209-1024-1024.webp"
+        },
+        {
+          "code": "868",
+          "name": "Amarillo Medio",
+          "hex": "#e2ddc6",
+          "image": "/images/catalogo/carta-colores/sinfonia/868-amarillo-medio.webp",
+          "imageCard": "/images/catalogo/estambres/sinfonia/868-amarillo-medio.webp",
+          "source": "16-sinfonia-amarillo-medio-8681-274e4f41f35d1ce9e716755770199901-1024-1024.webp"
+        },
+        {
+          "code": "869",
+          "name": "Oro",
+          "hex": "#d9d3c1",
+          "image": "/images/catalogo/carta-colores/sinfonia/869-oro.webp",
+          "imageCard": "/images/catalogo/estambres/sinfonia/869-oro.webp",
+          "source": "13-sinfonia-oro-8691-1268b264ccc0f5acf216755769564205-1024-1024.webp"
+        },
+        {
+          "code": "870",
+          "name": "Calabaza",
+          "hex": "#ded0b9",
+          "image": "/images/catalogo/carta-colores/sinfonia/870-calabaza.webp",
+          "imageCard": "/images/catalogo/estambres/sinfonia/870-calabaza.webp",
+          "source": "18-sinfonia-calabaza-8701-2ed0a949724bd517c516755770601317-480-0.webp"
+        },
+        {
+          "code": "871",
+          "name": "Matizado Caqui",
+          "hex": "#c5c4c7",
+          "image": "/images/catalogo/carta-colores/sinfonia/871-matizado-caqui.webp",
+          "imageCard": "/images/catalogo/estambres/sinfonia/871-matizado-caqui.webp",
+          "source": "82-sinfonia-matizado-caqui-8711-fbd9bbb14c7f45519d16757824721770-1024-1024.webp"
+        },
+        {
+          "code": "872",
+          "name": "Obispo",
+          "hex": "#b8b4c1",
+          "image": "/images/catalogo/carta-colores/sinfonia/872-obispo.webp",
+          "imageCard": "/images/catalogo/estambres/sinfonia/872-obispo.webp",
+          "source": "61-sinfonia-obispo-8721-b5f1de31f0295726c216755782011378-480-0.webp"
+        },
+        {
+          "code": "879",
+          "name": "Morado",
+          "hex": "#b9b6c7",
+          "image": "/images/catalogo/carta-colores/sinfonia/879-morado.webp",
+          "imageCard": "/images/catalogo/estambres/sinfonia/879-morado.webp",
+          "source": "62-sinfonia-morado-8791-4140acbc35cd79093a16755782233055-480-0.webp"
+        },
+        {
+          "code": "880",
+          "name": "Verde",
+          "hex": "#acbbb6",
+          "image": "/images/catalogo/carta-colores/sinfonia/880-verde.webp",
+          "imageCard": "/images/catalogo/estambres/sinfonia/880-verde.webp",
+          "source": "63-sinfonia-verde-8801-670772b58b6b57a78116755782461910-480-0.webp"
+        },
+        {
+          "code": "881",
+          "name": "Naranja",
+          "hex": "#e4d7c4",
+          "image": "/images/catalogo/carta-colores/sinfonia/881-naranja.webp",
+          "imageCard": "/images/catalogo/estambres/sinfonia/881-naranja.webp",
+          "source": "54-sinfonia-naranja-8811-cc755f12893b9ad99016755780152551-1024-1024.webp"
+        },
+        {
+          "code": "882",
+          "name": "Salmón",
+          "hex": "#e8c7c2",
+          "image": "/images/catalogo/carta-colores/sinfonia/882-salmon.webp",
+          "imageCard": "/images/catalogo/estambres/sinfonia/882-salmon.webp",
+          "source": "55-sinfonia-salmon-8821-cce2b4232311fc3a1716755780370563-1024-1024.webp"
+        },
+        {
+          "code": "883",
+          "name": "Coral",
+          "hex": "#e4bac1",
+          "image": "/images/catalogo/carta-colores/sinfonia/883-coral.webp",
+          "imageCard": "/images/catalogo/estambres/sinfonia/883-coral.webp",
+          "source": "56-sinfonia-coral-8831-38644a947788e6146216755780747666-1024-1024.webp"
+        },
+        {
+          "code": "884",
+          "name": "Fucsia",
+          "hex": "#ccafbb",
+          "image": "/images/catalogo/carta-colores/sinfonia/884-fucsia.webp",
+          "imageCard": "/images/catalogo/estambres/sinfonia/884-fucsia.webp",
+          "source": "58-sinfonia-fiusha-8841-32aaea55505cf283a016755781265205-1024-1024.webp"
+        },
+        {
+          "code": "885",
+          "name": "Palo de Rosa",
+          "hex": "#cec3c9",
+          "image": "/images/catalogo/carta-colores/sinfonia/885-palo-de-rosa.webp",
+          "imageCard": "/images/catalogo/estambres/sinfonia/885-palo-de-rosa.webp",
+          "source": "59-sinfonia-palo-de-rosa-8851-b3e6c7f32a280f40a716755781601170-1024-1024.webp"
+        },
+        {
+          "code": "886",
+          "name": "Gris",
+          "hex": "#cac7c8",
+          "image": "/images/catalogo/carta-colores/sinfonia/886-gris.webp",
+          "imageCard": "/images/catalogo/estambres/sinfonia/886-gris.webp",
+          "source": "60-sinfonia-gris-8861-8a5d30690c0521b15816755781795302-1024-1024.webp"
+        },
+        {
+          "code": "887",
+          "name": "Oxford",
+          "hex": "#a8b0b9",
+          "image": "/images/catalogo/carta-colores/sinfonia/887-oxford.webp",
+          "imageCard": "/images/catalogo/estambres/sinfonia/887-oxford.webp",
+          "source": "65-sinfonia-oxford-8871-9460709214ed0967ee16755782955154-480-0.webp"
+        },
+        {
+          "code": "888",
+          "name": "Tabaco",
+          "hex": "#c4b7b4",
+          "image": "/images/catalogo/carta-colores/sinfonia/888-tabaco.webp",
+          "imageCard": "/images/catalogo/estambres/sinfonia/888-tabaco.webp",
+          "source": "sinfonia-tabaco-888-c95ddd7fe6420593cb17169367934173-1024-1024.webp"
+        },
+        {
+          "code": "889",
+          "name": "Olivo",
+          "hex": "#bebdb9",
+          "image": "/images/catalogo/carta-colores/sinfonia/889-olivo.webp",
+          "imageCard": "/images/catalogo/estambres/sinfonia/889-olivo.webp",
+          "source": "64-sinfonia-olivo-8891-03392059fa076c55cd16755782740007-480-0.webp"
+        },
+        {
+          "code": "890",
+          "name": "Carne",
+          "hex": "#e2ded8",
+          "image": "/images/catalogo/carta-colores/sinfonia/890-carne.webp",
+          "imageCard": "/images/catalogo/estambres/sinfonia/890-carne.webp",
+          "source": "14-sinfonia-carne-8901-e67155f551626ec14f16755769758906-1024-1024.webp"
+        },
+        {
+          "code": "891",
+          "name": "Verde Bandera",
+          "hex": "#b8ccc3",
+          "image": "/images/catalogo/carta-colores/sinfonia/891-verde-bandera.webp",
+          "imageCard": "/images/catalogo/estambres/sinfonia/891-verde-bandera.webp",
+          "source": "sinfonia-891-verde-bandera-86e60d8f560c18050d17725667167075-1024-1024.webp"
+        }
+      ]
+    },
+    {
+      "id": "la-abuelita",
+      "name": "La Abuelita",
+      "type": "Hilaza",
+      "dir": "abuelita",
+      "colors": [
+        {
+          "code": "01",
+          "name": "Blanco",
+          "hex": "#a4a4a2",
+          "image": "/images/catalogo/carta-colores/la-abuelita/01-blanco.webp",
+          "imageCard": "/images/catalogo/estambres/la-abuelita/01-blanco.webp",
+          "source": "1-abuelita-blanco-011-b1b0f8e63cf31352a616755714771645-1024-1024.webp"
+        },
+        {
+          "code": "02",
+          "name": "Canario",
+          "hex": "#aba79a",
+          "image": "/images/catalogo/carta-colores/la-abuelita/02-canario.webp",
+          "imageCard": "/images/catalogo/estambres/la-abuelita/02-canario.webp",
+          "source": "5-abuelita-canario-021-61f7ce1ae9162f346416755717667177-1024-1024.webp"
+        },
+        {
+          "code": "03",
+          "name": "Paja",
+          "hex": "#a5a39b",
+          "image": "/images/catalogo/carta-colores/la-abuelita/03-paja.webp",
+          "imageCard": "/images/catalogo/estambres/la-abuelita/03-paja.webp",
+          "source": "3-abuelita-paja-031-1bd92acb491b286dcd16755716207785-480-0.webp"
+        },
+        {
+          "code": "04",
+          "name": "Amarillo",
+          "hex": "#a4a292",
+          "image": "/images/catalogo/carta-colores/la-abuelita/04-amarillo.webp",
+          "imageCard": "/images/catalogo/estambres/la-abuelita/04-amarillo.webp",
+          "source": "4-abuelita-amarillo-041-39a6474af0f1b2030816755716775977-1024-1024.webp"
+        },
+        {
+          "code": "05",
+          "name": "Mostaza",
+          "hex": "#aaa79d",
+          "image": "/images/catalogo/carta-colores/la-abuelita/05-mostaza.webp",
+          "imageCard": "/images/catalogo/estambres/la-abuelita/05-mostaza.webp",
+          "source": "7-abuelita-mostaza-051-b9efa5ddbd2aee5ae916755718469821-480-0.webp"
+        },
+        {
+          "code": "06",
+          "name": "Mango",
+          "hex": "#a4987c",
+          "image": "/images/catalogo/carta-colores/la-abuelita/06-mango.webp",
+          "imageCard": "/images/catalogo/estambres/la-abuelita/06-mango.webp",
+          "source": "6-abuelita-mango-061-c175b3c3b840228d3e16755718040716-1024-1024 (1).webp"
+        },
+        {
+          "code": "07",
+          "name": "Salmón",
+          "hex": "#ada8a6",
+          "image": "/images/catalogo/carta-colores/la-abuelita/07-salmon.webp",
+          "imageCard": "/images/catalogo/estambres/la-abuelita/07-salmon.webp",
+          "source": "11-abuelita-salmon-071-21b0a0e5bd6d389d5816755720330823-480-0.webp"
+        },
+        {
+          "code": "08",
+          "name": "Melón",
+          "hex": "#a9a09a",
+          "image": "/images/catalogo/carta-colores/la-abuelita/08-melon.webp",
+          "imageCard": "/images/catalogo/estambres/la-abuelita/08-melon.webp",
+          "source": "10-abuelita-melon-0811-9eccce6994a0d3e58316755719939405-480-0.webp"
+        },
+        {
+          "code": "09",
+          "name": "Carne",
+          "hex": "#999690",
+          "image": "/images/catalogo/carta-colores/la-abuelita/09-carne.webp",
+          "imageCard": "/images/catalogo/estambres/la-abuelita/09-carne.webp",
+          "source": "23-abuelita-carne-091-5a394adc52408e2b9516755724306150-1024-1024.webp"
+        },
+        {
+          "code": "10",
+          "name": "Mandarina",
+          "hex": "#b3aca5",
+          "image": "/images/catalogo/carta-colores/la-abuelita/10-mandarina.webp",
+          "imageCard": "/images/catalogo/estambres/la-abuelita/10-mandarina.webp",
+          "source": "9-abuelita-mandarina-101-44d2f6ce6cfde9911616755719141567-480-0.webp"
+        },
+        {
+          "code": "11",
+          "name": "Cempasúchil",
+          "hex": "#ad9c84",
+          "image": "/images/catalogo/carta-colores/la-abuelita/11-cempasuchil.webp",
+          "imageCard": "/images/catalogo/estambres/la-abuelita/11-cempasuchil.webp",
+          "source": "abuelita-cempasuchil-11-ed84b5dd2e02e6878b17594149967540-1024-1024.webp"
+        },
+        {
+          "code": "12",
+          "name": "Melocotón",
+          "hex": "#b49c88",
+          "image": "/images/catalogo/carta-colores/la-abuelita/12-melocoton.webp",
+          "imageCard": "/images/catalogo/estambres/la-abuelita/12-melocoton.webp",
+          "source": "abuelita-melocoton-12-d2c7915dc5bc627ed717594152069541-1024-1024.webp"
+        },
+        {
+          "code": "14",
+          "name": "Piña",
+          "hex": "#b3b38c",
+          "image": "/images/catalogo/carta-colores/la-abuelita/14-pina.webp",
+          "imageCard": "/images/catalogo/estambres/la-abuelita/14-pina.webp",
+          "source": "abuelita-pina-14-c6a0c13a95487da95f17594152786597-1024-1024.webp"
+        },
+        {
+          "code": "15",
+          "name": "Oro",
+          "hex": "#bdb390",
+          "image": "/images/catalogo/carta-colores/la-abuelita/15-oro.webp",
+          "imageCard": "/images/catalogo/estambres/la-abuelita/15-oro.webp",
+          "source": "abuelita-oro-15-d554d234da5d851b5917594153703144-1024-1024.webp"
+        },
+        {
+          "code": "17",
+          "name": "Arena",
+          "hex": "#9b988d",
+          "image": "/images/catalogo/carta-colores/la-abuelita/17-arena.webp",
+          "imageCard": "/images/catalogo/estambres/la-abuelita/17-arena.webp",
+          "source": "abuelita-arena-17-2ef62284958157288817594155064856-1024-1024.webp"
+        },
+        {
+          "code": "18",
+          "name": "Crudo",
+          "hex": "#c2c1b6",
+          "image": "/images/catalogo/carta-colores/la-abuelita/18-crudo.webp",
+          "imageCard": "/images/catalogo/estambres/la-abuelita/18-crudo.webp",
+          "source": "hilaza-abuelita-crudo-18-a258df6c32b661718817145710809634-1024-1024.webp"
+        },
+        {
+          "code": "19",
+          "name": "Café Frijol",
+          "hex": "#9c978d",
+          "image": "/images/catalogo/carta-colores/la-abuelita/19-cafe-frijol.webp",
+          "imageCard": "/images/catalogo/estambres/la-abuelita/19-cafe-frijol.webp",
+          "source": "abuelita-cafe-frijol-19-4c7c7f3e2d3159cfe117594155845047-1024-1024.webp"
+        },
+        {
+          "code": "20",
+          "name": "Beige",
+          "hex": "#9e9e97",
+          "image": "/images/catalogo/carta-colores/la-abuelita/20-beige.webp",
+          "imageCard": "/images/catalogo/estambres/la-abuelita/20-beige.webp",
+          "source": "24-abuelita-beige-201-7ee018be1c09bf890416755724740118-480-0.webp"
+        },
+        {
+          "code": "21",
+          "name": "Calabaza",
+          "hex": "#a59c92",
+          "image": "/images/catalogo/carta-colores/la-abuelita/21-calabaza.webp",
+          "imageCard": "/images/catalogo/estambres/la-abuelita/21-calabaza.webp",
+          "source": "8-abuelita-calabaza-211-e7b3e0be48fe12931416755718832483-480-0.webp"
+        },
+        {
+          "code": "22",
+          "name": "Canela",
+          "hex": "#ada49a",
+          "image": "/images/catalogo/carta-colores/la-abuelita/22-canela.webp",
+          "imageCard": "/images/catalogo/estambres/la-abuelita/22-canela.webp",
+          "source": "31-abuelita-canela-221-3edb2c0c0ec4a7afff16755727414626-480-0.webp"
+        },
+        {
+          "code": "23",
+          "name": "Kaki",
+          "hex": "#a8a69b",
+          "image": "/images/catalogo/carta-colores/la-abuelita/23-kaki.webp",
+          "imageCard": "/images/catalogo/estambres/la-abuelita/23-kaki.webp",
+          "source": "26-abuelita-kaki-231-f92bc322f91d301f8616755725440969-480-0.webp"
+        },
+        {
+          "code": "24",
+          "name": "Camello",
+          "hex": "#b1afa9",
+          "image": "/images/catalogo/carta-colores/la-abuelita/24-camello.webp",
+          "imageCard": "/images/catalogo/estambres/la-abuelita/24-camello.webp",
+          "source": "25-abuelita-camello-241-bce8f48dd7eee2a76b16755725071322-480-0.webp"
+        },
+        {
+          "code": "25",
+          "name": "Tabaco",
+          "hex": "#aca89e",
+          "image": "/images/catalogo/carta-colores/la-abuelita/25-tabaco.webp",
+          "imageCard": "/images/catalogo/estambres/la-abuelita/25-tabaco.webp",
+          "source": "27-abuelita-tabaco-251-58100685347513086216755725877001-480-0.webp"
+        },
+        {
+          "code": "26",
+          "name": "Chedrón",
+          "hex": "#aca09a",
+          "image": "/images/catalogo/carta-colores/la-abuelita/26-chedron.webp",
+          "imageCard": "/images/catalogo/estambres/la-abuelita/26-chedron.webp",
+          "source": "30-chedron-261-20cbeafc28ce52b0fd16755726949378-480-0.webp"
+        },
+        {
+          "code": "27",
+          "name": "Café",
+          "hex": "#a5a39e",
+          "image": "/images/catalogo/carta-colores/la-abuelita/27-cafe.webp",
+          "imageCard": "/images/catalogo/estambres/la-abuelita/27-cafe.webp",
+          "source": "28-abuelita-cafe-271-f966c895bb42d3405516755726277035-480-0.webp"
+        },
+        {
+          "code": "28",
+          "name": "Chocolate",
+          "hex": "#999893",
+          "image": "/images/catalogo/carta-colores/la-abuelita/28-chocolate.webp",
+          "imageCard": "/images/catalogo/estambres/la-abuelita/28-chocolate.webp",
+          "source": "29-abuelita-chocolate-281-1a1db04782ae8586f216755726532765-480-0.webp"
+        },
+        {
+          "code": "29",
+          "name": "Cobre",
+          "hex": "#978d85",
+          "image": "/images/catalogo/carta-colores/la-abuelita/29-cobre.webp",
+          "imageCard": "/images/catalogo/estambres/la-abuelita/29-cobre.webp",
+          "source": "abuelita-cobre-29-db64d06b1f37559ff817594157473619-1024-1024.webp"
+        },
+        {
+          "code": "30",
+          "name": "Rosa Niña",
+          "hex": "#a8a2a4",
+          "image": "/images/catalogo/carta-colores/la-abuelita/30-rosa-nina.webp",
+          "imageCard": "/images/catalogo/estambres/la-abuelita/30-rosa-nina.webp",
+          "source": "13-abuelita-rosa-nina-301-14ba3a7f05bcf4904716755720952993-480-0.webp"
+        },
+        {
+          "code": "31",
+          "name": "Dulce Rosa",
+          "hex": "#beb3b0",
+          "image": "/images/catalogo/carta-colores/la-abuelita/31-dulce-rosa.webp",
+          "imageCard": "/images/catalogo/estambres/la-abuelita/31-dulce-rosa.webp",
+          "source": "abuelita-dulce-rosa-31-290c6b3b1124b3e71917594157273637-1024-1024.webp"
+        },
+        {
+          "code": "32",
+          "name": "Rosa",
+          "hex": "#a8a6a5",
+          "image": "/images/catalogo/carta-colores/la-abuelita/32-rosa.webp",
+          "imageCard": "/images/catalogo/estambres/la-abuelita/32-rosa.webp",
+          "source": "12-abuelita-rosa-321-6e072fe57846fa831416755720755481-480-0.webp"
+        },
+        {
+          "code": "33",
+          "name": "Rosa Medio",
+          "hex": "#d4c0be",
+          "image": "/images/catalogo/carta-colores/la-abuelita/33-rosa-medio.webp",
+          "imageCard": "/images/catalogo/estambres/la-abuelita/33-rosa-medio.webp",
+          "source": "abuelita-rosa-medio-33-0d80bacf77a7530b1d17594204641214-1024-1024.webp"
+        },
+        {
+          "code": "34",
+          "name": "Frambuesa",
+          "hex": "#b197a0",
+          "image": "/images/catalogo/carta-colores/la-abuelita/34-frambuesa.webp",
+          "imageCard": "/images/catalogo/estambres/la-abuelita/34-frambuesa.webp",
+          "source": "abuelita-frambuesa-34-01c2691df9a0d848d617594160348139-1024-1024.webp"
+        },
+        {
+          "code": "35",
+          "name": "Fucsia",
+          "hex": "#b0a5a9",
+          "image": "/images/catalogo/carta-colores/la-abuelita/35-fucsia.webp",
+          "imageCard": "/images/catalogo/estambres/la-abuelita/35-fucsia.webp",
+          "source": "14-abuelita-fiusha-351-6a2962c8685925e28216755721258169-1024-1024.webp"
+        },
+        {
+          "code": "36",
+          "name": "Palo de Rosa",
+          "hex": "#a19e9e",
+          "image": "/images/catalogo/carta-colores/la-abuelita/36-palo-de-rosa.webp",
+          "imageCard": "/images/catalogo/estambres/la-abuelita/36-palo-de-rosa.webp",
+          "source": "19-abuelita-palo-de-rosa-361-8aa571eb0d8085a96e16755722932809-1024-1024.webp"
+        },
+        {
+          "code": "38",
+          "name": "Rosa Mexicano",
+          "hex": "#a49595",
+          "image": "/images/catalogo/carta-colores/la-abuelita/38-rosa-mexicano.webp",
+          "imageCard": "/images/catalogo/estambres/la-abuelita/38-rosa-mexicano.webp",
+          "source": "20-abuelita-rosa-mexicano-381-7c0bee43a878ee84e716755723309323-480-0.webp"
+        },
+        {
+          "code": "39",
+          "name": "Fresa",
+          "hex": "#b5949a",
+          "image": "/images/catalogo/carta-colores/la-abuelita/39-fresa.webp",
+          "imageCard": "/images/catalogo/estambres/la-abuelita/39-fresa.webp",
+          "source": "abuelita-fresa-39-08159f93103070e82017594160505996-1024-1024.webp"
+        },
+        {
+          "code": "40",
+          "name": "Rojo",
+          "hex": "#998688",
+          "image": "/images/catalogo/carta-colores/la-abuelita/40-rojo.webp",
+          "imageCard": "/images/catalogo/estambres/la-abuelita/40-rojo.webp",
+          "source": "21-abuelita-rojo-401-47f579c0c316b4aebe16755723717167-480-0.webp"
+        },
+        {
+          "code": "41",
+          "name": "Guinda",
+          "hex": "#85807f",
+          "image": "/images/catalogo/carta-colores/la-abuelita/41-guinda.webp",
+          "imageCard": "/images/catalogo/estambres/la-abuelita/41-guinda.webp",
+          "source": "18-abuelita-guinda-411-b386831b84470b13d116755722645342-480-0.webp"
+        },
+        {
+          "code": "42",
+          "name": "Naranja",
+          "hex": "#a38f89",
+          "image": "/images/catalogo/carta-colores/la-abuelita/42-naranja.webp",
+          "imageCard": "/images/catalogo/estambres/la-abuelita/42-naranja.webp",
+          "source": "22-abuelita-naranja-421-80212a2c67de8986ad16755723972759-480-0.webp"
+        },
+        {
+          "code": "43",
+          "name": "Granada",
+          "hex": "#9b9293",
+          "image": "/images/catalogo/carta-colores/la-abuelita/43-granada.webp",
+          "imageCard": "/images/catalogo/estambres/la-abuelita/43-granada.webp",
+          "source": "16-abuelita-granada-431-e785bc30134090934c16755721887914-480-0.webp"
+        },
+        {
+          "code": "45",
+          "name": "Carmín",
+          "hex": "#a69d9f",
+          "image": "/images/catalogo/carta-colores/la-abuelita/45-carmin.webp",
+          "imageCard": "/images/catalogo/estambres/la-abuelita/45-carmin.webp",
+          "source": "15-abuelita-carmin-451-ee68ac7fff66352c5816755721570954-480-0.webp"
+        },
+        {
+          "code": "49",
+          "name": "Vino",
+          "hex": "#807070",
+          "image": "/images/catalogo/carta-colores/la-abuelita/49-vino.webp",
+          "imageCard": "/images/catalogo/estambres/la-abuelita/49-vino.webp",
+          "source": "17-abuelita-vino-491-e225a82ac12b5e6be016755722248234-480-0.webp"
+        },
+        {
+          "code": "51",
+          "name": "Violeta",
+          "hex": "#a5a0a0",
+          "image": "/images/catalogo/carta-colores/la-abuelita/51-violeta.webp",
+          "imageCard": "/images/catalogo/estambres/la-abuelita/51-violeta.webp",
+          "source": "34-abuelita-violeta-511-0c1282b48cf9df5d6316755728648638-480-0.webp"
+        },
+        {
+          "code": "52",
+          "name": "Bugambilia",
+          "hex": "#aa9ea4",
+          "image": "/images/catalogo/carta-colores/la-abuelita/52-bugambilia.webp",
+          "imageCard": "/images/catalogo/estambres/la-abuelita/52-bugambilia.webp",
+          "source": "35-abuelita-bugambilia-521-303c210072c2f38f4016755728971898-320-0.webp"
+        },
+        {
+          "code": "53",
+          "name": "Púrpura",
+          "hex": "#a59d9c",
+          "image": "/images/catalogo/carta-colores/la-abuelita/53-purpura.webp",
+          "imageCard": "/images/catalogo/estambres/la-abuelita/53-purpura.webp",
+          "source": "36-abuelita-purpura-531-d501fb1f48ac9fa4f216755729308228-480-0.webp"
+        },
+        {
+          "code": "54",
+          "name": "Morado",
+          "hex": "#9c989c",
+          "image": "/images/catalogo/carta-colores/la-abuelita/54-morado.webp",
+          "imageCard": "/images/catalogo/estambres/la-abuelita/54-morado.webp",
+          "source": "37-abuelita-morado-541-d0b575a9b74b0abafe16755729601857-1024-1024.webp"
+        },
+        {
+          "code": "55",
+          "name": "Mora",
+          "hex": "#958d96",
+          "image": "/images/catalogo/carta-colores/la-abuelita/55-mora.webp",
+          "imageCard": "/images/catalogo/estambres/la-abuelita/55-mora.webp",
+          "source": "abuelita-mora-55-b20879583d5670e07217594166949985-1024-1024.webp"
+        },
+        {
+          "code": "56",
+          "name": "Lila",
+          "hex": "#c8c5c8",
+          "image": "/images/catalogo/carta-colores/la-abuelita/56-lila.webp",
+          "imageCard": "/images/catalogo/estambres/la-abuelita/56-lila.webp",
+          "source": "abuelita-lila-56-2ac8caf2cf04a939ba17594201711403-1024-1024.webp"
+        },
+        {
+          "code": "60",
+          "name": "Cielo",
+          "hex": "#a5a9a4",
+          "image": "/images/catalogo/carta-colores/la-abuelita/60-cielo.webp",
+          "imageCard": "/images/catalogo/estambres/la-abuelita/60-cielo.webp",
+          "source": "40-abuelita-cielo-601-883fda72ca685e279416755730801575-480-0.webp"
+        },
+        {
+          "code": "61",
+          "name": "Celeste",
+          "hex": "#9fa9a5",
+          "image": "/images/catalogo/carta-colores/la-abuelita/61-celeste.webp",
+          "imageCard": "/images/catalogo/estambres/la-abuelita/61-celeste.webp",
+          "source": "abuelita-celeste-61-c5905b397981caa34517594172066254-1024-1024.webp"
+        },
+        {
+          "code": "62",
+          "name": "Azul",
+          "hex": "#95a3a7",
+          "image": "/images/catalogo/carta-colores/la-abuelita/62-azul.webp",
+          "imageCard": "/images/catalogo/estambres/la-abuelita/62-azul.webp",
+          "source": "41-abuelita-azul-621-7e0948e9b1ad1efb8816755731383970-480-0.webp"
+        },
+        {
+          "code": "63",
+          "name": "Pizarra",
+          "hex": "#98a09f",
+          "image": "/images/catalogo/carta-colores/la-abuelita/63-pizarra.webp",
+          "imageCard": "/images/catalogo/estambres/la-abuelita/63-pizarra.webp",
+          "source": "45-abuelita-pizarra-631-071ab2f88db6d8a1c916755732613229-480-0.webp"
+        },
+        {
+          "code": "64",
+          "name": "Azulado",
+          "hex": "#95a2a2",
+          "image": "/images/catalogo/carta-colores/la-abuelita/64-azulado.webp",
+          "imageCard": "/images/catalogo/estambres/la-abuelita/64-azulado.webp",
+          "source": "abuelita-azulado-64-43d385ba8f4bf699a817594172312133-1024-1024.webp"
+        },
+        {
+          "code": "70",
+          "name": "Azul Marino",
+          "hex": "#949797",
+          "image": "/images/catalogo/carta-colores/la-abuelita/70-azul-marino.webp",
+          "imageCard": "/images/catalogo/estambres/la-abuelita/70-azul-marino.webp",
+          "source": "43-abuelita-azul-marino-701-7008e8837887f9ead616755731968619-1024-1024.webp"
+        },
+        {
+          "code": "71",
+          "name": "Rey",
+          "hex": "#8e9aa1",
+          "image": "/images/catalogo/carta-colores/la-abuelita/71-rey.webp",
+          "imageCard": "/images/catalogo/estambres/la-abuelita/71-rey.webp",
+          "source": "44-abuelita-rey-711-a404f4d3a5409f6e1616755732334822-1024-1024.webp"
+        },
+        {
+          "code": "72",
+          "name": "Azul Francés",
+          "hex": "#969ca2",
+          "image": "/images/catalogo/carta-colores/la-abuelita/72-azul-frances.webp",
+          "imageCard": "/images/catalogo/estambres/la-abuelita/72-azul-frances.webp",
+          "source": "42-abuelita-azul-frances-721-e61ee20051bf2e74a016755731740597-480-0.webp"
+        },
+        {
+          "code": "74",
+          "name": "Aqua",
+          "hex": "#9fada8",
+          "image": "/images/catalogo/carta-colores/la-abuelita/74-aqua.webp",
+          "imageCard": "/images/catalogo/estambres/la-abuelita/74-aqua.webp",
+          "source": "39-abuelita-aqua-741-02864b90481b8526ad16755730472416-480-0.webp"
+        },
+        {
+          "code": "75",
+          "name": "Turquesa",
+          "hex": "#95a8a8",
+          "image": "/images/catalogo/carta-colores/la-abuelita/75-turquesa.webp",
+          "imageCard": "/images/catalogo/estambres/la-abuelita/75-turquesa.webp",
+          "source": "38-abuelita-turquesa-751-8f794f782a3cf4abf916755729948845-1024-1024.webp"
+        },
+        {
+          "code": "76",
+          "name": "Azul Cancún",
+          "hex": "#7899a1",
+          "image": "/images/catalogo/carta-colores/la-abuelita/76-azul-cancun.webp",
+          "imageCard": "/images/catalogo/estambres/la-abuelita/76-azul-cancun.webp",
+          "source": "azul-cancun-76-c60e62a8fe99ee38e317594172531620-1024-1024.webp"
+        },
+        {
+          "code": "77",
+          "name": "Azul Pacífico",
+          "hex": "#849dae",
+          "image": "/images/catalogo/carta-colores/la-abuelita/77-azul-pacifico.webp",
+          "imageCard": "/images/catalogo/estambres/la-abuelita/77-azul-pacifico.webp",
+          "source": "azul-pacifico-77-300d81cc81862b231d17594172715373-1024-1024.webp"
+        },
+        {
+          "code": "79",
+          "name": "Verde Manzana",
+          "hex": "#aeb28c",
+          "image": "/images/catalogo/carta-colores/la-abuelita/79-verde-manzana.webp",
+          "imageCard": "/images/catalogo/estambres/la-abuelita/79-verde-manzana.webp",
+          "source": "abuelita-verde-manzana-79-41ff5824ed29c603b417594186181580-1024-1024.webp"
+        },
+        {
+          "code": "80",
+          "name": "Menta",
+          "hex": "#a9aca0",
+          "image": "/images/catalogo/carta-colores/la-abuelita/80-menta.webp",
+          "imageCard": "/images/catalogo/estambres/la-abuelita/80-menta.webp",
+          "source": "50-abuelita-menta-801-4413600b8611c4fea216755734547105-1024-1024.webp"
+        },
+        {
+          "code": "81",
+          "name": "Botella",
+          "hex": "#9ba09b",
+          "image": "/images/catalogo/carta-colores/la-abuelita/81-botella.webp",
+          "imageCard": "/images/catalogo/estambres/la-abuelita/81-botella.webp",
+          "source": "47-abuelita-botella-811-a3da9a02d2335b77f016755733321422-480-0.webp"
+        },
+        {
+          "code": "82",
+          "name": "Verde",
+          "hex": "#a0a893",
+          "image": "/images/catalogo/carta-colores/la-abuelita/82-verde.webp",
+          "imageCard": "/images/catalogo/estambres/la-abuelita/82-verde.webp",
+          "source": "53-abuelita-verde-821-ba1fd9fd67f175fbaf16755735549862-480-0.webp"
+        },
+        {
+          "code": "83",
+          "name": "Verde Aguacate",
+          "hex": "#a6a99a",
+          "image": "/images/catalogo/carta-colores/la-abuelita/83-verde-aguacate.webp",
+          "imageCard": "/images/catalogo/estambres/la-abuelita/83-verde-aguacate.webp",
+          "source": "51-abuelita-verde-aguacate-831-964e2b4ca3ac3e0aea16755734874738-1024-1024.webp"
+        },
+        {
+          "code": "84",
+          "name": "Verde Limón",
+          "hex": "#a2aa91",
+          "image": "/images/catalogo/carta-colores/la-abuelita/84-verde-limon.webp",
+          "imageCard": "/images/catalogo/estambres/la-abuelita/84-verde-limon.webp",
+          "source": "54-abuelita-verde-limon-841-dfd0e130f622793ae416755735891943-1024-1024.webp"
+        },
+        {
+          "code": "85",
+          "name": "Verde Pradera",
+          "hex": "#9ca898",
+          "image": "/images/catalogo/carta-colores/la-abuelita/85-verde-pradera.webp",
+          "imageCard": "/images/catalogo/estambres/la-abuelita/85-verde-pradera.webp",
+          "source": "49-abuelita-verde-pradera1-2f6d858e0b56d07ebc16755734246656-1024-1024.webp"
+        },
+        {
+          "code": "86",
+          "name": "Esmeralda",
+          "hex": "#97aba5",
+          "image": "/images/catalogo/carta-colores/la-abuelita/86-esmeralda.webp",
+          "imageCard": "/images/catalogo/estambres/la-abuelita/86-esmeralda.webp",
+          "source": "46-abuelita-esmeralda-861-1fb0040a4fe42439ab16755732950367-480-0.webp"
+        },
+        {
+          "code": "87",
+          "name": "Bandera",
+          "hex": "#90a294",
+          "image": "/images/catalogo/carta-colores/la-abuelita/87-bandera.webp",
+          "imageCard": "/images/catalogo/estambres/la-abuelita/87-bandera.webp",
+          "source": "48-abuelita-bandera-871-74587908ac17d6130e16755733811433-480-0.webp"
+        },
+        {
+          "code": "88",
+          "name": "Olivo",
+          "hex": "#a5a699",
+          "image": "/images/catalogo/carta-colores/la-abuelita/88-olivo.webp",
+          "imageCard": "/images/catalogo/estambres/la-abuelita/88-olivo.webp",
+          "source": "52-abuelita-olivo-881-d669fe8288beb879f516755735219150-480-0.webp"
+        },
+        {
+          "code": "89",
+          "name": "Aceituna",
+          "hex": "#a7a690",
+          "image": "/images/catalogo/carta-colores/la-abuelita/89-aceituna.webp",
+          "imageCard": "/images/catalogo/estambres/la-abuelita/89-aceituna.webp",
+          "source": "abuelita-aceituna-89-a070d9035a6716376b17594186321637-1024-1024.webp"
+        },
+        {
+          "code": "90",
+          "name": "Verde Pasto",
+          "hex": "#9aa389",
+          "image": "/images/catalogo/carta-colores/la-abuelita/90-verde-pasto.webp",
+          "imageCard": "/images/catalogo/estambres/la-abuelita/90-verde-pasto.webp",
+          "source": "abuelita-verde-pasto-90-29232646409bfc26e617594186472426-1024-1024.webp"
+        },
+        {
+          "code": "91",
+          "name": "Gris",
+          "hex": "#a7a8a1",
+          "image": "/images/catalogo/carta-colores/la-abuelita/91-gris.webp",
+          "imageCard": "/images/catalogo/estambres/la-abuelita/91-gris.webp",
+          "source": "33-abuelita-gris-911-4b25605176caba27ad16755728347475-480-0.webp"
+        },
+        {
+          "code": "92",
+          "name": "Gris Oscuro",
+          "hex": "#a4a6a3",
+          "image": "/images/catalogo/carta-colores/la-abuelita/92-gris-oscuro.webp",
+          "imageCard": "/images/catalogo/estambres/la-abuelita/92-gris-oscuro.webp",
+          "source": "32-abuelita-gris-oscuro-921-00ab6191fec96f4bf816755727852237-480-0.webp"
+        },
+        {
+          "code": "93",
+          "name": "Gris Niebla",
+          "hex": "#adb1a7",
+          "image": "/images/catalogo/carta-colores/la-abuelita/93-gris-niebla.webp",
+          "imageCard": "/images/catalogo/estambres/la-abuelita/93-gris-niebla.webp",
+          "source": "abuelita-gris-niebla-93-535bdd0b845157e98917594191569206-1024-1024.webp"
+        },
+        {
+          "code": "94",
+          "name": "Gris Acero",
+          "hex": "#979c98",
+          "image": "/images/catalogo/carta-colores/la-abuelita/94-gris-acero.webp",
+          "imageCard": "/images/catalogo/estambres/la-abuelita/94-gris-acero.webp",
+          "source": "abuelita-gris-acero-94-bd044d7fc401a4952317594192158763-1024-1024.webp"
+        },
+        {
+          "code": "95",
+          "name": "Gris Claro",
+          "hex": "#a6a59c",
+          "image": "/images/catalogo/carta-colores/la-abuelita/95-gris-claro.webp",
+          "imageCard": "/images/catalogo/estambres/la-abuelita/95-gris-claro.webp",
+          "source": "abuelita-gris-claro-95-75c05d797c2670d5a617594192705524-1024-1024.webp"
+        },
+        {
+          "code": "97",
+          "name": "Gris Oxford",
+          "hex": "#91948f",
+          "image": "/images/catalogo/carta-colores/la-abuelita/97-gris-oxford.webp",
+          "imageCard": "/images/catalogo/estambres/la-abuelita/97-gris-oxford.webp",
+          "source": "abuelita-gris-oxford-97-4161e739ebd7a5058017594194440269-1024-1024.webp"
+        }
+      ]
+    },
+    {
+      "id": "candy",
+      "name": "Candy",
+      "type": "Estambre",
+      "dir": "candy",
+      "colors": [
+        {
+          "code": "1801",
+          "name": "Blanco",
+          "hex": "#e8eaec",
+          "image": "/images/catalogo/carta-colores/candy/1801-blanco.webp",
+          "imageCard": "/images/catalogo/estambres/candy/1801-blanco.webp",
+          "source": "candy-40-blanco1-d78b52b8ec9f04b45a16748338678687-640-0.webp"
+        },
+        {
+          "code": "1805",
+          "name": "Naranja",
+          "hex": "#f4d3c1",
+          "image": "/images/catalogo/carta-colores/candy/1805-naranja.webp",
+          "imageCard": "/images/catalogo/estambres/candy/1805-naranja.webp",
+          "source": "candy-50-naranja1-6dcb35c657757c559516748299781959-640-0.webp"
+        },
+        {
+          "code": "1806",
+          "name": "Rojo",
+          "hex": "#e7b9bd",
+          "image": "/images/catalogo/carta-colores/candy/1806-rojo.webp",
+          "imageCard": "/images/catalogo/estambres/candy/1806-rojo.webp",
+          "source": "candy-50-rojo1-01b65ca291ec416b4e16748300068766-640-0.webp"
+        },
+        {
+          "code": "1807",
+          "name": "Rojo Sangre",
+          "hex": "#cfb1b6",
+          "image": "/images/catalogo/carta-colores/candy/1807-rojo-sangre.webp",
+          "imageCard": "/images/catalogo/estambres/candy/1807-rojo-sangre.webp",
+          "source": "candy-50-rojo-sangre1-420e75669aa4df829316748300182409-1024-1024.webp"
+        },
+        {
+          "code": "1808",
+          "name": "Fucsia",
+          "hex": "#ceadb8",
+          "image": "/images/catalogo/carta-colores/candy/1808-fucsia.webp",
+          "imageCard": "/images/catalogo/estambres/candy/1808-fucsia.webp",
+          "source": "candy-50-fiusha-18081-7c9261e7045649430316800234427512-1024-1024.webp"
+        },
+        {
+          "code": "1809",
+          "name": "Rosa",
+          "hex": "#e2cace",
+          "image": "/images/catalogo/carta-colores/candy/1809-rosa.webp",
+          "imageCard": "/images/catalogo/estambres/candy/1809-rosa.webp",
+          "source": "candy-50-rosa1-ca6f03e36a8a60e6dd16748300424268-640-0.webp"
+        },
+        {
+          "code": "1811",
+          "name": "Melón",
+          "hex": "#f4e6db",
+          "image": "/images/catalogo/carta-colores/candy/1811-melon.webp",
+          "imageCard": "/images/catalogo/estambres/candy/1811-melon.webp",
+          "source": "candy-50-melon1-3dbedc1c42b24885de16748299618363-640-0.webp"
+        },
+        {
+          "code": "1812",
+          "name": "Lila",
+          "hex": "#d3cee2",
+          "image": "/images/catalogo/carta-colores/candy/1812-lila.webp",
+          "imageCard": "/images/catalogo/estambres/candy/1812-lila.webp",
+          "source": "candy-50-lila-18121-8d45600ea1d17463ab16776176505168-640-0.webp"
+        },
+        {
+          "code": "1815",
+          "name": "Cielo",
+          "hex": "#e3e3e1",
+          "image": "/images/catalogo/carta-colores/candy/1815-cielo.webp",
+          "imageCard": "/images/catalogo/estambres/candy/1815-cielo.webp",
+          "source": "candy-50-cielo1-c91a58528b8fa4087116748305149281-640-0.webp"
+        },
+        {
+          "code": "1816",
+          "name": "Turquesa",
+          "hex": "#b8d5db",
+          "image": "/images/catalogo/carta-colores/candy/1816-turquesa.webp",
+          "imageCard": "/images/catalogo/estambres/candy/1816-turquesa.webp",
+          "source": "candy-50-turquesa1-6d2945d006f890eaf116748305441281-1024-1024.webp"
+        },
+        {
+          "code": "1818",
+          "name": "Limón",
+          "hex": "#c8cdb2",
+          "image": "/images/catalogo/carta-colores/candy/1818-limon.webp",
+          "imageCard": "/images/catalogo/estambres/candy/1818-limon.webp",
+          "source": "candy-50-limon-181811-9717670e3520b377c316800236314884-640-0.webp"
+        },
+        {
+          "code": "1820",
+          "name": "Olivo",
+          "hex": "#bdc3b1",
+          "image": "/images/catalogo/carta-colores/candy/1820-olivo.webp",
+          "imageCard": "/images/catalogo/estambres/candy/1820-olivo.webp",
+          "source": "candy-olivo-18201-0beb30a1d042150b6d16880081333340-1024-1024.webp"
+        },
+        {
+          "code": "1821",
+          "name": "Café",
+          "hex": "#c6c2bc",
+          "image": "/images/catalogo/carta-colores/candy/1821-cafe.webp",
+          "imageCard": "/images/catalogo/estambres/candy/1821-cafe.webp",
+          "source": "candy-50-cafe1-40ab09e5dca00fa17916753689749503-640-0.webp"
+        },
+        {
+          "code": "1822",
+          "name": "Café Claro",
+          "hex": "#bbb4a8",
+          "image": "/images/catalogo/carta-colores/candy/1822-cafe-claro.webp",
+          "imageCard": "/images/catalogo/estambres/candy/1822-cafe-claro.webp",
+          "source": "candy-cafe-claro-18221-d44945bec5b62e7aa516880081506938-1024-1024.webp"
+        },
+        {
+          "code": "1823",
+          "name": "Beige",
+          "hex": "#cfcbbc",
+          "image": "/images/catalogo/carta-colores/candy/1823-beige.webp",
+          "imageCard": "/images/catalogo/estambres/candy/1823-beige.webp",
+          "source": "beige1-e1d3206e28242940b916753689296535-640-0.webp"
+        },
+        {
+          "code": "1824",
+          "name": "Hueso",
+          "hex": "#dbdbd0",
+          "image": "/images/catalogo/carta-colores/candy/1824-hueso.webp",
+          "imageCard": "/images/catalogo/estambres/candy/1824-hueso.webp",
+          "source": "candy-hueso-18241-1e1c608037ee6fdbd916880118594103-640-0.webp"
+        },
+        {
+          "code": "1825",
+          "name": "Negro",
+          "hex": "#c5c5c5",
+          "image": "/images/catalogo/carta-colores/candy/1825-negro.webp",
+          "imageCard": "/images/catalogo/estambres/candy/1825-negro.webp",
+          "source": "candy-40-negro1-e8ace1eb75a8c0be0416748306720922-1024-1024.webp"
+        },
+        {
+          "code": "1830",
+          "name": "Vino",
+          "hex": "#d1bbb9",
+          "image": "/images/catalogo/carta-colores/candy/1830-vino.webp",
+          "imageCard": "/images/catalogo/estambres/candy/1830-vino.webp",
+          "source": "candy-50-vino1-a9380113e488ace52916753688790931-640-0.webp"
+        },
+        {
+          "code": "1834",
+          "name": "Salmón",
+          "hex": "#f7d3cf",
+          "image": "/images/catalogo/carta-colores/candy/1834-salmon.webp",
+          "imageCard": "/images/catalogo/estambres/candy/1834-salmon.webp",
+          "source": "candy-50-salmon1-8c0d7db10d2f48f5a216748309499450-640-0.webp"
+        },
+        {
+          "code": "1835",
+          "name": "Amarillo Neón",
+          "hex": "#d2d8a6",
+          "image": "/images/catalogo/carta-colores/candy/1835-amarillo-neon.webp",
+          "imageCard": "/images/catalogo/estambres/candy/1835-amarillo-neon.webp",
+          "source": "candy-50-amarillo-neon-18351-0112195b31ed9526d316800263261178-1024-1024.webp"
+        },
+        {
+          "code": "1836",
+          "name": "Verde Neón",
+          "hex": "#b9d1b0",
+          "image": "/images/catalogo/carta-colores/candy/1836-verde-neon.webp",
+          "imageCard": "/images/catalogo/estambres/candy/1836-verde-neon.webp",
+          "source": "candy-50-verde-neon-18361-d0e163d72f4e5fa8d716800262200769-640-0.webp"
+        },
+        {
+          "code": "1837",
+          "name": "Fucsia Neón",
+          "hex": "#dfafbf",
+          "image": "/images/catalogo/carta-colores/candy/1837-fucsia-neon.webp",
+          "imageCard": "/images/catalogo/estambres/candy/1837-fucsia-neon.webp",
+          "source": "candy-50-fiusha-neon-18371-ee45ab44fb54cbac6a16800263625532-1024-1024.webp"
+        },
+        {
+          "code": "1838",
+          "name": "Naranja Neón",
+          "hex": "#e5c0b1",
+          "image": "/images/catalogo/carta-colores/candy/1838-naranja-neon.webp",
+          "imageCard": "/images/catalogo/estambres/candy/1838-naranja-neon.webp",
+          "source": "candy-50-naranja-neon-18381-5c0d234670c40f6bd416800265039467-1024-1024.webp"
+        },
+        {
+          "code": "1841",
+          "name": "Morado",
+          "hex": "#c6b7cc",
+          "image": "/images/catalogo/carta-colores/candy/1841-morado.webp",
+          "imageCard": "/images/catalogo/estambres/candy/1841-morado.webp",
+          "source": "candy-50-morado-18411-fff0eced56febd62cf16891144500912-1024-1024.webp"
+        },
+        {
+          "code": "1842",
+          "name": "Rosa Mexicano",
+          "hex": "#deb9bf",
+          "image": "/images/catalogo/carta-colores/candy/1842-rosa-mexicano.webp",
+          "imageCard": "/images/catalogo/estambres/candy/1842-rosa-mexicano.webp",
+          "source": "candy-rosa-mexicano-18421-c3fde1cd91f336513c16880081874386-1024-1024.webp"
+        },
+        {
+          "code": "1844",
+          "name": "Jade",
+          "hex": "#b4c3c5",
+          "image": "/images/catalogo/carta-colores/candy/1844-jade.webp",
+          "imageCard": "/images/catalogo/estambres/candy/1844-jade.webp",
+          "source": "candy-jade-18441-022714941a4ae236db16880094633426-640-0.webp"
+        },
+        {
+          "code": "1846",
+          "name": "Tabaco",
+          "hex": "#dcccbd",
+          "image": "/images/catalogo/carta-colores/candy/1846-tabaco.webp",
+          "imageCard": "/images/catalogo/estambres/candy/1846-tabaco.webp",
+          "source": "candy-tabaco-18461-2d75ae8db770ca7ea516880095293777-640-0.webp"
+        },
+        {
+          "code": "1847",
+          "name": "Media Noche",
+          "hex": "#c2cad2",
+          "image": "/images/catalogo/carta-colores/candy/1847-media-noche.webp",
+          "imageCard": "/images/catalogo/estambres/candy/1847-media-noche.webp",
+          "source": "candy-50-media-noche1-756fba6382fcf44b7e16748305660568-1024-1024.webp"
+        },
+        {
+          "code": "1848",
+          "name": "Agua",
+          "hex": "#c9d9d8",
+          "image": "/images/catalogo/carta-colores/candy/1848-agua.webp",
+          "imageCard": "/images/catalogo/estambres/candy/1848-agua.webp",
+          "source": "candy-50-agua1-28cf74f9a31033487e16748304899117-640-0.webp"
+        },
+        {
+          "code": "1849",
+          "name": "Ladrillo",
+          "hex": "#d1b5af",
+          "image": "/images/catalogo/carta-colores/candy/1849-ladrillo.webp",
+          "imageCard": "/images/catalogo/estambres/candy/1849-ladrillo.webp",
+          "source": "candy-50-ladrillo-1849-21-f6f988d6fcd825c2fe16800292551441-1024-1024.webp"
+        },
+        {
+          "code": "1850",
+          "name": "Camello",
+          "hex": "#e2dac6",
+          "image": "/images/catalogo/carta-colores/candy/1850-camello.webp",
+          "imageCard": "/images/catalogo/estambres/candy/1850-camello.webp",
+          "source": "candy-50-camello1-2ea2e4720bc68502a816748310072967-640-0.webp"
+        },
+        {
+          "code": "1851",
+          "name": "Amarillo",
+          "hex": "#ead9b3",
+          "image": "/images/catalogo/carta-colores/candy/1851-amarillo.webp",
+          "imageCard": "/images/catalogo/estambres/candy/1851-amarillo.webp",
+          "source": "candy-amarillo-18511-00470887625f88ba2516880095581246-640-0.webp"
+        },
+        {
+          "code": "1852",
+          "name": "Mamey",
+          "hex": "#eec7bb",
+          "image": "/images/catalogo/carta-colores/candy/1852-mamey.webp",
+          "imageCard": "/images/catalogo/estambres/candy/1852-mamey.webp",
+          "source": "candy-50-mamey-18521-6fcff0ae86b1d23ebc16753737581299-640-0.webp"
+        },
+        {
+          "code": "1853",
+          "name": "Chevron",
+          "hex": "#c7beba",
+          "image": "/images/catalogo/carta-colores/candy/1853-chevron.webp",
+          "imageCard": "/images/catalogo/estambres/candy/1853-chevron.webp",
+          "source": "candy-50-chevron-18531-13934d237deea8298116800267310560-1024-1024.webp"
+        },
+        {
+          "code": "1854",
+          "name": "Café Oscuro",
+          "hex": "#c1c3c4",
+          "image": "/images/catalogo/carta-colores/candy/1854-cafe-oscuro.webp",
+          "imageCard": "/images/catalogo/estambres/candy/1854-cafe-oscuro.webp",
+          "source": "candy-50-cafe-oscuro-18541-9e48772e83c85c8beb16800267852520-1024-1024.webp"
+        },
+        {
+          "code": "1856",
+          "name": "Coral",
+          "hex": "#d4b9b9",
+          "image": "/images/catalogo/carta-colores/candy/1856-coral.webp",
+          "imageCard": "/images/catalogo/estambres/candy/1856-coral.webp",
+          "source": "candy-coral-18561-4def5130a370efe78f16880109057849-640-0.webp"
+        },
+        {
+          "code": "1857",
+          "name": "Frambuesa",
+          "hex": "#e5bcc9",
+          "image": "/images/catalogo/carta-colores/candy/1857-frambuesa.webp",
+          "imageCard": "/images/catalogo/estambres/candy/1857-frambuesa.webp",
+          "source": "candy-frambuesa-18571-4dffe66eca8a23ee1816880109371295-640-0.webp"
+        },
+        {
+          "code": "1858",
+          "name": "Berenjena",
+          "hex": "#cec8cf",
+          "image": "/images/catalogo/carta-colores/candy/1858-berenjena.webp",
+          "imageCard": "/images/catalogo/estambres/candy/1858-berenjena.webp",
+          "source": "candy-berenjena-18581-8e9fa0f3920df2e65016880109610925-640-0.webp"
+        },
+        {
+          "code": "1859",
+          "name": "Bugambilia",
+          "hex": "#d3bdc9",
+          "image": "/images/catalogo/carta-colores/candy/1859-bugambilia.webp",
+          "imageCard": "/images/catalogo/estambres/candy/1859-bugambilia.webp",
+          "source": "candy-bugambilia-18591-18287032b5047c3b0316880109832210-640-0.webp"
+        },
+        {
+          "code": "1860",
+          "name": "Morado",
+          "hex": "#c2c1c9",
+          "image": "/images/catalogo/carta-colores/candy/1860-morado.webp",
+          "imageCard": "/images/catalogo/estambres/candy/1860-morado.webp",
+          "source": "candy-morado-18601-9e92d3ca8f2c3419b416880110246817-640-0.webp"
+        },
+        {
+          "code": "1861",
+          "name": "Azul",
+          "hex": "#dadee3",
+          "image": "/images/catalogo/carta-colores/candy/1861-azul.webp",
+          "imageCard": "/images/catalogo/estambres/candy/1861-azul.webp",
+          "source": "candy-50-azul-18611-22aa54e6febe27f4d516776175919083-640-0.webp"
+        },
+        {
+          "code": "1862",
+          "name": "Verde",
+          "hex": "#b4c6b9",
+          "image": "/images/catalogo/carta-colores/candy/1862-verde.webp",
+          "imageCard": "/images/catalogo/estambres/candy/1862-verde.webp",
+          "source": "candy-verde-18621-b7a426d5726b27b4ef16880110455830-1024-1024.webp"
+        },
+        {
+          "code": "1863",
+          "name": "Esmeralda",
+          "hex": "#bcdfda",
+          "image": "/images/catalogo/carta-colores/candy/1863-esmeralda.webp",
+          "imageCard": "/images/catalogo/estambres/candy/1863-esmeralda.webp",
+          "source": "candy-esmeralda-18631-ae157859d6195fc68516880110611775-1024-1024.webp"
+        },
+        {
+          "code": "1864",
+          "name": "Nuez",
+          "hex": "#c7c4b0",
+          "image": "/images/catalogo/carta-colores/candy/1864-nuez.webp",
+          "imageCard": "/images/catalogo/estambres/candy/1864-nuez.webp",
+          "source": "candy-nuez-18641-3bf8aeb84c23cb94b416880110858404-1024-1024.webp"
+        },
+        {
+          "code": "1865",
+          "name": "Fucsia",
+          "hex": "#deb5be",
+          "image": "/images/catalogo/carta-colores/candy/1865-fucsia.webp",
+          "imageCard": "/images/catalogo/estambres/candy/1865-fucsia.webp",
+          "source": "candy-fisha-18651-26d995710a1b46e29916880115150247-640-0.webp"
+        },
+        {
+          "code": "1866",
+          "name": "Gris Claro",
+          "hex": "#cecfc8",
+          "image": "/images/catalogo/carta-colores/candy/1866-gris-claro.webp",
+          "imageCard": "/images/catalogo/estambres/candy/1866-gris-claro.webp",
+          "source": "candy-gris-claro-18661-6f7e892b0446b1f78316880118074521-1024-1024.webp"
+        },
+        {
+          "code": "1867",
+          "name": "Gris Oscuro",
+          "hex": "#bebdb7",
+          "image": "/images/catalogo/carta-colores/candy/1867-gris-oscuro.webp",
+          "imageCard": "/images/catalogo/estambres/candy/1867-gris-oscuro.webp",
+          "source": "candy-gris-oscuro-18671-784d97c637fb24be9216880118309034-1024-1024.webp"
+        },
+        {
+          "code": "1874",
+          "name": "Carne",
+          "hex": "#ede6d8",
+          "image": "/images/catalogo/carta-colores/candy/1874-carne.webp",
+          "imageCard": "/images/catalogo/estambres/candy/1874-carne.webp",
+          "source": "candy-40-carne1-a1ebbc57105bdacac016748299327090-640-0.webp"
+        }
+      ]
+    },
+    {
+      "id": "karina-kairo",
+      "name": "Karina Kairo",
+      "type": "Estambre",
+      "dir": "karina kairo",
+      "colors": [
+        {
+          "code": "01",
+          "name": "Blanco",
+          "hex": "#d2d1d6",
+          "image": "/images/catalogo/carta-colores/karina-kairo/01-blanco.webp",
+          "imageCard": "/images/catalogo/estambres/karina-kairo/01-blanco.webp",
+          "source": "01-BLANCO.webp"
+        },
+        {
+          "code": "07",
+          "name": "Vidrio",
+          "hex": "#bdc5d0",
+          "image": "/images/catalogo/carta-colores/karina-kairo/07-vidrio.webp",
+          "imageCard": "/images/catalogo/estambres/karina-kairo/07-vidrio.webp",
+          "source": "7-VIDRIO.webp"
+        },
+        {
+          "code": "08",
+          "name": "Turquesa",
+          "hex": "#c8d1d2",
+          "image": "/images/catalogo/carta-colores/karina-kairo/08-turquesa.webp",
+          "imageCard": "/images/catalogo/estambres/karina-kairo/08-turquesa.webp",
+          "source": "08_TURQUEZA_KAIRO_B.webp"
+        },
+        {
+          "code": "12",
+          "name": "Pizarra",
+          "hex": "#a3b0c3",
+          "image": "/images/catalogo/carta-colores/karina-kairo/12-pizarra.webp",
+          "imageCard": "/images/catalogo/estambres/karina-kairo/12-pizarra.webp",
+          "source": "12-PIZARRA_KAIRO.webp"
+        },
+        {
+          "code": "13",
+          "name": "Rosa Pastel",
+          "hex": "#d0cbcf",
+          "image": "/images/catalogo/carta-colores/karina-kairo/13-rosa-pastel.webp",
+          "imageCard": "/images/catalogo/estambres/karina-kairo/13-rosa-pastel.webp",
+          "source": "13-ROSA-PASTEL.webp"
+        },
+        {
+          "code": "14",
+          "name": "Rosa BB",
+          "hex": "#d8cdd8",
+          "image": "/images/catalogo/carta-colores/karina-kairo/14-rosa-bb.webp",
+          "imageCard": "/images/catalogo/estambres/karina-kairo/14-rosa-bb.webp",
+          "source": "14-ROSA-BB.webp"
+        },
+        {
+          "code": "15",
+          "name": "Palo de Rosa",
+          "hex": "#d4c7d2",
+          "image": "/images/catalogo/carta-colores/karina-kairo/15-palo-de-rosa.webp",
+          "imageCard": "/images/catalogo/estambres/karina-kairo/15-palo-de-rosa.webp",
+          "source": "15-PALO-DE-ROSA.webp"
+        },
+        {
+          "code": "17",
+          "name": "Clavel",
+          "hex": "#d8c7cf",
+          "image": "/images/catalogo/carta-colores/karina-kairo/17-clavel.webp",
+          "imageCard": "/images/catalogo/estambres/karina-kairo/17-clavel.webp",
+          "source": "17-CLAVEL_KAIRO_B.webp"
+        },
+        {
+          "code": "23",
+          "name": "Fucsia",
+          "hex": "#d0a6b6",
+          "image": "/images/catalogo/carta-colores/karina-kairo/23-fucsia.webp",
+          "imageCard": "/images/catalogo/estambres/karina-kairo/23-fucsia.webp",
+          "source": "23_FUCSIA_KAIRO_B.webp"
+        },
+        {
+          "code": "25",
+          "name": "Marfil",
+          "hex": "#d4d2d1",
+          "image": "/images/catalogo/carta-colores/karina-kairo/25-marfil.webp",
+          "imageCard": "/images/catalogo/estambres/karina-kairo/25-marfil.webp",
+          "source": "25-MARFIL.webp"
+        },
+        {
+          "code": "27",
+          "name": "Trigo",
+          "hex": "#cecac7",
+          "image": "/images/catalogo/carta-colores/karina-kairo/27-trigo.webp",
+          "imageCard": "/images/catalogo/estambres/karina-kairo/27-trigo.webp",
+          "source": "27-TRIGO.webp"
+        },
+        {
+          "code": "30",
+          "name": "Nuez",
+          "hex": "#cec3c0",
+          "image": "/images/catalogo/carta-colores/karina-kairo/30-nuez.webp",
+          "imageCard": "/images/catalogo/estambres/karina-kairo/30-nuez.webp",
+          "source": "30_NUEZ_KAIRO_B.webp"
+        },
+        {
+          "code": "33",
+          "name": "Amarillo Paja",
+          "hex": "#d8d3c7",
+          "image": "/images/catalogo/carta-colores/karina-kairo/33-amarillo-paja.webp",
+          "imageCard": "/images/catalogo/estambres/karina-kairo/33-amarillo-paja.webp",
+          "source": "33_AMARILLO-PAJA.webp"
+        },
+        {
+          "code": "35",
+          "name": "Amarillo Pollo",
+          "hex": "#dcd3bb",
+          "image": "/images/catalogo/carta-colores/karina-kairo/35-amarillo-pollo.webp",
+          "imageCard": "/images/catalogo/estambres/karina-kairo/35-amarillo-pollo.webp",
+          "source": "35-AMARILLO-POLLO.webp"
+        },
+        {
+          "code": "38",
+          "name": "Mango",
+          "hex": "#dcd5ae",
+          "image": "/images/catalogo/carta-colores/karina-kairo/38-mango.webp",
+          "imageCard": "/images/catalogo/estambres/karina-kairo/38-mango.webp",
+          "source": "38-MANGO.webp"
+        },
+        {
+          "code": "43",
+          "name": "Mirinda",
+          "hex": "#d8bfaf",
+          "image": "/images/catalogo/carta-colores/karina-kairo/43-mirinda.webp",
+          "imageCard": "/images/catalogo/estambres/karina-kairo/43-mirinda.webp",
+          "source": "43-MIRINDA.webp"
+        },
+        {
+          "code": "45",
+          "name": "Nemo",
+          "hex": "#d9b5a2",
+          "image": "/images/catalogo/carta-colores/karina-kairo/45-nemo.webp",
+          "imageCard": "/images/catalogo/estambres/karina-kairo/45-nemo.webp",
+          "source": "45_NEMO_KAIRO_B.webp"
+        },
+        {
+          "code": "47",
+          "name": "Melón",
+          "hex": "#c9c0c0",
+          "image": "/images/catalogo/carta-colores/karina-kairo/47-melon.webp",
+          "imageCard": "/images/catalogo/estambres/karina-kairo/47-melon.webp",
+          "source": "47-MELON.webp"
+        },
+        {
+          "code": "52",
+          "name": "Naranja",
+          "hex": "#d2bdc0",
+          "image": "/images/catalogo/carta-colores/karina-kairo/52-naranja.webp",
+          "imageCard": "/images/catalogo/estambres/karina-kairo/52-naranja.webp",
+          "source": "52_NARANJA_KAIRO_B.webp"
+        },
+        {
+          "code": "54",
+          "name": "Camello",
+          "hex": "#d9c6ba",
+          "image": "/images/catalogo/carta-colores/karina-kairo/54-camello.webp",
+          "imageCard": "/images/catalogo/estambres/karina-kairo/54-camello.webp",
+          "source": "54-CAMELLO_KAIRO_B_1.webp"
+        },
+        {
+          "code": "59",
+          "name": "Mentita",
+          "hex": "#c5cdc5",
+          "image": "/images/catalogo/carta-colores/karina-kairo/59-mentita.webp",
+          "imageCard": "/images/catalogo/estambres/karina-kairo/59-mentita.webp",
+          "source": "59-MENTITA.webp"
+        },
+        {
+          "code": "75",
+          "name": "Palo de Rosa",
+          "hex": "#ceb3bf",
+          "image": "/images/catalogo/carta-colores/karina-kairo/75-palo-de-rosa.webp",
+          "imageCard": "/images/catalogo/estambres/karina-kairo/75-palo-de-rosa.webp",
+          "source": "75-PALO-DE-ROSA.webp"
+        },
+        {
+          "code": "78",
+          "name": "Rojo Escolar",
+          "hex": "#cba2a7",
+          "image": "/images/catalogo/carta-colores/karina-kairo/78-rojo-escolar.webp",
+          "imageCard": "/images/catalogo/estambres/karina-kairo/78-rojo-escolar.webp",
+          "source": "78-ROJO-ESCOLAR.webp"
+        },
+        {
+          "code": "79",
+          "name": "Sangre",
+          "hex": "#c0a0a2",
+          "image": "/images/catalogo/carta-colores/karina-kairo/79-sangre.webp",
+          "imageCard": "/images/catalogo/estambres/karina-kairo/79-sangre.webp",
+          "source": "79_SANGRE_KAIRO_B.webp"
+        },
+        {
+          "code": "93",
+          "name": "Biznaga",
+          "hex": "#b4a9a8",
+          "image": "/images/catalogo/carta-colores/karina-kairo/93-biznaga.webp",
+          "imageCard": "/images/catalogo/estambres/karina-kairo/93-biznaga.webp",
+          "source": "93-BIZNAGA.webp"
+        },
+        {
+          "code": "99",
+          "name": "Negro",
+          "hex": "#abaaaf",
+          "image": "/images/catalogo/carta-colores/karina-kairo/99-negro.webp",
+          "imageCard": "/images/catalogo/estambres/karina-kairo/99-negro.webp",
+          "source": "99-NEGRO-1.webp"
+        },
+        {
+          "code": "101",
+          "name": "Gris Perla",
+          "hex": "#c9c9cb",
+          "image": "/images/catalogo/carta-colores/karina-kairo/101-gris-perla.webp",
+          "imageCard": "/images/catalogo/estambres/karina-kairo/101-gris-perla.webp",
+          "source": "101-GRIS-PERLA.webp"
+        },
+        {
+          "code": "106",
+          "name": "Lila",
+          "hex": "#d1c8d4",
+          "image": "/images/catalogo/carta-colores/karina-kairo/106-lila.webp",
+          "imageCard": "/images/catalogo/estambres/karina-kairo/106-lila.webp",
+          "source": "106_LILA_KAIRO_B.webp"
+        },
+        {
+          "code": "121",
+          "name": "Pepsi",
+          "hex": "#a2bad2",
+          "image": "/images/catalogo/carta-colores/karina-kairo/121-pepsi.webp",
+          "imageCard": "/images/catalogo/estambres/karina-kairo/121-pepsi.webp",
+          "source": "121-PEPSI.webp"
+        },
+        {
+          "code": "132",
+          "name": "Limón",
+          "hex": "#c5c8b7",
+          "image": "/images/catalogo/carta-colores/karina-kairo/132-limon.webp",
+          "imageCard": "/images/catalogo/estambres/karina-kairo/132-limon.webp",
+          "source": "132_LIMON_KAIRO.webp"
+        },
+        {
+          "code": "179",
+          "name": "Malva",
+          "hex": "#d2aeb8",
+          "image": "/images/catalogo/carta-colores/karina-kairo/179-malva.webp",
+          "imageCard": "/images/catalogo/estambres/karina-kairo/179-malva.webp",
+          "source": "179_MALVA_KAIRO_B.webp"
+        },
+        {
+          "code": "215",
+          "name": "Carne",
+          "hex": "#d5cece",
+          "image": "/images/catalogo/carta-colores/karina-kairo/215-carne.webp",
+          "imageCard": "/images/catalogo/estambres/karina-kairo/215-carne.webp",
+          "source": "215-CARNE.webp"
+        },
+        {
+          "code": "218",
+          "name": "Chícharo",
+          "hex": "#b1baa2",
+          "image": "/images/catalogo/carta-colores/karina-kairo/218-chicharo.webp",
+          "imageCard": "/images/catalogo/estambres/karina-kairo/218-chicharo.webp",
+          "source": "218-CICHARO.webp"
+        },
+        {
+          "code": "254",
+          "name": "Hielo",
+          "hex": "#ccd0d5",
+          "image": "/images/catalogo/carta-colores/karina-kairo/254-hielo.webp",
+          "imageCard": "/images/catalogo/estambres/karina-kairo/254-hielo.webp",
+          "source": "254-HIELO.webp"
+        }
+      ]
+    },
+    {
       "id": "komfy-mini",
       "name": "Komfy Mini",
       "type": "Estambre",
@@ -417,430 +2393,6 @@
       ]
     },
     {
-      "id": "karina-kairo",
-      "name": "Karina Kairo",
-      "type": "Estambre",
-      "dir": "karina kairo",
-      "colors": [
-        {
-          "code": "01",
-          "name": "Blanco",
-          "hex": "#d2d1d6",
-          "image": "/images/catalogo/carta-colores/karina-kairo/01-blanco.webp",
-          "imageCard": "/images/catalogo/estambres/karina-kairo/01-blanco.webp",
-          "source": "01-BLANCO.webp"
-        },
-        {
-          "code": "07",
-          "name": "Vidrio",
-          "hex": "#bdc5d0",
-          "image": "/images/catalogo/carta-colores/karina-kairo/07-vidrio.webp",
-          "imageCard": "/images/catalogo/estambres/karina-kairo/07-vidrio.webp",
-          "source": "7-VIDRIO.webp"
-        },
-        {
-          "code": "08",
-          "name": "Turqueza",
-          "hex": "#c8d1d2",
-          "image": "/images/catalogo/carta-colores/karina-kairo/08-turqueza.webp",
-          "imageCard": "/images/catalogo/estambres/karina-kairo/08-turqueza.webp",
-          "source": "08_TURQUEZA_KAIRO_B.webp"
-        },
-        {
-          "code": "12",
-          "name": "Pizarra",
-          "hex": "#a3b0c3",
-          "image": "/images/catalogo/carta-colores/karina-kairo/12-pizarra.webp",
-          "imageCard": "/images/catalogo/estambres/karina-kairo/12-pizarra.webp",
-          "source": "12-PIZARRA_KAIRO.webp"
-        },
-        {
-          "code": "13",
-          "name": "Rosa Pastel",
-          "hex": "#d0cbcf",
-          "image": "/images/catalogo/carta-colores/karina-kairo/13-rosa-pastel.webp",
-          "imageCard": "/images/catalogo/estambres/karina-kairo/13-rosa-pastel.webp",
-          "source": "13-ROSA-PASTEL.webp"
-        },
-        {
-          "code": "14",
-          "name": "Rosa BB",
-          "hex": "#d8cdd8",
-          "image": "/images/catalogo/carta-colores/karina-kairo/14-rosa-bb.webp",
-          "imageCard": "/images/catalogo/estambres/karina-kairo/14-rosa-bb.webp",
-          "source": "14-ROSA-BB.webp"
-        },
-        {
-          "code": "15",
-          "name": "Palo de Rosa",
-          "hex": "#d4c7d2",
-          "image": "/images/catalogo/carta-colores/karina-kairo/15-palo-de-rosa.webp",
-          "imageCard": "/images/catalogo/estambres/karina-kairo/15-palo-de-rosa.webp",
-          "source": "15-PALO-DE-ROSA.webp"
-        },
-        {
-          "code": "17",
-          "name": "Clavel",
-          "hex": "#d8c7cf",
-          "image": "/images/catalogo/carta-colores/karina-kairo/17-clavel.webp",
-          "imageCard": "/images/catalogo/estambres/karina-kairo/17-clavel.webp",
-          "source": "17-CLAVEL_KAIRO_B.webp"
-        },
-        {
-          "code": "23",
-          "name": "Fucsia",
-          "hex": "#d0a6b6",
-          "image": "/images/catalogo/carta-colores/karina-kairo/23-fucsia.webp",
-          "imageCard": "/images/catalogo/estambres/karina-kairo/23-fucsia.webp",
-          "source": "23_FUCSIA_KAIRO_B.webp"
-        },
-        {
-          "code": "25",
-          "name": "Marfil",
-          "hex": "#d4d2d1",
-          "image": "/images/catalogo/carta-colores/karina-kairo/25-marfil.webp",
-          "imageCard": "/images/catalogo/estambres/karina-kairo/25-marfil.webp",
-          "source": "25-MARFIL.webp"
-        },
-        {
-          "code": "27",
-          "name": "Trigo",
-          "hex": "#cecac7",
-          "image": "/images/catalogo/carta-colores/karina-kairo/27-trigo.webp",
-          "imageCard": "/images/catalogo/estambres/karina-kairo/27-trigo.webp",
-          "source": "27-TRIGO.webp"
-        },
-        {
-          "code": "30",
-          "name": "Nuez",
-          "hex": "#cec3c0",
-          "image": "/images/catalogo/carta-colores/karina-kairo/30-nuez.webp",
-          "imageCard": "/images/catalogo/estambres/karina-kairo/30-nuez.webp",
-          "source": "30_NUEZ_KAIRO_B.webp"
-        },
-        {
-          "code": "33",
-          "name": "Amarillo Paja",
-          "hex": "#d8d3c7",
-          "image": "/images/catalogo/carta-colores/karina-kairo/33-amarillo-paja.webp",
-          "imageCard": "/images/catalogo/estambres/karina-kairo/33-amarillo-paja.webp",
-          "source": "33_AMARILLO-PAJA.webp"
-        },
-        {
-          "code": "35",
-          "name": "Amarillo Pollo",
-          "hex": "#dcd3bb",
-          "image": "/images/catalogo/carta-colores/karina-kairo/35-amarillo-pollo.webp",
-          "imageCard": "/images/catalogo/estambres/karina-kairo/35-amarillo-pollo.webp",
-          "source": "35-AMARILLO-POLLO.webp"
-        },
-        {
-          "code": "38",
-          "name": "Mango",
-          "hex": "#dcd5ae",
-          "image": "/images/catalogo/carta-colores/karina-kairo/38-mango.webp",
-          "imageCard": "/images/catalogo/estambres/karina-kairo/38-mango.webp",
-          "source": "38-MANGO.webp"
-        },
-        {
-          "code": "43",
-          "name": "Mirinda",
-          "hex": "#d8bfaf",
-          "image": "/images/catalogo/carta-colores/karina-kairo/43-mirinda.webp",
-          "imageCard": "/images/catalogo/estambres/karina-kairo/43-mirinda.webp",
-          "source": "43-MIRINDA.webp"
-        },
-        {
-          "code": "45",
-          "name": "Nemo",
-          "hex": "#d9b5a2",
-          "image": "/images/catalogo/carta-colores/karina-kairo/45-nemo.webp",
-          "imageCard": "/images/catalogo/estambres/karina-kairo/45-nemo.webp",
-          "source": "45_NEMO_KAIRO_B.webp"
-        },
-        {
-          "code": "47",
-          "name": "Melon",
-          "hex": "#c9c0c0",
-          "image": "/images/catalogo/carta-colores/karina-kairo/47-melon.webp",
-          "imageCard": "/images/catalogo/estambres/karina-kairo/47-melon.webp",
-          "source": "47-MELON.webp"
-        },
-        {
-          "code": "52",
-          "name": "Naranja",
-          "hex": "#d2bdc0",
-          "image": "/images/catalogo/carta-colores/karina-kairo/52-naranja.webp",
-          "imageCard": "/images/catalogo/estambres/karina-kairo/52-naranja.webp",
-          "source": "52_NARANJA_KAIRO_B.webp"
-        },
-        {
-          "code": "54",
-          "name": "Camello",
-          "hex": "#d9c6ba",
-          "image": "/images/catalogo/carta-colores/karina-kairo/54-camello.webp",
-          "imageCard": "/images/catalogo/estambres/karina-kairo/54-camello.webp",
-          "source": "54-CAMELLO_KAIRO_B_1.webp"
-        },
-        {
-          "code": "59",
-          "name": "Mentita",
-          "hex": "#c5cdc5",
-          "image": "/images/catalogo/carta-colores/karina-kairo/59-mentita.webp",
-          "imageCard": "/images/catalogo/estambres/karina-kairo/59-mentita.webp",
-          "source": "59-MENTITA.webp"
-        },
-        {
-          "code": "75",
-          "name": "Palo de Rosa",
-          "hex": "#ceb3bf",
-          "image": "/images/catalogo/carta-colores/karina-kairo/75-palo-de-rosa.webp",
-          "imageCard": "/images/catalogo/estambres/karina-kairo/75-palo-de-rosa.webp",
-          "source": "75-PALO-DE-ROSA.webp"
-        },
-        {
-          "code": "78",
-          "name": "Rojo Escolar",
-          "hex": "#cba2a7",
-          "image": "/images/catalogo/carta-colores/karina-kairo/78-rojo-escolar.webp",
-          "imageCard": "/images/catalogo/estambres/karina-kairo/78-rojo-escolar.webp",
-          "source": "78-ROJO-ESCOLAR.webp"
-        },
-        {
-          "code": "79",
-          "name": "Sangre",
-          "hex": "#c0a0a2",
-          "image": "/images/catalogo/carta-colores/karina-kairo/79-sangre.webp",
-          "imageCard": "/images/catalogo/estambres/karina-kairo/79-sangre.webp",
-          "source": "79_SANGRE_KAIRO_B.webp"
-        },
-        {
-          "code": "93",
-          "name": "Biznaga",
-          "hex": "#b4a9a8",
-          "image": "/images/catalogo/carta-colores/karina-kairo/93-biznaga.webp",
-          "imageCard": "/images/catalogo/estambres/karina-kairo/93-biznaga.webp",
-          "source": "93-BIZNAGA.webp"
-        },
-        {
-          "code": "99",
-          "name": "Negro",
-          "hex": "#abaaaf",
-          "image": "/images/catalogo/carta-colores/karina-kairo/99-negro.webp",
-          "imageCard": "/images/catalogo/estambres/karina-kairo/99-negro.webp",
-          "source": "99-NEGRO-1.webp"
-        },
-        {
-          "code": "101",
-          "name": "Gris Perla",
-          "hex": "#c9c9cb",
-          "image": "/images/catalogo/carta-colores/karina-kairo/101-gris-perla.webp",
-          "imageCard": "/images/catalogo/estambres/karina-kairo/101-gris-perla.webp",
-          "source": "101-GRIS-PERLA.webp"
-        },
-        {
-          "code": "106",
-          "name": "Lila",
-          "hex": "#d1c8d4",
-          "image": "/images/catalogo/carta-colores/karina-kairo/106-lila.webp",
-          "imageCard": "/images/catalogo/estambres/karina-kairo/106-lila.webp",
-          "source": "106_LILA_KAIRO_B.webp"
-        },
-        {
-          "code": "121",
-          "name": "Pepsi",
-          "hex": "#b0bdd0",
-          "image": "/images/catalogo/carta-colores/karina-kairo/121-pepsi.webp",
-          "imageCard": "/images/catalogo/estambres/karina-kairo/121-pepsi.webp",
-          "source": "121_PEPSI_KAIRO.webp"
-        },
-        {
-          "code": "132",
-          "name": "Limón",
-          "hex": "#c5c8b7",
-          "image": "/images/catalogo/carta-colores/karina-kairo/132-limon.webp",
-          "imageCard": "/images/catalogo/estambres/karina-kairo/132-limon.webp",
-          "source": "132_LIMON_KAIRO.webp"
-        },
-        {
-          "code": "179",
-          "name": "Malva",
-          "hex": "#d2aeb8",
-          "image": "/images/catalogo/carta-colores/karina-kairo/179-malva.webp",
-          "imageCard": "/images/catalogo/estambres/karina-kairo/179-malva.webp",
-          "source": "179_MALVA_KAIRO_B.webp"
-        },
-        {
-          "code": "215",
-          "name": "Carne",
-          "hex": "#d5cece",
-          "image": "/images/catalogo/carta-colores/karina-kairo/215-carne.webp",
-          "imageCard": "/images/catalogo/estambres/karina-kairo/215-carne.webp",
-          "source": "215-CARNE.webp"
-        },
-        {
-          "code": "218",
-          "name": "Cicharo",
-          "hex": "#b1baa2",
-          "image": "/images/catalogo/carta-colores/karina-kairo/218-cicharo.webp",
-          "imageCard": "/images/catalogo/estambres/karina-kairo/218-cicharo.webp",
-          "source": "218-CICHARO.webp"
-        },
-        {
-          "code": "254",
-          "name": "Hielo",
-          "hex": "#ccd0d5",
-          "image": "/images/catalogo/carta-colores/karina-kairo/254-hielo.webp",
-          "imageCard": "/images/catalogo/estambres/karina-kairo/254-hielo.webp",
-          "source": "254-HIELO.webp"
-        }
-      ]
-    },
-    {
-      "id": "trapillo-kraft",
-      "name": "Trapillo Kraft",
-      "type": "Trapillo",
-      "dir": "trapillo kraft",
-      "colors": [
-        {
-          "code": "01",
-          "name": "Blanco",
-          "hex": "#edd7b3",
-          "image": "/images/catalogo/carta-colores/trapillo-kraft/01-blanco.webp",
-          "imageCard": "/images/catalogo/estambres/trapillo-kraft/01-blanco.webp",
-          "source": "01_BLANCO_TRAPILLO_B.webp"
-        },
-        {
-          "code": "06",
-          "name": "Cielo",
-          "hex": "#b8cac0",
-          "image": "/images/catalogo/carta-colores/trapillo-kraft/06-cielo.webp",
-          "imageCard": "/images/catalogo/estambres/trapillo-kraft/06-cielo.webp",
-          "source": "6_CIELO_TRAPILLO_B.webp"
-        },
-        {
-          "code": "15",
-          "name": "Palo de Rosa",
-          "hex": "#eebea5",
-          "image": "/images/catalogo/carta-colores/trapillo-kraft/15-palo-de-rosa.webp",
-          "imageCard": "/images/catalogo/estambres/trapillo-kraft/15-palo-de-rosa.webp",
-          "source": "15_PALO-DE-ROSA_TRAPILLO-KRAFT_B.webp"
-        },
-        {
-          "code": "19",
-          "name": "Lila",
-          "hex": "#d4a1b2",
-          "image": "/images/catalogo/carta-colores/trapillo-kraft/19-lila.webp",
-          "imageCard": "/images/catalogo/estambres/trapillo-kraft/19-lila.webp",
-          "source": "19_LILA_TRAPILLO-KRAFT_B.webp"
-        },
-        {
-          "code": "23",
-          "name": "Fucsia",
-          "hex": "#ed7882",
-          "image": "/images/catalogo/carta-colores/trapillo-kraft/23-fucsia.webp",
-          "imageCard": "/images/catalogo/estambres/trapillo-kraft/23-fucsia.webp",
-          "source": "23_FUCSIA_TRAPILLO_B.webp"
-        },
-        {
-          "code": "30",
-          "name": "Nuez",
-          "hex": "#e5bf90",
-          "image": "/images/catalogo/carta-colores/trapillo-kraft/30-nuez.webp",
-          "imageCard": "/images/catalogo/estambres/trapillo-kraft/30-nuez.webp",
-          "source": "30-NUEZ_TRAPILLO-KRAFT.webp"
-        },
-        {
-          "code": "39",
-          "name": "Mango",
-          "hex": "#fbcc65",
-          "image": "/images/catalogo/carta-colores/trapillo-kraft/39-mango.webp",
-          "imageCard": "/images/catalogo/estambres/trapillo-kraft/39-mango.webp",
-          "source": "39_MANGO_TRAPILLO_B.webp"
-        },
-        {
-          "code": "59",
-          "name": "Mentita",
-          "hex": "#d4e2b4",
-          "image": "/images/catalogo/carta-colores/trapillo-kraft/59-mentita.webp",
-          "imageCard": "/images/catalogo/estambres/trapillo-kraft/59-mentita.webp",
-          "source": "59_MENTITA_TRAPILLO_B.webp"
-        },
-        {
-          "code": "68",
-          "name": "Bandera",
-          "hex": "#7f906d",
-          "image": "/images/catalogo/carta-colores/trapillo-kraft/68-bandera.webp",
-          "imageCard": "/images/catalogo/estambres/trapillo-kraft/68-bandera.webp",
-          "source": "68-BANDERA_TRAPILLO_LKRAFT_B.webp"
-        },
-        {
-          "code": "71",
-          "name": "Verde Militar",
-          "hex": "#887550",
-          "image": "/images/catalogo/carta-colores/trapillo-kraft/71-verde-militar.webp",
-          "imageCard": "/images/catalogo/estambres/trapillo-kraft/71-verde-militar.webp",
-          "source": "71_VERDE-MILITAR_TRAPILLO_KRAFT_B.webp"
-        },
-        {
-          "code": "78",
-          "name": "Rojo Escolar",
-          "hex": "#ee6d5d",
-          "image": "/images/catalogo/carta-colores/trapillo-kraft/78-rojo-escolar.webp",
-          "imageCard": "/images/catalogo/estambres/trapillo-kraft/78-rojo-escolar.webp",
-          "source": "78_ROJO-ESCOLAR_TRAPILLO-KRAFT_B.webp"
-        },
-        {
-          "code": "90",
-          "name": "Marino",
-          "hex": "#83756a",
-          "image": "/images/catalogo/carta-colores/trapillo-kraft/90-marino.webp",
-          "imageCard": "/images/catalogo/estambres/trapillo-kraft/90-marino.webp",
-          "source": "90_MARINO_TRAPILLO-KRAFT_B.webp"
-        },
-        {
-          "code": "96",
-          "name": "Cafe Craft",
-          "hex": "#8e7358",
-          "image": "/images/catalogo/carta-colores/trapillo-kraft/96-cafe-craft.webp",
-          "imageCard": "/images/catalogo/estambres/trapillo-kraft/96-cafe-craft.webp",
-          "source": "96_CAFE_TRAPILLO-CRAFT_B.webp"
-        },
-        {
-          "code": "99",
-          "name": "Negro",
-          "hex": "#8a7963",
-          "image": "/images/catalogo/carta-colores/trapillo-kraft/99-negro.webp",
-          "imageCard": "/images/catalogo/estambres/trapillo-kraft/99-negro.webp",
-          "source": "99_NEGRO_TRAPILLO_B.webp"
-        },
-        {
-          "code": "101",
-          "name": "Gris Perla",
-          "hex": "#b39e86",
-          "image": "/images/catalogo/carta-colores/trapillo-kraft/101-gris-perla.webp",
-          "imageCard": "/images/catalogo/estambres/trapillo-kraft/101-gris-perla.webp",
-          "source": "101-GRIS-PERLA_TRAPILLO-KRAFT_B.webp"
-        },
-        {
-          "code": "162",
-          "name": "Guinda",
-          "hex": "#a97559",
-          "image": "/images/catalogo/carta-colores/trapillo-kraft/162-guinda.webp",
-          "imageCard": "/images/catalogo/estambres/trapillo-kraft/162-guinda.webp",
-          "source": "162_GUINDA_TRAPILLO-KRAFT_B.webp"
-        },
-        {
-          "code": "193",
-          "name": "Oxford",
-          "hex": "#9f8e76",
-          "image": "/images/catalogo/carta-colores/trapillo-kraft/193-oxford.webp",
-          "imageCard": "/images/catalogo/estambres/trapillo-kraft/193-oxford.webp",
-          "source": "193_OXFORD_TRAPILLO_KRAFT_B.webp"
-        }
-      ]
-    },
-    {
       "id": "alize-velluto",
       "name": "Alize Velluto",
       "type": "Estambre",
@@ -1221,6 +2773,150 @@
           "image": "/images/catalogo/carta-colores/alize-velluto/993.webp",
           "imageCard": "/images/catalogo/estambres/alize-velluto/993.webp",
           "source": "993_VELLUTO_B.webp"
+        }
+      ]
+    },
+    {
+      "id": "trapillo-kraft",
+      "name": "Trapillo Kraft",
+      "type": "Trapillo",
+      "dir": "trapillo kraft",
+      "colors": [
+        {
+          "code": "01",
+          "name": "Blanco",
+          "hex": "#edd7b3",
+          "image": "/images/catalogo/carta-colores/trapillo-kraft/01-blanco.webp",
+          "imageCard": "/images/catalogo/estambres/trapillo-kraft/01-blanco.webp",
+          "source": "01_BLANCO_TRAPILLO_B.webp"
+        },
+        {
+          "code": "06",
+          "name": "Cielo",
+          "hex": "#b8cac0",
+          "image": "/images/catalogo/carta-colores/trapillo-kraft/06-cielo.webp",
+          "imageCard": "/images/catalogo/estambres/trapillo-kraft/06-cielo.webp",
+          "source": "6_CIELO_TRAPILLO_B.webp"
+        },
+        {
+          "code": "15",
+          "name": "Palo de Rosa",
+          "hex": "#eebea5",
+          "image": "/images/catalogo/carta-colores/trapillo-kraft/15-palo-de-rosa.webp",
+          "imageCard": "/images/catalogo/estambres/trapillo-kraft/15-palo-de-rosa.webp",
+          "source": "15_PALO-DE-ROSA_TRAPILLO-KRAFT_B.webp"
+        },
+        {
+          "code": "19",
+          "name": "Lila",
+          "hex": "#d4a1b2",
+          "image": "/images/catalogo/carta-colores/trapillo-kraft/19-lila.webp",
+          "imageCard": "/images/catalogo/estambres/trapillo-kraft/19-lila.webp",
+          "source": "19_LILA_TRAPILLO-KRAFT_B.webp"
+        },
+        {
+          "code": "23",
+          "name": "Fucsia",
+          "hex": "#ed7882",
+          "image": "/images/catalogo/carta-colores/trapillo-kraft/23-fucsia.webp",
+          "imageCard": "/images/catalogo/estambres/trapillo-kraft/23-fucsia.webp",
+          "source": "23_FUCSIA_TRAPILLO_B.webp"
+        },
+        {
+          "code": "30",
+          "name": "Nuez",
+          "hex": "#e5bf90",
+          "image": "/images/catalogo/carta-colores/trapillo-kraft/30-nuez.webp",
+          "imageCard": "/images/catalogo/estambres/trapillo-kraft/30-nuez.webp",
+          "source": "30-NUEZ_TRAPILLO-KRAFT.webp"
+        },
+        {
+          "code": "39",
+          "name": "Mango",
+          "hex": "#fbcc65",
+          "image": "/images/catalogo/carta-colores/trapillo-kraft/39-mango.webp",
+          "imageCard": "/images/catalogo/estambres/trapillo-kraft/39-mango.webp",
+          "source": "39_MANGO_TRAPILLO_B.webp"
+        },
+        {
+          "code": "59",
+          "name": "Mentita",
+          "hex": "#d4e2b4",
+          "image": "/images/catalogo/carta-colores/trapillo-kraft/59-mentita.webp",
+          "imageCard": "/images/catalogo/estambres/trapillo-kraft/59-mentita.webp",
+          "source": "59_MENTITA_TRAPILLO_B.webp"
+        },
+        {
+          "code": "68",
+          "name": "Bandera",
+          "hex": "#7f906d",
+          "image": "/images/catalogo/carta-colores/trapillo-kraft/68-bandera.webp",
+          "imageCard": "/images/catalogo/estambres/trapillo-kraft/68-bandera.webp",
+          "source": "68-BANDERA_TRAPILLO_LKRAFT_B.webp"
+        },
+        {
+          "code": "71",
+          "name": "Verde Militar",
+          "hex": "#887550",
+          "image": "/images/catalogo/carta-colores/trapillo-kraft/71-verde-militar.webp",
+          "imageCard": "/images/catalogo/estambres/trapillo-kraft/71-verde-militar.webp",
+          "source": "71_VERDE-MILITAR_TRAPILLO_KRAFT_B.webp"
+        },
+        {
+          "code": "78",
+          "name": "Rojo Escolar",
+          "hex": "#ee6d5d",
+          "image": "/images/catalogo/carta-colores/trapillo-kraft/78-rojo-escolar.webp",
+          "imageCard": "/images/catalogo/estambres/trapillo-kraft/78-rojo-escolar.webp",
+          "source": "78_ROJO-ESCOLAR_TRAPILLO-KRAFT_B.webp"
+        },
+        {
+          "code": "90",
+          "name": "Marino",
+          "hex": "#83756a",
+          "image": "/images/catalogo/carta-colores/trapillo-kraft/90-marino.webp",
+          "imageCard": "/images/catalogo/estambres/trapillo-kraft/90-marino.webp",
+          "source": "90_MARINO_TRAPILLO-KRAFT_B.webp"
+        },
+        {
+          "code": "96",
+          "name": "Cafe Craft",
+          "hex": "#8e7358",
+          "image": "/images/catalogo/carta-colores/trapillo-kraft/96-cafe-craft.webp",
+          "imageCard": "/images/catalogo/estambres/trapillo-kraft/96-cafe-craft.webp",
+          "source": "96_CAFE_TRAPILLO-CRAFT_B.webp"
+        },
+        {
+          "code": "99",
+          "name": "Negro",
+          "hex": "#8a7963",
+          "image": "/images/catalogo/carta-colores/trapillo-kraft/99-negro.webp",
+          "imageCard": "/images/catalogo/estambres/trapillo-kraft/99-negro.webp",
+          "source": "99_NEGRO_TRAPILLO_B.webp"
+        },
+        {
+          "code": "101",
+          "name": "Gris Perla",
+          "hex": "#b39e86",
+          "image": "/images/catalogo/carta-colores/trapillo-kraft/101-gris-perla.webp",
+          "imageCard": "/images/catalogo/estambres/trapillo-kraft/101-gris-perla.webp",
+          "source": "101-GRIS-PERLA_TRAPILLO-KRAFT_B.webp"
+        },
+        {
+          "code": "162",
+          "name": "Guinda",
+          "hex": "#a97559",
+          "image": "/images/catalogo/carta-colores/trapillo-kraft/162-guinda.webp",
+          "imageCard": "/images/catalogo/estambres/trapillo-kraft/162-guinda.webp",
+          "source": "162_GUINDA_TRAPILLO-KRAFT_B.webp"
+        },
+        {
+          "code": "193",
+          "name": "Oxford",
+          "hex": "#9f8e76",
+          "image": "/images/catalogo/carta-colores/trapillo-kraft/193-oxford.webp",
+          "imageCard": "/images/catalogo/estambres/trapillo-kraft/193-oxford.webp",
+          "source": "193_OXFORD_TRAPILLO_KRAFT_B.webp"
         }
       ]
     }

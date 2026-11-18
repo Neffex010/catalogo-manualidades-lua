@@ -45,11 +45,11 @@ export const CONTACT = {
 export const MATERIAL_BRANDS = [
   'Sinfonía',
   'La Abuelita',
-  'Alize Velluto',
-  'Komfy Mini',
   'Candy',
   'Karina Kairo',
+  'Komfy Mini',
   'Kotton Milk',
+  'Alize Velluto',
   'Cristal',
   'Hilo Vela',
   'Hilo para coser',
