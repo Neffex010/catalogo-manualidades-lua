@@ -21,6 +21,8 @@ import { YarnBallIcon } from './CrochetMotifs'
 
 /** Tonos visibles antes de ofrecer "Ver todos". */
 const INITIAL_VISIBLE = 6
+/** Fila que se ve en movil mientras la carta esta plegada. */
+const MOBILE_VISIBLE = 3
 
 export default function ColorCatalog() {
   const brands = colorCatalog.brands
@@ -170,9 +172,12 @@ export default function ColorCatalog() {
             return (
               <li
                 key={`${activeBrand.id}-${color.code}`}
-                // En movil se ve una sola fila de 3: la carta se hojea sin
-                // empujar la seccion. Desde `sm` se muestran las 6.
-                className={['min-w-0', index >= 3 ? 'hidden sm:block' : ''].join(' ')}
+                // En movil plegada se ve una sola fila de 3; al desplegar se
+                // muestran todos los tonos en cualquier ancho.
+                className={[
+                  'min-w-0',
+                  !isExpanded && index >= MOBILE_VISIBLE ? 'hidden sm:block' : '',
+                ].join(' ')}
               >
                 <button
                   id={`carta-tono-${activeBrand.id}-${color.code}`}
@@ -232,8 +237,8 @@ export default function ColorCatalog() {
         {/* Confirmacion: el tono elegido y un unico CTA. La barra se queda a la
          * vista al recorrer la paleta completa, sin abrir otra capa. */}
         {selectedColor && (
-          <div className="sticky bottom-3 z-10 mt-4 flex flex-col gap-3 rounded-xl border border-clay/40 bg-sand-50 p-3 shadow-pop sm:flex-row sm:items-center sm:justify-between">
-            <div className="flex min-w-0 items-center gap-3">
+          <div className="sticky bottom-[max(0.75rem,env(safe-area-inset-bottom))] z-10 mt-4 grid grid-cols-[minmax(0,1fr)_auto] items-center gap-3 rounded-xl border border-clay/40 bg-sand-50 p-3 shadow-pop sm:flex sm:flex-row">
+            <div className="flex min-w-0 items-center gap-3 sm:flex-1">
               <img
                 src={selectedColor.image}
                 alt=""
@@ -248,32 +253,35 @@ export default function ColorCatalog() {
                 </span>{' '}
                 <span className="mt-0.5 block truncate text-[13.5px] font-semibold text-ink">
                   {selectedColor.code}
-                  {selectedColor.name ? ` · ${selectedColor.name}` : ''} ·{' '}
-                  {activeBrand.name}
+                  {selectedColor.name ? ` · ${selectedColor.name}` : ''}
+                  {/* En movil la marca ya esta en la pestaña activa; se
+                   * conserva para lectores de pantalla. */}
+                  <span className="sr-only sm:not-sr-only"> · {activeBrand.name}</span>
                 </span>
               </p>
             </div>
 
-            <div className="flex items-center gap-2">
-              <a
-                href={getColorWhatsAppUrl(activeBrand, selectedColor)}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="btn-stitch inline-flex flex-1 items-center justify-center gap-2 rounded-xl border-2 border-ink bg-brand px-4 py-2.5 text-[13.5px] font-bold text-white shadow-pop transition-all duration-240 ease-artisan hover:translate-x-[2px] hover:translate-y-[2px] hover:bg-lila-800 hover:shadow-none focus:outline-none focus-visible:ring-2 focus-visible:ring-lila-600 focus-visible:ring-offset-2 focus-visible:ring-offset-sand-50 sm:flex-none"
-              >
-                <MessageCircle className="h-4 w-4 shrink-0" aria-hidden="true" />
-                Pedir por WhatsApp
-              </a>
-              <button
-                type="button"
-                onClick={handleClearSelection}
-                aria-label="Quitar el tono elegido"
-                title="Quitar el tono elegido"
-                className="grid h-9 w-9 shrink-0 place-items-center rounded-full border border-dashed border-line bg-surface text-ink-muted transition-colors duration-160 ease-artisan hover:border-clay/50 hover:text-ink focus:outline-none focus-visible:ring-2 focus-visible:ring-lila-600 focus-visible:ring-offset-2 focus-visible:ring-offset-sand-50"
-              >
-                <X className="h-4 w-4" aria-hidden="true" />
-              </button>
-            </div>
+            {/* En movil la X comparte fila con el resumen y el CTA usa todo el
+             * ancho: asi "Pedir por WhatsApp" no se parte en dos lineas. */}
+            <button
+              type="button"
+              onClick={handleClearSelection}
+              aria-label="Quitar el tono elegido"
+              title="Quitar el tono elegido"
+              className="grid h-9 w-9 shrink-0 place-items-center rounded-full border border-dashed border-line bg-surface text-ink-muted transition-colors duration-160 ease-artisan hover:border-clay/50 hover:text-ink focus:outline-none focus-visible:ring-2 focus-visible:ring-lila-600 focus-visible:ring-offset-2 focus-visible:ring-offset-sand-50 sm:order-3"
+            >
+              <X className="h-4 w-4" aria-hidden="true" />
+            </button>
+
+            <a
+              href={getColorWhatsAppUrl(activeBrand, selectedColor)}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn-stitch col-span-2 inline-flex items-center justify-center gap-2 rounded-xl border-2 border-ink bg-brand px-4 py-2.5 text-[13.5px] font-bold text-white shadow-pop transition-all duration-240 ease-artisan hover:translate-x-[2px] hover:translate-y-[2px] hover:bg-lila-800 hover:shadow-none focus:outline-none focus-visible:ring-2 focus-visible:ring-lila-600 focus-visible:ring-offset-2 focus-visible:ring-offset-sand-50 sm:order-2 sm:flex-none"
+            >
+              <MessageCircle className="h-4 w-4 shrink-0" aria-hidden="true" />
+              Pedir por WhatsApp
+            </a>
           </div>
         )}
 

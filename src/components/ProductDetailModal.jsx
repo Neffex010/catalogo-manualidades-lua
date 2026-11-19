@@ -230,7 +230,7 @@ export default function ProductDetailModal({ product, onClose, initialVariantId 
        * grande. */}
       <div
         className={[
-          'relative z-10 flex max-h-[90vh] w-full flex-col overflow-hidden rounded-[1.5rem] border border-line bg-surface shadow-2xl transition-all animate-in fade-in zoom-in-95 duration-200',
+          'relative z-10 flex max-h-[90vh] w-full flex-col overflow-hidden rounded-[1.5rem] border border-line bg-surface shadow-2xl transition-all animate-in fade-in zoom-in-95 duration-200 supports-[height:1dvh]:max-h-[90dvh]',
           isDesign ? 'max-w-3xl' : 'max-w-2xl',
         ].join(' ')}
       >

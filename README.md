@@ -513,7 +513,7 @@ CREATE TABLE product_variants (
 ## 🧪 Verificación realizada
 
 - `npm run lint` → sin errores ni advertencias.
-- `npm run build` → `✓ built` (JS 387.43 kB / 92.70 kB gzip · CSS 49.53 kB / 9.65 kB gzip ·
+- `npm run build` → `✓ built` (JS 387.56 kB / 92.77 kB gzip · CSS 50.03 kB / 9.75 kB gzip ·
   HTML 58.52 kB / 6.74 kB gzip). El HTML publica dos listas JSON-LD separadas (diseños y
   materiales).
 - **Datos separados:** 105 diseños en `#disenos` y 8 marcas en `#materiales`
@@ -539,9 +539,10 @@ CREATE TABLE product_variants (
 - **Modal de material:** el título es la marca y el chip dice el tipo real (`Hilaza`, `Estambre`,
   `Estambre e hilo`, `Trapillo`). La paleta conserva todos los tonos de cada marca (hasta 83), el
   tono elegido en la tarjeta se conserva al abrir y la ficha arranca en "Tono seleccionado". Para
-  no dominar la pantalla usa `max-w-2xl` (**672 px**) y `90vh` de alto máximo, y la paleta se
-  pliega a **tres filas** (16 tonos) con un chip `+N` que abre el resto en el sitio; las marcas
-  con 18 tonos o menos se muestran completas. Resultado medido: **672 × 649 px** en 1280,
+  no dominar la pantalla usa `max-w-2xl` (**672 px**) y `90dvh` de alto máximo (con `90vh` de
+  respaldo donde `dvh` no existe, para que la barra del navegador móvil no recorte el pie), y la
+  paleta se pliega a **tres filas** (16 tonos) con un chip `+N` que abre el resto en el sitio; las
+  marcas con 18 tonos o menos se muestran completas. Resultado medido: **672 × 649 px** en 1280,
   **672 × 645 px** en 768, **366 × 760 px** en 390 y **296 × 648 px** en 320. En móvil la foto se
   limita a `30vh` y el CTA queda fijo al pie del modal, fuera del área que hace scroll; en
   escritorio el botón vive al final de la columna y "Compartir" está en el encabezado, sin
@@ -552,13 +553,18 @@ CREATE TABLE product_variants (
   tonos"; cada tono es un botón que lo selecciona (anillo terracota y palomita) y abre una barra
   con la muestra, marca, código, nombre y un único CTA "Pedir por WhatsApp". Tocar el mismo tono
   o la X suelta la selección, y cambiar de marca también la limpia. La barra es `sticky` al pie:
-  con 83 tonos desplegados el CTA sigue a la vista mientras se recorre la paleta. La cuadrícula
+  con 83 tonos desplegados el CTA sigue a la vista mientras se recorre la paleta. En móvil la X
+  comparte fila con el resumen y el CTA ocupa el ancho completo, así "Pedir por WhatsApp" no se
+  parte en dos líneas: la barra mide **128 px** en 320 (antes 150, con el CTA en 68 px y dos
+  líneas). El pie respeta `env(safe-area-inset-bottom)` y el nombre omite la marca solo en
+  pantalla (sigue en el lector de pantalla) porque la pestaña activa ya la muestra. La cuadrícula
   no repite un icono de WhatsApp en cada tono ni abre WhatsApp al tocar la foto. Se abren 6
-  muestras; en móvil se ve una fila de 3 y desde `sm` las 6, y el botón suma el resto. El hero
-  declara "8 marcas · 357 tonos" y la carta no repite el conteo: cada pestaña ya lo muestra. El
-  grid queda en 6 columnas en escritorio (6 muestras = una fila), 4 en tablet y 3 en móvil. Las
-  pestañas se envuelven en varias filas: en 390 px ocupan 3 filas sin cortes ni scroll horizontal;
-  en 1280 px caben las 8 en una sola fila.
+  muestras; en móvil se ve una fila de 3 y desde `sm` las 6, y el botón suma el resto: al
+  desplegar se ven **todos** los tonos en cualquier ancho (antes los tonos ≥3 seguían ocultos en
+  móvil por la clase `hidden sm:block`). El hero declara "8 marcas · 357 tonos" y la carta no
+  repite el conteo: cada pestaña ya lo muestra. El grid queda en 6 columnas en escritorio (6
+  muestras = una fila), 4 en tablet y 3 en móvil. Las pestañas se envuelven en varias filas: en
+  390 px ocupan 3 filas sin cortes ni scroll horizontal; en 1280 px caben las 8 en una sola fila.
 - **Portafolio (Edge headless, 1440 px y 390 px):** se ven 6 diseños al entrar; el filtro
   "Amigurumis" muestra 6 de 40 y el botón indica "Ver 8 más · 40 diseños"; al pulsarlo sube a 14
   y el anuncio de lectores de pantalla lo refleja; "Todos los diseños" vuelve a 105 y reinicia
@@ -567,7 +573,11 @@ CREATE TABLE product_variants (
   "Quiero uno así"; no aparece "Disponible"/"Agotado" ni selector de color. El enlace de WhatsApp
   envía `Hola, me interesa encargar un diseño como: Abejita (Amigurumis). ¿Me podrías cotizar?`.
 - **Sin desbordamiento horizontal** en 1440, 1280, 768, 640, 390, 375, 360 y 320 px. La navbar
-  mide 76 px en escritorio (con su filo) y 109 px en móvil; en 320 px los cuatro enlaces caben sin
+  mide 76 px en escritorio (con su filo), 109 px en móvil y **104 px por debajo de 390 px**: el
+  texto "Cotizar" se oculta y queda solo el icono con `aria-label`, porque a 360 px el rótulo ya
+  no cabía junto al logotipo y empujaba la cabecera a **149 px**, tapando el título de la sección
+  al navegar con anclas. Con el arreglo el ancla deja la sección en 120 px y el título en 140,
+  siempre por debajo de la cabecera; en 320 px los cuatro enlaces caben sin
   scroll. Los anclas dejan 88 px de margen en escritorio y 120 px en móvil, por encima de la
   cabecera fija.
 - **Medidas finales (Edge headless, `scrollHeight`):** 390×844 → página **6,871 px**, secciones

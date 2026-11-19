@@ -66,11 +66,11 @@ export default function Navbar() {
           href={getGeneralWhatsAppUrl()}
           target="_blank"
           rel="noopener noreferrer"
-          className="btn-stitch order-2 inline-flex shrink-0 items-center gap-1.5 rounded-xl border-2 border-ink bg-brand px-2.5 py-2 text-[13px] font-bold text-white shadow-pop transition-all duration-240 ease-artisan hover:translate-x-[2px] hover:translate-y-[2px] hover:bg-lila-800 hover:shadow-none focus:outline-none focus-visible:ring-2 focus-visible:ring-lila-600 focus-visible:ring-offset-2 focus-visible:ring-offset-canvas min-[360px]:px-3.5 md:order-3 sm:px-4 sm:py-2.5 sm:text-[14px]"
+          className="btn-stitch order-2 inline-flex shrink-0 items-center gap-1.5 rounded-xl border-2 border-ink bg-brand px-2.5 py-2 text-[13px] font-bold text-white shadow-pop transition-all duration-240 ease-artisan hover:translate-x-[2px] hover:translate-y-[2px] hover:bg-lila-800 hover:shadow-none focus:outline-none focus-visible:ring-2 focus-visible:ring-lila-600 focus-visible:ring-offset-2 focus-visible:ring-offset-canvas min-[390px]:px-3.5 md:order-3 sm:px-4 sm:py-2.5 sm:text-[14px]"
           aria-label="Cotizar por WhatsApp"
         >
           <MessageCircle className="h-4 w-4 shrink-0" aria-hidden="true" />
-          <span className="hidden min-[360px]:inline">Cotizar</span>
+          <span className="hidden min-[390px]:inline">Cotizar</span>
         </a>
 
         {/* Navegacion: segunda fila en movil, centrada en escritorio */}
