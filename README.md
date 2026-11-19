@@ -12,7 +12,8 @@ Sitio web responsivo de **Manualidades Lua** con dos bloques con intención dist
   ficha con la paleta completa y la cantidad. El pedido sale por WhatsApp con producto, código,
   color y cantidad. El precio y el stock son **opcionales**: si la tienda aún no los define,
   una sola nota en la sección invita a confirmarlos en lugar de inventar cifras. Al final, la
-  **carta de color** muestra los 357 tonos en foto y cada uno se pide con un toque.
+  **carta de color** muestra los 357 tonos en foto: se elige uno, se revisa el resumen y el
+  pedido se confirma con un botón.
 
 Construido con **React 18 + Vite 6 + Tailwind CSS 3** y una **capa de datos desacoplada** que hoy
 lee un catálogo local y mañana habla con FastAPI + PostgreSQL sin modificar un solo componente.
@@ -512,7 +513,7 @@ CREATE TABLE product_variants (
 ## 🧪 Verificación realizada
 
 - `npm run lint` → sin errores ni advertencias.
-- `npm run build` → `✓ built` (JS 384.90 kB / 92.17 kB gzip · CSS 49.06 kB / 9.59 kB gzip ·
+- `npm run build` → `✓ built` (JS 387.43 kB / 92.70 kB gzip · CSS 49.53 kB / 9.65 kB gzip ·
   HTML 58.52 kB / 6.74 kB gzip). El HTML publica dos listas JSON-LD separadas (diseños y
   materiales).
 - **Datos separados:** 105 diseños en `#disenos` y 8 marcas en `#materiales`
@@ -548,8 +549,11 @@ CREATE TABLE product_variants (
   ovillos de Estambre Komfy Mini, color 01 Blanco. ¿Está disponible y cuánto cuesta?`; para
   Trapillo Kraft dice `3 piezas` y la etiqueta del contador es `Cantidad (piezas)`.
 - **Carta de color:** las 8 pestañas muestran 83/78/48/34/25/25/47/17 tonos con "Ver los N
-  tonos"; cada tono es un enlace `wa.me` con marca, código y nombre. La cuadrícula ya no repite un
-  icono de WhatsApp en cada tono: la instrucción vive una sola vez en el encabezado. Se abren 6
+  tonos"; cada tono es un botón que lo selecciona (anillo terracota y palomita) y abre una barra
+  con la muestra, marca, código, nombre y un único CTA "Pedir por WhatsApp". Tocar el mismo tono
+  o la X suelta la selección, y cambiar de marca también la limpia. La barra es `sticky` al pie:
+  con 83 tonos desplegados el CTA sigue a la vista mientras se recorre la paleta. La cuadrícula
+  no repite un icono de WhatsApp en cada tono ni abre WhatsApp al tocar la foto. Se abren 6
   muestras; en móvil se ve una fila de 3 y desde `sm` las 6, y el botón suma el resto. El hero
   declara "8 marcas · 357 tonos" y la carta no repite el conteo: cada pestaña ya lo muestra. El
   grid queda en 6 columnas en escritorio (6 muestras = una fila), 4 en tablet y 3 en móvil. Las
