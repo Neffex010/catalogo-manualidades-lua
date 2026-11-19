@@ -10,9 +10,10 @@
  * -----------------------------------------------------------------------------
  */
 
-import { ArrowRight, Palette, Scissors, Sparkles } from 'lucide-react'
+import { ArrowRight, Palette, Sparkles } from 'lucide-react'
 import { BRAND } from '../config/site'
 import colorCatalog from '../data/colorCatalog.json'
+import { YarnBallIcon } from './CrochetMotifs'
 
 /**
  * Muestra de la carta de color. Los tonos salen del manifiesto real
@@ -103,7 +104,7 @@ export default function Hero() {
             <div className="mt-9 flex flex-col items-start gap-5 sm:flex-row sm:items-center sm:gap-8">
               <a
                 href="#disenos"
-                className="inline-flex items-center justify-center gap-2.5 rounded-xl border-2 border-ink bg-brand px-7 py-4 text-[15px] font-bold text-white shadow-pop transition-all duration-240 ease-artisan hover:translate-x-[2px] hover:translate-y-[2px] hover:bg-lila-800 hover:shadow-none focus:outline-none focus-visible:ring-2 focus-visible:ring-lila-600 focus-visible:ring-offset-2 focus-visible:ring-offset-canvas sm:text-base"
+                className="btn-stitch inline-flex items-center justify-center gap-2.5 rounded-xl border-2 border-ink bg-brand px-7 py-4 text-[15px] font-bold text-white shadow-pop transition-all duration-240 ease-artisan hover:translate-x-[2px] hover:translate-y-[2px] hover:bg-lila-800 hover:shadow-none focus:outline-none focus-visible:ring-2 focus-visible:ring-lila-600 focus-visible:ring-offset-2 focus-visible:ring-offset-canvas sm:text-base"
               >
                 <Sparkles className="h-[18px] w-[18px]" aria-hidden="true" />
                 Ver diseños
@@ -153,10 +154,11 @@ export default function Hero() {
               </div>
             </a>
 
-            {/* Ficha sin cajas: dos columnas separadas por un filo. En movil la
-             * paleta se oculta porque el hero ya lleva dos accesos y la foto
-             * enlaza al portafolio; queda solo la linea de autoria. */}
-            <div className="mt-6 flex flex-col gap-4 border-t-2 border-line/90 pt-5 sm:grid sm:grid-cols-2 sm:gap-8">
+            {/* Ficha sin cajas: dos columnas separadas por una costura. En
+             * movil la paleta se oculta porque el hero ya lleva dos accesos y
+             * la foto enlaza al portafolio; queda solo la linea de autoria. */}
+            <div aria-hidden="true" className="stitch-rule mt-6 text-line" />
+            <div className="mt-5 flex flex-col gap-4 sm:grid sm:grid-cols-2 sm:gap-8">
               <a
                 href="#carta-color"
                 className="group hidden rounded-lg focus:outline-none focus-visible:ring-2 focus-visible:ring-lila-600 focus-visible:ring-offset-2 focus-visible:ring-offset-canvas sm:block"
@@ -188,7 +190,7 @@ export default function Hero() {
 
               <div className="sm:border-l sm:border-ink/10 sm:pl-8">
                 <p className="flex items-center gap-2 text-[11.5px] font-bold uppercase tracking-[0.16em] text-clay-deep">
-                  <Scissors className="h-4 w-4" aria-hidden="true" />
+                  <YarnBallIcon className="h-4 w-4" />
                   Hecho a mano
                 </p>
                 <p className="mt-3 text-[13px] leading-relaxed text-ink-soft">

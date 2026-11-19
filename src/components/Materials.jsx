@@ -85,7 +85,7 @@ export default function Materials({ materials = [], loading = false, onOpenDetai
               href={getGeneralWhatsAppUrl()}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex flex-col items-center justify-center gap-2.5 rounded-2xl border-2 border-dashed border-line bg-sand-50/40 p-4 text-center transition-colors duration-240 ease-artisan hover:border-lila-300 hover:bg-sand-50 focus:outline-none focus-visible:ring-2 focus-visible:ring-lila-600 focus-visible:ring-offset-2 focus-visible:ring-offset-canvas sm:gap-3 sm:p-6"
+              className="texture-knit flex flex-col items-center justify-center gap-2.5 rounded-2xl border-2 border-dashed border-line bg-sand-50/40 p-4 text-center transition-colors duration-240 ease-artisan hover:border-lila-300 hover:bg-sand-50 focus:outline-none focus-visible:ring-2 focus-visible:ring-lila-600 focus-visible:ring-offset-2 focus-visible:ring-offset-canvas sm:gap-3 sm:p-6"
             >
               <span className="grid h-10 w-10 place-items-center rounded-full bg-lila-100 text-lila-800 sm:h-12 sm:w-12">
                 <MessageCircle className="h-4 w-4 sm:h-5 sm:w-5" aria-hidden="true" />

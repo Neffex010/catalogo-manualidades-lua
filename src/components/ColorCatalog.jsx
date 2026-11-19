@@ -17,6 +17,7 @@ import { useState } from 'react'
 import { Minus, Plus } from 'lucide-react'
 import colorCatalog from '../data/colorCatalog.json'
 import { getColorWhatsAppUrl } from '../utils/whatsapp'
+import { YarnBallIcon } from './CrochetMotifs'
 
 /** Tonos visibles antes de ofrecer "Ver todos". */
 const INITIAL_VISIBLE = 6
@@ -54,13 +55,18 @@ export default function ColorCatalog() {
     <section
       id="carta-color"
       aria-labelledby="carta-color-titulo"
-      className="mt-7 border-t-2 border-ink/15 pt-5 sm:mt-10 sm:pt-6"
+      className="relative mt-7 pt-5 sm:mt-10 sm:pt-6"
     >
+      <div
+        aria-hidden="true"
+        className="stitch-rule absolute inset-x-0 top-0 text-ink/20"
+      />
       <div className="max-w-2xl">
         <h3
           id="carta-color-titulo"
-          className="font-display text-[1.75rem] font-semibold leading-[1.02] tracking-[-0.03em] text-ink sm:text-[2.3rem]"
+          className="flex items-center gap-2.5 font-display text-[1.75rem] font-semibold leading-[1.02] tracking-[-0.03em] text-ink sm:text-[2.3rem]"
         >
+          <YarnBallIcon className="h-6 w-6 shrink-0 text-clay sm:h-8 sm:w-8" />
           Todos los tonos
         </h3>
         <p className="mt-2 max-w-xl text-[14px] leading-[1.6] text-ink-soft sm:text-[15px]">
@@ -112,7 +118,7 @@ export default function ColorCatalog() {
         id="carta-color-panel"
         role="tabpanel"
         aria-labelledby={`carta-tab-${activeBrand.id}`}
-        className="mt-4 rounded-2xl border border-line bg-surface p-4 shadow-rest sm:p-5"
+        className="texture-knit mt-4 rounded-2xl border border-line bg-surface p-4 shadow-rest sm:p-5"
       >
         <div className="flex flex-wrap items-center justify-between gap-3">
           <p className="text-[12.5px] font-semibold text-ink-muted">
@@ -124,7 +130,7 @@ export default function ColorCatalog() {
               type="button"
               onClick={toggleExpanded}
               aria-expanded={isExpanded}
-              className="inline-flex items-center gap-1.5 rounded-full border border-line bg-sand-50 px-4 py-2 text-[12.5px] font-semibold text-ink-soft transition-colors duration-160 ease-artisan hover:border-clay/50 hover:text-clay-deep focus:outline-none focus-visible:ring-2 focus-visible:ring-lila-600 focus-visible:ring-offset-2 focus-visible:ring-offset-surface"
+              className="inline-flex items-center gap-1.5 rounded-full border border-dashed border-line bg-sand-50 px-4 py-2 text-[12.5px] font-semibold text-ink-soft transition-colors duration-160 ease-artisan hover:border-clay/50 hover:text-clay-deep focus:outline-none focus-visible:ring-2 focus-visible:ring-lila-600 focus-visible:ring-offset-2 focus-visible:ring-offset-surface"
             >
               {isExpanded ? (
                 <Minus className="h-3.5 w-3.5" aria-hidden="true" />

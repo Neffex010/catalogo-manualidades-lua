@@ -17,7 +17,6 @@ import {
   MapPin,
   MessageCircle,
   Navigation,
-  Scissors,
 } from 'lucide-react'
 import {
   CONTACT,
@@ -28,6 +27,7 @@ import {
 } from '../config/site'
 import colorCatalog from '../data/colorCatalog.json'
 import { getGeneralWhatsAppUrl } from '../utils/whatsapp'
+import { YarnBallIcon } from './CrochetMotifs'
 import SocialIcon from './SocialIcon'
 
 /** Fila de contacto reutilizable. */
@@ -60,7 +60,7 @@ function ContactLink({ icon: Icon, label, value, href, external = false }) {
 /** Etiqueta compacta para marcas, extras y servicios. */
 function Tag({ children }) {
   return (
-    <span className="rounded-full border border-line bg-sand-50 px-2.5 py-1 text-[12.5px] font-semibold text-ink-soft">
+    <span className="rounded-full border border-dashed border-line bg-sand-50 px-2.5 py-1 text-[12.5px] font-semibold text-ink-soft">
       {children}
     </span>
   )
@@ -131,7 +131,7 @@ export default function StoreInfo() {
                     href={CONTACT.address.mapsUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="mt-3.5 inline-flex w-fit items-center gap-2 rounded-xl border-2 border-ink bg-brand px-4 py-2.5 text-[14px] font-bold text-white shadow-pop transition-all duration-240 ease-artisan hover:translate-x-[2px] hover:translate-y-[2px] hover:bg-lila-800 hover:shadow-none focus:outline-none focus-visible:ring-2 focus-visible:ring-lila-600 focus-visible:ring-offset-2 focus-visible:ring-offset-surface"
+                    className="btn-stitch mt-3.5 inline-flex w-fit items-center gap-2 rounded-xl border-2 border-ink bg-brand px-4 py-2.5 text-[14px] font-bold text-white shadow-pop transition-all duration-240 ease-artisan hover:translate-x-[2px] hover:translate-y-[2px] hover:bg-lila-800 hover:shadow-none focus:outline-none focus-visible:ring-2 focus-visible:ring-lila-600 focus-visible:ring-offset-2 focus-visible:ring-offset-surface"
                   >
                     <Navigation className="h-4 w-4" aria-hidden="true" />
                     Cómo llegar
@@ -172,16 +172,16 @@ export default function StoreInfo() {
 
             {/* Marcas y extras: un solo bloque de etiquetas, sin cajas ni
              * bordes internos. Las marcas con carta se resumen en el enlace. */}
-            <div className="rounded-[1.35rem] border border-line/80 bg-surface p-5 shadow-rest sm:p-6">
+            <div className="texture-knit rounded-[1.35rem] border-2 border-dashed border-line bg-surface p-5 shadow-rest sm:p-6">
               <div className="flex flex-wrap items-center justify-between gap-x-4 gap-y-2">
                 <p className="meta-label flex items-center gap-1.5">
-                  <Scissors className="h-3.5 w-3.5 text-lila-700" aria-hidden="true" />
+                  <YarnBallIcon className="h-3.5 w-3.5 text-lila-700" />
                   Marcas y materiales
                 </p>
 
                 <a
                   href="#materiales"
-                  className="inline-flex items-center gap-1.5 text-[13.5px] font-semibold text-lila-800 underline decoration-clay/50 decoration-2 underline-offset-4 transition-colors duration-160 ease-artisan hover:text-ink hover:decoration-clay focus:outline-none focus-visible:ring-2 focus-visible:ring-lila-600 focus-visible:ring-offset-2 focus-visible:ring-offset-surface"
+                  className="inline-flex items-center gap-1.5 text-[13.5px] font-semibold text-lila-800 underline decoration-clay/50 decoration-dashed decoration-2 underline-offset-4 transition-colors duration-160 ease-artisan hover:text-ink hover:decoration-clay focus:outline-none focus-visible:ring-2 focus-visible:ring-lila-600 focus-visible:ring-offset-2 focus-visible:ring-offset-surface"
                 >
                   Carta de color completa
                   <ArrowRight className="h-4 w-4" aria-hidden="true" />

@@ -164,13 +164,15 @@ export default function DesignCard({ design, index = 0, onOpenDetail }) {
         {/* Alinea la accion al pie de todas las tarjetas */}
         <div className="flex-1" />
 
+        <div aria-hidden="true" className="stitch-rule mt-3 text-line" />
+
         <a
           href={whatsappUrl}
           target="_blank"
           rel="noopener noreferrer"
           aria-label={`Quiero un diseño como ${design.name}`}
           title={`Pedir un diseño como "${design.name}" por WhatsApp`}
-          className="group/link mt-3 inline-flex w-full items-center justify-between gap-2 border-t-2 border-line/90 py-3.5 text-[13px] font-semibold text-lila-800 transition-colors duration-240 ease-artisan hover:text-ink focus:outline-none focus-visible:ring-2 focus-visible:ring-lila-600 focus-visible:ring-offset-2 focus-visible:ring-offset-canvas sm:text-[14px]"
+          className="group/link inline-flex w-full items-center justify-between gap-2 py-3.5 text-[13px] font-semibold text-lila-800 transition-colors duration-240 ease-artisan hover:text-ink focus:outline-none focus-visible:ring-2 focus-visible:ring-lila-600 focus-visible:ring-offset-2 focus-visible:ring-offset-canvas sm:text-[14px]"
         >
           <span className="inline-flex items-center gap-1.5">
             <MessageCircle className="h-4 w-4 shrink-0" aria-hidden="true" />

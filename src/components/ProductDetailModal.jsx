@@ -26,10 +26,10 @@ import {
   PackageCheck,
   Plus,
   Share2,
-  Sparkles,
   X,
 } from 'lucide-react'
 import ColorSwatchPicker from './ColorSwatchPicker'
+import { CrochetHookIcon } from './CrochetMotifs'
 import { formatPrice } from '../utils/format'
 import { AVAILABILITY, getInitialVariantId, getProductStatus, getVariantStatus } from '../utils/availability'
 import { getDesignWhatsAppUrl, getProductWhatsAppUrl } from '../utils/whatsapp'
@@ -227,7 +227,7 @@ export default function ProductDetailModal({ product, onClose, initialVariantId 
           type="button"
           onClick={onClose}
           aria-label="Cerrar detalle de producto"
-          className="absolute right-3.5 top-3.5 z-20 grid h-10 w-10 place-items-center rounded-full bg-surface/90 text-ink shadow-soft backdrop-blur-md transition-all hover:bg-sand-100 hover:text-lila-800 focus:outline-none focus-visible:ring-2 focus-visible:ring-lila-600 sm:right-5 sm:top-5"
+          className="absolute right-3.5 top-3.5 z-20 grid h-10 w-10 place-items-center rounded-full border border-dashed border-line bg-surface/90 text-ink shadow-soft backdrop-blur-md transition-all hover:border-lila-300 hover:bg-sand-100 hover:text-lila-800 focus:outline-none focus-visible:ring-2 focus-visible:ring-lila-600 sm:right-5 sm:top-5"
         >
           <X className="h-5 w-5" aria-hidden="true" />
         </button>
@@ -267,7 +267,7 @@ export default function ProductDetailModal({ product, onClose, initialVariantId 
           </div>
 
           {/* Columna Derecha: Informacion y Acciones */}
-          <div className="flex flex-col p-5 sm:p-6">
+          <div className="texture-knit flex flex-col p-5 sm:p-6">
             {/* Encabezado: tipo real del material y compartir. El titulo es la
              * marca; repetirla tambien en un chip era ruido. */}
             <div className="flex items-center justify-between gap-3 md:pr-11">
@@ -287,7 +287,7 @@ export default function ProductDetailModal({ product, onClose, initialVariantId 
                 onClick={handleShare}
                 aria-label={copied ? 'Enlace copiado' : 'Compartir este producto'}
                 title="Compartir este producto"
-                className="inline-flex shrink-0 items-center gap-1.5 rounded-full border border-line bg-surface px-3 py-2 text-[12px] font-semibold text-ink-soft shadow-soft transition-all duration-160 ease-artisan hover:border-lila-300 hover:text-lila-800 focus:outline-none focus-visible:ring-2 focus-visible:ring-lila-600 focus-visible:ring-offset-2 focus-visible:ring-offset-surface"
+                className="inline-flex shrink-0 items-center gap-1.5 rounded-full border border-dashed border-line bg-surface px-3 py-2 text-[12px] font-semibold text-ink-soft shadow-soft transition-all duration-160 ease-artisan hover:border-lila-300 hover:text-lila-800 focus:outline-none focus-visible:ring-2 focus-visible:ring-lila-600 focus-visible:ring-offset-2 focus-visible:ring-offset-surface"
               >
                 {copied ? (
                   <Check className="h-3.5 w-3.5 text-success" aria-hidden="true" />
@@ -314,7 +314,7 @@ export default function ProductDetailModal({ product, onClose, initialVariantId 
 
             {/* Selector de variantes (si aplica) */}
             {supportsVariants && (
-              <div className="mt-4 border-t border-line/80 pt-3">
+              <div className="mt-4 border-t border-dashed border-line/80 pt-3">
                 <div className="flex items-baseline justify-between gap-2">
                   <p className="meta-label">Tono seleccionado</p>
                   <p className="meta-value text-right">
@@ -360,9 +360,9 @@ export default function ProductDetailModal({ product, onClose, initialVariantId 
                 )}
 
                 {/* Cantidad: se suma al mensaje de WhatsApp, no hay carrito. */}
-                <div className="mt-3 flex items-center justify-between gap-3 border-t border-line/70 pt-3">
+                <div className="mt-3 flex items-center justify-between gap-3 border-t border-dashed border-line/70 pt-3">
                   <p className="meta-label">Cantidad ({unitMany})</p>
-                  <div className="inline-flex items-center gap-1 rounded-full border border-line bg-surface p-1">
+                  <div className="inline-flex items-center gap-1 rounded-full border border-dashed border-line bg-surface p-1">
                     <button
                       type="button"
                       onClick={() => setQuantity((value) => Math.max(1, value - 1))}
@@ -394,9 +394,9 @@ export default function ProductDetailModal({ product, onClose, initialVariantId 
             {/* Ficha de calidad: solo para piezas tejidas a mano. Los estambres
              * y el trapillo no se tejen, asi que no deben heredar este copy. */}
             {isDesign && (
-              <div className="mt-4 space-y-2.5 rounded-xl border border-line/70 bg-canvas/60 p-4 text-[13px] leading-relaxed text-ink-soft">
+              <div className="mt-4 space-y-2.5 rounded-xl border border-dashed border-line/70 bg-canvas/60 p-4 text-[13px] leading-relaxed text-ink-soft">
                 <div className="flex items-start gap-2">
-                  <Sparkles className="mt-0.5 h-3.5 w-3.5 shrink-0 text-lila-700" />
+                  <CrochetHookIcon className="mt-0.5 h-3.5 w-3.5 shrink-0 text-lila-700" />
                   <span>
                     <strong>Elaboración:</strong> Tejido a mano con ganchillo; la foto es una
                     muestra del acabado y tu pieza se teje al confirmar el encargo.
@@ -412,7 +412,7 @@ export default function ProductDetailModal({ product, onClose, initialVariantId 
             )}
 
             {/* Precio o cotización. Compartir ya vive en el encabezado. */}
-            <div className="mt-4 border-t border-line pt-3">
+            <div className="mt-4 border-t border-dashed border-line pt-3">
               <p className="meta-label">{isDesign ? 'Cotización' : 'Precio'}</p>
               {priceLabel ? (
                 <p className="font-display text-[1.85rem] font-semibold leading-tight text-ink">
@@ -441,7 +441,7 @@ export default function ProductDetailModal({ product, onClose, initialVariantId 
                 href={whatsappUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex w-full items-center justify-center gap-2.5 rounded-xl border-2 border-ink bg-brand px-6 py-4 text-center text-[15px] font-bold text-white shadow-pop transition-all duration-240 ease-artisan hover:translate-x-[2px] hover:translate-y-[2px] hover:bg-whatsapp hover:shadow-none focus:outline-none focus-visible:ring-2 focus-visible:ring-lila-600 focus-visible:ring-offset-2 sm:text-[16px]"
+                className="btn-stitch inline-flex w-full items-center justify-center gap-2.5 rounded-xl border-2 border-ink bg-brand px-6 py-4 text-center text-[15px] font-bold text-white shadow-pop transition-all duration-240 ease-artisan hover:translate-x-[2px] hover:translate-y-[2px] hover:bg-whatsapp hover:shadow-none focus:outline-none focus-visible:ring-2 focus-visible:ring-lila-600 focus-visible:ring-offset-2 sm:text-[16px]"
               >
                 <MessageCircle className="h-5 w-5" aria-hidden="true" />
                 {isDesign ? 'Quiero uno así' : 'Pedir por WhatsApp'}
@@ -463,12 +463,17 @@ export default function ProductDetailModal({ product, onClose, initialVariantId 
 
         {/* CTA fijo en movil: pedir sin recorrer toda la ficha. En escritorio
          * el boton vive al final de la columna de informacion. */}
-        <div className="shrink-0 border-t border-line bg-surface px-4 py-3 pb-[max(0.75rem,env(safe-area-inset-bottom))] md:hidden">
+        <div className="relative shrink-0 border-t border-line bg-surface px-4 py-3 pb-[max(0.75rem,env(safe-area-inset-bottom))] md:hidden">
+          {/* Feston: remate de tejido sobre la barra fija. */}
+          <div
+            aria-hidden="true"
+            className="edge-scallop pointer-events-none absolute inset-x-0 top-0 text-line"
+          />
           <a
             href={whatsappUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex w-full items-center justify-center gap-2.5 rounded-xl border-2 border-ink bg-brand px-6 py-3.5 text-center text-[15px] font-bold text-white shadow-pop transition-all duration-240 ease-artisan hover:bg-whatsapp hover:shadow-none focus:outline-none focus-visible:ring-2 focus-visible:ring-lila-600 focus-visible:ring-offset-2"
+            className="btn-stitch inline-flex w-full items-center justify-center gap-2.5 rounded-xl border-2 border-ink bg-brand px-6 py-3.5 text-center text-[15px] font-bold text-white shadow-pop transition-all duration-240 ease-artisan hover:bg-whatsapp hover:shadow-none focus:outline-none focus-visible:ring-2 focus-visible:ring-lila-600 focus-visible:ring-offset-2"
           >
             <MessageCircle className="h-5 w-5" aria-hidden="true" />
             {isDesign

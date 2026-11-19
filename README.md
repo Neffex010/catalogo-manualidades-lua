@@ -169,6 +169,7 @@ manualidades-lua/
         ├── ProductCard.jsx         # Material: tipo, tonos y pedido por WhatsApp
         ├── ProductDetailModal.jsx  # Detalle: paleta completa, cantidad y CTA
         ├── ColorSwatchPicker.jsx   # Muestras circulares (5 + N abre la ficha)
+        ├── CrochetMotifs.jsx       # Madeja y ganchillo decorativos (SVG)
         ├── SubcategoryFilter.jsx   # Tipos de diseño del portafolio
         ├── ProductCardSkeleton.jsx # Esqueletos de carga
         ├── StoreInfo.jsx           # Dirección, horario, contacto, marcas y servicios
@@ -432,6 +433,14 @@ CREATE TABLE product_variants (
 - **Dos bloques, dos intenciones**: `Catalog.jsx` separa los datos por categoría y entrega
   `manualidades` a `Portfolio` y el resto a `Materials`. El portafolio no muestra precio, stock ni
   badge de disponibilidad; los materiales muestran esos datos solo cuando existen.
+- **Tema de crochet, sin ruido**: los motivos viven en utilidades CSS de `index.css`
+  (`texture-knit`, `stitch-rule`, `edge-scallop`, `btn-stitch` y `stitch-band`) y en
+  `CrochetMotifs.jsx` (madeja y ganchillo). La costura de puntadas reemplaza divisores rectos en
+  la tarjeta de material, el portafolio, la ficha, la carta y el pie; el festón remata el CTA del
+  pie y la barra fija del modal; la textura de tejido se queda en cajas y paneles; y los botones
+  sólidos llevan una puntada interior que no tapa el texto y conserva `shadow-pop` y el hundido
+  de 2 px al pulsar. Todo es decorativo (`aria-hidden`), no agrega controles ni cambia datos,
+  copy, imágenes o el foco visible.
 - **Portafolio por tandas**: 6 diseños visibles, filtro por tipo (Amigurumis, Eventos, Flores,
   Llaveros) y botón "Ver 8 más · N diseños", que lleva el conteo dentro del propio botón.
   Cambiar de tipo reinicia la tanda.
@@ -503,7 +512,7 @@ CREATE TABLE product_variants (
 ## 🧪 Verificación realizada
 
 - `npm run lint` → sin errores ni advertencias.
-- `npm run build` → `✓ built` (JS 383.43 kB / 91.85 kB gzip · CSS 48.24 kB / 9.32 kB gzip ·
+- `npm run build` → `✓ built` (JS 384.84 kB / 92.14 kB gzip · CSS 49.06 kB / 9.59 kB gzip ·
   HTML 58.52 kB / 6.74 kB gzip). El HTML publica dos listas JSON-LD separadas (diseños y
   materiales).
 - **Datos separados:** 105 diseños en `#disenos` y 8 marcas en `#materiales`
@@ -555,19 +564,19 @@ CREATE TABLE product_variants (
   "Quiero uno así"; no aparece "Disponible"/"Agotado" ni selector de color. El enlace de WhatsApp
   envía `Hola, me interesa encargar un diseño como: Abejita (Amigurumis). ¿Me podrías cotizar?`.
 - **Sin desbordamiento horizontal** en 1440, 1280, 768, 640, 390, 375, 360 y 320 px. La navbar
-  mide 73 px en escritorio y 109 px en móvil; en 320 px los cuatro enlaces de navegación caben sin
+  mide 76 px en escritorio (con su filo) y 109 px en móvil; en 320 px los cuatro enlaces caben sin
   scroll. Los anclas dejan 88 px de margen en escritorio y 120 px en móvil, por encima de la
   cabecera fija.
-- **Medidas finales (Edge headless, `scrollHeight`):** 390×844 → página **6,861 px**, secciones
-  950 / 1,491 / 2,574 / 1,083 / 544 y tarjeta de material **314 px**; 320×720 → **6,874 px** y
-  tarjeta **299 px**; 640×900 → **7,963 px** y tarjeta **405 px**; 768×900 → **6,825 px** y
-  tarjeta **205 px**; 1024×900 → **5,751 px** y tarjeta **223 px**; 1280×900 → **5,264 px** y
-  tarjeta **223 px**. El ritmo vertical se ajustó antes en dos pasos: primero entre secciones
+- **Medidas finales (Edge headless, `scrollHeight`):** 390×844 → página **6,871 px**, secciones
+  951 / 1,494 / 2,576 / 1,085 / 546 y tarjeta de material **315 px**; 320×720 → **6,884 px** y
+  tarjeta **300 px**; 640×900 → **7,973 px** y tarjeta **406 px**; 768×900 → **6,835 px** y
+  tarjeta **206 px**; 1024×900 → **5,759 px** y tarjeta **224 px**; 1280×900 → **5,270 px** y
+  tarjeta **224 px**. El ritmo vertical se ajustó antes en dos pasos: primero entre secciones
   (hero `pb` 40/56, portafolio `pt` 32/40 y pie 40/48) y después de Materiales hacia abajo (banda
   `py` 32/40/48, carta de color `mt`+`pt` 48/64, tienda `pt` 32/48 y `pb` 32/40, pie sin margen
   superior y `pt` 32/40). Ese ajuste sigue vigente; el crecimiento actual viene de las 3 marcas
-  nuevas (209 tonos más), no del espaciado. Las 3 muestras y el chip `+N` caben en una sola fila
-  en todos los anchos medidos.
+  nuevas (209 tonos más) y de las costuras, que suman entre 8 y 13 px según el ancho, no del
+  espaciado. Las 3 muestras y el chip `+N` caben en una sola fila en todos los anchos medidos.
 - **Redundancia (DOM):** dirección, horario y WhatsApp aparecen una sola vez en `StoreInfo`; el
   teléfono no se publica, solo se enlaza WhatsApp. Las redes no se repiten en la navbar; el hero
   tiene un único acceso a Materiales y su paleta enlaza a la carta. En `#materiales` las menciones
@@ -576,14 +585,19 @@ CREATE TABLE product_variants (
   sin repetir el total ni la descripción, la carta concentra la paleta completa y Tienda resume
   las marcas de la carta en un enlace.
 - **Pulido de navegación:** la navbar subraya la sección activa (`aria-current`), el salto directo
-  "Ir a la carta de color" evita recorrer las cinco tarjetas y el botón flotante de volver arriba
+  "Ir a la carta de color" evita recorrer las ocho tarjetas y el botón flotante de volver arriba
   se retiró: la cabecera fija ya ofrece "Inicio" y el flotante tapaba el CTA de las tarjetas.
   Las descripciones de material no se repiten en la lista (la ficha las conserva), como ya hacía
   el portafolio, y el pie eliminó el enlace duplicado a WhatsApp.
+- **Tema de crochet:** la costura de puntadas se aplica a las tarjetas de material, el
+  portafolio, la ficha, la carta y el pie; el festón remata el CTA del pie y la barra fija del
+  modal; la textura de tejido se queda en cajas y paneles; y la madeja y el ganchillo aparecen
+  como iconos decorativos. Los botones sólidos conservan `shadow-pop` y el hundido de 2 px; no se
+  agregó ningún control ni cambió el copy, los datos o las imágenes.
 - **Teclado y foco:** "Saltar al contenido" aparece como botón fijo de 164×48 px al recibir foco
   (verificado con `Emulation.setFocusEmulationEnabled`; sin eso, un headless reporta 1×1 px
   porque la ventana no tiene foco y `:focus` no matchea). La ficha modal enfoca el diálogo al
-  abrir, encierra Tab/Shift+Tab entre sus 29 controles visibles y devuelve el foco a la tarjeta al
+  abrir, encierra Tab/Shift+Tab entre sus 87 controles visibles y devuelve el foco a la tarjeta al
   cerrar. El scrollspy marca "Inicio", "Diseños", "Materiales" y "Tienda" con `aria-current`.
 - **Contraste:** las 21 combinaciones texto/fondo que usa la interfaz se comprobaron contra
   WCAG AA. Antes fallaban cinco —botones morados (3.26:1), texto terciario (3.27:1) y las

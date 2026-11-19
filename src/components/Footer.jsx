@@ -19,10 +19,16 @@ export default function Footer() {
   const quickLinks = SECTIONS.filter(({ id }) => id !== 'inicio')
 
   return (
-    <footer className="mt-0 border-t border-line bg-surface sm:mt-2">
+    <footer className="mt-0 bg-surface sm:mt-2">
+      <div aria-hidden="true" className="stitch-rule text-line" />
       <div className="mx-auto max-w-7xl px-4 pb-10 pt-8 sm:px-6 sm:pb-12 sm:pt-10 lg:px-8">
         {/* Llamada final a la accion */}
         <div className="relative overflow-hidden rounded-[1.5rem] border-2 border-ink bg-[linear-gradient(145deg,#8363C9_0%,#7A5CBE_55%,#6B4FA8_100%)] px-6 py-9 text-center shadow-pop sm:px-10 sm:py-12">
+          {/* Feston superior: remate de tejido sobre el degradado */}
+          <div
+            aria-hidden="true"
+            className="edge-scallop pointer-events-none absolute inset-x-0 top-0 text-white/25"
+          />
           {/* Puntada interior: guiño a la costura sin sumar peso visual */}
           <div
             aria-hidden="true"
@@ -50,7 +56,7 @@ export default function Footer() {
               href={getGeneralWhatsAppUrl()}
               target="_blank"
               rel="noopener noreferrer"
-              className="mt-5 inline-flex items-center justify-center gap-2 rounded-xl border-2 border-ink bg-white px-6 py-3.5 text-[15px] font-bold text-lila-800 shadow-pop transition-all duration-240 ease-artisan hover:translate-x-[2px] hover:translate-y-[2px] hover:bg-sand-50 hover:shadow-none focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-brand sm:text-base"
+              className="btn-stitch mt-5 inline-flex items-center justify-center gap-2 rounded-xl border-2 border-ink bg-white px-6 py-3.5 text-[15px] font-bold text-lila-800 shadow-pop transition-all duration-240 ease-artisan hover:translate-x-[2px] hover:translate-y-[2px] hover:bg-sand-50 hover:shadow-none focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-brand sm:text-base"
             >
               <MessageCircle className="h-[18px] w-[18px]" aria-hidden="true" />
               Escríbeme por WhatsApp

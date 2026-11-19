@@ -131,6 +131,70 @@
     box-shadow: inset 0 0 0 1px rgba(44, 42, 41, 0.08);
   }
 
+  /* ---------------------------------------------------------------------------
+   * Motivos de crochet
+   * ------------------------------------------------------------------------ */
+
+  /* Tejido: malla de puntos en V (dos diagonales cruzadas). Se pinta como fondo
+   * de cajas y paneles. Es casi invisible a proposito: suma tacto de tela sin
+   * competir con el texto ni con las fotos. */
+  .texture-knit {
+    background-image:
+      repeating-linear-gradient(45deg, rgba(44, 42, 41, 0.014) 0 1px, transparent 1px 7px),
+      repeating-linear-gradient(-45deg, rgba(44, 42, 41, 0.014) 0 1px, transparent 1px 7px);
+  }
+
+  /* Costura: fila de puntadas redondas. Sustituye a un filo recto cuando el
+   * divisor debe leerse como tejido y no como borde de caja. El color lo pone
+   * quien la usa (`text-line`, `text-ink/20`): hereda de currentColor. */
+  .stitch-rule {
+    height: 3px;
+    background-image: radial-gradient(circle, currentColor 1.4px, transparent 1.7px);
+    background-size: 9px 3px;
+    background-repeat: repeat-x;
+    background-position: left center;
+  }
+
+  /* Feston: arcos de medio punto en el borde superior, como el remate de una
+   * colcha. Se apoya en un contenedor `relative`; no captura el puntero. */
+  .edge-scallop {
+    height: 11px;
+    background-image: radial-gradient(
+      circle at 50% 0,
+      transparent 0 5.5px,
+      currentColor 5.5px 7px,
+      transparent 7.2px
+    );
+    background-size: 16px 11px;
+    background-repeat: repeat-x;
+    background-position: top left;
+  }
+
+  /* Boton cosido: una puntada interior sigue el borde redondeado sin tapar el
+   * texto ni la accion. Usa currentColor, asi que funciona igual sobre el
+   * morado de la marca y sobre el boton blanco del pie. */
+  .btn-stitch {
+    position: relative;
+  }
+  .btn-stitch::after {
+    content: '';
+    position: absolute;
+    inset: 4px;
+    border: 1.5px dashed currentColor;
+    border-radius: calc(0.75rem - 4px);
+    opacity: 0.38;
+    pointer-events: none;
+  }
+
+  /* Filo de la cabecera: una hilera de puntadas terracota sobre el papel. */
+  .stitch-band {
+    background-image: repeating-linear-gradient(
+      90deg,
+      #b4614a 0 14px,
+      transparent 14px 21px
+    );
+  }
+
   /* Etiqueta de dato (PRECIO, COLOR, STOCK). Monoespaciada y con tracking
    * contenido: se lee como ficha tecnica sin volverse letra pequena. */
   .meta-label {
@@ -142,14 +206,20 @@
     @apply font-mono text-[13px] font-medium tabular-nums text-ink-soft;
   }
 
-  /* Antetitulo editorial. El filo terracota que lo precede ancla el texto a la
-   * izquierda y aporta el acento artesanal del bloque. */
+  /* Antetitulo editorial. Tres puntadas terracota preceden el texto: anclan
+   * la lectura a la izquierda y aportan el acento artesanal del bloque. */
   .eyebrow {
     @apply flex items-center gap-3 text-[12px] font-bold uppercase tracking-[0.2em] text-clay-deep;
   }
   .eyebrow::before {
     content: '';
-    @apply h-[2px] w-7 shrink-0 bg-clay;
+    height: 3px;
+    width: 1.75rem;
+    flex-shrink: 0;
+    background-image: radial-gradient(circle, theme('colors.clay.DEFAULT') 1.4px, transparent 1.6px);
+    background-size: 8px 3px;
+    background-repeat: repeat-x;
+    background-position: left center;
   }
 
   /* Enlace editorial: el subrayado se dibuja de izquierda a derecha. Se usa

@@ -285,81 +285,84 @@ export default function ProductCard({ product, index = 0, onOpenDetail }) {
          * el JSON-LD, no se repite seis veces en la lista. */}
 
         {/* Un solo separador agrupa la ficha de compra: color, disponibilidad
-         * y precio. */}
-        <div className="mt-3 border-t-2 border-line/90 pt-3 sm:mt-4 sm:pt-3.5 md:mt-3 md:pt-3">
-          {/* -----------------------------------------------------------
-           * Variantes de color (solo estambres y trapillo)
-           * ----------------------------------------------------------- */}
-          {supportsVariants && (
-            <div>
-              <div className="flex items-baseline justify-between gap-2">
-                <p className="text-[11px] font-bold uppercase tracking-[0.1em] text-ink-muted sm:text-[12px]">
-                  Tono
-                </p>
-                <p
-                  className="truncate text-right font-mono text-[11px] font-medium tabular-nums text-ink-soft sm:text-[13px]"
-                  aria-live="polite"
-                >
-                  {activeVariant ? (
-                    <>
-                      <span>{activeVariant.colorCode}</span>
-                      <span className="sr-only lg:not-sr-only">
-                        {' '}
-                        · {activeVariant.colorName}
-                      </span>
-                    </>
-                  ) : (
-                    'Elige un tono'
-                  )}
-                </p>
-              </div>
+         * y precio. La costura de puntadas reemplaza el filo recto. */}
+        <div className="mt-3 sm:mt-4 md:mt-3">
+          <div aria-hidden="true" className="stitch-rule text-line" />
+          <div className="pt-3 sm:pt-3.5 md:pt-3">
+            {/* -----------------------------------------------------------
+             * Variantes de color (solo estambres y trapillo)
+             * ----------------------------------------------------------- */}
+            {supportsVariants && (
+              <div>
+                <div className="flex items-baseline justify-between gap-2">
+                  <p className="text-[11px] font-bold uppercase tracking-[0.1em] text-ink-muted sm:text-[12px]">
+                    Tono
+                  </p>
+                  <p
+                    className="truncate text-right font-mono text-[11px] font-medium tabular-nums text-ink-soft sm:text-[13px]"
+                    aria-live="polite"
+                  >
+                    {activeVariant ? (
+                      <>
+                        <span>{activeVariant.colorCode}</span>
+                        <span className="sr-only lg:not-sr-only">
+                          {' '}
+                          · {activeVariant.colorName}
+                        </span>
+                      </>
+                    ) : (
+                      'Elige un tono'
+                    )}
+                  </p>
+                </div>
 
-              <div className="mt-2 sm:mt-2.5">
-                <ColorSwatchPicker
-                  variants={variants}
-                  activeVariantId={activeVariantId}
-                  onChange={setActiveVariantId}
-                  onShowAll={() => onOpenDetail?.(product, activeVariantId)}
-                  maxVisible={3}
-                  compact
-                />
-              </div>
+                <div className="mt-2 sm:mt-2.5">
+                  <ColorSwatchPicker
+                    variants={variants}
+                    activeVariantId={activeVariantId}
+                    onChange={setActiveVariantId}
+                    onShowAll={() => onOpenDetail?.(product, activeVariantId)}
+                    maxVisible={3}
+                    compact
+                  />
+                </div>
 
-              {variantStatus === AVAILABILITY.AVAILABLE && (
-                <p className="mt-2.5 flex items-center gap-1.5 text-[12.5px] font-medium text-success">
-                  <PackageCheck className="h-4 w-4" aria-hidden="true" />
-                  <span>
-                    <span className="font-mono tabular-nums">{activeVariant.stock}</span>{' '}
-                    disponibles en este color
+                {variantStatus === AVAILABILITY.AVAILABLE && (
+                  <p className="mt-2.5 flex items-center gap-1.5 text-[12.5px] font-medium text-success">
+                    <PackageCheck className="h-4 w-4" aria-hidden="true" />
+                    <span>
+                      <span className="font-mono tabular-nums">{activeVariant.stock}</span>{' '}
+                      disponibles en este color
+                    </span>
+                  </p>
+                )}
+
+                {variantStatus === AVAILABILITY.SOLD_OUT && (
+                  <p className="mt-2.5 flex items-center gap-1.5 text-[12.5px] font-medium text-danger">
+                    <Clock className="h-4 w-4" aria-hidden="true" />
+                    Tono agotado por el momento
+                  </p>
+                )}
+
+                {/* Sin dato de stock no se repite "existencia por confirmar" en
+                 * cada tarjeta: la seccion lo dice una sola vez. */}
+              </div>
+            )}
+
+            {/* Precio: solo si la tienda ya publico una cifra. Sin dato, el CTA
+             * de WhatsApp es la unica llamada a la accion. */}
+            {priceLabel && (
+              <div className={supportsVariants ? 'mt-4' : ''}>
+                <p className="meta-label">Precio</p>
+                <p className="mt-0.5 font-display text-[2rem] font-semibold leading-tight text-ink">
+                  <span className="tabular-nums">{priceLabel}</span>
+                  <span className="ml-1 align-middle text-[12px] font-medium text-ink-muted">
+                    MXN
                   </span>
                 </p>
-              )}
-
-              {variantStatus === AVAILABILITY.SOLD_OUT && (
-                <p className="mt-2.5 flex items-center gap-1.5 text-[12.5px] font-medium text-danger">
-                  <Clock className="h-4 w-4" aria-hidden="true" />
-                  Tono agotado por el momento
-                </p>
-              )}
-
-              {/* Sin dato de stock no se repite "existencia por confirmar" en
-               * cada tarjeta: la seccion lo dice una sola vez. */}
-            </div>
-          )}
-
-          {/* Precio: solo si la tienda ya publico una cifra. Sin dato, el CTA
-           * de WhatsApp es la unica llamada a la accion. */}
-          {priceLabel && (
-            <div className={supportsVariants ? 'mt-4' : ''}>
-              <p className="meta-label">Precio</p>
-              <p className="mt-0.5 font-display text-[2rem] font-semibold leading-tight text-ink">
-                <span className="tabular-nums">{priceLabel}</span>
-                <span className="ml-1 align-middle text-[12px] font-medium text-ink-muted">
-                  MXN
-                </span>
-              </p>
-            </div>
-          )}
+              </div>
+            )}
+          </div>
         </div>
 
         {/* Espaciador flexible: alinea los botones entre tarjetas */}
@@ -377,7 +380,7 @@ export default function ProductCard({ product, index = 0, onOpenDetail }) {
             activeVariant ? ` en tono ${activeVariant.colorName}` : ''
           }`}
           title={`Pedir "${product.name}" por WhatsApp`}
-          className="mt-4 inline-flex w-full items-center justify-center gap-2 rounded-xl border-2 border-ink bg-brand px-3 py-2.5 text-center text-[13px] font-bold leading-tight text-white shadow-pop transition-all duration-240 ease-artisan hover:translate-x-[2px] hover:translate-y-[2px] hover:bg-whatsapp hover:shadow-none focus:outline-none focus-visible:ring-2 focus-visible:ring-lila-600 focus-visible:ring-offset-2 focus-visible:ring-offset-surface active:translate-y-0 sm:px-4 sm:py-3.5 sm:text-[15px] md:mt-3 md:gap-1.5 md:px-3 md:py-2.5 md:text-[13px] lg:px-4 lg:py-3 lg:text-[15px]"
+          className="btn-stitch mt-4 inline-flex w-full items-center justify-center gap-2 rounded-xl border-2 border-ink bg-brand px-3 py-2.5 text-center text-[13px] font-bold leading-tight text-white shadow-pop transition-all duration-240 ease-artisan hover:translate-x-[2px] hover:translate-y-[2px] hover:bg-whatsapp hover:shadow-none focus:outline-none focus-visible:ring-2 focus-visible:ring-lila-600 focus-visible:ring-offset-2 focus-visible:ring-offset-surface active:translate-y-0 sm:px-4 sm:py-3.5 sm:text-[15px] md:mt-3 md:gap-1.5 md:px-3 md:py-2.5 md:text-[13px] lg:px-4 lg:py-3 lg:text-[15px]"
         >
           <MessageCircle className="h-4 w-4 shrink-0 sm:h-[18px] sm:w-[18px]" aria-hidden="true" />
           <span className="lg:hidden">Pedir</span>
