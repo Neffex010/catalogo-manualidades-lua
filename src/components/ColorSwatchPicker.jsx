@@ -14,7 +14,8 @@
  *
  * En modo `compact` (tarjetas de dos columnas) las muestras bajan de tamano y
  * pierden el codigo pintado dentro: el codigo del tono activo ya aparece en la
- * linea "Tono" de la tarjeta y la ficha mantiene la paleta completa con codigos.
+ * linea "Tono" de la tarjeta y la ficha mantiene la paleta con codigos, plegada
+ * a tres filas.
  *
  * Es un componente controlado: no guarda la variante activa. El producto dueño
  * de la tarjeta decide cual es y reacciona al cambio.
@@ -80,8 +81,8 @@ export default function ColorSwatchPicker({
 
   // Compacto = tarjeta en dos columnas: las muestras deben caber junto al chip
   // "+N" incluso a 320 px, donde el hueco util ronda 114 px. En la ficha (sin
-  // compacto) la paleta va completa, asi que las muestras bajan un punto para
-  // que 25-47 tonos no alarguen el modal.
+  // compacto) las muestras crecen para elegir el tono con comodidad; la paleta
+  // se pliega a tres filas y el chip "+N" abre el resto sin estirar el modal.
   const swatchSize = compact
     ? 'h-6 w-6 text-[9px] min-[360px]:h-7 min-[360px]:w-7 min-[400px]:h-8 min-[400px]:w-8 sm:h-9 sm:w-9 sm:text-[10px] lg:h-11 lg:w-11 lg:text-[11px]'
     : 'h-9 w-9 text-[10px] min-[360px]:h-10 min-[360px]:w-10 sm:text-[11px]'

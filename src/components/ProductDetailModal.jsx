@@ -35,6 +35,11 @@ import { AVAILABILITY, getInitialVariantId, getProductStatus, getVariantStatus }
 import { getDesignWhatsAppUrl, getProductWhatsAppUrl } from '../utils/whatsapp'
 import { CATEGORY_LABELS, FALLBACK_IMAGE, VARIANT_CATEGORIES } from '../config/site'
 
+/** Tonos que caben en tres filas de la ficha antes de plegar el resto. */
+const MODAL_VISIBLE_TONES = 16
+/** Una marca con hasta tres filas completas no se pliega: no vale la pena. */
+const MODAL_FULL_TONES = 18
+
 /** Etiqueta y color del badge de disponibilidad. */
 const STATUS_STYLES = {
   [AVAILABILITY.AVAILABLE]: {
@@ -220,8 +225,15 @@ export default function ProductDetailModal({ product, onClose, initialVariantId 
         className="fixed inset-0 bg-ink/60 backdrop-blur-sm transition-opacity animate-in fade-in duration-200"
       />
 
-      {/* Contenedor del modal */}
-      <div className="relative z-10 flex max-h-[90vh] w-full max-w-3xl flex-col overflow-hidden rounded-[1.5rem] border border-line bg-surface shadow-2xl transition-all animate-in fade-in zoom-in-95 duration-200">
+      {/* Contenedor del modal: las fichas de material son mas angostas porque
+       * la paleta ya no necesita todo el ancho; la de diseno conserva la foto
+       * grande. */}
+      <div
+        className={[
+          'relative z-10 flex max-h-[90vh] w-full flex-col overflow-hidden rounded-[1.5rem] border border-line bg-surface shadow-2xl transition-all animate-in fade-in zoom-in-95 duration-200',
+          isDesign ? 'max-w-3xl' : 'max-w-2xl',
+        ].join(' ')}
+      >
         {/* Boton cerrar */}
         <button
           type="button"
@@ -325,13 +337,19 @@ export default function ProductDetailModal({ product, onClose, initialVariantId 
                 </div>
 
                 <div className="mt-2.5">
-                  {/* Paleta completa: aqui si cabe, es la superficie para
-                   * recorrer todos los tonos de la marca. */}
+                  {/* Paleta en tres filas: los 83 tonos de una marca no deben
+                   * estirar la ficha hasta el borde de la pantalla. Las marcas
+                   * con hasta tres filas se muestran completas y, si hay mas,
+                   * el chip `+N` abre el resto en el sitio, como en la tarjeta. */}
                   <ColorSwatchPicker
                     variants={variants}
                     activeVariantId={selectedVariantId}
                     onChange={setSelectedVariantId}
-                    maxVisible={variants.length}
+                    maxVisible={
+                      variants.length <= MODAL_FULL_TONES
+                        ? variants.length
+                        : MODAL_VISIBLE_TONES
+                    }
                   />
                 </div>
 

@@ -439,8 +439,8 @@ CREATE TABLE product_variants (
   la tarjeta de material, el portafolio, la ficha, la carta y el pie; el festón remata el CTA del
   pie y la barra fija del modal; la textura de tejido se queda en cajas y paneles; y los botones
   sólidos llevan una puntada interior que no tapa el texto y conserva `shadow-pop` y el hundido
-  de 2 px al pulsar. Todo es decorativo (`aria-hidden`), no agrega controles ni cambia datos,
-  copy, imágenes o el foco visible.
+  de 2 px al pulsar. Todo es decorativo (`aria-hidden`), no agrega buscadores ni filtros ni
+  cambia datos, copy o imágenes.
 - **Portafolio por tandas**: 6 diseños visibles, filtro por tipo (Amigurumis, Eventos, Flores,
   Llaveros) y botón "Ver 8 más · N diseños", que lleva el conteo dentro del propio botón.
   Cambiar de tipo reinicia la tanda.
@@ -472,9 +472,9 @@ CREATE TABLE product_variants (
 - **Estados incluidos**: carga (skeletons), error con reintento, categoría sin diseños, material
   agotado (solo con dato real) y color agotado (solo si se marcó con `stock: 0`).
 - **Selector compacto**: la tarjeta muestra 3 muestras y `+N` (sin el código pintado dentro:
-  el tono activo ya se lee en la línea "Tono"); ese botón abre la ficha con la paleta completa
-  y sus códigos, en lugar de estirar la tarjeta. Si la variante activa cae fuera de la primera
-  tanda, se reserva su lugar. Al abrir la ficha, el tono elegido se conserva
+  el tono activo ya se lee en la línea "Tono"); ese botón abre la ficha con la paleta completa,
+  plegada a tres filas, y sus códigos, en lugar de estirar la tarjeta. Si la variante activa cae
+  fuera de la primera tanda, se reserva su lugar. Al abrir la ficha, el tono elegido se conserva
   (`initialVariantId`).
 - **Información sin duplicados**: la ficha de tienda (dirección, horario, WhatsApp y redes) se
   muestra una sola vez en `StoreInfo`, con un único acceso a WhatsApp y sin publicar la cifra;
@@ -512,7 +512,7 @@ CREATE TABLE product_variants (
 ## 🧪 Verificación realizada
 
 - `npm run lint` → sin errores ni advertencias.
-- `npm run build` → `✓ built` (JS 384.84 kB / 92.14 kB gzip · CSS 49.06 kB / 9.59 kB gzip ·
+- `npm run build` → `✓ built` (JS 384.90 kB / 92.17 kB gzip · CSS 49.06 kB / 9.59 kB gzip ·
   HTML 58.52 kB / 6.74 kB gzip). El HTML publica dos listas JSON-LD separadas (diseños y
   materiales).
 - **Datos separados:** 105 diseños en `#disenos` y 8 marcas en `#materiales`
@@ -536,18 +536,17 @@ CREATE TABLE product_variants (
   tonos y toca las texturas." y las marcas, extras y servicios quedan en una sola tarjeta con dos
   franjas de etiquetas, sin bordes internos.
 - **Modal de material:** el título es la marca y el chip dice el tipo real (`Hilaza`, `Estambre`,
-  `Estambre e hilo`, `Trapillo`). La paleta muestra los tonos completos de cada marca (hasta 83),
-  el tono elegido en la tarjeta se conserva al abrir y la ficha arranca en "Tono seleccionado". La
-  ficha se compactó para no dominar la pantalla: ancho máximo `3xl` (**768 px**), alto máximo
-  `90vh` y espaciados de 12–16 px entre bloques. Las muestras bajan a 36–40 px, así los 83 tonos
-  de Sinfonía caben en **12 filas** en 390 y 1280 px (14 filas a 768 px, donde la columna es más
-  angosta). Resultado medido: **768 × 810 px** en 1280, **720 × 810 px** en 768 y **366 × 760 px**
-  en 390. En móvil la foto se limita a `30vh`
-  y el CTA queda fijo al pie del modal, fuera del área que hace scroll; en escritorio el botón
-  vive al final de la columna y "Compartir" está en el encabezado, sin chocar con el cierre. Con
-  3 unidades, el mensaje es `Hola, quiero pedir de Manualidades Lua: 3 ovillos de Estambre Komfy
-  Mini, color 01 Blanco. ¿Está disponible y cuánto cuesta?`; para Trapillo Kraft dice `3 piezas`
-  y la etiqueta del contador es `Cantidad (piezas)`.
+  `Estambre e hilo`, `Trapillo`). La paleta conserva todos los tonos de cada marca (hasta 83), el
+  tono elegido en la tarjeta se conserva al abrir y la ficha arranca en "Tono seleccionado". Para
+  no dominar la pantalla usa `max-w-2xl` (**672 px**) y `90vh` de alto máximo, y la paleta se
+  pliega a **tres filas** (16 tonos) con un chip `+N` que abre el resto en el sitio; las marcas
+  con 18 tonos o menos se muestran completas. Resultado medido: **672 × 649 px** en 1280,
+  **672 × 645 px** en 768, **366 × 760 px** en 390 y **296 × 648 px** en 320. En móvil la foto se
+  limita a `30vh` y el CTA queda fijo al pie del modal, fuera del área que hace scroll; en
+  escritorio el botón vive al final de la columna y "Compartir" está en el encabezado, sin
+  chocar con el cierre. Con 3 unidades, el mensaje es `Hola, quiero pedir de Manualidades Lua: 3
+  ovillos de Estambre Komfy Mini, color 01 Blanco. ¿Está disponible y cuánto cuesta?`; para
+  Trapillo Kraft dice `3 piezas` y la etiqueta del contador es `Cantidad (piezas)`.
 - **Carta de color:** las 8 pestañas muestran 83/78/48/34/25/25/47/17 tonos con "Ver los N
   tonos"; cada tono es un enlace `wa.me` con marca, código y nombre. La cuadrícula ya no repite un
   icono de WhatsApp en cada tono: la instrucción vive una sola vez en el encabezado. Se abren 6
@@ -593,12 +592,12 @@ CREATE TABLE product_variants (
   portafolio, la ficha, la carta y el pie; el festón remata el CTA del pie y la barra fija del
   modal; la textura de tejido se queda en cajas y paneles; y la madeja y el ganchillo aparecen
   como iconos decorativos. Los botones sólidos conservan `shadow-pop` y el hundido de 2 px; no se
-  agregó ningún control ni cambió el copy, los datos o las imágenes.
+  agregó ningún buscador ni filtro, y el copy, los datos y las imágenes no cambiaron.
 - **Teclado y foco:** "Saltar al contenido" aparece como botón fijo de 164×48 px al recibir foco
   (verificado con `Emulation.setFocusEmulationEnabled`; sin eso, un headless reporta 1×1 px
   porque la ventana no tiene foco y `:focus` no matchea). La ficha modal enfoca el diálogo al
-  abrir, encierra Tab/Shift+Tab entre sus 87 controles visibles y devuelve el foco a la tarjeta al
-  cerrar. El scrollspy marca "Inicio", "Diseños", "Materiales" y "Tienda" con `aria-current`.
+  abrir, encierra Tab/Shift+Tab entre sus 21 controles visibles (88 con la paleta desplegada) y
+  devuelve el foco a la tarjeta al cerrar. El scrollspy marca "Inicio", "Diseños", "Materiales" y "Tienda" con `aria-current`.
 - **Contraste:** las 21 combinaciones texto/fondo que usa la interfaz se comprobaron contra
   WCAG AA. Antes fallaban cinco —botones morados (3.26:1), texto terciario (3.27:1) y las
   etiquetas "Disponible"/"Agotado" (2.43 y 3.08)—; ahora la más justa es el botón morado con
